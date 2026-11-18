@@ -1,0 +1,750 @@
+﻿ANSTOSS 3 - Inoffizieller Patch
+Änderungsprotokoll
+===============================
+
+Je Version sind die behobenen Fehler nach Fehlerart gegliedert. Zu jedem Eintrag stehen der Fehler,
+die Korrektur und ihre Auswirkung, bei Meldungen und Ereignissen außerdem die geschätzte Häufigkeit.
+
+Gruppen mit dem Zusatz „Berechnung, abwählbar“ (bis Version 1.44: „Spiellogik, abwählbar“): Die
+Berechnungskorrekturen und -änderungen greifen in den Spielverlauf ein. Sie betreffen Funktionen und
+Ereignisse, die im Spiel angelegt sind, wegen eines Programmfehlers aber nie, zu selten oder
+fehlerhaft gearbeitet haben; einige Ereignisse treten dadurch erstmals oder häufiger ein. Die
+geschätzte Häufigkeit steht bei den Einträgen unter „Details ...“. Diese Gruppe kann abgewählt
+werden; die optischen Änderungen (Anzeigen, Statistiken, Texte) werden immer installiert.
+
+
+Version 1.46 (18.11.2026)
+=========================
+
+Jugendspieler (Berechnung, abwählbar)
+-------------------------------------
+  * Abgeworbene Jugendspieler erhielten keine Vertragslaufzeit
+      Fehler:     Wird ein Jugendspieler ohne Vertrag über die Liste der vertragslosen Jugendspieler
+                  von einem anderen Verein in die eigene Jugend geholt, trug das Programm das Gehalt
+                  ein, nicht aber die Laufzeit des Jugendvertrags. Der Spieler stand mit einer
+                  Restlaufzeit von 0 Jahren in der Jugend. An den beiden vergleichbaren Stellen des
+                  Programms, darunter der Jugendvertrag im eigenen Jugendbereich, werden zusammen
+                  mit dem Gehalt zehn Jahre eingetragen. Ein Spieler ohne Restlaufzeit gilt im
+                  Profikader als abwesend: In der vierwöchigen Probezeit wurde er mit dem Symbol
+                  „abwesend“ angezeigt und war nicht einsetzbar.
+      Korrektur:  Beim Abwerben wird wie an den beiden anderen Stellen eine Laufzeit von zehn Jahren
+                  eingetragen.
+      Auswirkung: Betrifft nur Vereine menschlicher Manager und nur Jugendspieler, die nach der
+                  Installation abgeworben werden. Bereits abgeworbene Spieler in bestehenden
+                  Spielständen behalten die Restlaufzeit von 0 Jahren. Die Altersgrenze der Jugend
+                  und das Gehalt sind unverändert.
+
+Allgemein
+---------
+  * Versionsangabe 1.46
+      Korrektur:  Die Versionsangabe des Spiels lautet 1.46.
+      Auswirkung: An der Versionsangabe ist die installierte Fassung des Patches erkennbar.
+
+
+Version 1.45 (18.11.2026)
+=========================
+
+Meldungen und Ereignisse: Anzeige und Texte
+-------------------------------------------
+  * Meldung über zwei befreundete Spieler nannte die Namen der Ehefrauen nicht
+      Fehler:     In der Meldung „… Da auch ihre Frauen … sehr viel zusammen machen …“ wurde
+                  anstelle des ersten Namens ein nicht belegter Speicherbereich ausgegeben, der
+                  zweite Name fehlte.
+      Korrektur:  Es werden die Namen der beiden Ehefrauen eingesetzt.
+      Auswirkung: Nur der Text der Meldung. Das Ereignis setzt unverändert voraus, dass beide
+                  Spieler verheiratet sind.
+      Häufigkeit: Etwa einmal in 10 Saisons, sofern zwei Spieler mit Partnerin im Kader stehen.
+
+  * Schlagzeile zum Tod eines gedopten Spielers griff auf ungültige Managerdaten zu
+      Fehler:     Beim Anlegen der Schlagzeile „Trauer in … – … stirbt vollgepumpt mit Drogen an
+                  Herzversagen“ fehlte eine Angabe; der Wert −5 wurde als Managernummer gespeichert.
+                  Wurde die Schlagzeile die oberste des Tages, griff das Programm damit auf Daten
+                  außerhalb der Managertabellen zu.
+      Korrektur:  Die Schlagzeile wird ohne Managernummer angelegt; der fehlerhafte Zugriff
+                  entfällt.
+      Auswirkung: Die Schlagzeile erscheint wie bisher. Es wird kein Wert verändert.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Schlagzeile „… hat die Schnauze voll“ speicherte einen zufälligen Wert
+      Fehler:     Die Schlagzeile kündigte einen Wert an, der beim Anlegen nicht übergeben wurde;
+                  gespeichert wurde ein zufälliger Speicherinhalt. Der Wert wurde weder angezeigt
+                  noch angewendet.
+      Korrektur:  Die Schlagzeile wird ohne Wert angelegt.
+      Auswirkung: Keine sichtbare Änderung.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Randale nach einem Heimspiel: Entwarnung trotz Schadenersatz
+      Fehler:     Im ungünstigen Verlauf werden 100 000 Schadenersatz gebucht; angezeigt wurde
+                  dennoch der Text des günstigen Verlaufs („… schnell unter Kontrolle gebracht“).
+      Korrektur:  Es wird der zugehörige Text angezeigt („… auf mehr als 500 000 verklagt … auf 100
+                  000 einigen“), mit beiden Beträgen.
+      Auswirkung: Nur der Text der Meldung. Buchung und Wahrscheinlichkeit der beiden Verläufe sind
+                  unverändert.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Meldung „… hat … die Freundin ausgespannt“ nannte die Spieler vertauscht
+      Fehler:     Die Meldung nannte den Spieler, der seine Freundin verliert, als denjenigen, der
+                  sie ausgespannt hat, und umgekehrt.
+      Korrektur:  Die Namen stehen in der richtigen Reihenfolge; die angezeigte Änderung des
+                  Teilwerts gehört zum erstgenannten Spieler.
+      Auswirkung: Nur der Text und die Anzeige der Meldung. Die Wirkung (beide Spieler +3, Wechsel
+                  der Partnerin) ist unverändert.
+      Häufigkeit: Etwa einmal in 5 Saisons, sofern ein Spieler mit Freundin und ein Spieler ohne
+                  Beziehung im Kader stehen.
+
+  * Meldung über die Klage eines Spielers bei seinem Freund nannte die Spieler vertauscht
+      Fehler:     In der Meldung „… erzählt ihm, was ihm zur Zeit bei diesem Verein alles stinkt. …
+                  muß ihm in einigen Punkten recht geben“ stand der zufriedene Spieler als der
+                  klagende und umgekehrt.
+      Korrektur:  Die Namen stehen in der richtigen Reihenfolge.
+      Auswirkung: Nur der Text der Meldung; die Wirkung auf die Motivation beider Spieler ist
+                  unverändert.
+      Häufigkeit: Etwa einmal in 10 Saisons, sofern zwei befreundete Spieler mit unterschiedlicher
+                  Zufriedenheit im Kader stehen.
+
+  * Name der früheren Partnerin konnte falsch sein
+      Fehler:     Der Name der früheren Partnerin wurde mit der Namensgruppe der jetzigen Partnerin
+                  gebildet; gehören beide zu verschiedenen Namensgruppen, erschien ein falscher
+                  Name.
+      Korrektur:  Es wird die gespeicherte Namensgruppe der früheren Partnerin verwendet.
+      Auswirkung: Nur der angezeigte Name in den Meldungen, die die frühere Partnerin nennen.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Drei Meldungen zeigten eine falsche Veränderung des Werts
+      Fehler:     In den Meldungen über die Trainingskiebitze, die Teenager nach dem Training und
+                  den Fehlpaß im Training wurde der Wert „vorher“ mit Zu- und Abschlägen des
+                  Spielers angezeigt, der Wert „nachher“ ohne. Bei Spielern mit einem solchen Zu-
+                  oder Abschlag stimmte die angezeigte Veränderung nicht.
+      Korrektur:  Beide Werte werden gleich gebildet.
+      Auswirkung: Nur die Anzeige in der Meldung; die Wirkung selbst war und ist richtig.
+      Häufigkeit: Je Meldung etwa einmal in 8 Saisons, vor den Bedingungen der einzelnen Meldung.
+
+  * Vier Meldungen zeigten die Änderung unter der falschen Bezeichnung
+      Fehler:     Die Meldungen über die Verehrerin und über den Besuch der Schwiegermutter (zwei
+                  Meldungen) zeigten die Änderung der Ablenkung unter „Mannschaft“ beziehungsweise
+                  „Privates“; die Meldung über das veröffentlichte Tagebuch zeigte die Änderung der
+                  Stimmung unter „Beliebtheit Öffentlichkeit“.
+      Korrektur:  Die Änderungen stehen unter „Ablenkung“ beziehungsweise „Stimmung“.
+      Auswirkung: Nur die Beschriftung in der Meldung; die Werte selbst waren und sind richtig.
+      Häufigkeit: Verehrerin: etwa einmal in 8 Saisons. Schwiegermutter: je Meldung etwa einmal in 4
+                  Saisons bei verheirateten Spielern. Tagebuch: etwa einmal in 20 Saisons je Spieler
+                  mit dem zugehörigen Hobby.
+
+  * Streit zweier Spieler derselben Position: falsche Meldung
+      Fehler:     Geraten zwei Spieler derselben Position in Streit, erschien die Meldung über zwei
+                  Spieler, die sich in dieselbe Frau verliebt haben, mit unvollständigen Namen.
+      Korrektur:  Es erscheint die zugehörige Meldung („… die die gleiche Position spielen,
+                  verstehen sich privat nicht besonders gut …“).
+      Auswirkung: Nur der Text der Meldung; der Streit wird wie bisher eingetragen.
+      Häufigkeit: Etwa einmal in 50 Saisons.
+
+  * Meldungen zum Namen des Kindes nannten die Frau des Spielers nicht
+      Fehler:     Die Meldungen „…, die Frau Ihres Spielers … möchte unbedingt, daß ihr erstes
+                  (nächstes) Kind ‚Kurt‘ heißen soll …“ begannen ohne Namen.
+      Korrektur:  Der Name der Partnerin wird eingesetzt.
+      Auswirkung: Nur der Text der Meldung.
+      Häufigkeit: Je Spieler mit dem zugehörigen Hobby etwa einmal in 40 Saisons.
+
+  * Meldung „… Seine Frau … fände diese Idee auch einfach großartig“ ohne Namen
+      Fehler:     In der Meldung, der Spieler wolle sein nächstes Kind nach dem Manager benennen,
+                  fehlte der Name der Ehefrau.
+      Korrektur:  Der Name wird eingesetzt.
+      Auswirkung: Nur der Text der Meldung.
+      Häufigkeit: Etwa einmal in 13 Saisons, sofern ein verheirateter Spieler im Kader steht.
+
+  * Meldung zur geplatzten Hochzeit nannte die andere Freundin falsch
+      Fehler:     Der Name der anderen Freundin wurde erst gelesen, nachdem sie zur Partnerin
+                  geworden war; es erschien ein falscher Name.
+      Korrektur:  Es wird der Name der neuen Partnerin eingesetzt.
+      Auswirkung: Nur der Text der Meldung. Die vertauschte Nennung von Spieler und Freundin am
+                  Satzanfang wird mit der Textdatei berichtigt (Eintrag „Texte von 20 Meldungen
+                  berichtigt“).
+      Häufigkeit: Etwa 0,8-mal je Saison, solange ein Spieler einen Hochzeitstermin und zugleich
+                  eine Affäre hat; diese Voraussetzung ist sehr selten.
+
+  * Texte von 20 Meldungen berichtigt (Datei texte\Ereignis.saq)
+      Fehler:     In 20 Texten fehlten Namen (im Spiel erschien stattdessen „%s“), waren Namen
+                  vertauscht oder der Text nannte eine andere Wirkung als die tatsächliche, zum
+                  Beispiel einen Ausfall statt einer Beeinträchtigung.
+      Korrektur:  Die Texte sind berichtigt: Platzhalter und Reihenfolge der Namen, Angaben zu Dauer
+                  und Wirkung. Die Länge der Datei bleibt unverändert, weil das Spiel sie sonst
+                  nicht lädt.
+      Auswirkung: Nur der Wortlaut der Meldungen. Die Datei wird nur angepasst, wenn alle 20 Texte
+                  im ursprünglichen Wortlaut vorliegen; andernfalls bleibt sie unverändert.
+      Häufigkeit: Betrifft 20 Meldungen unterschiedlicher Häufigkeit; siehe die Einträge zu den
+                  einzelnen Meldungen.
+
+Meldungen und Ereignisse: Wirkung (Berechnung, abwählbar)
+---------------------------------------------------------
+  * Ereignis „Hochzeit platzt“ traf nicht den Spieler mit Hochzeitstermin
+      Fehler:     Das Ereignis sucht im Kader die Spieler mit einem Hochzeitstermin, verwendete dann
+                  aber nicht einen dieser Spieler, sondern den Speicherplatz hinter dem letzten
+                  Kaderspieler. Dort steht je nach Verlauf ein früherer Kaderspieler oder kein
+                  gültiger Eintrag; die Meldung konnte einen Spieler ohne Hochzeitstermin treffen
+                  oder das Programm zum Absturz bringen.
+      Korrektur:  Unter den Spielern mit Hochzeitstermin wird einer zufällig gewählt, wie es die
+                  übrigen Ereignisse dieser Gruppe tun.
+      Auswirkung: Die Meldungen „Hochzeit abgesagt“ und „Freundin entdeckt die andere Freundin“
+                  betreffen den richtigen Spieler. Häufigkeit und Bedingungen des Ereignisses sind
+                  unverändert.
+      Häufigkeit: Je Meldung etwa 0,8-mal je Saison, solange ein Spieler der eigenen Mannschaft
+                  einen Hochzeitstermin hat.
+
+  * Ereignis „Kostenloser Kopierer“: Ersparnis wurde als Ausgabe gebucht
+      Fehler:     Die Meldung nennt eine Ersparnis von 12 000, gebucht wurde eine Ausgabe in dieser
+                  Höhe.
+      Korrektur:  Der Betrag wird als Einnahme gebucht.
+      Auswirkung: 12 000 Einnahme statt 12 000 Ausgabe je Auftreten. Das Ereignis ist eines von 108
+                  zufälligen Geld-Ereignissen und kann sich im Lauf der Jahre wiederholen.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Ereignis „Preisausschreiben“: Kosten wurden als Einnahme gebucht
+      Fehler:     Die Meldung nennt Kosten von 8 000, gebucht wurde eine Einnahme in dieser Höhe.
+      Korrektur:  Der Betrag wird als Ausgabe gebucht.
+      Auswirkung: 8 000 Ausgabe statt 8 000 Einnahme je Auftreten; sonst wie K05.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Sponsorenangebot des Schokoladenherstellers: erfolgreiche Verhandlung brachte nicht den höheren
+    Betrag
+      Fehler:     Die Frage stellt bei erfolgreicher Verhandlung den doppelten Betrag in Aussicht
+                  (Chance 50 : 50, bei Misserfolg kein Vertrag). Bei Erfolg wurde nur der einfache
+                  Betrag gutgeschrieben, derselbe wie ohne Verhandlung.
+      Korrektur:  Bei Erfolg wird der in der Frage genannte doppelte Betrag gutgeschrieben.
+      Auswirkung: 300 000 statt 150 000 bei erfolgreicher Verhandlung (in unteren Ligen 150 000
+                  statt 75 000). Annehmen ohne Verhandlung und der Misserfolg sind unverändert.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Straf-Frage, mildeste Stufe: Antworten und Wirkung passten nicht zusammen
+      Fehler:     Bei den Antworten „1 Spiel interne Sperre“, „… Strafe“ und „Nicht so schlimm“
+                  wurde ausgewertet: keine Sperre und 10 Punkte Abzug beim Trainer-Teilwert der
+                  Motivation; keine Geldstrafe und 2 Punkte Abzug; Geldstrafe. Die beiden strengeren
+                  Stufen der Frage werten ihre Antworten richtig aus.
+      Korrektur:  Die Auswertung folgt den Antworten, mit den Werten der nächsten Stufe für dieselbe
+                  Antwort: Sperre für ein Spiel und 3 Punkte Abzug; Geldstrafe ohne Abzug; keine
+                  Folge.
+      Auswirkung: Betrifft jede Straf-Frage der mildesten Stufe. Die Bewertung der Strenge des
+                  Managers ist unverändert.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Ende eines Streits löschte einen Freund aus der Freundesliste
+      Fehler:     Jeder Spieler führt eine Liste von bis zu drei Freunden und eine von bis zu drei
+                  Spielern, mit denen er Streit hat. Beim Streichen aus der Streit-Liste wurde der
+                  dritte Platz der Freundesliste gelöscht; der dritte Platz der Streit-Liste blieb
+                  stehen, bei voller Liste stand ein Spieler danach doppelt darin.
+      Korrektur:  Der Platz wird in der Streit-Liste gelöscht.
+      Auswirkung: Die Listen erscheinen im Spielerdialog und bestimmen, welche Spieler für die
+                  Ereignisse zwischen zwei Spielern in Frage kommen; beide stimmen nach einem
+                  beendeten Streit wieder.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Maulwurf-Affäre konnte in derselben Saison von vorn beginnen
+      Fehler:     Das Spiel zählt je Saison die Schlagzeilen der Maulwurf-Affäre und lässt je nach
+                  Stand weitere folgen. Der Zähler fasst die Werte 0 bis 7, wurde aber erst bei 15
+                  begrenzt; bei der achten Erhöhung sprang er auf 0, und die Folge-Schlagzeilen
+                  konnten ein zweites Mal erscheinen.
+      Korrektur:  Der Zähler bleibt bei 7 stehen.
+      Auswirkung: Nur in Saisons mit mindestens acht Schlagzeilen der Affäre. Die Affäre setzt einen
+                  Spieler mit Gesamtmotivation unter 70 voraus, der als Maulwurf bestimmt wurde;
+                  ohne ihn tritt sie nicht auf.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Sieben Zeitungsmeldungen: vorgesehener Abzug beim Teilwert „Presse“ wurde nie angewendet
+      Fehler:     Die Schlagzeilen „Frau von … bei Banküberfall erwischt“, „Schönheitsoperation bei
+                  …“, „… steht vor dem Nichts“, „… geht lieber Golfen“, „… pöbelt friedliche
+                  Passanten an“, „… mit schweren Vorwürfen gegen den Trainer“ und „… kritisiert
+                  Trainer …“ geben einen Abzug von 2 bis 4 Punkten beim Teilwert „Presse“ der
+                  Motivation des Spielers mit. Angewendet wurde er nie, weil die Angabe des Spielers
+                  fehlte; die übrigen Schlagzeilen derselben Ereignisgruppen wenden ihren Abzug an.
+      Korrektur:  Der Abzug wird beim betroffenen Spieler angewendet.
+      Auswirkung: Je Schlagzeile sinkt der Teilwert „Presse“ eines Spielers um 2 bis 4 Punkte (Skala
+                  0 bis 120); das entspricht etwa 0,3 bis 0,7 Punkten der Gesamtmotivation.
+                  Häufigkeit und Bedingungen der Meldungen sind unverändert.
+      Häufigkeit: Je nach Schlagzeile: zwischen etwa einmal in 8 Saisons und praktisch nie (zwei der
+                  sieben Schlagzeilen werden rechnerisch nur einmal in mehreren tausend Saisons
+                  ausgelost).
+
+  * „Presse nutzen“: Artikel über den Manager änderte das Vertrauen des Vorstands nicht
+      Fehler:     Lässt der Manager über die Presse einen lobenden Artikel über sich schreiben oder
+                  kritisiert er den Vorstand, gibt die Schlagzeile eine Änderung des Vertrauens mit
+                  (+5 beziehungsweise −10 Punkte). Wegen einer fehlenden Kennzeichnung wurde sie nie
+                  angewendet.
+      Korrektur:  Die Kennzeichnung ist ergänzt; die Änderung wird angewendet, wenn die Schlagzeile
+                  die oberste des Tages ist, wie bei den übrigen Schlagzeilen dieser Funktion.
+      Auswirkung: Das im Hauptmenü angezeigte Vertrauen ändert sich um +5 beziehungsweise −10
+                  Punkte. Die Funktion steht unverändert einmal je Saison und nur bei hoher
+                  Beliebtheit bei den Medien zur Verfügung.
+      Häufigkeit: Hängt vom Spielverlauf ab; aus den Lostabellen des Programms nicht bestimmbar.
+
+  * Abgesagte Hochzeit fand trotzdem statt
+      Fehler:     Die Meldung „… muß seine Hochzeit … absagen … Die beiden Frauen wollen nichts mehr
+                  von ihm wissen“ strich den Hochzeitstermin mit einem unbestimmten Datum; der
+                  Termin blieb bestehen, der Spieler heiratete am vorgesehenen Tag und behielt seine
+                  Freundin.
+      Korrektur:  Die Beziehung wird beendet, wie es das Spiel bei den übrigen Trennungen tut; der
+                  Hochzeitstermin entfällt damit.
+      Auswirkung: Der Spieler ist nach der Meldung ohne Beziehung. Häufigkeit und Bedingungen des
+                  Ereignisses sind unverändert.
+      Häufigkeit: Etwa 0,8-mal je Saison, solange ein Spieler der eigenen Mannschaft einen
+                  Hochzeitstermin hat.
+
+  * Meldung „Es kommt zur Trennung“: Beziehung blieb bestehen
+      Fehler:     Will die Freundin eines Spielers nicht mit in die neue Stadt ziehen, meldet das
+                  Spiel die Trennung; die Beziehung wurde aber nicht beendet, nur ein Teilwert der
+                  Motivation gesenkt.
+      Korrektur:  Die Beziehung wird beendet, wie bei der gleich gebauten Meldung über eine
+                  Trennung.
+      Auswirkung: Der Spieler ist nach der Meldung ohne Beziehung; der Abzug bei der Motivation ist
+                  unverändert.
+      Häufigkeit: Etwa einmal in 4 Saisons, sofern ein Neuzugang mit Freundin im Kader steht.
+
+  * Meldungen zur Ex-Freundin: Wirkungen waren vertauscht
+      Fehler:     Bei der Meldung, der Spieler spreche seine Freundin mit dem Namen der Ex-Freundin
+                  an, wechselte er zur Ex-Freundin zurück und galt danach als Spieler ohne
+                  Beziehung; die Namen in der Meldung waren dadurch vertauscht. Bei der Meldung, er
+                  sei auf dem Weg zu seiner Ex-Freundin, änderte sich nichts.
+      Korrektur:  Die erste Meldung ändert die Beziehung nicht mehr und erscheint je Beziehung
+                  einmal; bei der zweiten kehrt der Spieler zu seiner früheren Partnerin zurück und
+                  hat danach den Status „Freundin“.
+      Auswirkung: Betrifft Spieler mit Freundin und früherer Partnerin im ersten Jahr der Beziehung.
+                  Häufigkeit der Auslosung unverändert.
+      Häufigkeit: Je Meldung etwa einmal in 5 Saisons, sofern ein Spieler mit Freundin und früherer
+                  Partnerin im ersten Jahr der Beziehung im Kader steht.
+
+  * Meldung „… die Frau von … ist zusammen mit dem gemeinsamen Kind zu ihrem neuen Freund gezogen“
+    ohne Wirkung
+      Fehler:     Die Meldung konnte nur bei Spielern der Stärke 1 erscheinen, zeigte „%s“ statt der
+                  Namen, und weder die Trennung noch der genannte Verlust eines Stärkepunkts fanden
+                  statt.
+      Korrektur:  Die Meldung trifft Spieler mit einer Stärke über 1, wie die übrigen Meldungen mit
+                  Stärkeverlust. Der Spieler verliert einen Stärkepunkt, die Ehe endet, die Namen
+                  erscheinen.
+      Auswirkung: Betrifft nur Spieler der eigenen Mannschaft, die verheiratet sind, eine Affäre und
+                  genau ein Kind haben. Der Verlust des Stärkepunkts ist dauerhaft.
+      Häufigkeit: Etwa einmal in 4 Saisons, sofern ein verheirateter Spieler mit genau einem Kind
+                  und einer Stärke über 1 im Kader steht (mit der Korrektur „Meldungen rund um die
+                  Ehefrau“; ohne sie praktisch nie).
+
+  * Autobiographie eines Spielers: Streit entstand zwischen den Falschen
+      Fehler:     Nach der Meldung „… %2 und %3 mögen ihn jedenfalls jetzt nicht mehr“ wurde ein
+                  Streit zwischen den beiden genannten Mitspielern eingetragen, nicht zwischen ihnen
+                  und dem Autor.
+      Korrektur:  Der Streit wird zwischen dem Autor und jedem der beiden Mitspieler eingetragen.
+      Auswirkung: Betrifft die Streit-Listen der drei Spieler (Anzeige im Spielerdialog, Auswahl für
+                  spätere Ereignisse zwischen Spielern).
+      Häufigkeit: Je Spieler mit dem zugehörigen Hobby etwa einmal in 90 Saisons.
+
+  * Drei Verletzungsmeldungen: Ausfalldauer entsprach nicht der Meldung
+      Fehler:     Bei „Spaten in den Fuß … fällt drei Wochen aus“ fiel der Spieler 112 Tage aus, bei
+                  „Hand verstaucht … die nächsten drei Wochen“ 7 Tage und bei „Bänderriß … fällt
+                  vier Wochen aus“ 35 Tage, weil jeweils die Vorgabedauer der Verletzungsart statt
+                  der genannten Dauer galt.
+      Korrektur:  Die Dauer wird ausdrücklich gesetzt: 21, 21 und 28 Tage.
+      Auswirkung: Der Ausfall dauert so lange, wie die Meldung angibt. Häufigkeit der Ereignisse
+                  unverändert.
+      Häufigkeit: Meldungen aus Hobbys: je Spieler mit dem zugehörigen Hobby etwa einmal in 30 bis
+                  70 Saisons. Bänderriss beim Wehrdienst: etwa einmal in 3 Saisons, solange ein
+                  Spieler Wehrdienst leistet.
+
+  * Stickstoffvergiftung und Autounfall: Spieler fiel nicht aus
+      Fehler:     Nach den Meldungen „… kann daher die nächste Woche nicht trainieren“ und „… fällt
+                  damit zwei Wochen aus“ fiel der Spieler keinen Tag aus, weil für diese beiden
+                  Verletzungsarten keine Dauer hinterlegt war; eine laufende Verletzung wurde dabei
+                  sogar beendet.
+      Korrektur:  Für beide Arten ist die Dauer hinterlegt: 7 und 14 Tage.
+      Auswirkung: Der Spieler fällt so lange aus, wie die Meldung angibt. Häufigkeit der Ereignisse
+                  unverändert.
+      Häufigkeit: Je Spieler mit dem zugehörigen Hobby etwa einmal in 20 Saisons
+                  (Stickstoffvergiftung) beziehungsweise in 70 Saisons (Autounfall).
+
+  * Meldung „… verliert einen Frischepunkt“ ohne Wirkung
+      Fehler:     Die Meldung über den müden Football-Fan kündigt den Verlust eines Frischepunkts
+                  an; abgezogen wurde nichts.
+      Korrektur:  Der Spieler verliert einen Frischepunkt.
+      Auswirkung: Ein Frischepunkt bei einem Spieler je Meldung.
+      Häufigkeit: Je Spieler mit dem zugehörigen Hobby etwa einmal in 20 Saisons.
+
+  * Entzogener Führerschein kam nie zurück
+      Fehler:     Die Dauer des Entzugs wurde gespeichert, aber nie heruntergezählt. Ein Spieler,
+                  der den Führerschein einmal verloren hatte, bekam ihn nicht wieder: Die
+                  Führerschein-Meldungen konnten ihn nie mehr treffen, die Meldung über den Spieler
+                  ohne Führerschein dagegen immer wieder. Zusätzlich speicherte eine Meldung „für
+                  einen Monat“ zwei Monate.
+      Korrektur:  Gespeichert wird der Monat, in dem der Entzug endet; danach hat der Spieler den
+                  Führerschein wieder.
+      Auswirkung: Der Entzug dauert den Rest des laufenden Monats und die genannten vollen Monate.
+                  In bestehenden Spielständen erhalten Spieler ohne Führerschein ihn zurück.
+      Häufigkeit: Entzug des Führerscheins: je Meldung etwa einmal in 26 Saisons, aus Hobbys etwa
+                  einmal in 70 Saisons je Spieler mit dem Hobby. Meldung über den Spieler ohne
+                  Führerschein: etwa 0,4-mal je Saison während des Entzugs.
+
+  * Schüler und Anführer einer Gruppe teilten sich einen Merker; Abitur mehrfach bestanden
+      Fehler:     Der Merker für Spieler, die noch zur Schule gehen, und der Merker „Anführer einer
+                  Gruppe“ benutzten dasselbe Bit. Ein Schüler mit einem wohlgesinnten Klassenlehrer
+                  galt dadurch als Anführer einer Gruppe und umgekehrt. Nach der Meldung über das
+                  bestandene Abitur wurde zudem nicht vermerkt, dass die Schule beendet ist; die
+                  Meldung und die übrigen Schul-Meldungen konnten sich wiederholen.
+      Korrektur:  Der Schüler-Merker liegt auf eigenen Bits. Nach dem Abitur gilt die Schule als
+                  beendet.
+      Auswirkung: In bestehenden Spielständen beginnen Schüler ohne Merker; die Meldung über den
+                  Klassenlehrer kann bei ihnen einmal erneut erscheinen.
+      Häufigkeit: Abitur: etwa einmal in 240 Saisons je Schüler im Kader (nur im Juni).
+
+  * Enttarnter Spitzel blieb Spitzel
+      Fehler:     Nach der Meldung, der Spitzel werde dem Manager ab jetzt nichts mehr sagen, blieb
+                  der Spieler als Spitzel vermerkt; er konnte weiter Verdächtige melden, und die
+                  Enttarnung mit ihrem Abzug für den ganzen Kader konnte sich wiederholen.
+      Korrektur:  Der Vermerk wird bei der Enttarnung gelöscht.
+      Auswirkung: Der Spieler ist nach der Enttarnung kein Spitzel mehr; der Manager kann einen
+                  neuen bestimmen.
+      Häufigkeit: Etwa einmal in 6 Saisons, solange ein Spieler als Spitzel eingesetzt ist.
+
+  * Ereignis „Kein Weihnachtsgeschenk“ meldete sich als nicht eingetreten
+      Fehler:     Nach der Meldung gab das Ereignis an die Ereignisverteilung zurück, es sei nichts
+                  geschehen.
+      Korrektur:  Es meldet sich wie die übrigen Ereignisse als eingetreten.
+      Auswirkung: Betrifft nur die Ereignisverteilung dieses Tages.
+      Häufigkeit: Praktisch nie: nur am 24. Dezember und nur bei einem verheirateten Spieler
+                  (rechnerisch einmal in mehreren tausend Saisons).
+
+  * Konditionsbonus des privaten Trainers wirkte nicht
+      Fehler:     Engagiert ein Spieler privat einen Trainer, meldet das Spiel einen Konditionsbonus
+                  von 5 %. Der Bonus wurde beim Spieler vermerkt und angezeigt, aber nie gerechnet.
+      Korrektur:  Spieler mit privatem Trainer haben fünf Punkte mehr Kondition (höchstens 100),
+                  entsprechend dem Abzug von fünf Punkten bei Rauchern.
+      Auswirkung: Betrifft Anzeige und Berechnung der Kondition dieser Spieler, auch in bestehenden
+                  Spielständen.
+      Häufigkeit: Ein Spieler engagiert etwa einmal in 9 Saisons einen privaten Trainer.
+
+  * Angekündigtes Karriereende fand nicht statt
+      Fehler:     Nach der Meldung, ein Spieler beende seine Karriere, um sich ganz seiner
+                  Computerfirma zu widmen, blieb er im Kader.
+      Korrektur:  Der Spieler scheidet nach der Meldung aus, wie bei den übrigen Meldungen über ein
+                  Karriereende.
+      Auswirkung: Der Spieler verlässt den Kader endgültig und ohne Ablöse. Betrifft nur Spieler der
+                  eigenen Mannschaft, deren Firma die letzte Stufe erreicht hat.
+      Häufigkeit: Praktisch nie: Die Firma eines Spielers muss über mehrere seltene Ereignisse die
+                  letzte Stufe erreichen.
+
+  * Die Affäre eines verheirateten Spielers konnte nie auffliegen
+      Fehler:     Nach der Meldung über eine heimliche Affäre sind vier Folgemeldungen vorgesehen,
+                  in denen die Ehefrau dahinterkommt. Sie setzen einen Vermerk „Affäre läuft“
+                  voraus, der nie gesetzt wurde; die Meldungen kamen deshalb nie. In einer von ihnen
+                  wäre außerdem der Name der Freundin falsch gewesen, in einer anderen waren die
+                  Namen vertauscht.
+      Korrektur:  Der Vermerk wird mit dem Beginn der Affäre gesetzt; die Namen stimmen.
+      Auswirkung: Bei verheirateten Spielern der eigenen Mannschaft kann eine neue Affäre
+                  auffliegen, mit den vorgesehenen Folgen (Abzug bei der Motivation, Ende der
+                  Affäre, Ehekrise bis zur Scheidung). Affären aus bestehenden Spielständen sind
+                  nicht betroffen.
+      Häufigkeit: Eine Affäre beginnt bei verheirateten Spielern etwa einmal in 4 Saisons. Solange
+                  sie läuft, erscheint etwa 2,3-mal je Saison eine der vier Folgemeldungen.
+
+  * Meldungen rund um die Ehefrau eines Spielers kamen praktisch nie
+      Fehler:     Die Meldungen über die Ehefrau (Besuch der Schwiegermutter, neue Haarfarbe,
+                  Banküberfall, Auszug mit dem Kind, vergessenes Weihnachtsgeschenk) konnten nur
+                  Spieler treffen, die verheiratet sind und zugleich eine Affäre haben, obwohl nur
+                  eine einzige dieser Meldungen von einer Affäre handelt.
+      Korrektur:  Für diese Meldungen genügt es, dass der Spieler verheiratet ist.
+      Auswirkung: Bei verheirateten Spielern der eigenen Mannschaft erscheint etwa eine dieser
+                  Meldungen je Saison; sie verändern wie vorgesehen Teilwerte der Motivation.
+      Häufigkeit: Je Meldung etwa einmal in 4 Saisons (Banküberfall: einmal in 13 Saisons), sofern
+                  ein verheirateter Spieler im Kader steht.
+
+  * Zwei Meldungen zu Computerspielen als Hobby kamen nie
+      Fehler:     Von vier vorgesehenen Meldungen wurden nur zwei ausgelost. Es fehlten die Meldung,
+                  die Ehefrau ziehe wegen eines Computerspiels zu ihren Eltern, und die Meldung über
+                  den Armbruch bei Aufnahmen für ein Computerspiel.
+      Korrektur:  Alle vier Meldungen werden ausgelost.
+      Auswirkung: Die beiden neuen Meldungen wirken wie vorgesehen (Abzug bei der Motivation; drei
+                  Wochen Verletzung). Die beiden bisherigen Meldungen erscheinen entsprechend
+                  seltener.
+      Häufigkeit: Je Meldung etwa einmal in 40 Saisons je Spieler mit dem zugehörigen Hobby.
+
+  * Zwei Gründe für eine Bauverzögerung im Stadion kamen nie
+      Fehler:     Von zwölf vorgesehenen Gründen wurden nur zehn ausgelost; „Fanblockade“ und
+                  „schlechtes Wetter“ fehlten.
+      Korrektur:  Alle zwölf Gründe werden ausgelost.
+      Auswirkung: Nur der genannte Grund; Häufigkeit und Dauer der Verzögerungen sind unverändert.
+      Häufigkeit: Bei 2 von 12 Bauverzögerungen wird einer der beiden Gründe genannt.
+
+  * Meldung „… veröffentlicht ein Handbuch für Fußballprofis“ kam nie
+      Fehler:     Von vier vorgesehenen Meldungen wurden nur drei ausgelost.
+      Korrektur:  Alle vier werden ausgelost.
+      Auswirkung: Die neue Meldung hat keine Wirkung; die drei bisherigen erscheinen entsprechend
+                  seltener.
+      Häufigkeit: Je Spieler mit dem zugehörigen Hobby etwa einmal in 90 Saisons.
+
+  * Hinweis vor Vertragsverhandlungen mit jungen Spielern kam nie
+      Fehler:     Der Hinweis, der Spielervermittler wolle den jungen Spieler noch eine Weile beim
+                  Verein lassen, war an eine Altersbedingung geknüpft, die an ihrer Stelle nie
+                  erfüllt sein konnte.
+      Korrektur:  Die Bedingung steht an der richtigen Stelle.
+      Auswirkung: Junge Stammspieler unter 20 mit Spielervermittler erhalten diesen Hinweis statt
+                  der Forderung nach einer Ausstiegsklausel.
+      Häufigkeit: Bei jeder Vertragsverhandlung mit einem Spielervermittler, wenn der Spieler jünger
+                  als 20 ist und mehr als 10 Einsätze in der Saison hat.
+
+Installationsprogramm
+---------------------
+  * Die Korrekturen sind in zwei Gruppen geteilt: optische Änderungen (Anzeigen, Statistiken, Texte;
+    werden immer installiert) und Berechnungskorrekturen und -änderungen (abwählbar). Die frühere
+    Gruppe „Spiellogik“ gehört zur zweiten Gruppe.
+
+  * Neu sind 42 Einträge zu Meldungen und Ereignissen. Bei ihnen nennt „Details ...“ zusätzlich die
+    geschätzte Häufigkeit der Meldung. Die Angaben sind aus den Lostabellen des Programms berechnet,
+    nicht im Spiel gemessen: Die täglichen Ereignisse laufen nur für Vereine menschlicher Manager
+    und an rund 230 Tagen je Saison; die Schätzung gilt jeweils unter der genannten Voraussetzung.
+
+  * Zusätzlich wird die Textdatei texte\Ereignis.saq angepasst (20 Meldungstexte).
+
+
+Version 1.44 (16.11.2026)
+=========================
+
+Finanzen (Berechnung, abwählbar)
+--------------------------------
+  * Bilanz: Bankguthaben bei laufenden Geldanlagen zu niedrig
+      Fehler:     Das Vereinsvermögen führt eine Geldanlage mit dem eingezahlten Betrag; ihr
+                  Wertzuwachs wird erst beim Auflösen als Einnahme gebucht. Das Bankguthaben wurde
+                  dagegen als Vermögen abzüglich des aktuellen Werts der Anlagen berechnet. Mit
+                  jedem Wertzuwachs sank deshalb das Bankguthaben, obwohl kein Geld abgeflossen war,
+                  und das „Aktuelle Vereinsvermögen“ enthielt den Zuwachs nicht. Beim Auflösen stieg
+                  das Bankguthaben um die Auszahlung und zusätzlich um den gesamten Zuwachs seit dem
+                  Anlegen.
+      Korrektur:  Das Bankguthaben wird als Vermögen abzüglich der eingezahlten Beträge berechnet.
+                  Die Zeile „Aktuelles Vereinsvermögen“ der Bilanz zeigt das Bankguthaben zuzüglich
+                  des aktuellen Werts der Anlagen und abzüglich der Kredite. Gespeicherte Werte, die
+                  Einnahmen und Ausgaben der Saison und die Besteuerung bleiben unverändert.
+      Auswirkung: Der bisher abgezogene Zuwachs steht sofort im Bankguthaben; beim Auflösen steigt
+                  es nur noch um die Auszahlung. Es entsteht und verschwindet kein Geld: Nach dem
+                  Auflösen aller Anlagen ergibt sich derselbe Betrag wie ohne die Korrektur. Das
+                  Bankguthaben ist auch für die Dispozinsen und für die Prüfung beim Anlegen
+                  maßgeblich; Dispozinsen fallen nur noch bei tatsächlichem Minus an. In einem
+                  Prüfspielstand stand das Bankguthaben zweier Vereine um 755 Mio. und 571 Mio. zu
+                  niedrig (Anlagen im Wert von 1,005 Mrd. und 871 Mio. bei eingezahlten 250 Mio. und
+                  300 Mio.). Die Zeile „Vereinsvermögen am Anfang der Saison“ ist unverändert und
+                  enthält den Zuwachs der Anlagen weiterhin nicht.
+
+Installationsprogramm
+---------------------
+  * Das Fenster ist größer und in der Größe veränderbar. Die behobenen Fehler stehen in einer Liste
+    nach Fehlerart; „Details ...“ (oder ein Doppelklick) zeigt zu jedem Eintrag den Fehler, die
+    Korrektur und die Auswirkung.
+
+
+Version 1.43 (16.11.2026)
+=========================
+
+Liga-Statistik
+--------------
+  * „Tagesform“: Durchschnittsnote statt eines nicht erläuterten Werts
+      Fehler:     Die Statistik beruht auf den Noten der Spieler im letzten Spiel ihrer Mannschaft,
+                  zeigte aber das Zwanzigfache der Durchschnittsnote unter der Überschrift „Form“.
+                  Spieler ohne Note gingen mit der Note 0 in den Durchschnitt ein, und die
+                  Mannschaft mit den schlechtesten Noten stand auf Platz 1.
+      Korrektur:  Angezeigt wird die Durchschnittsnote der Mannschaft im letzten Spiel mit einer
+                  Nachkommastelle unter der Überschrift „Note“. Ein niedrigerer Wert ist besser, die
+                  beste Mannschaft steht oben; berücksichtigt werden nur Spieler, die in diesem
+                  Spiel eine Note erhalten haben. Für die Überschrift wird die Textdatei
+                  deb\MeineDialoge.rch angepasst.
+      Auswirkung: Reine Anzeige. Die Statistik wird nach jedem Spieltag neu berechnet; ein
+                  Spielstand, der vor der Installation gespeichert wurde, zeigt bis zum nächsten
+                  Spieltag unzutreffende Werte.
+
+Spielerdetails
+--------------
+  * Seite „Noten“: Notenschnitt der Saison zu gut
+      Fehler:     Der Notenschnitt der Saison wurde durch die Zahl aller Einsätze geteilt, auch der
+                  Einsätze ohne Note (zum Beispiel nach einer späten Einwechslung), und fiel dadurch
+                  zu gut aus.
+      Korrektur:  Geteilt wird nur durch die benoteten Einsätze, wie in der Statistik „Notenschnitt
+                  Mannschaft“.
+      Auswirkung: Sofort sichtbar. Reine Anzeige. Beispiel: Bei fünf Einsätzen, davon einer ohne
+                  Note, stand 3,0 statt 3,8.
+
+Fans und Presse (Berechnung, abwählbar)
+---------------------------------------
+  * Fan-Status „verhasst“: Einsätze ohne Note zählten mit
+      Fehler:     Bei der Prüfung des Notenschnitts der letzten zehn Spieltage zählten Einsätze ohne
+                  Note als Einsätze mit der Note 0. Der Schnitt fiel dadurch zu gut aus, und die
+                  verlangte Mindestzahl von Einsätzen wurde auch durch Einsätze ohne Note erreicht.
+      Korrektur:  Es zählen nur benotete Einsätze, wie in der Statistik „Notenschnitt Mannschaft“.
+                  Die Schwellen des Spiels (Schnitt 4,5 oder schlechter, bei bestimmten
+                  Spielereigenschaften 3,8 oder schlechter) sind unverändert.
+      Auswirkung: Nachgerechnet an einer vollständigen Saison der 1. Bundesliga (18 Vereine, 397
+                  eingesetzte Spieler): Die Bedingung mit der Schwelle 4,5 war an 45 statt 33 von
+                  13 498 Spieler-Spieltagen erfüllt, bei 16 statt 13 Spielern. Bei der Schwelle 3,8
+                  steigt die Zahl der Fälle um etwa ein Viertel.
+
+  * Zeitungsmeldung „… erneut ein Totalausfall“ konnte nie erscheinen
+      Fehler:     Die Meldung ist im Spiel enthalten, konnte aber nie erscheinen. Der dafür
+                  berechnete Saisonschnitt eines Spielers wurde fehlerhaft ausgelesen und erreichte
+                  höchstens den Wert 3,5; die Meldung verlangt einen Schnitt schlechter als 4,0.
+      Korrektur:  Der Saisonschnitt wird richtig ausgelesen; es gehen nur benotete Einsätze der
+                  laufenden Saison ein. Die Meldung erscheint unter den im Spiel festgelegten
+                  Bedingungen (letzte Note 5,0 oder schlechter, mehr als zehn Einsätze,
+                  Saisonschnitt schlechter als 4,0 sowie eine unveränderte Bedingung zum Abschneiden
+                  des Vereins) mit dem dort festgelegten Abzug von 6 Punkten beim Teilwert „Presse“
+                  der Motivation.
+      Auswirkung: Nachgerechnet an derselben Saison: Die Notenbedingungen waren 30-mal erfüllt, bei
+                  13 von 383 benoteten Spielern, im Mittel also weniger als zweimal je Verein und
+                  Saison; die Bedingung zum Verein kommt hinzu. Der Abzug entspricht knapp einem
+                  Punkt der Gesamtmotivation (Skala 0 bis 100).
+
+  * Zeitungsmeldung „Goldkettchen und teure Autos“: falsche Noten, Abzug nie angewendet
+      Fehler:     Die Meldung gehört zu den Zufallsereignissen aus dem Privatleben eines Spielers.
+                  Der Notenschnitt der letzten drei Einsätze wurde fehlerhaft ausgelesen, sodass
+                  mittlere Noten (2,5 bis 3,5) die Meldung auslösten, schlechte Noten dagegen nicht.
+                  Der mit der Meldung übergebene Abzug von 2 Punkten beim Teilwert „Presse“ der
+                  Motivation wurde nie angewendet.
+      Korrektur:  Ausgewertet werden die letzten drei benoteten Einsätze der laufenden Saison; die
+                  Meldung setzt einen Schnitt schlechter als 4,0 voraus, und der Abzug wird
+                  angewendet. Die übrigen Bedingungen (Spielerstärke, Abschneiden des Vereins,
+                  Auslosung des Ereignisses) sind unverändert. Der Schwellenwert des Programms wird
+                  dabei wie bei der Meldung „Totalausfall“ als Note 4,0 gelesen; aus dem Programm
+                  selbst ist diese Lesart nicht zweifelsfrei zu belegen.
+      Auswirkung: Nachgerechnet an derselben Saison: Die Notenbedingung galt an 14,7 % der
+                  Spieler-Spieltage. Die Meldung setzt zusätzlich die Auslosung des Ereignisses und
+                  die Bedingung zum Verein voraus. Der Abzug entspricht rund 0,3 Punkten der
+                  Gesamtmotivation.
+
+Installationsprogramm
+---------------------
+  * Die Korrekturen der Spiellogik bilden eine eigene Gruppe, die bei der Installation abgewählt und
+    später wieder hinzugefügt werden kann. Zur Gruppe gehören auch die mit Version 1.41 eingeführten
+    Korrekturen zu Trainern, Co-Trainern und Torwarttrainern.
+
+  * Neben der Programmdatei anstoss3.exe wird die Textdatei deb\MeineDialoge.rch angepasst
+    (Spaltenüberschrift der Liga-Statistik „Tagesform“).
+
+
+Version 1.42 (16.11.2026)
+=========================
+
+Statistik „Historisches“
+------------------------
+  * „Erfolgreichste Trainer“: zuletzt gewonnener Titel fehlte
+      Fehler:     Der Eintrag eines menschlichen Managers wurde geschrieben, bevor der Zähler des
+                  gerade gewonnenen Titels erhöht war. Er lag deshalb stets einen Titel zurück.
+      Korrektur:  Der Zähler wird erhöht, bevor der Eintrag geschrieben wird.
+      Auswirkung: Mit dem nächsten Titelgewinn stimmt der Eintrag.
+
+Vereinsstatistik
+----------------
+  * Vereinsliste „Meiste Spiele“: keine neuen Spieler nach 50 Einträgen
+      Fehler:     Das Kennzeichen „im Verein“ wurde beim Abgang eines Spielers für diese Liste nie
+                  gelöscht. War die Liste mit 50 Spielern gefüllt, wurde kein weiterer Spieler
+                  aufgenommen.
+      Korrektur:  Nach jedem Pflichtspiel werden die Kennzeichen aus dem aktuellen Kader neu
+                  gesetzt. Ehemalige Spieler können dadurch von Spielern des Kaders verdrängt
+                  werden.
+      Auswirkung: Wirkt ab dem nächsten Pflichtspiel. Einsätze, die vor der Installation nicht
+                  erfasst wurden, können nicht nachgetragen werden; neu aufgenommene Spieler
+                  beginnen mit dem ersten erfassten Einsatz.
+
+Saisonabschluss
+---------------
+  * Übersicht der Auf- und Absteiger: falsche Vereine unter „Aufsteiger 3. Liga“
+      Fehler:     Unter „Aufsteiger 3. Liga“ wurden die Aufsteiger in die 2. Bundesliga erneut
+                  aufgeführt; dadurch fehlten je Regionalliga zwei der vier Neulinge.
+      Korrektur:  Die Liste führt nur noch die Aufsteiger in die Regionalligen.
+      Auswirkung: Ab dem nächsten Saisonwechsel. Die Zusammensetzung der Ligen ändert sich nicht.
+
+
+Version 1.41 (15.11.2026)
+=========================
+
+Statistik „Historisches“
+------------------------
+  * „Beste Mannschaft“: Tabelle wurde ab der 21. Saison überschrieben
+      Fehler:     Ab der 21. Saison wurde beim Weiterrücken der Tabelle der falsche Eintrag geleert.
+                  Ein Eintrag vervielfachte sich dadurch von Saison zu Saison, bis alle 20 Zeilen
+                  dieselbe Mannschaft zeigten.
+      Korrektur:  Beim Weiterrücken wird wieder der letzte Eintrag freigemacht; die Tabelle wird
+                  saisonweise fortgeschrieben.
+      Auswirkung: Wirkt ab dem nächsten Saisonwechsel. Bereits mehrfach vorhandene Einträge werden
+                  nicht berichtigt; sie rücken mit jeder weiteren Saison aus der Tabelle.
+
+  * „Beste Mannschaft“: zuletzt abgeschlossene Saison fehlte
+      Fehler:     Ab der 21. Saison zeigte der Bildschirm nur 19 der 20 Einträge; die zuletzt
+                  abgeschlossene Saison fehlte.
+      Korrektur:  Der Bildschirm zeigt wieder alle 20 Einträge.
+      Auswirkung: Sofort sichtbar. Reine Anzeige.
+
+  * „Rekordaufsteiger“: Aufstiege in die 2. Bundesliga doppelt gezählt
+      Fehler:     Aufstiege aus den Regionalligen in die 2. Bundesliga wurden an zwei Stellen
+                  gemeldet und deshalb doppelt gezählt.
+      Korrektur:  Die zweite Meldung zählt nicht mehr mit.
+      Auswirkung: Ab dem nächsten Saisonwechsel wird richtig gezählt. Bereits zu hoch gezählte
+                  Aufstiege bleiben stehen.
+
+  * „Rekordaufsteiger“: Aufstiege in die Regionalliga Süd ohne Spalte
+      Fehler:     Aufstiege in die Regionalliga Süd wurden keiner Spalte zugeordnet; die Gesamtzahl
+                  wuchs, die Spalten nicht.
+      Korrektur:  Sie werden wie die Aufstiege in die Regionalliga Nord in der dritten Spalte
+                  geführt.
+      Auswirkung: Ab dem nächsten Saisonwechsel. Frühere Aufstiege in die Regionalliga Süd fehlen
+                  weiterhin in den Spalten.
+
+  * „Rekordabsteiger“: Spanien in der falschen Spalte
+      Fehler:     Abstiege aus der spanischen 1. Liga wurden in der Spalte der 2. Liga geführt.
+      Korrektur:  Sie werden in der Spalte der 1. Liga geführt.
+      Auswirkung: Ab dem nächsten Saisonwechsel. Ältere Einträge bleiben in der falschen Spalte.
+
+  * „Erfolgreichste Trainer“: Champions League und Europäischer Supercup fehlten
+      Fehler:     Im Eintrag eines menschlichen Managers zählte die Spalte „EPs“ nur den
+                  Europapokal. Champions-League-Siege und Europäische Supercups fehlten, während sie
+                  bei Computertrainern gezählt wurden.
+      Korrektur:  Champions-League-Siege zählen zu „EPs“, Europäische Supercups zu „Sonstige“, wie
+                  bei den Computertrainern.
+      Auswirkung: Der Eintrag eines Managers wird mit dessen nächstem Titelgewinn berichtigt.
+
+Trainer, Co-Trainer und Torwarttrainer (Berechnung, abwählbar)
+--------------------------------------------------------------
+  * Ehemalige Spieler wurden nie Trainer oder Torwarttrainer
+      Fehler:     Das Spiel sieht vor, dass Spieler nach dem Karriereende auf eine Warteliste für
+                  Trainer und Torwarttrainer gelangen und frei werdende Stellen übernehmen. Wegen
+                  einer fehlerhaften Abfrage wurde nie ein Spieler eingetragen; ausscheidende
+                  Trainer wurden daher stets über das Ersatzverfahren des Spiels durch einen
+                  Nachfolger mit Mindestkompetenz (1 bis 3) ersetzt.
+      Korrektur:  Die Abfrage ist berichtigt, die Warteliste arbeitet. Das Ersatzverfahren ist
+                  unverändert und greift weiterhin, wenn im jeweiligen Land niemand wartet.
+      Auswirkung: In zwei Prüfläufen über einen Saisonwechsel wurden 3 von 24 beziehungsweise 5 von
+                  34 frei gewordenen Trainerstellen aus der Warteliste besetzt (Kompetenz 12 bis
+                  14). Stellen für Torwarttrainer wurden in diesen Läufen nur in einem Land frei, in
+                  dem kein ehemaliger Torhüter wartete. Trainer aus der Warteliste erscheinen erst,
+                  wenn eine Stelle frei wird, und in der Angebotsliste erst, sobald das Spiel sie
+                  dort aufnimmt.
+
+  * Trainer aus der Warteliste übernahmen das Geburtsdatum des Vorgängers
+      Fehler:     Trainer, die aus der Warteliste übernommen werden, erhielten nicht ihr eigenes
+                  Geburtsdatum, sondern behielten das ihres Vorgängers.
+      Korrektur:  Das Geburtsdatum wird übernommen, wie es das Spiel bei Torwarttrainern bereits
+                  tut.
+      Auswirkung: Betrifft ausschließlich die Trainer aus der Warteliste; ohne die vorstehende
+                  Korrektur blieb der Fehler ohne Wirkung.
+
+  * Jährliche Anhebung der Trainer- und Managerkompetenz wurde nicht gespeichert
+      Fehler:     Das Spiel hebt einmal jährlich in Ländern, in denen die durchschnittliche
+                  Kompetenz der Trainer und Manager unter 6 liegt, jede zehnte Person um 1 bis 2
+                  Punkte an. Der Zuschlag wurde berechnet, aber nicht im Wert der Person
+                  gespeichert.
+      Korrektur:  Der Zuschlag wird gespeichert. Die übrigen Stufen dieses Ausgleichs, darunter die
+                  Absenkung bei einem Durchschnitt über 10, arbeiteten bereits und sind unverändert.
+      Auswirkung: Im Prüflauf über einen Saisonwechsel stieg der Wert bei 49 Trainern und Managern
+                  ab 46 Jahren um 1 oder 2 Punkte (Skala 0 bis 15); ohne die Korrektur waren es in
+                  zwei Vergleichsläufen 7 und 0. Das Spiel führt insgesamt rund 1 440 Trainer und
+                  Manager.
+
+Darstellung (optional)
+----------------------
+  * Eingabeverzögerung nach Mausklicks (optional, nur GOG-Ausgabe)
+      Fehler:     Mit aktuellen Grafikkarten kann das Spiel nach jedem Mausklick 2 bis 3 Sekunden
+                  verzögert reagieren (festgestellt mit einer Radeon RX 6800 XT). Die ddraw.dll der
+                  GOG-Ausgabe schaltet auf eine langsame Verarbeitung im Hauptprozessor um, wenn der
+                  Grafiktreiber eine bestimmte Fähigkeit nicht meldet.
+      Korrektur:  Die Umschaltung unterbleibt (Komponente „Angepasste ddraw.dll“).
+      Auswirkung: Auf Systemen ohne dieses Verhalten bleibt die Anpassung ohne Wirkung. Geprüft
+                  wurde sie in der 2D-Oberfläche des Spiels. Treten Darstellungsfehler auf, kann die
+                  Option abgewählt werden; die Datei wird dann auf ihren ursprünglichen Stand
+                  zurückgesetzt.

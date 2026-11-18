@@ -1,0 +1,108 @@
+﻿ANSTOSS 3 - Inoffizieller Patch 1.46
+=====================================
+
+1. Überblick
+------------
+Dieser Patch behebt Programmfehler in ANSTOSS 3, Version 1.40. Die optischen Änderungen lassen den Spielverlauf
+unverändert; die Berechnungskorrekturen und -änderungen greifen in ihn ein und können abgewählt werden (Abschnitt 4).
+Der Patch ist ein Fanprojekt und steht in keiner Verbindung zu den Rechteinhabern des Spiels. Er enthält keine
+Dateien des Spiels: Das Installationsprogramm ändert ausschließlich einzelne Stellen vorhandener Dateien
+(anstoss3.exe, deb\MeineDialoge.rch, texte\Ereignis.saq und wahlweise ddraw.dll) und prüft jede Stelle vor der
+Änderung. Die Verwendung
+erfolgt auf eigene Verantwortung; eine Gewähr wird nicht übernommen.
+
+Die behobenen Fehler sind im Installationsprogramm aufgelistet; die Schaltfläche "Details ..." zeigt zu jedem
+Eintrag den Fehler, die Korrektur und die Auswirkung, bei Meldungen und Ereignissen außerdem die geschätzte
+Häufigkeit. Dieselben Angaben enthält die Datei CHANGELOG.txt.
+
+2. Voraussetzungen
+------------------
+- ANSTOSS 3 in Version 1.40. Entwickelt und geprüft wurde der Patch mit der Ausgabe von GOG.
+- Windows mit Windows PowerShell 5.1 (Bestandteil von Windows 10 und Windows 11).
+- Eine vorhandene Installation von Patch 1.41 bis 1.45 wird auf Version 1.46 aktualisiert.
+Erkennt das Installationsprogramm eine abweichende Fassung der anstoss3.exe, wird keine Datei verändert. Das gilt
+auch für Installationen, deren Programmdatei durch andere Modifikationen verändert wurde; die Verträglichkeit mit
+anderen Modifikationen wurde nicht geprüft. Liegt die Textdatei deb\MeineDialoge.rch in einer abweichenden Fassung
+vor, bleibt nur diese Datei unverändert; die Spaltenüberschrift der Liga-Statistik "Tagesform" lautet dann weiterhin
+"Form". Dasselbe gilt für die Textdatei texte\Ereignis.saq: Weicht einer der 20 betroffenen Texte vom ursprünglichen
+Wortlaut ab, bleibt die Datei unverändert und die Meldungen behalten ihren bisherigen Text.
+
+3. Installation
+---------------
+1. Beenden Sie ANSTOSS 3.
+2. Entpacken Sie das Archiv vollständig und starten Sie die Datei "Anstoss3-Patch-1.46.cmd" per Doppelklick.
+   Die Dateien mit den Endungen .cmd und .ps1 müssen im selben Ordner liegen.
+3. Der Installationsordner des Spiels wird automatisch ermittelt und vorausgewählt. Über "Durchsuchen ..." kann
+   ein anderer Ordner gewählt werden; maßgeblich ist der Ordner, in dem die Datei anstoss3.exe liegt.
+4. Prüfen Sie die beiden Optionen (Abschnitte 4 und 5) und wählen Sie "Installieren".
+Befindet sich das Spiel in einem geschützten Ordner (zum Beispiel unter "C:\Programme"), starten Sie die .cmd-Datei
+über das Kontextmenü mit der Option "Als Administrator ausführen". Meldet Windows eine unbekannte Datei, kann die
+Ausführung über "Weitere Informationen" und "Trotzdem ausführen" zugelassen werden.
+
+4. Option "Berechnungskorrekturen und -änderungen"
+--------------------------------------------------
+Die Korrekturen sind in zwei Gruppen geteilt.
+- Optische Änderungen: Statistiken, Anzeigen und Texte. Sie werden immer installiert und ändern den Spielverlauf nicht.
+- Berechnungskorrekturen und -änderungen: Sie greifen in den Spielverlauf ein. Sie betreffen Funktionen und
+  Ereignisse, die im Spiel angelegt sind, wegen eines Programmfehlers aber nie, zu selten oder fehlerhaft gearbeitet
+  haben; einige Ereignisse treten dadurch erstmals oder häufiger ein. Diese Gruppe kann abgewählt werden. Bis Version
+  1.44 hieß sie "Korrekturen der Spiellogik".
+Zur zweiten Gruppe gehören:
+- Trainer, Co-Trainer und Torwarttrainer: Übernahme ehemaliger Spieler als Trainer und Torwarttrainer, deren
+  Geburtsdatum sowie die jährliche Anhebung der Kompetenz bei niedrigem Landesdurchschnitt.
+- Fans und Presse: Fan-Status "verhasst" sowie die Zeitungsmeldungen "... erneut ein Totalausfall" und
+  "Goldkettchen und teure Autos".
+- Jugendspieler (seit Version 1.46): Vertragslaufzeit von Jugendspielern, die aus der Jugend eines anderen Vereins
+  geholt werden.
+- Finanzen: Berechnung des Bankguthabens und des aktuellen Vereinsvermögens bei laufenden Geldanlagen.
+- Meldungen und Ereignisse (seit Version 1.45): Wirkungen, die eine Meldung nennt, die aber nicht oder falsch
+  eintraten (zum Beispiel Dauer einer Verletzung, Trennung, Führerscheinentzug), sowie Ereignisse, die wegen eines
+  Fehlers nie oder fast nie ausgelost wurden. Zu jedem Eintrag nennt "Details ..." die geschätzte Häufigkeit.
+  Die Schätzungen sind aus den Lostabellen des Programms berechnet und nicht im Spiel gemessen; sie gelten unter der
+  jeweils genannten Voraussetzung. Die täglichen Ereignisse betreffen nur Vereine menschlicher Manager.
+Die Option ist vorausgewählt. Die Auswahl kann jederzeit geändert werden: Starten Sie das Installationsprogramm
+erneut, setzen oder entfernen Sie die Option und wählen Sie "Installieren". Ohne die Option werden die Korrekturen
+dieser Gruppe auf den ursprünglichen Stand zurückgesetzt; das gilt auch für die Korrekturen zu Trainern aus den
+Versionen 1.41 und 1.42. Wurde die Gruppe bei einer früheren Installation abgewählt, bleibt sie bei der
+Aktualisierung abgewählt, solange Sie die Option nicht selbst setzen.
+
+5. Option "Angepasste ddraw.dll"
+--------------------------------
+Die Komponente steht nur für die GOG-Ausgabe zur Verfügung. Sie behebt eine Eingabeverzögerung von 2 bis 3 Sekunden
+nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann (festgestellt mit einer Radeon RX 6800 XT). Auf
+Systemen ohne dieses Verhalten bleibt die Anpassung ohne Wirkung. Geprüft wurde sie in der 2D-Oberfläche des Spiels.
+Treten nach der Installation Darstellungsfehler auf, deaktivieren Sie die Option und wählen Sie erneut "Installieren";
+die Datei ddraw.dll wird dann auf ihren ursprünglichen Stand zurückgesetzt.
+
+6. Deinstallation
+-----------------
+Starten Sie das Installationsprogramm und wählen Sie "Deinstallieren". Alle Änderungen an den vier Dateien werden
+zurückgenommen. Zusätzlich legt das Installationsprogramm vor der ersten Änderung einer Datei eine Sicherungskopie
+im selben Ordner an (Endung ".vor-patch" beziehungsweise ".vor-1.41" bei einer Installation von Patch 1.41).
+
+7. Liga-Statistik "Tagesform"
+-----------------------------
+Die Statistik zeigt je Mannschaft die Durchschnittsnote im letzten Spiel mit einer Nachkommastelle (Spalte "Note").
+- Ein niedrigerer Wert ist besser; die Mannschaft mit der besten Durchschnittsnote steht auf Platz 1.
+- Berücksichtigt werden nur Spieler, die in diesem Spiel eine Note erhalten haben. Spieler ohne Note, zum Beispiel
+  nach einer späten Einwechslung, gehen nicht in den Durchschnitt ein.
+- Die Statistik wird nach jedem Spieltag neu berechnet. Der Name der Seite ("Tagesform") ist unverändert.
+
+8. Bilanz: Bankguthaben und Geldanlagen (Gruppe "Berechnung")
+-------------------------------------------------------------
+Ohne die Korrektur zieht das Spiel vom Bankguthaben den aktuellen Wert der Geldanlagen ab, obwohl im Vereinsvermögen
+nur die eingezahlten Beträge stehen. Mit jedem Wertzuwachs einer Anlage sinkt dadurch das angezeigte Bankguthaben;
+beim Auflösen steigt es um die Auszahlung und zusätzlich um den gesamten Zuwachs.
+- Mit der Korrektur steht der bisher abgezogene Zuwachs sofort im Bankguthaben. Beim Auflösen einer Anlage steigt
+  das Bankguthaben nur noch um die Auszahlung.
+- "Aktuelles Vereinsvermögen" ist das Bankguthaben zuzüglich des aktuellen Werts der Anlagen, abzüglich der Kredite.
+- Es entsteht und verschwindet kein Geld; gespeicherte Werte, Einnahmen, Ausgaben und Steuern bleiben unverändert.
+- Die Zeile "Vereinsvermögen am Anfang der Saison" ist unverändert und enthält den Zuwachs der Anlagen nicht.
+
+9. Hinweise zu Spielständen
+---------------------------
+- Vorhandene Spielstände bleiben verwendbar. Die Korrekturen wirken ab dem jeweils nächsten Ereignis, überwiegend
+  ab dem nächsten Saisonwechsel. Wann eine Korrektur im Einzelnen wirkt, steht unter "Details ..." beziehungsweise
+  in der Datei CHANGELOG.txt beim jeweiligen Eintrag.
+- Bereits fehlerhaft gespeicherte Statistikwerte werden nicht nachträglich berichtigt.
+- Die installierte Fassung ist an der Versionsangabe des Spiels (1.46) erkennbar.

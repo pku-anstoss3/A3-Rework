@@ -1,0 +1,4034 @@
+# Adressindex (erzeugt, nicht von Hand ändern)
+
+Jede in den Unterlagen und Patch-Werkzeugen genannte Adresse von `anstoss3.exe` 1.40, aufsteigend.
+Neu erzeugen: `python tools/fundstellen_index.py`. Überblick nach Themen: `docs/fundstellen.md`.
+
+1398 Adressen, 2643 Nennungen.
+
+## Code
+
+- `0x00400000`
+  - docs/fundstellen.md:3 – Zweck: Alles, was in `anstoss3.exe` 1.40 (GOG, Image Base 0x400000, **Datei-Offset = Adresse − 0x400000**) und in den
+  - tools/asm_konto.py:106 – print(f'{name}: Dateioffset 0x{block[0] - 0x400000:06X}, {used} Byte Code, {len(code) - used} Byte aufgefüllt, zusammen {len(code)}')
+  - tools/asm_nacht.py:581 – print(f'{name}: VA 0x{start:08X}, Datei-Offset 0x{start - 0x400000:08X}, {used} Byte Code, '
+  - tools/asm_nacht.py:584 – print(' alt', exe[start - 0x400000:start - 0x400000 + len(code)].hex().upper())
+  - tools/asm_presse.py:259 – print(f'{name}: VA 0x{start:08X}, Datei-Offset 0x{start - 0x400000:08X}, {used} Byte Code, '
+  - tools/asm_presse.py:262 – print(' alt', exe[start - 0x400000:start - 0x400000 + len(code)].hex().upper())
+- `0x00405DBE`
+  - docs/befund-finanzen.md:44 – ur wenn `0x0069D71D(Verein)` ≠ 0 (Aktiengesellschaft): Börsen-Objekt `0x00405DBE(Land, Verein)` auf `0x008BE408`; Aktienzahl [Objekt+0x20], Kurs `0x00407520(0)`, Börsenwert = Kurs 
+  - docs/befund-finanzen.md:104 – (`0x00405DBE` sucht Land +0x1C und Verein +0x1E). Im Spielstand der Block mit 123 572 Byte = 20 + 468 × 264
+  - docs/fundstellen.md:89 – Datensätze 264 B ab 20), Suche `0x00405DBE(Land, Verein)`, Kurs `0x00407520`.
+- `0x00406B4F`
+  - docs/befund-meldungen.md:765 – nur Eigenschaftsprüfung, keine Wirkung, kein Text); Fall 46 ruft nur `0x00406B4F` und
+- `0x00407520`
+  - docs/befund-finanzen.md:44 – 5DBE(Land, Verein)` auf `0x008BE408`; Aktienzahl [Objekt+0x20], Kurs `0x00407520(0)`, Börsenwert = Kurs × Aktienzahl |
+  - docs/befund-finanzen.md:106 – (`0x00407520`, Ring aus 52 Kursen). Firmen (Sponsoren) stehen im selben Block ohne gültiges Land.
+  - docs/fundstellen.md:89 – Datensätze 264 B ab 20), Suche `0x00405DBE(Land, Verein)`, Kurs `0x00407520`.
+- `0x00407ABB`
+  - docs/befund-personal.md:266 – : Der Dialog „Jugendspieler“ (`0x00441ACA`, Knopf `0x00441DC9`) ruft `0x00407ABB` (Sperren-Byte
+- `0x00407AD4`
+  - docs/befund-personal.md:241 – Aufrufer, zweiter Aufrufer `0x00407AD4`). Dort: **Restjahre +0x94 = 0 und unteres Halbbyte von +0xB6 = 0 → +0x30 =
+- `0x00408D19`
+  - docs/befund-personal.md:153 – Trainer zählt (`0x00408D19`: Trainerwert > Managerwert + 4 oder Managerwert < 2).
+- `0x00409588`
+  - docs/befund-personal.md:157 – (`0x00409588`, Auswahl nach Wertbereich `0x0040AF0C`).
+- `0x00409A3F`
+  - docs/befund-personal.md:149 – **Trainer/Co-Trainer** – Neuaufbau `0x00409A3F` (aufgerufen aus `0x007719A6` und zweimal aus `0x0065E805`, beides im
+- `0x00409BE0`
+  - docs/befund-personal.md:164 – **Torwarttrainer** – `0x00409BE0`: Die Liste wird nie geleert; jeder vertragslose Torwarttrainer des Landes wird ergänzt, falls
+- `0x0040AD6B`
+  - docs/befund-personal.md:151 – 1. Liste leeren (`0x0040AD6B`).
+- `0x0040AE73`
+  - docs/befund-personal.md:154 – 3. `0x0040AE73`: Solange unter 30 Einträge, anhängen. Ist die Liste voll, ersetzt jeder weitere Kandidat mit 50 % 
+- `0x0040AF0C`
+  - docs/befund-personal.md:157 – (`0x00409588`, Auswahl nach Wertbereich `0x0040AF0C`).
+- `0x0040E177`
+  - docs/testaufbau.md:20 – `SetCurrentDirectoryA` (Aufruf bei 0x0040E177) in diesen Ordner. Eine kopierte Installation benutzt deshalb
+- `0x0040EC50`
+  - docs/befund-personal.md:282 – `0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+- `0x00418065`
+  - docs/befund-meldungen.md:801 – 0 statt 100. Dasselbe in `0x00418065` und `0x00418394`. Ungeklärt: der größte übergebene Zuwachs.
+  - docs/befund-meldungen.md:806 – - `0x00418394` liest anders als `0x00418065` weder Verein +0x8A noch +0x80.
+- `0x00418394`
+  - docs/befund-meldungen.md:801 – 0 statt 100. Dasselbe in `0x00418065` und `0x00418394`. Ungeklärt: der größte übergebene Zuwachs.
+  - docs/befund-meldungen.md:806 – - `0x00418394` liest anders als `0x00418065` weder Verein +0x8A noch +0x80.
+- `0x0041849A`
+  - docs/befund-meldungen.md:236 – (nur wenn eine Managernummer im Satz steht): Werte der Bits 0–3 über `0x0041849A`, Bit 4 über `0x006A58FC`;
+  - docs/befund-meldungen.md:278 – (`0x006A426B`, `0x0041849A`, `0x006A4917` sind dafür nicht zu Ende gelesen).
+  - docs/befund-meldungen.md:542 – (`0x005E8A27`); einziger Unterschied ist `0x0041849A(0, 0, 0, +3)`, bei Misserfolg −3 und kein Geld.
+  - docs/befund-meldungen.md:555 – und bei den Medien“. Bei „Ja“ ruft `0x005EA42E` `0x0041849A(−5, −5, −5, −10, Manager)`. Zuordnung aus dem
+  - docs/befund-meldungen.md:799 – - `0x0041849A(d1, d2, d3, d4, Manager)`: Bytes Manager +0x3A bis +0x3C und Wort +0x9C, je 0–100. In `0x004184D4` 
+  - docs/fundstellen.md:130 – `0x0078A0F5`, nur wenn `0x00789998` ≠ 0; Manager dort über `0x0041849A(Wert0–3, Manager)`, `0x006A58FC(0x10)` bei
+  - docs/fundstellen.md:144 – `0x0078A0F5` (Manager `0x0041849A`, Verein `0x0069EFE8` / `0x00698EF6`).
+  - docs/fundstellen.md:200 – `0x006A5A7D`), Wort +0x9C offen; ändern `0x0041849A(d1, d2, d3, d4, Manager)`; Dialog füllt bei `0x0047E6E0`.
+  - docs/korrekturliste-meldungen.md:184 – `0x0041849A(0, −5, 0, −10)` direkt an; Auswahl 1 → Schlagzeile 1743 mit +5, Auswahl 2 → 1744 mit −10, je mit
+  - docs/korrekturliste-meldungen.md:186 – Kennzeichen `0x20000400`. Bit 3 = vierter Wert von `0x0041849A` = Wort Manager +0x9C; das ist die Grundlage von
+- `0x004184D4`
+  - docs/befund-meldungen.md:799 – anager)`: Bytes Manager +0x3A bis +0x3C und Wort +0x9C, je 0–100. In `0x004184D4` wird
+- `0x0041EF40`
+  - docs/feldkarte-verein.md:69 – | Europapokale | 0x00634C47 (über 0x00634CB8) | 2 Stellen in 0x0041EF40, 2 in 0x00421D45 |
+- `0x00421D45`
+  - docs/feldkarte-verein.md:69 – pokale | 0x00634C47 (über 0x00634CB8) | 2 Stellen in 0x0041EF40, 2 in 0x00421D45 |
+- `0x004271FB`
+  - docs/befund-personal.md:286 – ebenden Vereins (`0x0070F861`); nicht gefunden → Eintrag gestrichen. `0x004271FB`: Spieler mit mehr als 1 Restjahr
+- `0x004318FA`
+  - docs/befund-zaehler.md:160 – Spielordner identisch zur Kopie in `original/deb/`). Geladen von `0x004318FA` (`fopen("deb/MeineDialoge.rch","rb")`),
+  - docs/fundstellen.md:265 – s `[Nummer int16][Text\0]`, Tabulator ausgeschrieben als `\t`; Lader `0x004318FA`, Zugriff `0x00730300` → `0x007B7F68` → Suche `0x007B7B91` |
+  - tools/a3patch.py:916 – # deb/MeineDialoge.rch (GOG): dialogs and interface texts, loaded by 0x004318FA. String table entries are
+- `0x0043779F`
+  - docs/fundstellen.md:215 – Datum*)`, eintragen `0x0043779F`. Verletzung setzen `0x00766B92(Spieler, Art, Dauer)` mit Tabelle `0x008AC340`
+- `0x004377B7`
+  - docs/befund-meldungen.md:597 – - **1093, Hochzeit „abgesagt“:** Der Fall streicht den Termin mit `0x004377B7(Nummer, Zeiger auf [ebp-8])`
+  - docs/fundstellen.md:214 – ` (Termin-Routine `0x005FD386`). Terminliste `0x008EB8B0`: streichen `0x004377B7(Nummer,
+  - docs/korrekturliste-meldungen.md:193 – (`0x004377B7(Nr, Satz +0x170)`) und löscht das Datum. Der Hochzeitstermin entsteht in `0x00702AC7` (Datum in etw
+  - tools/a3patch.py:545 – # 0x008EB8B0 with 0x004377B7(number, &[ebp-8]), but [ebp-8] is never written: the date stayed and the wedding took place
+- `0x00441ACA`
+  - docs/befund-personal.md:266 – - Sperren-Byte beim Testen: Der Dialog „Jugendspieler“ (`0x00441ACA`, Knopf `0x00441DC9`) ruft `0x00407ABB` (Sperren-Byte
+- `0x00441DC9`
+  - docs/befund-personal.md:266 – en-Byte beim Testen: Der Dialog „Jugendspieler“ (`0x00441ACA`, Knopf `0x00441DC9`) ruft `0x00407ABB` (Sperren-Byte
+- `0x00443F25`
+  - docs/befund-finanzen.md:206 – Bilanz `0x0048163F`; Anzeigen `0x00443F25`, `0x004FB900`, `0x005414F8`, `0x005D7C98`; Prüfung beim Anlegen gegen den
+- `0x00444359`
+  - docs/befund-finanzen.md:137 – - **Anlegen** (`0x00444359`, Dialog): Fach +0 (eingezahlt) = Fach +8 (Wert) = Betrag, +0x12 Anlageart, +0x10 = aktueller
+- `0x00444471`
+  - docs/befund-finanzen.md:142 – - **Auflösen** (`0x00648788(P, Fach)`; vom Dialog `0x00444471`, automatisch für Anlagen der Art ≠ 0 über `0x00648847`):
+- `0x0044449F`
+  - docs/befund-finanzen.md:207 – Dispokreditrahmen `0x0044449F`; Prüfung `0x0047ECE7` (Konto unter −`0x00A3B2E8` und Vereinskennzeichen 0x80);
+- `0x0044EB33`
+  - docs/befund-zaehler.md:64 – - Anzeige `0x0044EB33` (Überschrift Text 4746 „Pl. / Verein / Form“, Zeile „%d.\t%s\t%d“), Daten über `0x00721191` aus
+  - docs/befund-zaehler.md:75 – - Berichtigung: Text 4746 = 0x128A (Tagesform, `0x0044EB33`), 4747 = 0x128B (Spielplan, `0x0044EDBA`).
+  - docs/fundstellen.md:107 – leich `0x00723094`, Tabelle `0x00831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746), Kopie `0x00721191` | **Tagesform** (Klasse `CTagesform`); gepatcht |
+  - tools/a3patch.py:185 – agesform" (class CTagesform; table built per club in 0x007230E1, page 0x0044EB33).
+  - tools/asm_tagesform.py:3 – agesform" (class CTagesform; table built per club in 0x007230E1, page 0x0044EB33). The value is the
+- `0x0044ECB2`
+  - docs/befund-zaehler.md:91 –  aufsteigend sortiert stehen die leeren Plätze oben, und die Anzeige `0x0044ECB2` bricht beim
+- `0x0044ECB9`
+  - docs/befund-zaehler.md:114 – - `0x0044ECB9` (32 B, Anzeige): zeigt 100 − gespeicherter Wert, also wieder Note × 10 (31 = Note 3,1).
+  - docs/befund-zaehler.md:140 – `0x0072317D` Wertberechnung; `0x0044ECB9` (89 B) Zeilenausgabe mit sechs statt fünf Werten. Die alte Formatzeile
+  - tools/asm_tagesform.py:36 – # page 0x0044ECB9..0x0044ED11: one row = place, club, grade with one decimal
+  - tools/asm_tagesform.py:37 – 'zeile': (0x0044ECB9, 0x0044ED12, {'NAME32': 0x0063E52F}, [
+- `0x0044ED11`
+  - tools/asm_tagesform.py:36 – # page 0x0044ECB9..0x0044ED11: one row = place, club, grade with one decimal
+- `0x0044ED12`
+  - tools/asm_tagesform.py:37 – 'zeile': (0x0044ECB9, 0x0044ED12, {'NAME32': 0x0063E52F}, [
+- `0x0044EDBA`
+  - docs/befund-zaehler.md:75 – t 4746 = 0x128A (Tagesform, `0x0044EB33`), 4747 = 0x128B (Spielplan, `0x0044EDBA`).
+  - docs/fundstellen.md:111 – Seite „Spielplan“ `0x0044EDBA` (Text 4747) mit Spieltags-Element `0x006E0649`. Rollende Liste 20 × 0xC4 B: `0x0072457F`
+- `0x0044EF11`
+  - docs/befund-zaehler.md:24 – Anzeige `0x0044EF11` (sortiert nach Toren, Summe `0x00724454`) und `0x0044F358` (nach Gegentoren, `0x0072449B`),
+  - docs/fundstellen.md:108 –  (0x1A0) | 384 B = 24 × (Land, Verein, 6 + 6 Bytes) | `0x007244E2` | `0x0044EF11` / `0x0044F358` (Text 4748), Summen `0x00724454` / `0x0072449B` | Wann trafen die Clubs / Gegner |
+- `0x0044F358`
+  - docs/befund-zaehler.md:24 – Anzeige `0x0044EF11` (sortiert nach Toren, Summe `0x00724454`) und `0x0044F358` (nach Gegentoren, `0x0072449B`),
+  - docs/fundstellen.md:108 – B = 24 × (Land, Verein, 6 + 6 Bytes) | `0x007244E2` | `0x0044EF11` / `0x0044F358` (Text 4748), Summen `0x00724454` / `0x0072449B` | Wann trafen die Clubs / Gegner |
+- `0x0044F79F`
+  - docs/fundstellen.md:106 – 4 × 6 | `0x0072303E`, Vergleich `0x00722FF1`, Tabelle `0x008319F8` | `0x0044F79F` (Text 4751) | „Zu Null“ (V) |
+- `0x00457E00`
+  - docs/befund-meldungen.md:729 – d die Anzeige im Spielerdialog (`0x0055F96E`). Die Konditionsroutine `0x00457E00` (Spieler +0x16
+  - docs/fundstellen.md:235 – Kondition `0x00457E00` (Spieler +0x16 / 100, Raucher −5).
+  - docs/korrekturliste-meldungen.md:73 – xt 1356 „Konditionshandicap von 5%“ = 5 Punkte Abzug, `0x00457E3A`); `0x00457E00` hat 56 Aufrufer (Anzeige und Rechnung); Gruppe „Spiellogik, kleine Auswirkung“, im Spiel nicht gep
+  - tools/a3patch.py:763 – # condition routine 0x00457E00 never read. New: plus 5 points for bit 13 (the mirror of the smoker's minus 5, text 1356
+  - tools/asm_nacht.py:350 – # of the flag word (0x00700105), and the condition routine 0x00457E00 (player word +0x16 / 100, minus 5 for smokers,
+  - tools/asm_nacht.py:353 – 'konditionsbonus': (0x00457E00, 0x00457E50, {}, [
+- `0x00457E3A`
+  - docs/korrekturliste-meldungen.md:73 – der Raucher (Text 1356 „Konditionshandicap von 5%“ = 5 Punkte Abzug, `0x00457E3A`); `0x00457E00` hat 56 Aufrufer (Anzeige und Rechnung); Gruppe „Spiellogik, kleine Auswirkung“, im 
+- `0x00457E50`
+  - tools/asm_nacht.py:353 – 'konditionsbonus': (0x00457E00, 0x00457E50, {}, [
+- `0x0045E8A5`
+  - docs/fundstellen.md:248 – - Verteiler der Historisches-Bildschirme `0x0045E8A5` (Index → Routine: `zuordnung-bildschirme.md`).
+  - docs/zuordnung-bildschirme.md:97 – - Verteiler der Historisches-Bildschirme: 0x0045E8A5, Index `[this+0x343C]` (0…60) über Bytetabelle 0x0045EB82 und Sprungtabelle
+  - docs/zuordnung-bildschirme.md:155 – Verteiler `0x0045E8A5`, Index → Routine (über die gelesenen Speicheradressen bestimmt): 0–9 Endtabellen, 10–19 Resultate,
+- `0x0045EADE`
+  - docs/zuordnung-bildschirme.md:98 – 0x0045EADE. Reihenfolge wie in der Seitenleiste: 0–9 Endtabelle → 0x0045EBBF(9 − Index), 10–19 Resultate → 0x0
+- `0x0045EB82`
+  - docs/zuordnung-bildschirme.md:97 – ildschirme: 0x0045E8A5, Index `[this+0x343C]` (0…60) über Bytetabelle 0x0045EB82 und Sprungtabelle
+- `0x0045EBBF`
+  - docs/zuordnung-bildschirme.md:98 – 0x0045EADE. Reihenfolge wie in der Seitenleiste: 0–9 Endtabelle → 0x0045EBBF(9 − Index), 10–19 Resultate → 0x00463E8D(19 − Index),
+  - docs/zuordnung-bildschirme.md:103 – - Endtabelle: 0x0045EBBF ruft 0x0072B18A(Land, Liga, Saisons zurück, Ziel) und danach 0x0072AF32 (berechnet die Tabelle aus 
+- `0x0045F0D4`
+  - docs/zuordnung-bildschirme.md:99 – C, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+- `0x0045F3C0`
+  - docs/zuordnung-bildschirme.md:99 – dann u. a. 0x0045FEAC, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+  - docs/zuordnung-bildschirme.md:156 – 20 Int. Wettbewerbe (`0x0045FEAC`), 24 Ewige Torjäger (`0x0045F3C0`), 25 Torschützenkönige (`0x004608CE`), 26 Torrekorde
+- `0x0045F7A5`
+  - docs/zuordnung-bildschirme.md:99 – 0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+  - docs/zuordnung-bildschirme.md:157 – (`0x00460C7A`), 28 Rekordnationalspieler (`0x00461E6A`), 29 Rekorde (`0x0045F7A5`), 30 Für die Ewigkeit (`0x0045F8E5`),
+- `0x0045F8E5`
+  - docs/zuordnung-bildschirme.md:100 – 0x0045F8E5 (Für die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführu
+  - docs/zuordnung-bildschirme.md:157 – eler (`0x00461E6A`), 29 Rekorde (`0x0045F7A5`), 30 Für die Ewigkeit (`0x0045F8E5`),
+- `0x0045FAC1`
+  - docs/zuordnung-bildschirme.md:99 – dann u. a. 0x0045FEAC, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+- `0x0045FEAC`
+  - docs/zuordnung-bildschirme.md:99 – dann u. a. 0x0045FEAC, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F
+  - docs/zuordnung-bildschirme.md:156 – 20 Int. Wettbewerbe (`0x0045FEAC`), 24 Ewige Torjäger (`0x0045F3C0`), 25 Torschützenkönige (`0x004608CE`), 26 Torrekorde
+- `0x004608CE`
+  - docs/zuordnung-bildschirme.md:99 – dann u. a. 0x0045FEAC, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+  - docs/zuordnung-bildschirme.md:156 – x0045FEAC`), 24 Ewige Torjäger (`0x0045F3C0`), 25 Torschützenkönige (`0x004608CE`), 26 Torrekorde
+- `0x00460C7A`
+  - docs/zuordnung-bildschirme.md:99 – dann u. a. 0x0045FEAC, 0x0045FAC1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+  - docs/zuordnung-bildschirme.md:157 – (`0x00460C7A`), 28 Rekordnationalspieler (`0x00461E6A`), 29 Rekorde (`0x0045F7A5`), 30 Für die Ewigkeit (`0x0045
+- `0x00460D57`
+  - docs/zuordnung-bildschirme.md:142 – (`mov ecx,0B0B6B8h` in `0x00460D57`); Blockoffset = Speicheradresse − `0x00B0B6B8`.
+- `0x00460F97`
+  - docs/zuordnung-bildschirme.md:101 – 0x00460F97 (ewige Tabelle?) … 0x00466C6F, 0x00466E72, 0x004665DD (Beste Mannschaft), 0x00467075. Zuordnung der
+  - docs/zuordnung-bildschirme.md:158 – 33 Tabellenführungen (`0x00463A9B`), 35 abs. ewige Tabelle (`0x00460F97`), 36 rel. ewige Tabelle (`0x00461AC7`),
+- `0x004613DB`
+  - docs/zuordnung-bildschirme.md:160 – (`0x004613DB`, `0x00461751`), 56 Beste Mannschaft (`0x004665DD`). Die übrigen Indizes sind nicht einzeln zugeord
+- `0x00461751`
+  - docs/zuordnung-bildschirme.md:160 – (`0x004613DB`, `0x00461751`), 56 Beste Mannschaft (`0x004665DD`). Die übrigen Indizes sind nicht einzeln zugeordnet.
+- `0x00461AC7`
+  - docs/zuordnung-bildschirme.md:158 – 3A9B`), 35 abs. ewige Tabelle (`0x00460F97`), 36 rel. ewige Tabelle (`0x00461AC7`),
+- `0x00461E6A`
+  - docs/zuordnung-bildschirme.md:99 – 1, 0x0045F3C0, 0x004608CE, 0x00460C7A (5-Jahreswertung?), 0x0045F0D4, 0x00461E6A, 0x0045F7A5,
+  - docs/zuordnung-bildschirme.md:157 – (`0x00460C7A`), 28 Rekordnationalspieler (`0x00461E6A`), 29 Rekorde (`0x0045F7A5`), 30 Für die Ewigkeit (`0x0045F8E5`),
+- `0x0046217A`
+  - docs/zuordnung-bildschirme.md:159 – 39 Supertransfers (`0x0046217A`), 50 Erfolgreichste Trainer (`0x00465ABB`), 54/55 ewige Heim-/Auswärtstabelle
+- `0x004629FE`
+  - docs/zuordnung-bildschirme.md:100 – 0x0045F8E5 (Für die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführungen?),
+- `0x00463213`
+  - docs/zuordnung-bildschirme.md:100 – 0x0045F8E5 (Für die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführungen?),
+- `0x0046364C`
+  - docs/zuordnung-bildschirme.md:100 – 045F8E5 (Für die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführungen?),
+- `0x00463A9B`
+  - docs/zuordnung-bildschirme.md:100 –  die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführungen?),
+  - docs/zuordnung-bildschirme.md:158 – 33 Tabellenführungen (`0x00463A9B`), 35 abs. ewige Tabelle (`0x00460F97`), 36 rel. ewige Tabelle (`0x00461AC7`),
+- `0x00463E8D`
+  - docs/zuordnung-bildschirme.md:98 – itenleiste: 0–9 Endtabelle → 0x0045EBBF(9 − Index), 10–19 Resultate → 0x00463E8D(19 − Index),
+- `0x00465ABB`
+  - docs/zuordnung-bildschirme.md:159 – 39 Supertransfers (`0x0046217A`), 50 Erfolgreichste Trainer (`0x00465ABB`), 54/55 ewige Heim-/Auswärtstabelle
+- `0x004665DD`
+  - docs/fehler-beste-mannschaft.md:5 – - **Anzeige** 0x004665DD: holt per 0x007215E7 eine Kopie von 200 Byte ab 0x00B08010 (20 Einträge à 10 Byte)
+  - docs/fundstellen.md:249 – - Beste Mannschaft: Schieben `0x007266FA`, Anzeige `0x004665DD` (`fehler-beste-mannschaft.md`).
+  - docs/zuordnung-bildschirme.md:101 – 0x00460F97 (ewige Tabelle?) … 0x00466C6F, 0x00466E72, 0x004665DD (Beste Mannschaft), 0x00467075. Zuordnung der mittleren
+  - docs/zuordnung-bildschirme.md:160 – (`0x004613DB`, `0x00461751`), 56 Beste Mannschaft (`0x004665DD`). Die übrigen Indizes sind nicht einzeln zugeordnet.
+  - tools/a3patch.py:24 – # Screen Historisches/Beste Mannschaft (0x004665DD): rows = current year - start year, but from the 21st
+- `0x004666DC`
+  - docs/fehler-beste-mannschaft.md:66 – Korrektur `beste-mannschaft-anzeige` in `tools/a3patch.py`: VA 0x004666DC `66 C7 45 F2 13 00` → `… 14 00` (Dateioffset 0x666E0:
+  - tools/a3patch.py:27 – # mov word ptr [ebp-0Eh],13h -> 14h (VA 0x004666DC). See docs/fehler-beste-mannschaft.md.
+- `0x00466C6F`
+  - docs/zuordnung-bildschirme.md:101 – 0x00460F97 (ewige Tabelle?) … 0x00466C6F, 0x00466E72, 0x004665DD (Beste Mannschaft), 0x00467075. Zuordnung der mittleren
+- `0x00466E72`
+  - docs/zuordnung-bildschirme.md:101 – 0x00460F97 (ewige Tabelle?) … 0x00466C6F, 0x00466E72, 0x004665DD (Beste Mannschaft), 0x00467075. Zuordnung der mittleren
+- `0x00467075`
+  - docs/zuordnung-bildschirme.md:101 – ge Tabelle?) … 0x00466C6F, 0x00466E72, 0x004665DD (Beste Mannschaft), 0x00467075. Zuordnung der mittleren
+- `0x0046E7DC`
+  - docs/befund-notenschnitt.md:19 – | Statistik „Notenschnitt Mannschaft“ (`0x0046E7DC` ff., Text 3043) | Notencodes | nur Einsätze **mit** Note (`0x0046E856`: bei Note 0 wird nichts gez
+  - docs/befund-notenschnitt.md:84 – | `0x0046E7DC` Statistik „Notenschnitt Mannschaft“ | Schnitt gesamt / heim / auswärts | richtig (zählt nur benote
+  - docs/fundstellen.md:119 – - Auswertungen: Statistik „Notenschnitt Mannschaft“ `0x0046E7DC` (richtig); Spielerdetails „Noten“ `0x00561C46`
+- `0x0046E856`
+  - docs/befund-notenschnitt.md:19 – x0046E7DC` ff., Text 3043) | Notencodes | nur Einsätze **mit** Note (`0x0046E856`: bei Note 0 wird nichts gezählt) |
+  - tools/a3patch.py:163 –  average comes out too good. The statistic "Notenschnitt Mannschaft" (0x0046E856) only counts graded
+- `0x0047E6E0`
+  - docs/befund-meldungen.md:556 – Beliebtheits-Dialog (`0x0047E6E0`–`0x0047E741`): Manager +0x3A Öffentlichkeit, +0x3B Fans, +0x3C Medien
+  - docs/fundstellen.md:200 – ffen; ändern `0x0041849A(d1, d2, d3, d4, Manager)`; Dialog füllt bei `0x0047E6E0`.
+- `0x0047E741`
+  - docs/befund-meldungen.md:556 – Beliebtheits-Dialog (`0x0047E6E0`–`0x0047E741`): Manager +0x3A Öffentlichkeit, +0x3B Fans, +0x3C Medien
+- `0x0047ECE7`
+  - docs/befund-finanzen.md:207 – Dispokreditrahmen `0x0044449F`; Prüfung `0x0047ECE7` (Konto unter −`0x00A3B2E8` und Vereinskennzeichen 0x80);
+- `0x004813AD`
+  - docs/befund-finanzen.md:35 – ## Bilanz-Bildschirm (Dialog 349 `IDD_BILANZ_NEU`, Füllroutine `0x004813AD`) (G)
+  - docs/fundstellen.md:84 – 0x630 Geldanlagen. Bilanz-Bildschirm `0x004813AD` (Dialog 349); Gewinn `0x0061FC81`, Bankguthaben `0x0061FD97`,
+  - tools/a3patch.py:246 – # 2) balance screen 0x004813AD, line "Aktuelles Vereinsvermögen": bank balance + investments at their
+  - tools/asm_konto.py:11 –  0x00481426 (balance screen, line "Aktuelles Vereinsvermögen", inside 0x004813AD; this = [ebp-220h],
+- `0x00481426`
+  - docs/befund-finanzen.md:209 – - **Stelle 2, `0x00481426` (81 B, Dateioffset 0x081426):** Bilanzzeile „Aktuelles Vereinsvermögen“ = Konto + aktueller
+  - tools/asm_konto.py:11 – Block 2, 0x00481426 (balance screen, line "Aktuelles Vereinsvermögen", inside 0x004813AD; this = [ebp-220h],
+  - tools/asm_konto.py:57 – VERMOEGEN = (0x00481426, 0x00481477, '90', [
+  - tools/asm_konto.py:104 – or name, block in (('Kontorechnung 0x0061FD97', KONTO), ('Bilanzzeile 0x00481426', VERMOEGEN)):
+- `0x00481477`
+  - tools/asm_konto.py:13 – "push edi / push esi / call 004DB27E" that follows at 0x00481477.
+  - tools/asm_konto.py:57 – VERMOEGEN = (0x00481426, 0x00481477, '90', [
+- `0x0048163F`
+  - docs/befund-finanzen.md:206 – Bilanz `0x0048163F`; Anzeigen `0x00443F25`, `0x004FB900`, `0x005414F8`, `0x005D7C98`; Prüfung beim Anlegen gegen den
+- `0x00482378`
+  - tools/a3patch.py:21 – (0x00482378, '25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34362F257300'),
+- `0x00486602`
+  - docs/befund-personal.md:146 – Die Bildschirme (Trainer/Co-Trainer `0x00486602` ff., Torwarttrainer `0x00592C40`) zeigen genau die Liste des **eigenen
+- `0x0048DF30`
+  - tools/a3patch.py:349 – (0x0048DF30, 'B2020000' '88FFFFFF', 'B2020000' '78000000'),
+- `0x0048DF34`
+  - docs/korrekturliste-meldungen.md:39 – en | klein | 6.13 | freigegeben 17.11.2026; `geld-690` (Datei-Offset `0x48DF34`: −120 → +120); Gruppe „Spiellogik, kleine Auswirkung“, im Spiel nicht geprüft |
+- `0x0048DF68`
+  - tools/a3patch.py:353 – (0x0048DF68, 'B9020000' '50000000', 'B9020000' 'B0FFFFFF'),
+- `0x0048DF6C`
+  - docs/korrekturliste-meldungen.md:40 – en | klein | 6.13 | freigegeben 17.11.2026; `geld-697` (Datei-Offset `0x48DF6C`: +80 → −80); Gruppe „Spiellogik, kleine Auswirkung“, im Spiel nicht geprüft |
+- `0x0048E32E`
+  - docs/fundstellen.md:241 – `0x00493745`, acht Antworten), Anzeige der Werte `0x0048E32E`.
+- `0x0048E36F`
+  - docs/befund-notenschnitt.md:88 – | `0x0048E36F`, `0x004BA0F3`, `0x0072796F` | Anzeige einer einzelnen Note | richtig (ohne Note bleibt das Feld le
+  - docs/befund-zaehler.md:105 – nicht angesehen: Notenleser im Spielbericht (`0x006580B2`-Aufrufer), `0x0048E36F`, `0x005E1741`, `0x0072796F`.
+  - docs/befund-zaehler.md:123 – Feld `IDC_EINZEL_NOTE_LETZTES` (5836, `0x0048E36F`, geteilt durch 2, „%.1f“) angezeigt und vom Schreiber `0x006FF2F7`
+- `0x0048FC80`
+  - docs/befund-meldungen.md:506 – gelöscht (kein Aufruf von `0x0070020F`; dessen einzige Aufrufer sind `0x0048FC80`, `0x0048FD30`, `0x0048FDD0` und
+  - docs/korrekturliste-meldungen.md:282 – `0x0070020F(an)`, Aufrufer `0x0048FC80`, `0x0048FD30`, `0x0048FDD0`, `0x007074FB`) – ein anderer Merker als der
+- `0x0048FD30`
+  - docs/befund-meldungen.md:506 –  Aufruf von `0x0070020F`; dessen einzige Aufrufer sind `0x0048FC80`, `0x0048FD30`, `0x0048FDD0` und
+  - docs/korrekturliste-meldungen.md:282 – `0x0070020F(an)`, Aufrufer `0x0048FC80`, `0x0048FD30`, `0x0048FDD0`, `0x007074FB`) – ein anderer Merker als der
+- `0x0048FDD0`
+  - docs/befund-meldungen.md:506 – x0070020F`; dessen einzige Aufrufer sind `0x0048FC80`, `0x0048FD30`, `0x0048FDD0` und
+  - docs/korrekturliste-meldungen.md:282 – `0x0070020F(an)`, Aufrufer `0x0048FC80`, `0x0048FD30`, `0x0048FDD0`, `0x007074FB`) – ein anderer Merker als der
+- `0x004917FB`
+  - docs/befund-meldungen.md:292 – ner unzufrieden mit der Leistung - %1 machte %2 in der Halbzeit z… | `0x004917FB` | 7 | 0x4 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Vereinswert 0xDF8 |
+- `0x0049180E`
+  - docs/befund-meldungen.md:375 – - Alle sechs Aufrufer übergeben +1: die Halbzeit-Schlagzeilen `0x0049180E` (1697), `0x00491F5D` (1698), `0x0064B41B`
+  - docs/fundstellen.md:146 – Aufrufer `0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x00491F4A`
+  - docs/befund-meldungen.md:293 –  einigen liegen die Nerven blank!" - Trainer %1 bei %2 als Psycho… | `0x00491F4A` | 7 | 0x4 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Vereinswert 0xDF8, T
+- `0x00491F5D`
+  - docs/befund-meldungen.md:375 – ufrufer übergeben +1: die Halbzeit-Schlagzeilen `0x0049180E` (1697), `0x00491F5D` (1698), `0x0064B41B`
+  - docs/fundstellen.md:146 – Aufrufer `0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x00492A78`
+  - docs/fundstellen.md:240 – - Gespräch bei Auswechslung: Dialog 496, Klasse ab `0x00492A78`, Auswertung der Antwort `0x00493228` (Sprungtabelle
+- `0x00493228`
+  - docs/fundstellen.md:240 – echslung: Dialog 496, Klasse ab `0x00492A78`, Auswertung der Antwort `0x00493228` (Sprungtabelle
+- `0x00493490`
+  - docs/befund-notenschnitt.md:103 – - `0x0070607A` ← `0x00493490` (Dialog, Wirkung −6 bzw. −2 auf Spielersatz 0x26F): „letzter Einsatz liegt 6 bis 10
+  - docs/befund-notenschnitt.md:120 –  der Auswechslung wissen!“), Antwort 5 „Spielpraxis für Mitspieler“, `0x00493490` | – | Einsatzquote des eingewechselten Mitspielers < 20 %: +1; sonst (ab Spieltag 11) letzter Eins
+  - docs/befund-zaehler.md:103 – `0x00493490` (Dialog, „letzter Einsatz vor 6 oder mehr Spieltagen“). Wirkung der Ereignisse: `0x00700FA2` / `0x
+- `0x00493745`
+  - docs/fundstellen.md:241 – `0x00493745`, acht Antworten), Anzeige der Werte `0x0048E32E`.
+- `0x004951DB`
+  - docs/befund-meldungen.md:462 – an ihr Textfeld weiter (`0x004951DB`, `0x004959AC`, `0x0049622E`, `0x004966E0`, jeweils eine virtuelle Methode); das
+- `0x004953E1`
+  - docs/befund-meldungen.md:490 – `0x004953E1` einen Text aus der Tabelle `0x008808B0` (Texte 4771–4782): 0 Trainer, 1 Mannschaft, 2 Privates,
+  - docs/fundstellen.md:196 – m Puffer `0x00A2F700`; Anzeige `0x005F2234`; Beschriftung je Art bei `0x004953E1` aus Tabelle
+- `0x004959AC`
+  - docs/befund-meldungen.md:462 – an ihr Textfeld weiter (`0x004951DB`, `0x004959AC`, `0x0049622E`, `0x004966E0`, jeweils eine virtuelle Methode); das
+- `0x0049622E`
+  - docs/befund-meldungen.md:462 – an ihr Textfeld weiter (`0x004951DB`, `0x004959AC`, `0x0049622E`, `0x004966E0`, jeweils eine virtuelle Methode); das
+- `0x004966E0`
+  - docs/befund-meldungen.md:462 – an ihr Textfeld weiter (`0x004951DB`, `0x004959AC`, `0x0049622E`, `0x004966E0`, jeweils eine virtuelle Methode); das
+- `0x00496A0F`
+  - docs/befund-meldungen.md:121 – (Klasse ab `0x00496A0F`, Anzeige `0x00496B94`) nur über `0x005F2813(Manager, Verein, Datensatz)` und
+  - docs/fundstellen.md:165 – - **Fragen mit Antworten** (Dialog 253, Klasse ab `0x00496A0F`, Anzeige `0x00496B94`): 80 Datensätze
+- `0x00496B94`
+  - docs/befund-meldungen.md:121 – (Klasse ab `0x00496A0F`, Anzeige `0x00496B94`) nur über `0x005F2813(Manager, Verein, Datensatz)` und
+  - docs/fundstellen.md:165 – *Fragen mit Antworten** (Dialog 253, Klasse ab `0x00496A0F`, Anzeige `0x00496B94`): 80 Datensätze
+- `0x004A21F7`
+  - docs/fundstellen.md:162 – mme `0x006200BB` (mit +0x2F4, +0x2FC), verwendet in `0x00622201` und `0x004A21F7`.
+  - docs/korrekturliste-meldungen.md:148 – und einen Dialog (`0x004A21F7`) eingeht; der Betrag wird also einmal als Einnahme geführt (V: Posten Sponsoren).
+- `0x004AC6D8`
+  - docs/korrekturliste-meldungen.md:61 – g-92-93` (gemeinsam für K23 und K24: Tabellenzeilen bei Datei-Offset `0x4AC6D8` und `0x4AC6E2` nach dem Muster der Arten 90/91; Art 92, 7 Tage); Gruppe „Spiellogik, kleine Auswirku
+  - docs/korrekturliste-meldungen.md:62 – g-92-93` (gemeinsam für K23 und K24: Tabellenzeilen bei Datei-Offset `0x4AC6D8` und `0x4AC6E2` nach dem Muster der Arten 90/91; Art 93, 14 Tage); Gruppe „Spiellogik, kleine Auswirk
+  - docs/korrekturliste-meldungen.md:251 – `0x4AC6D8` und `0x4AC6E2`, je fünf Bytes `00 07 02 00 07` und `00 0E 02 00 07`), die Aufrufe bleiben unveränder
+  - tools/a3patch.py:711 –  like their neighbours 90 / 91 with 7 and 14 days (data, file offsets 0x4AC6D8 and 0x4AC6E2).
+  - tools/a3patch.py:712 – (0x004AC6D8,
+- `0x004AC6E2`
+  - docs/korrekturliste-meldungen.md:61 – nsam für K23 und K24: Tabellenzeilen bei Datei-Offset `0x4AC6D8` und `0x4AC6E2` nach dem Muster der Arten 90/91; Art 92, 7 Tage); Gruppe „Spiellogik, kleine Auswirkung“, im Spiel n
+  - docs/korrekturliste-meldungen.md:62 – nsam für K23 und K24: Tabellenzeilen bei Datei-Offset `0x4AC6D8` und `0x4AC6E2` nach dem Muster der Arten 90/91; Art 93, 14 Tage); Gruppe „Spiellogik, kleine Auswirkung“, im Spiel 
+  - docs/korrekturliste-meldungen.md:251 – `0x4AC6D8` und `0x4AC6E2`, je fünf Bytes `00 07 02 00 07` und `00 0E 02 00 07`), die Aufrufe bleiben unverändert.
+  - tools/a3patch.py:711 – eighbours 90 / 91 with 7 and 14 days (data, file offsets 0x4AC6D8 and 0x4AC6E2).
+  - tools/a3patch.py:715 – (0x004AC6E2,
+- `0x004BA0F3`
+  - docs/befund-notenschnitt.md:88 – | `0x0048E36F`, `0x004BA0F3`, `0x0072796F` | Anzeige einer einzelnen Note | richtig (ohne Note bleibt das Feld leer) |
+- `0x004C4582`
+  - docs/korrekturliste-meldungen.md:187 – igt im Hauptmenü als Prozentwert im Feld `IDC_HAUPTMENUE_VERTRAUEN` (`0x004C4582`, Format
+- `0x004C5ADB`
+  - tools/a3patch.py:18 – # Format string "%s Version 1.40/%s" (VA 0x00882378, used once at 0x004C5ADB to build a window caption
+- `0x004C82B5`
+  - docs/befund-finanzen.md:220 – Vermögensanzeigen (`0x004C82B5`, `0x0061F1D9`).
+- `0x004D7038`
+  - docs/befund-personal.md:309 – e drei beim Testen mit Häuschen):** Die Abwerbe-Routine des Managers `0x004D7038`
+  - tools/a3patch.py:456 – # (0x004D7038, branch 0x004D766E) writes the salary (+0x88) of a youth player taken from another club
+- `0x004D766E`
+  - docs/befund-personal.md:310 – (Zweig `0x004D766E`: Dialog `0x005CB00F`, Gehalt aus `0x0066B648`) trägt den Spieler aus der fremden Jugend aus
+  - tools/a3patch.py:456 – # (0x004D7038, branch 0x004D766E) writes the salary (+0x88) of a youth player taken from another club
+- `0x004D778D`
+  - tools/a3patch.py:458 – # (0x004D8DA9, 0x006C3D7F). ecx still holds the player (loaded at 0x004D778D). The 15 bytes that called
+- `0x004D7793`
+  - docs/befund-personal.md:311 – 066AEA3`) und in die eigene ein (`0x0066AE46`), schreibt das Gehalt (`0x004D7793`) und die Station
+- `0x004D779A`
+  - docs/befund-personal.md:316 – die 15 Bytes `0x004D779A`–`0x004D77A8` (Aufruf der Hülle `0x00707BD4`) ersetzen durch `mov byte ptr [ecx+94h],0Ah`,
+- `0x004D77A8`
+  - docs/befund-personal.md:316 – die 15 Bytes `0x004D779A`–`0x004D77A8` (Aufruf der Hülle `0x00707BD4`) ersetzen durch `mov byte ptr [ecx+94h],0Ah`,
+- `0x004D86A3`
+  - docs/befund-personal.md:299 – tjahre = 10 setzen nur zwei Stellen: `0x004D8DA9` (Jugend-Bildschirm `0x004D86A3`, Zweig `0x004D8CAE`: Spieler mit
+- `0x004D87E5`
+  - docs/fundstellen.md:242 – frage Text 4302 bei `0x004D888B` (nur an einem bestimmten Wochentag, `0x004D87E5`),
+- `0x004D888B`
+  - docs/fundstellen.md:242 – - Jugendspieler „4 Wochen testen“: Abfrage Text 4302 bei `0x004D888B` (nur an einem bestimmten Wochentag, `0x004D87E5`),
+- `0x004D8900`
+  - docs/befund-personal.md:249 – - „4 Wochen testen“ (`0x004D8900` ff.): `0x0070DF0B` (in den Kader), dann `0x007069EB` (Restdauer 8, Merker 0x10), dann
+  - docs/befund-personal.md:268 – sten Neuberechnung (`0x0062F609`). Der Weg über die Ja/Nein-Abfrage (`0x004D8900`, nur wenn
+- `0x004D8BA3`
+  - docs/befund-personal.md:267 – über `0x0062F66D`, dazu Rückennummer) auf, **bevor** `0x004D8BA3` die Probezeit einträgt; bei Restjahren 0 entsteht
+- `0x004D8CAE`
+  - docs/befund-personal.md:299 – ur zwei Stellen: `0x004D8DA9` (Jugend-Bildschirm `0x004D86A3`, Zweig `0x004D8CAE`: Spieler mit
+- `0x004D8D9F`
+  - docs/befund-personal.md:313 – Gehalt 10 Jahre (`0x004D8D9F`/`0x004D8DA9`, `0x006C3D75`/`0x006C3D7F`). Der abgeworbene Spieler hat also Gehalt, aber
+- `0x004D8DA9`
+  - docs/befund-personal.md:299 – - Restjahre = 10 setzen nur zwei Stellen: `0x004D8DA9` (Jugend-Bildschirm `0x004D86A3`, Zweig `0x004D8CAE`: Spieler mit
+  - docs/befund-personal.md:313 – Gehalt 10 Jahre (`0x004D8D9F`/`0x004D8DA9`, `0x006C3D75`/`0x006C3D7F`). Der abgeworbene Spieler hat also Gehalt, aber
+  - tools/a3patch.py:458 – # (0x004D8DA9, 0x006C3D7F). ecx still holds the player (loaded at 0x004D778D). The 15 bytes that called
+- `0x004DAF8F`
+  - docs/befund-meldungen.md:552 – kommen aus `0x004DAF8F`, das immer in denselben Puffer `0x008EC88C` schreibt und dessen Adresse zurückgibt
+  - docs/befund-meldungen.md:807 – - `0x004DAF8F` (Geldbetrag als Text) benutzt einen einzigen festen Puffer `0x008EC88C`; zwei Aufrufe in einem
+  - docs/fundstellen.md:161 – = × 100, `0x00A3B348` = × 500); Betrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`). Verein +0x2F8:
+  - docs/fundstellen.md:205 – ab `0x005E8979`, Auswertung `0x005E9E01`; Geldbetrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`).
+  - tools/a3patch.py:378 – 4 ("sued for more than %s ... settle for %s"). Both amounts come from 0x004DAF8F, which
+- `0x004DB0E7`
+  - docs/befund-meldungen.md:553 – (`0x004DB0E7`); auch mit Text 284 stünde an beiden Stellen der zuletzt gebildete Betrag (500 000).
+- `0x004FB900`
+  - docs/befund-finanzen.md:206 – Bilanz `0x0048163F`; Anzeigen `0x00443F25`, `0x004FB900`, `0x005414F8`, `0x005D7C98`; Prüfung beim Anlegen gegen den
+- `0x0050A5B2`
+  - docs/fundstellen.md:243 – 9EB`, Ende `0x00706A45`; Haus-Symbol = Text 5181 „abwesend“, Legende `0x0050A5B2`.
+- `0x0050B661`
+  - docs/befund-personal.md:244 – (`0x0050B661` ff.) zeigt für +0x30 ≠ 0 nur die Sperren-Symbole 2 (gelb), 15 (Europapokal), 16 (Gelb-Rot) oder 3 
+- `0x0050B795`
+  - docs/befund-personal.md:246 – Text 5181 „abwesend“ ist der siebte Eintrag) und wird bei `0x0050B795`–`0x0050B84A` gewählt: Verein ≠ 200, Wort +0x6A
+- `0x0050B84A`
+  - docs/befund-personal.md:246 – xt 5181 „abwesend“ ist der siebte Eintrag) und wird bei `0x0050B795`–`0x0050B84A` gewählt: Verein ≠ 200, Wort +0x6A
+- `0x00516F7A`
+  - docs/fundstellen.md:155 – `0x00516F7A` mit `0x0051731D`, `0x00517551`; dritter Setzer `0x0074EE7B`). Strafenzähler Spielstand 0x286 (hoch
+  - docs/korrekturliste-meldungen.md:139 – `0x00517551`) liegen in der Routine `0x00516F7A`, die die Dialogtexte 4069 und 4070 („… nicht bereit, sich dopen zu
+- `0x0051731D`
+  - docs/fundstellen.md:155 – `0x00516F7A` mit `0x0051731D`, `0x00517551`; dritter Setzer `0x0074EE7B`). Strafenzähler Spielstand 0x286 (hoch
+  - docs/korrekturliste-meldungen.md:128 – `0x005F4730`); gesetzt wird es von `0x006FF715` (Aufrufer `0x0051731D`, `0x00517551`, `0x0074EE7B`, nicht gelesen).
+  - docs/korrekturliste-meldungen.md:138 – 1 in Spielstand 0x24D) wird von `0x006FF715` gesetzt; zwei Aufrufer (`0x0051731D`,
+- `0x00517551`
+  - docs/fundstellen.md:155 – `0x00516F7A` mit `0x0051731D`, `0x00517551`; dritter Setzer `0x0074EE7B`). Strafenzähler Spielstand 0x286 (hoch
+  - docs/korrekturliste-meldungen.md:128 – 005F4730`); gesetzt wird es von `0x006FF715` (Aufrufer `0x0051731D`, `0x00517551`, `0x0074EE7B`, nicht gelesen).
+  - docs/korrekturliste-meldungen.md:139 – `0x00517551`) liegen in der Routine `0x00516F7A`, die die Dialogtexte 4069 und 4070 („… nicht bereit, sich dope
+- `0x005378D6`
+  - docs/befund-meldungen.md:265 – - **1743** (`0x00537ADD`) und **1744** (`0x00537B15`), Routine `0x005378D6`: Kennzeichen 8, übergeben werden aber
+  - docs/fundstellen.md:132 – (Routine `0x005378D6`), `0x0053CD00` (Routine `0x0053CBDF`), `0x005F47A7` (Routine `0x005F3BAF`) –
+  - docs/korrekturliste-meldungen.md:182 – - **K13:** Die Routine `0x005378D6` ist die Funktion „Presse nutzen“ (einmal je Saison, Merker 0x800 in Manager
+  - tools/a3patch.py:522 – # "Presse nutzen" (dialog routine 0x005378D6, once per season): choices 1 / 2 create the headlines 1743 / 1744 and pass the
+- `0x00537ADD`
+  - docs/befund-meldungen.md:265 – - **1743** (`0x00537ADD`) und **1744** (`0x00537B15`), Routine `0x005378D6`: Kennzeichen 8, übergeben werden aber
+  - docs/befund-meldungen.md:294 – er richtige Mann am richtigen Ort - Weiß das Präsidium überhaupt,… | `0x00537ADD` | 6 | 0x8 | **falsche Argumentzahl:** Kennzeichen 0x40000000 fehlt, Managernummer wird als Wert ge
+  - docs/fundstellen.md:131 – `0x006A426B(Managernummer)`. Vier Aufrufe mit falscher Argumentzahl: `0x00537ADD`, `0x00537B15`
+- `0x00537B15`
+  - docs/befund-meldungen.md:265 – - **1743** (`0x00537ADD`) und **1744** (`0x00537B15`), Routine `0x005378D6`: Kennzeichen 8, übergeben werden aber
+  - docs/befund-meldungen.md:295 – ritisiert den Vorstand - Vereinsführung ist nicht professionell g… | `0x00537B15` | 7 | 0x8 | **falsche Argumentzahl:** Kennzeichen 0x40000000 fehlt, Managernummer wird als Wert ge
+  - docs/fundstellen.md:131 – nagernummer)`. Vier Aufrufe mit falscher Argumentzahl: `0x00537ADD`, `0x00537B15`
+- `0x00537B8C`
+  - docs/befund-meldungen.md:296 – | ? | (Nummer aus einer Variablen) | `0x00537B8C` | 6 | 0x1 | Managerwert ohne Managernummer übergeben; ob er auf anderem Weg angewendet wird, ist n
+- `0x00537BDA`
+  - docs/befund-meldungen.md:297 – | ? | (Nummer aus einer Variablen) | `0x00537BDA` | 6 | 0x1 | Managerwert ohne Managernummer übergeben; ob er auf anderem Weg angewendet wird, ist n
+- `0x0053CBDF`
+  - docs/befund-meldungen.md:269 – - **1750** (`0x0053CD00`), Routine `0x0053CBDF`: Kennzeichen 1, aber kein Wert übergeben. Der Wert für Bit 0 ist ein
+  - docs/fundstellen.md:132 – (Routine `0x005378D6`), `0x0053CD00` (Routine `0x0053CBDF`), `0x005F47A7` (Routine `0x005F3BAF`) –
+- `0x0053CCF5`
+  - tools/a3patch.py:340 – # push 1 -> push 0 (VA 0x0053CCF5).
+- `0x0053CD00`
+  - docs/befund-meldungen.md:269 – - **1750** (`0x0053CD00`), Routine `0x0053CBDF`: Kennzeichen 1, aber kein Wert übergeben. Der Wert für Bit 0 ist ein
+  - docs/befund-meldungen.md:298 – at die Schnauze voll - %2 als Schiedsrichter wird in Zukunft abge… | `0x0053CD00` | 5 | 0x1 | **falsche Argumentzahl:** kein Wert übergeben (zufälliger Stapelinhalt); ohne Managern
+  - docs/fundstellen.md:132 – (Routine `0x005378D6`), `0x0053CD00` (Routine `0x0053CBDF`), `0x005F47A7` (Routine `0x005F3BAF`) –
+  - tools/a3patch.py:337 – me). See docs/befund-meldungen.md section 4. Newspaper headline 1750 (0x0053CD00) is
+- `0x0053CD32`
+  - docs/befund-meldungen.md:270 – e Managernummer wird er nicht angewendet. Die Schwestermeldung 1751 (`0x0053CD32`)
+  - docs/befund-meldungen.md:299 – | %1 sauer auf %2 - %3 lehnt den Schiedsrichter für die Zukunft ab | `0x0053CD32` | 5 | 0x1 | Managerwert ohne Managernummer übergeben; ob er auf anderem Weg angewendet wird, ist n
+- `0x005414F8`
+  - docs/befund-finanzen.md:206 – Bilanz `0x0048163F`; Anzeigen `0x00443F25`, `0x004FB900`, `0x005414F8`, `0x005D7C98`; Prüfung beim Anlegen gegen den
+- `0x0055B167`
+  - docs/befund-notenschnitt.md:63 – Anzeige der beiden Texte in den Spielerdetails: `0x0055B167` ff.
+  - docs/fundstellen.md:120 – 61CD3`, gepatcht); Texte „Liebling“/„verhasst“ in den Spielerdetails `0x0055B167`;
+- `0x0055BBC2`
+  - docs/befund-personal.md:281 – `0x0055BBC2` (Steuerelement 0x12EE). Setzer: `0x0070CA69` (Aufrufer `0x00769C0D`, `0x0076D334`), `0x0070D3A6`
+- `0x0055CEB6`
+  - docs/fundstellen.md:156 – `0x007049CC`, lesen `0x007049AF`: Spielerdialog `0x0055CEB6`, Bedingung `0x0070B417` in `0x0070AFA0`). Sperre in
+  - docs/korrekturliste-meldungen.md:149 –  zählt Byte Spielstand 0x286 hoch. Gelesen wird es im Spielerdialog (`0x0055CEB6`, Feld 4994)
+- `0x0055F443`
+  - docs/korrekturliste-meldungen.md:153 – (`0x0055F443`, `0x0055F4E9`, `0x00565969`, `0x00565A7A`: Namen), bei der Auswahl der Spieler für Ereignisse
+- `0x0055F4E9`
+  - docs/korrekturliste-meldungen.md:153 – (`0x0055F443`, `0x0055F4E9`, `0x00565969`, `0x00565A7A`: Namen), bei der Auswahl der Spieler für Ereignisse
+- `0x0055F96E`
+  - docs/befund-meldungen.md:729 – `0x0060004D`) und die Anzeige im Spielerdialog (`0x0055F96E`). Die Konditionsroutine `0x00457E00` (Spieler +0x16
+- `0x00561C46`
+  - docs/befund-notenschnitt.md:20 – | Spielerdetails, Seite „Noten“ (`0x00561C46` ff., Ausgabe „%1.1f“ in Feld 0x1312) | Notencodes | **alle** Einsätze, auch ohne Note (`0x00561CD3
+  - docs/befund-notenschnitt.md:85 – | `0x00561C46` Spielerdetails „Noten“ | Saisonschnitt | Fehler, Patch `notenschnitt-details` |
+  - docs/fundstellen.md:119 – enschnitt Mannschaft“ `0x0046E7DC` (richtig); Spielerdetails „Noten“ `0x00561C46`
+  - tools/a3patch.py:161 – # Player details, page "Noten" (0x00561C46 ff.): the average divides the sum of the grade codes by ALL
+- `0x00561CD3`
+  - docs/befund-notenschnitt.md:20 – f“ in Feld 0x1312) | Notencodes | **alle** Einsätze, auch ohne Note (`0x00561CD3`: Zähler + 1 ohne Prüfung) |
+  - docs/befund-notenschnitt.md:33 – In `0x00561CD3` den Zähler nur erhöhen, wenn die Note ≠ 0 ist. Datei-Offset 0x161CD3, 18 Bytes:
+  - docs/fundstellen.md:120 – (Zähler `0x00561CD3`, gepatcht); Texte „Liebling“/„verhasst“ in den Spielerdetails `0x0055B167`;
+- `0x00565969`
+  - docs/korrekturliste-meldungen.md:153 – (`0x0055F443`, `0x0055F4E9`, `0x00565969`, `0x00565A7A`: Namen), bei der Auswahl der Spieler für Ereignisse
+- `0x00565A7A`
+  - docs/korrekturliste-meldungen.md:153 – (`0x0055F443`, `0x0055F4E9`, `0x00565969`, `0x00565A7A`: Namen), bei der Auswahl der Spieler für Ereignisse
+- `0x00592C40`
+  - docs/befund-personal.md:146 – Die Bildschirme (Trainer/Co-Trainer `0x00486602` ff., Torwarttrainer `0x00592C40`) zeigen genau die Liste des **eigenen
+- `0x005C2A29`
+  - docs/befund-meldungen.md:818 – - Hüllroutine `0x005C2A29` (Vertragsverhandlung; 1479, 1480, 1482, 1491–1498, 1500, 1501).
+- `0x005CB00F`
+  - docs/befund-personal.md:300 – Gehalt +0x88 = 0 → Dialog `0x005CB00F`, bei Zusage Gehalt aus `0x0066B648` und 10 Jahre) und `0x006C3D7F` (Routine
+  - docs/befund-personal.md:310 – (Zweig `0x004D766E`: Dialog `0x005CB00F`, Gehalt aus `0x0066B648`) trägt den Spieler aus der fremden Jugend aus
+- `0x005D7386`
+  - docs/korrekturliste-meldungen.md:241 – `0x005D7386` ff.) gelesen; was eine Verletzung mit leerer Zeile dort bewirkt, ist nicht gelesen – deshalb sind 
+  - docs/korrekturliste-meldungen.md:249 –  im Text der Routine `0x0076696E` (Texte 1028/1029) und Vergleich in `0x005D7386`, +1 Tage,
+- `0x005D7C98`
+  - docs/befund-finanzen.md:206 – anz `0x0048163F`; Anzeigen `0x00443F25`, `0x004FB900`, `0x005414F8`, `0x005D7C98`; Prüfung beim Anlegen gegen den
+- `0x005D8624`
+  - docs/fundstellen.md:164 –  des Tages: Satz `0x01C6AC84`, Werte liest nur `0x0078A0F5`, Anzeige `0x005D8624` nur die Textpuffer.
+  - docs/korrekturliste-meldungen.md:143 – (`0x005D8624`) übergibt nur die zwei Textpuffer. Der Wert wird also nirgends angezeigt.
+- `0x005DBEF2`
+  - docs/befund-vereinsstatistik.md:25 – `0x005DBEFC`). Beim Abgang (`0x005DBEF2` → `0x007429A0`) wird es **nur in Liste 1** auf 0 gesetzt. Für Liste 2 gibt es keine
+  - docs/fundstellen.md:254 – : `0x007441F4`, Spielabschluss `0x00744654`, Zu-/Abgang `0x005DBEFC`/`0x005DBEF2`
+- `0x005DBEFC`
+  - docs/befund-vereinsstatistik.md:25 – `0x005DBEFC`). Beim Abgang (`0x005DBEF2` → `0x007429A0`) wird es **nur in Liste 1** auf 0 gesetzt. Für Liste 2 
+  - docs/fundstellen.md:254 – ore“/„Spiele“: `0x007441F4`, Spielabschluss `0x00744654`, Zu-/Abgang `0x005DBEFC`/`0x005DBEF2`
+- `0x005DFC63`
+  - docs/befund-meldungen.md:172 – | `0x005DFC63` | 850 | Der Verein wird den Vertrag mit Ihnen nicht mehr verlängern. |
+  - docs/fundstellen.md:178 – - **Nie ausgeführt** (18 Routinen): `0x005DFC63`, `0x005E1C68`, `0x005E3CA8` (Hülle `0x005E3F39`), `0x005E447D`,
+- `0x005DFF60`
+  - docs/befund-personal.md:275 – Zwang = 1 bei Manager-Ereignissen (`0x005DFF60`, `0x006D9FA1`, `0x006DA24D`) und im Saisonwechsel für alle
+- `0x005E08F1`
+  - docs/befund-meldungen.md:153 – `0x005E20FD` → `0x005E08F1` (45 Texte ab 1254, für einen zufälligen Kaderspieler).
+  - docs/befund-meldungen.md:218 – Im Verteiler der allgemeinen Spieler-Ereignisse `0x005E08F1` gibt es einen Fall 48 (Text 1289), aber die
+  - docs/befund-meldungen.md:401 – (26 Aufrufe, vor allem in `0x005E08F1`).
+  - docs/befund-meldungen.md:764 – **Verteiler der allgemeinen Spieler-Ereignisse `0x005E08F1`** (maschinell, `meld9.py` → `faelle.txt`):
+  - docs/fundstellen.md:142 – Allgemeine Spieler-Ereignisse: Verteiler `0x005E08F1` (Fall 48 = Text 1289 unerreichbar).
+  - docs/fundstellen.md:189 – sepaket P02** (`befund-meldungen.md` 6.6–6.12): Hülle `0x005E20FD` → `0x005E08F1`;
+  - docs/korrekturliste-meldungen.md:176 – 1218 (`0x005FE6D9`). Alle vier Routinen (`0x005FB264`, `0x005FD59D`, `0x005E08F1`,
+  - docs/korrekturliste-meldungen.md:760 – Kadergröße von 1000 die Routine `0x005E08F1` für einen zufälligen Kaderspieler (bei 28 Spielern rund 5,83 Züge je
+  - tools/asm_presse.py:141 – # 1269 "%1 pöbelt friedliche Passanten an" (0x005E08F1, manager [ebp+8], club [ebp+0Ch], player [ebp+10h]), -4
+- `0x005E0A81`
+  - docs/befund-meldungen.md:487 – 05E19C9`). Die Stelle zu 1256 übergibt für denselben Teilwert Art 3 (`0x005E0A81`); Art 1
+- `0x005E0EC1`
+  - docs/befund-meldungen.md:472 – übergeben (`0x005E0EC1`, Text 1267).
+- `0x005E0F0D`
+  - tools/a3patch.py:503 – ebelt friedliche Passanten an": "Presse" -4 applied to the player (VA 0x005E0F0D)
+  - tools/asm_presse.py:142 – 'presse-1269': (0x005E0F0D, 0x005E0F63, dict(T, END=0x005E0F63), [
+- `0x005E0F36`
+  - docs/befund-meldungen.md:300 – öbelt friedliche Passanten an - Kann sich %2 einen solchen Spiele… | `0x005E0F36` | 7 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+  - docs/korrekturliste-meldungen.md:179 – je [ebp+8]; 1269 `0x005E0F36`, 1528 `0x005E5C07`, 1530 `0x005E5D2D` je [ebp+10h].
+- `0x005E0F63`
+  - tools/asm_presse.py:142 – 'presse-1269': (0x005E0F0D, 0x005E0F63, dict(T, END=0x005E0F63), [
+- `0x005E112F`
+  - docs/befund-meldungen.md:457 – | 1276 | `0x005E112F` | `0x00600F2F` | Ihr Spieler %s wurde bei einer Bordellrazzia von der Polizei verhaftet. |
+- `0x005E1541`
+  - docs/befund-meldungen.md:476 – bei `0x005E1541` als Straf-Frage Stufe 2 gestellt; der Manager wählt also eine Strafe für einen Spieler, den die Fr
+- `0x005E15ED`
+  - docs/befund-meldungen.md:469 – ber bei meiner Frau %2 bleiben“): Die Frage läuft über `0x005F29BC` (`0x005E15ED`), das als
+- `0x005E1694`
+  - tools/asm_nacht.py:405 – # K43, messages 1309 / 1310 / 1311 (0x005E1694 ff., club [ebp+0Ch], player [ebp+10h]): "before" came from the readers
+- `0x005E1741`
+  - docs/befund-notenschnitt.md:90 – | `0x005E588A`, `0x005E1741` | Ereignisse nach einer einzelnen schlechten Note | nur ein Spiel – unauffällig |
+  - docs/befund-zaehler.md:105 – n: Notenleser im Spielbericht (`0x006580B2`-Aufrufer), `0x0048E36F`, `0x005E1741`, `0x0072796F`.
+- `0x005E184C`
+  - tools/asm_nacht.py:409 – 'vorher-1309': (0x005E184C, 0x005E18A3, {}, [
+- `0x005E184F`
+  - docs/befund-meldungen.md:482 – n gespeicherten Wert ohne diese Zuschläge zurück. Die Fälle zu 1309 (`0x005E184F`–`0x005E189B`),
+- `0x005E189B`
+  - docs/befund-meldungen.md:482 – en Wert ohne diese Zuschläge zurück. Die Fälle zu 1309 (`0x005E184F`–`0x005E189B`),
+- `0x005E18A3`
+  - tools/asm_nacht.py:409 – 'vorher-1309': (0x005E184C, 0x005E18A3, {}, [
+- `0x005E18D5`
+  - tools/asm_nacht.py:438 – 'vorher-1310': (0x005E18D5, 0x005E190E, {}, [
+- `0x005E1906`
+  - docs/befund-meldungen.md:483 – 1310 (`0x005E1906`) und 1311 nehmen „Vorher“ vom Leser und „Nachher“ vom Schreiber. Hat der Spieler eines der
+- `0x005E190E`
+  - tools/asm_nacht.py:438 – 'vorher-1310': (0x005E18D5, 0x005E190E, {}, [
+- `0x005E1940`
+  - tools/asm_nacht.py:457 – 'vorher-1311': (0x005E1940, 0x005E1979, {}, [
+- `0x005E1979`
+  - tools/asm_nacht.py:457 – 'vorher-1311': (0x005E1940, 0x005E1979, {}, [
+- `0x005E19C9`
+  - docs/befund-meldungen.md:487 – aber 1 übergeben (`0x005E19C9`). Die Stelle zu 1256 übergibt für denselben Teilwert Art 3 (`0x005E0A81`); Art 1
+- `0x005E19DC`
+  - docs/befund-meldungen.md:486 – - 1312 (`0x005E19DC`): Geändert und angezeigt wird Spielersatz 0x274 (`0x00701328`, `0x00701210(−5)`), als Art wird
+- `0x005E1C68`
+  - docs/befund-meldungen.md:173 – | `0x005E1C68` | 1315–1325 | Geld der Spieler: Lottogewinn, Steuernachforderung, Börsenverluste … |
+  - docs/befund-meldungen.md:189 – - `0x005E1C68`: Die ältere Fassung einzelner dieser Ereignisse ist erreichbar (zum Beispiel Text 300 „Marmorgrube
+  - docs/befund-meldungen.md:499 – e gelesen (acht Stellen), über `0x00703225` nur in der toten Routine `0x005E1C68`. Der Spieler
+  - docs/fundstellen.md:178 – - **Nie ausgeführt** (18 Routinen): `0x005DFC63`, `0x005E1C68`, `0x005E3CA8` (Hülle `0x005E3F39`), `0x005E447D`,
+- `0x005E20FD`
+  - docs/befund-meldungen.md:153 – `0x005E20FD` → `0x005E08F1` (45 Texte ab 1254, für einen zufälligen Kaderspieler).
+  - docs/fundstellen.md:189 – routinen aus Lesepaket P02** (`befund-meldungen.md` 6.6–6.12): Hülle `0x005E20FD` → `0x005E08F1`;
+  - docs/korrekturliste-meldungen.md:288 – ter nach `0x005EFE1B` (weitere Zufallsereignisse dieses Tages, u. a. `0x005E20FD`), und liefert
+- `0x005E2152`
+  - docs/befund-meldungen.md:518 – - **Fest eingetragene Spielernamen, Texte 1348–1351 und 1353–1355 (`0x005E2152`):** Sieben Fälle (Werbespots und
+  - docs/fundstellen.md:190 – Hülle `0x005E2BB9` → `0x005E2152` (andere Ablenkung; Firmen-Stand Bits 4–6 von Spielstand 0x261, lesen
+  - docs/korrekturliste-meldungen.md:762 – 5 (K39, K36):** danach mit Kadergröße von 5000 die Firmen-Ereignisse `0x005E2152` (rund 1,17 Züge je
+  - tools/asm_nacht.py:381 – xt 1342 "... beschließt, seine Karriere als Fußballprofi zu beenden" (0x005E2152 case at 0x005E26B9, club
+- `0x005E2303`
+  - docs/korrekturliste-meldungen.md:253 – bei Text 1329 („verliert fünf Frischepunkte“) mit −5 (`0x005E2303`). Der Fall zu 1180 (`0x005FDD89`: Zufall 0–1, 0 →
+  - tools/asm_nacht.py:171 – ]), the routine text 1329 "verliert fünf Frischepunkte" uses with -5 (0x005E2303).
+- `0x005E25B2`
+  - docs/befund-meldungen.md:458 – | 1338 | `0x005E25B2` | `0x00601043` | Die Computerfirma Ihres Spielers %1 muß leider Konkurs anmelden. Die Geschichte i
+- `0x005E26B9`
+  - tools/asm_nacht.py:381 – ießt, seine Karriere als Fußballprofi zu beenden" (0x005E2152 case at 0x005E26B9, club
+  - tools/asm_nacht.py:387 – 'karriereende-1342': (0x005E26B9, 0x005E26EE, {'END': 0x005E26EE}, [
+- `0x005E26BC`
+  - docs/befund-meldungen.md:497 – Computerfirma zu widmen“. Der Fall (`0x005E26BC`–`0x005E26E6`) setzt nur den Firmen-Stand von 5 auf 6 (Bits 4–6 von
+- `0x005E26E6`
+  - docs/befund-meldungen.md:497 – Computerfirma zu widmen“. Der Fall (`0x005E26BC`–`0x005E26E6`) setzt nur den Firmen-Stand von 5 auf 6 (Bits 4–6 von
+- `0x005E26EE`
+  - tools/asm_nacht.py:387 – 'karriereende-1342': (0x005E26B9, 0x005E26EE, {'END': 0x005E26EE}, [
+- `0x005E2813`
+  - docs/befund-meldungen.md:527 – ist am Nachbarfall 1347 (`0x005E2813`, Zeichenkette `0x0088D970`) gegengeprüft: dessen Nachname steht als eigene
+- `0x005E286F`
+  - docs/befund-meldungen.md:520 – Zeichenkette im Programm ist (`strcmp` bei `0x005E286F`, `0x005E28CB`, `0x005E2927`, `0x005E2983`, `0x005E2A33`,
+- `0x005E28CB`
+  - docs/befund-meldungen.md:520 – Zeichenkette im Programm ist (`strcmp` bei `0x005E286F`, `0x005E28CB`, `0x005E2927`, `0x005E2983`, `0x005E2A33`,
+- `0x005E2927`
+  - docs/befund-meldungen.md:520 – ichenkette im Programm ist (`strcmp` bei `0x005E286F`, `0x005E28CB`, `0x005E2927`, `0x005E2983`, `0x005E2A33`,
+- `0x005E2983`
+  - docs/befund-meldungen.md:520 – Programm ist (`strcmp` bei `0x005E286F`, `0x005E28CB`, `0x005E2927`, `0x005E2983`, `0x005E2A33`,
+- `0x005E2A33`
+  - docs/befund-meldungen.md:520 – `strcmp` bei `0x005E286F`, `0x005E28CB`, `0x005E2927`, `0x005E2983`, `0x005E2A33`,
+- `0x005E2A8F`
+  - docs/befund-meldungen.md:521 – `0x005E2A8F`, `0x005E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9
+- `0x005E2AEE`
+  - docs/befund-meldungen.md:521 – `0x005E2A8F`, `0x005E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x005E2B2B`
+  - docs/befund-meldungen.md:459 – | 1355 | `0x005E2B2B` | `0x00601043` | Ihr Spieler %s macht in den nächsten Tagen einen Werbespot … |
+- `0x005E2BB9`
+  - docs/fundstellen.md:190 – Hülle `0x005E2BB9` → `0x005E2152` (andere Ablenkung; Firmen-Stand Bits 4–6 von Spielstand 0x261, lesen
+  - docs/korrekturliste-meldungen.md:74 – ` und Text 716 bei `0x006A71CF` im selben Tagesverteiler). Die Hülle `0x005E2BB9` (zufälliger Kaderplatz, Aufruf `0x005E2C10`) und der Verteiler (`0x005EFEA4`, danach Rücksprung) f
+  - tools/asm_nacht.py:384 – # 0x005E2BB9 and the dispatcher (0x005EFEA4) do not touch the player afterwards. Room: cmp al, push forms, add e
+- `0x005E2C10`
+  - docs/korrekturliste-meldungen.md:74 – gesverteiler). Die Hülle `0x005E2BB9` (zufälliger Kaderplatz, Aufruf `0x005E2C10`) und der Verteiler (`0x005EFEA4`, danach Rücksprung) fassen den Spieler nach der Rückkehr nicht me
+- `0x005E3187`
+  - docs/korrekturliste-meldungen.md:154 – (`0x005ECE74`, `0x005ECF13`, `0x005E3187` ff., `0x0060A257` ff.), bei einem Abzug von 5 auf einen Teilwert der
+- `0x005E3885`
+  - docs/befund-meldungen.md:512 – - **Gruppenbildung, Text 1412 (`0x005E3885`):** Die Routine läuft nur weiter, wenn Byte Verein +0x9E unter 100 liegt
+  - docs/befund-meldungen.md:831 – wird eingetragen, bevor die Bedingungen ihres Falls geprüft sind. `0x005E3885` liefert nach der Auslosung immer 1,
+  - docs/fundstellen.md:191 – `0x00703276`; feste Namen `0x0088D970`–`0x0088D9C0`); Gruppenbildung `0x005E3885` (Verein
+- `0x005E3899`
+  - docs/befund-meldungen.md:513 – (`0x005E3899`). Der Zweig `0x005E3C19`–`0x005E3C28` (Bit der Gruppe = 1) verlangt aber Verein +0x9E über 100
+- `0x005E3C14`
+  - docs/befund-meldungen.md:514 – (`0x005E3C14`). Weder die Routine selbst noch eines der 190 von ihr aus erreichbaren Unterprogramme schreibt ein
+- `0x005E3C19`
+  - docs/befund-meldungen.md:513 – (`0x005E3899`). Der Zweig `0x005E3C19`–`0x005E3C28` (Bit der Gruppe = 1) verlangt aber Verein +0x9E über 100
+- `0x005E3C28`
+  - docs/befund-meldungen.md:513 – (`0x005E3899`). Der Zweig `0x005E3C19`–`0x005E3C28` (Bit der Gruppe = 1) verlangt aber Verein +0x9E über 100
+- `0x005E3CA8`
+  - docs/befund-meldungen.md:166 – (`0x005E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/befund-meldungen.md:174 – | `0x005E3CA8` | 1417, 1418, 1420–1422 | Gruppen im Kader: Auftreten gegenüber dem Präsidenten |
+  - docs/fundstellen.md:178 – - **Nie ausgeführt** (18 Routinen): `0x005DFC63`, `0x005E1C68`, `0x005E3CA8` (Hülle `0x005E3F39`), `0x005E447D`,
+- `0x005E3F39`
+  - docs/befund-meldungen.md:166 – (`0x005E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/fundstellen.md:178 – hrt** (18 Routinen): `0x005DFC63`, `0x005E1C68`, `0x005E3CA8` (Hülle `0x005E3F39`), `0x005E447D`,
+- `0x005E409C`
+  - docs/befund-meldungen.md:777 – - `0x005E409C` (Spielernummer als Index statt Vergleich); `0x005EB669` (verlangt mehr als einen Kandidaten);
+- `0x005E447D`
+  - docs/befund-meldungen.md:175 – | `0x005E447D` | 1423–1427 | Gruppen im Kader: Beitritt, Austritt |
+  - docs/fundstellen.md:178 – nen): `0x005DFC63`, `0x005E1C68`, `0x005E3CA8` (Hülle `0x005E3F39`), `0x005E447D`,
+- `0x005E4A3E`
+  - docs/befund-meldungen.md:145 – | 8 | 100 | `0x005FC5B5` | | 50 | 66 | `0x005E4DDE` → `0x005E4A3E` |
+  - docs/fundstellen.md:192 – +0x9E, Gruppenbit setzen `0x0069A882`); Hülle `0x005E4DDE` → `0x005E4A3E` (Spieler biedert sich an); Hülle
+- `0x005E4B5B`
+  - docs/befund-meldungen.md:456 – | 954 | `0x005E4B5B` | `0x00600F2F` | Ihr Spieler %s kommt nach dem Training zu Ihnen … |
+- `0x005E4CF7`
+  - tools/asm_nacht.py:561 – # call 0x00600F2F / return 1) is taken from the neighbouring case at 0x005E4CF7, which is identical.
+  - tools/asm_nacht.py:562 – 'frau-969': (0x005E4D17, 0x005E4D32, {'TAIL': 0x005E4CF7}, [
+- `0x005E4D17`
+  - docs/befund-meldungen.md:468 – Namen 0 (`0x005E4D17`–`0x005E4D19`); `0x00600F2F` setzt dafür eine leere Zeichenkette ein (`0x00600F90`).
+  - tools/asm_nacht.py:562 – 'frau-969': (0x005E4D17, 0x005E4D32, {'TAIL': 0x005E4CF7}, [
+- `0x005E4D19`
+  - docs/befund-meldungen.md:468 – Namen 0 (`0x005E4D17`–`0x005E4D19`); `0x00600F2F` setzt dafür eine leere Zeichenkette ein (`0x00600F90`).
+- `0x005E4D2A`
+  - docs/befund-meldungen.md:467 – ne Frau %2 fände diese Idee auch einfach großartig“): Der Aufruf bei `0x005E4D2A` übergibt als zweiten
+- `0x005E4D32`
+  - tools/asm_nacht.py:562 – 'frau-969': (0x005E4D17, 0x005E4D32, {'TAIL': 0x005E4CF7}, [
+- `0x005E4DDE`
+  - docs/befund-meldungen.md:145 – | 8 | 100 | `0x005FC5B5` | | 50 | 66 | `0x005E4DDE` → `0x005E4A3E` |
+  - docs/fundstellen.md:192 – +0x9E, Gruppenbit setzen `0x0069A882`); Hülle `0x005E4DDE` → `0x005E4A3E` (Spieler biedert sich an); Hülle
+- `0x005E4EC2`
+  - docs/befund-meldungen.md:508 – die Routine `0x005E4EC2` prüft Bit 0x20000 nicht. Der enttarnte Spieler wird deshalb weiter als Spitzel gezogen: Er
+  - docs/fundstellen.md:193 – `0x005E4FD6` → `0x005E4EC2` (Spitzel: Flagwort Spielstand 0x194 Bit 0x8000, lesen `0x007001ED`, setzen/löschen
+  - tools/asm_nacht.py:190 – eilt Ihnen danach mit, daß er Ihnen ab jetzt nichts mehr sagen wird" (0x005E4EC2, club [ebp+8],
+- `0x005E4F10`
+  - docs/befund-meldungen.md:503 – danach mit, daß er Ihnen ab jetzt nichts mehr sagen wird.“ Der Fall (`0x005E4F10`–
+  - tools/asm_nacht.py:193 – 'spitzel-983': (0x005E4F10, 0x005E4F7C, {}, [
+- `0x005E4F7C`
+  - docs/befund-meldungen.md:504 – `0x005E4F7C`) zieht bei allen Kaderspielern den Trainer-Teilwert um 10 ab, setzt beim Spitzel Bit 0x20000 im Fl
+  - tools/asm_nacht.py:193 – 'spitzel-983': (0x005E4F10, 0x005E4F7C, {}, [
+- `0x005E4FD6`
+  - docs/befund-meldungen.md:146 – | 9 | 100 | `0x005FA5F8` → `0x005FA394` | | 51 | 44 | `0x005E4FD6` |
+  - docs/befund-meldungen.md:507 – `0x007074FB`). Die Hülle `0x005E4FD6` wählt den Spitzel allein nach Bit 0x8000 (`0x007001ED` bei `0x005E5031`), und
+  - docs/fundstellen.md:193 – `0x005E4FD6` → `0x005E4EC2` (Spitzel: Flagwort Spielstand 0x194 Bit 0x8000, lesen `0x007001ED`, setzen/löschen
+- `0x005E5031`
+  - docs/befund-meldungen.md:507 – 005E4FD6` wählt den Spitzel allein nach Bit 0x8000 (`0x007001ED` bei `0x005E5031`), und
+- `0x005E50BA`
+  - docs/befund-meldungen.md:29 – 1. Die noch ungelesenen Routinen der Pakete: in P02 vier (`0x005E50BA`, `0x005E56A5`, `0x005E5A01`, `0x005E60BC`,
+  - docs/befund-meldungen.md:147 – | 10 | 55 | `0x005FC8E6` → `0x005FC6BC` | | 52 | 500 | `0x005E50BA` („Maulwurf“) |
+  - docs/befund-meldungen.md:376 – (1692/1693), `0x0064B5D1` (1694/1695) und die Maulwurf-Routine `0x005E50BA` bei 1701 (`0x005E52EC`, einmal je Saison
+  - docs/befund-meldungen.md:378 – - Gelesen wird der Zähler nur in `0x005E50BA` (`0x005E53F5`: Stufe 2 → Text 1703 …). Auf 0 gesetzt wird er nur beim
+  - docs/befund-meldungen.md:384 – nicht. Einen Maulwurf bestimmt `0x005E50BA` nur unter Spielern mit Gesamtmotivation unter 70 und mindestens zwei
+  - docs/fundstellen.md:147 – `0x005E53F5` in der Maulwurf-Routine `0x005E50BA`; Merker Bit 21 setzen `0x005E5650`, prüfen `0x005E536D`;
+  - docs/fundstellen.md:153 – Aufstellung `0x006493E0`, Bestimmung in `0x005E50BA` (`0x005E5693`, Kandidaten Motivation +0xCA < 70), Aufrufer
+  - docs/korrekturliste-meldungen.md:165 – urf = Bit 16 im Flagwort des Spielers (`0x00700272` / `0x00700294`). `0x005E50BA` (täglicher
+- `0x005E52C8`
+  - docs/befund-meldungen.md:301 – rheit der Spieler ist gegen den Trainer!" - Neue, eigentlich gehe… | `0x005E52C8` | 6 | 0x0 | kein Wert übergeben |
+- `0x005E52EC`
+  - docs/befund-meldungen.md:376 – 064B5D1` (1694/1695) und die Maulwurf-Routine `0x005E50BA` bei 1701 (`0x005E52EC`, einmal je Saison
+  - docs/fundstellen.md:146 – Aufrufer `0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x005E5335`
+  - docs/befund-meldungen.md:302 – destens 5 wollen weg!" - Nur bei uns: Internes aus dem Mannschaft… | `0x005E5335` | 6 | 0x0 | kein Wert übergeben |
+- `0x005E535A`
+  - docs/befund-meldungen.md:377 – wegen Merker 0x10000) und 1702 (`0x005E535A`, Merker 0x20000).
+  - docs/fundstellen.md:146 – 0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x005E536D`
+  - docs/befund-meldungen.md:369 – Maulwurf-Folge, geprüft bei `0x005E536D`). Jeder Aufruf von `0x0069FE73` löscht ihn, ebenso `0x0069FF06` – das ist
+  - docs/fundstellen.md:147 – wurf-Routine `0x005E50BA`; Merker Bit 21 setzen `0x005E5650`, prüfen `0x005E536D`;
+  - docs/korrekturliste-meldungen.md:125 – x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E5650`); zu klären: alte Spielstände mit gesetztem Bit 21 | zurückgestellt 17.11.2026; bau
+  - docs/korrekturliste-meldungen.md:162 – `0x005E536D`); `0x0069FE73` und `0x0069FF06` löschen es absichtlich bei jeder Änderung des Zählers. Der Zähler 
+  - tools/a3patch.py:469 – nded (bit 21 = "headline for this level already issued", 0x005E5650 / 0x005E536D) and
+- `0x005E53F5`
+  - docs/befund-meldungen.md:378 – - Gelesen wird der Zähler nur in `0x005E50BA` (`0x005E53F5`: Stufe 2 → Text 1703 …). Auf 0 gesetzt wird er nur beim
+  - docs/fundstellen.md:147 – `0x005E53F5` in der Maulwurf-Routine `0x005E50BA`; Merker Bit 21 setzen `0x005E5650`, prüfen `0x005E536D`;
+- `0x005E5408`
+  - docs/befund-meldungen.md:373 – wertet werden aber die Stände 2, 3, 5, 6, 8 und 10 (Texte 1703–1708, `0x005E5408` ff.): die
+  - docs/fundstellen.md:150 – e `0x1C0000`, Leser `0x0069FE57`), ausgewertet werden Stände bis 10 (`0x005E5408` ff.).
+- `0x005E543D`
+  - docs/befund-meldungen.md:303 – wurf %1 verrät Interna - %2 ist die undichte Stelle noch ein Räts… | `0x005E543D` | 8 | 0x4 | Managerwert ohne Managernummer übergeben; ob er auf anderem Weg angewendet wird, ist n
+- `0x005E54AE`
+  - docs/befund-meldungen.md:304 – ner %1 hat freie Hand - Präsident schließt harte Maßnahmen nicht … | `0x005E54AE` | 8 | 0x0 | kein Wert übergeben |
+- `0x005E54E2`
+  - docs/befund-meldungen.md:305 –  | %1 vollkommen hilflos - Wer ist der geheimnisvolle Maulwurf %2? | `0x005E54E2` | 8 | 0x4 | Managerwert ohne Managernummer übergeben; ob er auf anderem Weg angewendet wird, ist n
+- `0x005E5553`
+  - docs/befund-meldungen.md:306 – wurfsaffäre weitet sich aus - Präsident %1 fordert %2 zum Handeln… | `0x005E5553` | 8 | 0x40000008 | Wert wird über die Schlagzeile angewendet (nur als oberste Schlagzeile) |
+- `0x005E55B2`
+  - docs/befund-meldungen.md:307 – | 1707 | %1 läßt Maulwurf gewähren - Atmosphäre %2 total vergiftet | `0x005E55B2` | 8 | 0x20000800 | Wert wird über die Schlagzeile angewendet (nur als oberste Schlagzeile) |
+- `0x005E5630`
+  - docs/befund-meldungen.md:308 – ident %1: "Akzeptiere Tatenlosingkeit nicht!" -%2 gerät in der Ma… | `0x005E5630` | 9 | 0x40000008 | Wert wird über die Schlagzeile angewendet (nur als oberste Schlagzeile) |
+- `0x005E5650`
+  - docs/befund-meldungen.md:368 – er „Schlagzeile zu diesem Zählerstand schon erschienen“ (gesetzt bei `0x005E5650` am Ende der
+  - docs/fundstellen.md:147 – 005E53F5` in der Maulwurf-Routine `0x005E50BA`; Merker Bit 21 setzen `0x005E5650`, prüfen `0x005E536D`;
+  - docs/korrekturliste-meldungen.md:125 – Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E5650`); zu klären: alte Spielstände mit gesetztem Bit 21 | zurückgestellt 17.11.2026; baut auf K11 auf (
+  - docs/korrekturliste-meldungen.md:161 – ker, sondern „Schlagzeile zu diesem Stand schon erschienen“ (gesetzt `0x005E5650`, geprüft
+  - tools/a3patch.py:469 – utine is intended (bit 21 = "headline for this level already issued", 0x005E5650 / 0x005E536D) and
+- `0x005E5693`
+  - docs/fundstellen.md:153 – Aufstellung `0x006493E0`, Bestimmung in `0x005E50BA` (`0x005E5693`, Kandidaten Motivation +0xCA < 70), Aufrufer
+- `0x005E56A5`
+  - docs/befund-meldungen.md:29 – Die noch ungelesenen Routinen der Pakete: in P02 vier (`0x005E50BA`, `0x005E56A5`, `0x005E5A01`, `0x005E60BC`,
+  - docs/befund-meldungen.md:139 – | 2 | 100 | `0x005F9A2D` | | 20 | 30 | `0x005E56A5` (Leistungs-Schlagzeilen) |
+- `0x005E5715`
+  - docs/fundstellen.md:136 – - Leistungs-Schlagzeilen (Kaderschleife um `0x005E5715`): 1519 „Totalausfall“ (gepatcht über `0x00705EB6`), 1520, 1521.
+  - tools/a3patch.py:210 – # (0x005E5715 ff.: last grade >= 5.0, season average > 4.0, more than 10 appearances, club below its
+- `0x005E572C`
+  - docs/befund-notenschnitt.md:98 – - `0x00705EB6` ← `0x005E572C` (Ereignis mit Textnummer 0x5EF, Wirkung −6 auf Spielersatz 0x272): Bedingung „letzte Note
+  - docs/befund-notenschnitt.md:118 – | `0x00705EB6` Saisonschnitt | Zeitungsmeldung, `0x005E572C` | 1519 „%1 erneut ein Totalausfall - %2: Wie lange müssen wir ihn noch ertragen?“ | im letzten Spi
+  - docs/befund-notenschnitt.md:141 – Rahmen ihres einzigen Aufrufers (`0x005E572C`, `[ebp+8]`); sie darf deshalb nie von anderer Stelle aufgerufen werden.
+  - docs/befund-zaehler.md:101 – mit 0x1C (nur 3 von 4 Bits: Noten ab 4,0 werden zu 0–3,5). Aufrufer: `0x005E572C` (Ereignis 0x5EF, Bedingung
+  - tools/asm_totalausfall.py:8 – (0x005E572C, club = [ebp+8]) - this routine sets up no frame of its own, so ebp is still the caller's.
+  - tools/asm_totalausfall.py:19 – (None, '8B4508', None), # mov eax,[ebp+8] club (frame of the caller 0x005E572C)
+- `0x005E57E0`
+  - docs/befund-meldungen.md:309 – rneut ein Totalausfall - %2: Wie lange müssen wir ihn noch ertrag… | `0x005E57E0` | 7 | 0x4 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Presse |
+- `0x005E584B`
+  - docs/befund-meldungen.md:310 –  als Symbol für die Krise - Der Liebling des Trainers vor dem Aus? | `0x005E584B` | 7 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005E588A`
+  - docs/befund-notenschnitt.md:90 – | `0x005E588A`, `0x005E1741` | Ereignisse nach einer einzelnen schlechten Note | nur ein Spiel – unauffällig |
+- `0x005E58B2`
+  - docs/befund-meldungen.md:311 – ibelchen %1 völlig verunsichert - Hat ihn auch der Trainerstab au… | `0x005E58B2` | 7 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005E5904`
+  - docs/befund-meldungen.md:312 – %1 vor Wechsel ins Ausland - Das Fußball-Magazin kennt alle Fakten | `0x005E5904` | 7 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005E595D`
+  - docs/befund-meldungen.md:313 – 1 reif für die Nationalelf - Berufung nur noch eine Frage der Zeit | `0x005E595D` | 7 | 0x200 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Spielersatz 0x274) |
+- `0x005E59BD`
+  - docs/befund-meldungen.md:314 – ionär und doch nicht glücklich? - Alle Details über das Privatleb… | `0x005E59BD` | 6 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005E5A01`
+  - docs/befund-meldungen.md:29 – esenen Routinen der Pakete: in P02 vier (`0x005E50BA`, `0x005E56A5`, `0x005E5A01`, `0x005E60BC`,
+  - docs/befund-meldungen.md:140 – | 3 | 100 | `0x005FA890` → `0x005FA6CE` | | 21 | 11 | `0x005E5DE6` → `0x005E5A01` |
+- `0x005E5A60`
+  - tools/asm_presse.py:169 – # 1528 "%1 mit schweren Vorwürfen gegen den Trainer" (0x005E5A60 ff., same arguments as 1269), value -4
+- `0x005E5BDD`
+  - docs/korrekturliste-meldungen.md:177 – die Routine um `0x005E5BDD`) enden mit `mov esp,ebp`; deshalb dürfen die `add esp` nach den Aufrufen entfallen.
+  - tools/a3patch.py:509 –  Vorwuerfen gegen den Trainer": "Presse" -4 applied to the player (VA 0x005E5BDD)
+  - tools/asm_presse.py:170 – 'presse-1528': (0x005E5BDD, 0x005E5C2F, dict(T, END=0x005E5C2F), [
+- `0x005E5C07`
+  - docs/befund-meldungen.md:315 – it schweren Vorwürfen gegen den Trainer - Trainingsmethodik von %… | `0x005E5C07` | 8 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+  - docs/korrekturliste-meldungen.md:179 – je [ebp+8]; 1269 `0x005E0F36`, 1528 `0x005E5C07`, 1530 `0x005E5D2D` je [ebp+10h].
+- `0x005E5C2F`
+  - tools/asm_presse.py:170 – 'presse-1528': (0x005E5BDD, 0x005E5C2F, dict(T, END=0x005E5C2F), [
+- `0x005E5D03`
+  - tools/a3patch.py:515 – 530 "%1 kritisiert Trainer %2": "Presse" -4 applied to the player (VA 0x005E5D03)
+  - tools/asm_presse.py:198 – 'presse-1530': (0x005E5D03, 0x005E5D55, dict(T, END=0x005E5D55), [
+- `0x005E5D2D`
+  - docs/befund-meldungen.md:316 – ritisiert Trainer %2 - Ungenügende Fitneß der Mannschaft für schl… | `0x005E5D2D` | 8 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+  - docs/korrekturliste-meldungen.md:179 – je [ebp+8]; 1269 `0x005E0F36`, 1528 `0x005E5C07`, 1530 `0x005E5D2D` je [ebp+10h].
+- `0x005E5D55`
+  - tools/asm_presse.py:198 – 'presse-1530': (0x005E5D03, 0x005E5D55, dict(T, END=0x005E5D55), [
+- `0x005E5DE6`
+  - docs/befund-meldungen.md:140 – | 3 | 100 | `0x005FA890` → `0x005FA6CE` | | 21 | 11 | `0x005E5DE6` → `0x005E5A01` |
+- `0x005E5E90`
+  - docs/befund-meldungen.md:830 – „schon geschehen“ mit 20 Plätzen (`0x00A32738`, Prüfen `0x005E5E90`, Eintragen `0x005E5EE0`); eine gezogene Nummer
+  - docs/fundstellen.md:163 – rliste „schon geschehen“ `0x00A32738`: nur die letzten 20 Kennungen (`0x005E5E90` / `0x005E5EE0`).
+  - docs/korrekturliste-meldungen.md:134 – der letzten 20 Ereignisse (`0x005E5E90`). Die Kader-Zeigerliste wird von `0x00635F76`, `0x00636120` ff. und
+- `0x005E5EE0`
+  - docs/befund-meldungen.md:830 – chehen“ mit 20 Plätzen (`0x00A32738`, Prüfen `0x005E5E90`, Eintragen `0x005E5EE0`); eine gezogene Nummer
+  - docs/fundstellen.md:163 – eschehen“ `0x00A32738`: nur die letzten 20 Kennungen (`0x005E5E90` / `0x005E5EE0`).
+  - docs/korrekturliste-meldungen.md:145 – behält (`0x005E5EE0`). Die Geld-Ereignisse können sich also über die Jahre wiederholen.
+- `0x005E5F40`
+  - docs/korrekturliste-meldungen.md:252 – - **K28:** `0x005E5F40(n)` ändert Wort Spieler +0x18 um n × 100 (begrenzt 0–10000) = Frische in Punkten; 29 Aufrufer,
+  - tools/a3patch.py:615 – # New: 0x005E5F40(-1) as text 1329 does with -5. Block from tools/asm_nacht.py.
+  - tools/asm_nacht.py:170 – 0 -> this message, 1 -> 0x005FDDCA). Only the message was shown. New: 0x005E5F40(-1) on the
+- `0x005E60BC`
+  - docs/befund-meldungen.md:29 – n der Pakete: in P02 vier (`0x005E50BA`, `0x005E56A5`, `0x005E5A01`, `0x005E60BC`,
+  - docs/befund-meldungen.md:155 – (`0x0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+- `0x005E6153`
+  - docs/befund-meldungen.md:155 – (`0x0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+  - docs/fundstellen.md:204 – gnisse `0x005EA5CE` (Merker-Byte `0x00B5DFA8`); Schokoladen-Frage in `0x005E6153`
+- `0x005E8979`
+  - docs/fundstellen.md:205 – ab `0x005E8979`, Auswertung `0x005E9E01`; Geldbetrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`).
+- `0x005E89B1`
+  - docs/befund-meldungen.md:540 – lte Betrag wird nur für den Fragetext nach `0x00A32200` geschrieben (`0x005E89B1`). Bei Erfolg
+  - tools/a3patch.py:358 – # additional win bonuses and "maybe %5" (= 2 x %4, 0x005E89B1) after a successful negotiation; on success
+- `0x005E89B7`
+  - tools/a3patch.py:369 – 'D1E0' # shl eax,1 doubled, as in 0x005E89B7
+- `0x005E89FA`
+  - docs/befund-meldungen.md:541 – (Text 225) wird derselbe einfache Betrag gutgeschrieben (`0x005E89FA`–`0x005E8A09`) wie ohne Verhandlung
+- `0x005E8A09`
+  - docs/befund-meldungen.md:541 – Text 225) wird derselbe einfache Betrag gutgeschrieben (`0x005E89FA`–`0x005E8A09`) wie ohne Verhandlung
+- `0x005E8A27`
+  - docs/befund-meldungen.md:542 – (`0x005E8A27`); einziger Unterschied ist `0x0041849A(0, 0, 0, +3)`, bei Misserfolg −3 und kein Geld.
+- `0x005E993A`
+  - docs/befund-meldungen.md:156 – `0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+  - docs/fundstellen.md:201 – sepaket P04** (`befund-meldungen.md` 6.13): einfache Geld-Ereignisse `0x005E993A` →
+- `0x005E9A4F`
+  - docs/befund-meldungen.md:533 – be, Kosten als Einnahme (690, 697):** Die einfachen Geld-Ereignisse (`0x005E9A4F`, Tabelle
+  - docs/fundstellen.md:202 – `0x005E9A4F` (Tabelle `0x0088DC58`, 108 Paare Text / Wert; negativ → Verein +0x2C0, sonst +0x2C4; Meldung
+  - tools/a3patch.py:345 – # simple money events (0x005E9A4F), 108 pairs text / value (int32 each): negative = booked as expense,
+- `0x005E9AEE`
+  - docs/befund-meldungen.md:535 – (`0x005E9AEE`), sonst → Verein +0x2C4 (`0x005E9B05`); die Meldung zeigt den Betrag ohne Vorzeichen. Bei den
+- `0x005E9B05`
+  - docs/befund-meldungen.md:535 – (`0x005E9AEE`), sonst → Verein +0x2C4 (`0x005E9B05`); die Meldung zeigt den Betrag ohne Vorzeichen. Bei den
+- `0x005E9B22`
+  - docs/befund-meldungen.md:156 – `0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x005E9CFB`
+  - docs/fundstellen.md:203 – `0x005E9CFB`); Ereignisse „Recht“ `0x005E9ED1` (Auslosung `0x0088E04C`, Sprungtabelle `0x005EA50C`, toter Block
+- `0x005E9E01`
+  - docs/fundstellen.md:205 – ab `0x005E8979`, Auswertung `0x005E9E01`; Geldbetrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`).
+- `0x005E9ED1`
+  - docs/befund-meldungen.md:156 – `0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+  - docs/befund-meldungen.md:543 – - **Text 281 kann nie erscheinen:** In `0x005E9ED1` (Auslosung `0x0088E04C`: Nummern 1, 2, 3, 4 mit Gewichten
+  - docs/fundstellen.md:203 – `0x005E9CFB`); Ereignisse „Recht“ `0x005E9ED1` (Auslosung `0x0088E04C`, Sprungtabelle `0x005EA50C`, toter Block
+- `0x005EA012`
+  - docs/befund-meldungen.md:544 – 1, 3, 1, 1) zeigt Fall 2 der Sprungtabelle `0x005EA50C` auf `0x005EA012` (nur Rückgabe 1). Der Block
+- `0x005EA01B`
+  - docs/befund-meldungen.md:545 – `0x005EA01B`–`0x005EA0D7` mit dem Text „… hat die hiesige Staatsbürgerschaft erhalten“ wird von außen nicht
+  - docs/fundstellen.md:204 – `0x005EA01B`); Verbands-Ereignisse `0x005EA5CE` (Merker-Byte `0x00B5DFA8`); Schokoladen-Frage in `0x005E6153`
+- `0x005EA0D7`
+  - docs/befund-meldungen.md:545 – `0x005EA01B`–`0x005EA0D7` mit dem Text „… hat die hiesige Staatsbürgerschaft erhalten“ wird von außen nicht
+- `0x005EA167`
+  - docs/befund-meldungen.md:548 – **Randale: Entwarnung trotz Abzug (283/284):** Im ungünstigen Zweig (`0x005EA167`–`0x005EA204`) werden 100 000 auf
+  - tools/a3patch.py:377 – # (0x005EA167 ff.): 100 000 are booked as expense, but the second text was 283 ("quickly under control")
+- `0x005EA1B1`
+  - docs/befund-meldungen.md:550 – (`0x005EA1B1`) statt 284 („… auf mehr als %s verklagt … auf %s einigen“). Text 283 hat keine Platzhalter, die zw
+- `0x005EA1FB`
+  - tools/a3patch.py:393 – '8985CCFBFFFF' # mov [ebp-434h],eax (booked later at 0x005EA1FB)
+- `0x005EA204`
+  - docs/befund-meldungen.md:548 – twarnung trotz Abzug (283/284):** Im ungünstigen Zweig (`0x005EA167`–`0x005EA204`) werden 100 000 auf
+- `0x005EA42E`
+  - docs/befund-meldungen.md:555 – und bei den Medien“. Bei „Ja“ ruft `0x005EA42E` `0x0041849A(−5, −5, −5, −10, Manager)`. Zuordnung aus dem
+- `0x005EA50C`
+  - docs/befund-meldungen.md:544 – 1, 3, 1, 1) zeigt Fall 2 der Sprungtabelle `0x005EA50C` auf `0x005EA012` (nur Rückgabe 1). Der Block
+  - docs/fundstellen.md:203 – eignisse „Recht“ `0x005E9ED1` (Auslosung `0x0088E04C`, Sprungtabelle `0x005EA50C`, toter Block
+- `0x005EA51C`
+  - docs/befund-meldungen.md:201 – nverändert). Die beiden Stellen gehören zu den erreichbaren Routinen `0x005EA51C` (Fragen-Datensatz 19,
+  - docs/fundstellen.md:172 – `0x005EA51C` (Datensatz 19), `0x005F4972` (Datensatz 2). Datensätze 10/11 über `0x006062FE`.
+- `0x005EA581`
+  - docs/befund-meldungen.md:198 – **Zwei Fehlalarme (G):** Zwischenzeitlich galten die Stellen `0x005EA581` (Text 285) und `0x005F4997` (Text 273) als
+- `0x005EA5CE`
+  - docs/befund-meldungen.md:827 – - Katalog P04, nicht als Fehler markiert und nicht nachgeprüft: In `0x005EA5CE` hat die Los-Nummer 5 (Gewicht 30 von
+  - docs/fundstellen.md:204 – `0x005EA01B`); Verbands-Ereignisse `0x005EA5CE` (Merker-Byte `0x00B5DFA8`); Schokoladen-Frage in `0x005E6153`
+  - docs/korrekturliste-meldungen.md:98 – Lose in `0x005F9ED7`, `0x005FA394`, `0x005FB264`, `0x005FEDB0`, `0x005EA5CE`; zweite Stelle von 1094.
+- `0x005EA7B3`
+  - docs/befund-meldungen.md:559 – hebung der Ausländerbeschränkung ohne Wirkung (769):** Das Ereignis (`0x005EA7B3`–`0x005EA7F8`, ab dem Jahr
+- `0x005EA7CF`
+  - docs/befund-meldungen.md:561 – `0x005EA7CF` das Bit 0x10 – die Wiederholungssperre desselben Ereignisses; alle anderen betreffen die Bits 1, 2
+- `0x005EA7F8`
+  - docs/befund-meldungen.md:559 – sländerbeschränkung ohne Wirkung (769):** Das Ereignis (`0x005EA7B3`–`0x005EA7F8`, ab dem Jahr
+- `0x005EB669`
+  - docs/befund-meldungen.md:777 – - `0x005E409C` (Spielernummer als Index statt Vergleich); `0x005EB669` (verlangt mehr als einen Kandidaten);
+- `0x005EC9D8`
+  - docs/befund-meldungen.md:778 – `0x005EC9D8` (Vergleich ohne Wirkung); `0x005ECCCC` / `0x005ECDC8` / `0x005ECF3B` (ohne Kandidaten ein
+  - docs/fundstellen.md:229 – eintragen `0x00703DF4`; Mitspieler wählen `0x005EC9D8(Verein, Spieler)`.
+  - docs/korrekturliste-meldungen.md:233 – - **K20:** `0x005EC9D8(Verein, X)` zieht einen Mitspieler, der nicht X ist und X nicht als Erzfeind eingetragen hat –
+  - tools/asm_nacht.py:124 – # player [ebp+8] = author, club [ebp+0Ch]). 0x005EC9D8(club, author) draws two team-mates A, B who are not his arch
+- `0x005ECCCC`
+  - docs/befund-meldungen.md:778 – `0x005EC9D8` (Vergleich ohne Wirkung); `0x005ECCCC` / `0x005ECDC8` / `0x005ECF3B` (ohne Kandidaten ein
+- `0x005ECDC8`
+  - docs/befund-meldungen.md:778 – `0x005EC9D8` (Vergleich ohne Wirkung); `0x005ECCCC` / `0x005ECDC8` / `0x005ECF3B` (ohne Kandidaten ein
+- `0x005ECE74`
+  - docs/korrekturliste-meldungen.md:154 – (`0x005ECE74`, `0x005ECF13`, `0x005E3187` ff., `0x0060A257` ff.), bei einem Abzug von 5 auf einen Teilwert der
+- `0x005ECF13`
+  - docs/korrekturliste-meldungen.md:154 – (`0x005ECE74`, `0x005ECF13`, `0x005E3187` ff., `0x0060A257` ff.), bei einem Abzug von 5 auf einen Teilwert der
+- `0x005ECF3B`
+  - docs/befund-meldungen.md:778 – `0x005EC9D8` (Vergleich ohne Wirkung); `0x005ECCCC` / `0x005ECDC8` / `0x005ECF3B` (ohne Kandidaten ein
+- `0x005EE2F5`
+  - docs/befund-meldungen.md:704 – 81, 82, 91, 92. Text 1399 ist doppelt unerreichbar: Die Vorprüfungen `0x005EE2F5` und `0x005EE2FC`
+  - docs/befund-meldungen.md:739 – (`0x005EE2F5`, `0x005EE2FC`);
+  - docs/fundstellen.md:233 – leere Routinen `0x005EE2F5`, `0x005EE2FC`. Raucher / privater Trainer `0x005FFF0F`: Flagwort Spielstand 0x194
+- `0x005EE2FC`
+  - docs/befund-meldungen.md:704 – ext 1399 ist doppelt unerreichbar: Die Vorprüfungen `0x005EE2F5` und `0x005EE2FC`
+  - docs/befund-meldungen.md:739 – (`0x005EE2F5`, `0x005EE2FC`);
+  - docs/fundstellen.md:233 – leere Routinen `0x005EE2F5`, `0x005EE2FC`. Raucher / privater Trainer `0x005FFF0F`: Flagwort Spielstand 0x194
+- `0x005EE5C0`
+  - docs/befund-meldungen.md:114 – `0x00601043`, `0x005EE5C0`). Die vollständige Rückverfolgung (`meld10.py`, mehrere Textparameter je Routine, mit
+  - docs/fundstellen.md:141 – `0x00600F2F`, `0x00601043`, `0x005EE5C0`). Auslosungsobjekt: +0 Anzahl, +2 Summe der Gewichte, +4 Gesamt.
+- `0x005EE98D`
+  - docs/befund-meldungen.md:125 – Sechs Routinen mit Textparameter ohne direkten Aufrufer (`0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`,
+  - docs/fundstellen.md:171 – Routinen aus den Datensätzen: `0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+- `0x005EE9C2`
+  - docs/befund-meldungen.md:125 – chs Routinen mit Textparameter ohne direkten Aufrufer (`0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`,
+  - docs/fundstellen.md:171 – Routinen aus den Datensätzen: `0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+- `0x005EEA5D`
+  - docs/befund-meldungen.md:125 – it Textparameter ohne direkten Aufrufer (`0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`,
+  - docs/fundstellen.md:171 – Routinen aus den Datensätzen: `0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+- `0x005EEBFA`
+  - docs/befund-meldungen.md:125 – er ohne direkten Aufrufer (`0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`,
+  - docs/fundstellen.md:171 – tinen aus den Datensätzen: `0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+- `0x005EECBA`
+  - docs/befund-meldungen.md:126 – `0x005EECBA`, `0x0060B898`) stehen als Routine in diesen Datensätzen (+0x20 / +0x24) und sind damit erreichbar.
+  - docs/befund-meldungen.md:440 – Datensatz 42 (Frage 1725, Routinen `0x005EECBA` / `0x005EEDF9`, aufgerufen aus `0x005F5556`): Die Eigenschaft kommt
+  - docs/fundstellen.md:171 – Datensätzen: `0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+  - docs/fundstellen.md:173 – Ehefrau des Managers (Datensatz 42): `0x005EECBA` / `0x005EEDF9` aus `0x005F5556`, Tabellen `0x0088E0D8`
+- `0x005EEDF9`
+  - docs/befund-meldungen.md:440 – Datensatz 42 (Frage 1725, Routinen `0x005EECBA` / `0x005EEDF9`, aufgerufen aus `0x005F5556`): Die Eigenschaft kommt
+  - docs/fundstellen.md:173 – Ehefrau des Managers (Datensatz 42): `0x005EECBA` / `0x005EEDF9` aus `0x005F5556`, Tabellen `0x0088E0D8`
+- `0x005EEE7F`
+  - docs/befund-meldungen.md:450 – Meldungsroutinen `0x00600F2F` und `0x00601043` setzen Namen nur über `0x005EEE7F` ein. Diese Routine ersetzt
+  - docs/befund-meldungen.md:781 – chanik: `0x005F2813` liefert die Antwort 0/1/2, ohne Frage 0 bzw. 1; `0x005EEE7F` ersetzt %n durch den n-ten
+  - docs/fundstellen.md:184 – 00601043(…, w1–w4)`, mit sieben Werten `0x006015FE`; Namen einsetzen `0x005EEE7F` (ersetzt nur %1–%9, „%s“
+- `0x005EEEA6`
+  - docs/befund-meldungen.md:451 – allein „%“ gefolgt von einer Ziffer 1–9 (`0x005EEEA6`–`0x005EEEC9`); alles andere kopiert sie unverändert. Vier Texte,
+- `0x005EEEC9`
+  - docs/befund-meldungen.md:451 – allein „%“ gefolgt von einer Ziffer 1–9 (`0x005EEEA6`–`0x005EEEC9`); alles andere kopiert sie unverändert. Vier Texte,
+- `0x005EF298`
+  - docs/befund-notenschnitt.md:113 – , jedes Byte mit dem vorigen gespeicherten Byte XOR-verknüpft, Lader `0x005EF298`, Tabelle `0x00A2FAE8`).
+  - docs/fundstellen.md:264 – Byte XOR voriges gespeichertes Byte (erstes mit Länge & 0xFF); Lader `0x005EF298`, Zugriff `0x005EF430(Nr)`; **`tools/a3ereignis.py`** |
+  - docs/korrekturliste-meldungen.md:685 – `0x005EF298` nimmt die Datei nur mit genau 273692 Bytes Text an (`0x005EF303`); die neuen Texte sind zusammen 9
+- `0x005EF303`
+  - docs/korrekturliste-meldungen.md:685 – `0x005EF298` nimmt die Datei nur mit genau 273692 Bytes Text an (`0x005EF303`); die neuen Texte sind zusammen 93 Bytes
+- `0x005EF430`
+  - docs/befund-meldungen.md:112 – - **Texte:** Die Tabelle `0x00A2FAE8` wird ausschließlich über `0x005EF430(Nummer)` gelesen (262 Aufrufe). 39
+  - docs/befund-notenschnitt.md:106 – Die Ereignistexte stehen in einer eigenen Texttabelle (`0x005EF430`, bis 2483 Einträge, aus `texte\…` in den gepackten
+  - docs/fundstellen.md:140 – Textroutine `0x005EF430` (262 Aufrufe, einziger Leser der Tabelle) mit 39 Routinen mit Textparameter (u. a.
+  - docs/fundstellen.md:264 – ichertes Byte (erstes mit Länge & 0xFF); Lader `0x005EF298`, Zugriff `0x005EF430(Nr)`; **`tools/a3ereignis.py`** |
+  - docs/fundstellen.md:274 – - Texte, die das Spiel über `0x005EF430` holt, sind Nummern in `Ereignis.saq` – **nicht** die gleich großen Nummern aus
+- `0x005EF842`
+  - docs/befund-meldungen.md:127 – - **Tägliche Ereignisse je Verein:** `0x005EF842` ruft `0x005EF8CC` (Ereignisse rund um die Spieler) und, wenn dort
+  - docs/fundstellen.md:137 – - **Ereignisverteiler** (`befund-meldungen.md`): täglich je Verein `0x005EF842` → `0x005EF8CC` (Spieler-Ereignisse,
+  - docs/korrekturliste-meldungen.md:289 – auch er 0, ruft `0x005EF842` bei einem menschlichen Manager zusätzlich die Vereins- und Manager-Ereignisse
+- `0x005EF8CC`
+  - docs/befund-meldungen.md:127 – - **Tägliche Ereignisse je Verein:** `0x005EF842` ruft `0x005EF8CC` (Ereignisse rund um die Spieler) und, wenn dort
+  - docs/befund-meldungen.md:133 – - **Spieler-Ereignisse** (`0x005EF8CC`, Tabelle `0x0088E128`, Gesamt 10000, Summe der Gewichte 2100 – in 21 % der
+  - docs/fundstellen.md:137 – erteiler** (`befund-meldungen.md`): täglich je Verein `0x005EF842` → `0x005EF8CC` (Spieler-Ereignisse,
+  - docs/korrekturliste-meldungen.md:287 – , der die Rückgabe durchreicht. Bei Rückgabe ≠ 0 kehrt der Verteiler `0x005EF8CC` sofort mit 1 zurück;
+  - docs/korrekturliste-meldungen.md:699 – - An einem Ereignistag zieht `0x005EF8CC` eine Ereignisart mit Gewicht w von 10000 (Tabelle `0x0088E128`). Gewicht 100
+- `0x005EFADA`
+  - docs/befund-meldungen.md:134 – wird eine Ereignisart gezogen). Jede der 24 Nummern hat im Verteiler `0x005EFADA` eine eigene Routine:
+  - docs/fundstellen.md:138 – Verteiler `0x005EFADA`, Gewichte `0x0088E128`) und `0x005F0133` (Verein/Manager, Gewichte `0x0088E188`);
+  - docs/korrekturliste-meldungen.md:286 –  Aufrufer von `0x005FB264` ist `0x005FB634` (Los-Nummer im Verteiler `0x005EFADA`, Aufruf
+- `0x005EFB69`
+  - docs/korrekturliste-meldungen.md:287 – `0x005EFB69`), der die Rückgabe durchreicht. Bei Rückgabe ≠ 0 kehrt der Verteiler `0x005EF8CC` sofort mit 1 zur
+- `0x005EFDE5`
+  - docs/fundstellen.md:154 – `0x005EFDE5`. Gedopt = Bit 1 in Spielstand 0x24D (lesen `0x006FF99A`, setzen `0x006FF715`; Doping-Dialog
+  - docs/korrekturliste-meldungen.md:166 – Verteiler, Aufrufer `0x005EFDE5`): ist kein Maulwurf im Kader, wird unter den Kandidaten einer zufällig bestimmt
+- `0x005EFE1B`
+  - docs/korrekturliste-meldungen.md:288 – bei 0 läuft er weiter nach `0x005EFE1B` (weitere Zufallsereignisse dieses Tages, u. a. `0x005E20FD`), und liefert
+- `0x005EFEA4`
+  - docs/korrekturliste-meldungen.md:74 – BB9` (zufälliger Kaderplatz, Aufruf `0x005E2C10`) und der Verteiler (`0x005EFEA4`, danach Rücksprung) fassen den Spieler nach der Rückkehr nicht mehr an. Block `karriereende-1342` 
+  - tools/asm_nacht.py:384 – # 0x005E2BB9 and the dispatcher (0x005EFEA4) do not touch the player afterwards. Room: cmp al, push forms, add esp
+- `0x005F0133`
+  - docs/befund-meldungen.md:128 – nichts geschah und der Verein einen menschlichen Manager hat, `0x005F0133` (Ereignisse für Verein und Manager).
+  - docs/befund-meldungen.md:154 – - **Verein und Manager** (`0x005F0133`, Tabelle `0x0088E188`, Gesamt 10000, Summe 1761): 16 Nummern, alle mit Routine
+  - docs/fundstellen.md:138 – Verteiler `0x005EFADA`, Gewichte `0x0088E128`) und `0x005F0133` (Verein/Manager, Gewichte `0x0088E188`);
+  - docs/korrekturliste-meldungen.md:290 – `0x005F0133`. Nach Meldung 1982 konnte am selben Tag also ein zweites Ereignis folgen; mit Rückgabe 1 nicht meh
+- `0x005F0465`
+  - docs/befund-meldungen.md:600 – (aus `0x005F0465`) `0x00702B15`: Status 3, Krisenstufe 0 – die Hochzeit findet trotz Absage statt. Die Freundin
+- `0x005F05CE`
+  - docs/befund-meldungen.md:176 – | `0x005F05CE` | 871 | Ihr Amateurspieler %s verläßt den Verein. |
+  - docs/fundstellen.md:179 – `0x005F05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005F0778`
+  - docs/befund-meldungen.md:156 – 0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x005F0A47`
+  - docs/befund-meldungen.md:30 – 1034 Befehle), in P04 22 von 37 (darunter `0x005F0A47`, `0x005F125B`, `0x005F3BAF` mit zusammen rund 2360
+- `0x005F0BA7`
+  - docs/befund-meldungen.md:317 – | 1573 | Feiern, feiern, feiern - %1 und %2 auf seltsamen Abwegen | `0x005F0BA7` | 7 | 0x0 | kein Wert übergeben |
+- `0x005F0C5F`
+  - docs/befund-meldungen.md:318 – hol als Therapie - Erfahrener Trainerfuchs %1 greift zum letzten … | `0x005F0C5F` | 3 | 0x0 | kein Wert übergeben |
+- `0x005F0CC3`
+  - docs/befund-meldungen.md:319 –  1576 | Spieler %1 auf Sauftour - Wie weit sinkt dieser Club noch? | `0x005F0CC3` | 8 | 0x0 | kein Wert übergeben |
+- `0x005F0CFE`
+  - docs/befund-meldungen.md:320 – | 1577 | %1 voll wie ein Eimer - Sauftour %2 sorgt für viel Wirbel | `0x005F0CFE` | 7 | 0x0 | kein Wert übergeben |
+- `0x005F0D1A`
+  - docs/befund-meldungen.md:321 – ale in Nobelkneipe - Torkelnde Spieler und Trainer %1 lag unter d… | `0x005F0D1A` | 5 | 0x0 | kein Wert übergeben |
+- `0x005F0D52`
+  - docs/befund-meldungen.md:322 – | 1579 | Alkohol gegen den Frust - %1 mit %2 endgültig am Boden | `0x005F0D52` | 5 | 0x0 | kein Wert übergeben |
+- `0x005F0E00`
+  - docs/befund-meldungen.md:323 – | 1580 | Schlägerei bei Saufabend - Unglaubliche Ereignisse %1 | `0x005F0E00` | 9 | 0x0 | kein Wert übergeben |
+- `0x005F0E26`
+  - docs/befund-meldungen.md:324 – schaft ignoriert "verordneten" Saufabend - %1 von Polizei völlig … | `0x005F0E26` | 9 | 0x0 | kein Wert übergeben |
+- `0x005F0F8A`
+  - docs/befund-meldungen.md:325 – ls Knecht Ruprecht - Trainer erwartet Leistungssteigerung im neue… | `0x005F0F8A` | 6 | 0x0 | kein Wert übergeben |
+- `0x005F0FF4`
+  - docs/befund-meldungen.md:326 – | 1590 | Weihnachtsfeier %1 - Viel Lob für ein erfolgreiches Jahr | `0x005F0FF4` | 5 | 0x0 | kein Wert übergeben |
+- `0x005F125B`
+  - docs/befund-meldungen.md:30 – 1034 Befehle), in P04 22 von 37 (darunter `0x005F0A47`, `0x005F125B`, `0x005F3BAF` mit zusammen rund 2360
+- `0x005F1535`
+  - docs/befund-meldungen.md:327 – ißstimmung beim Sponsorentag - %2 und %1 werden keine Freunde mehr | `0x005F1535` | 3 | 0x0 | kein Wert übergeben |
+- `0x005F1A18`
+  - docs/befund-meldungen.md:328 – | 1637 | %1 muß Meisterfeier absagen - Hohn und Spott für %2 | `0x005F1A18` | 9 | 0x0 | kein Wert übergeben |
+- `0x005F1A5B`
+  - docs/befund-meldungen.md:329 – n historischer Tag! - %1 erstmals in der Vereinsgeschichte Meister | `0x005F1A5B` | 10 | 0x0 | kein Wert übergeben |
+- `0x005F1AA3`
+  - docs/befund-meldungen.md:330 – | Nach so vielen Jahren! - Meisterfeier %1 mobilisierte die Massen | `0x005F1AA3` | 9 | 0x0 | kein Wert übergeben |
+- `0x005F1AE9`
+  - docs/befund-meldungen.md:331 – | 1640 | Alle Jahre wieder... - Meisterfeier %1 | `0x005F1AE9` | 8 | 0x0 | kein Wert übergeben |
+- `0x005F1B1F`
+  - docs/befund-meldungen.md:332 – | 1641 | %1 im Freudentaumel - Die ganze Stadt war auf den Beinen! | `0x005F1B1F` | 9 | 0x0 | kein Wert übergeben |
+- `0x005F1E1A`
+  - docs/befund-meldungen.md:195 – `meld14.py`), darunter `0x005F1E1A` und `0x005F1E3A`.
+  - docs/fundstellen.md:182 – `0x005F1E1A`, `0x005F1E3A`.
+- `0x005F1E3A`
+  - docs/befund-meldungen.md:195 – `meld14.py`), darunter `0x005F1E1A` und `0x005F1E3A`.
+  - docs/fundstellen.md:182 – `0x005F1E1A`, `0x005F1E3A`.
+- `0x005F1EAF`
+  - docs/befund-meldungen.md:779 – latz als Spielernummer); `0x00614A99` (Maske 0x7F000000 gegen 0x3F); `0x005F1EAF`
+  - docs/fundstellen.md:185 – bleibt stehen); Grundroutinen `0x005F1EAF`, `0x005F1F42`. Name der Frau `0x0070173F`, Nachname `0x006FEA7C`.
+- `0x005F1F42`
+  - docs/befund-meldungen.md:489 – `0x005F1F42` legt sie in `0x00A2F6EE` ab (Vorher `0x00A2F6F4`, Nachher `0x00A2F6F6`), der Dialog holt damit bei
+  - docs/fundstellen.md:185 – bleibt stehen); Grundroutinen `0x005F1EAF`, `0x005F1F42`. Name der Frau `0x0070173F`, Nachname `0x006FEA7C`.
+  - docs/fundstellen.md:195 – - **Meldungsdialog mit Vorher/Nachher:** `0x005F1F42` legt Art / Vorher / Nachher in `0x00A2F6EE` / `0x00A2F6F4` /
+- `0x005F2234`
+  - docs/fundstellen.md:196 – `0x00A2F6F6` ab, Text im Puffer `0x00A2F700`; Anzeige `0x005F2234`; Beschriftung je Art bei `0x004953E1` aus Tabelle
+- `0x005F2813`
+  - docs/befund-meldungen.md:121 – (Klasse ab `0x00496A0F`, Anzeige `0x00496B94`) nur über `0x005F2813(Manager, Verein, Datensatz)` und
+  - docs/befund-meldungen.md:781 – - Mechanik: `0x005F2813` liefert die Antwort 0/1/2, ohne Frage 0 bzw. 1; `0x005EEE7F` ersetzt %n durch den n-ten
+  - docs/fundstellen.md:167 – Routinen); öffnen `0x005F2813(Manager, Verein, Datensatz)` und Straf-Frage `0x005F29BC(Manager, Verein, Text,
+- `0x005F29BC`
+  - docs/befund-meldungen.md:122 – `0x005F29BC(Manager, Verein, Text, Spieler, Art 1–3)` (Datensatz = Art + 33). Globale Nachricht `0x00A321E8`:
+  - docs/befund-meldungen.md:399 – 2 Straf-Frage, Stufe 1: Antworten und Wirkung passen nicht zusammen (`0x005F29BC`)
+  - docs/befund-meldungen.md:400 – `0x005F29BC(Manager, Verein, Text, Spieler, Stufe 1–3)` stellt die Frage nach einer Strafe für einen Spieler
+  - docs/befund-meldungen.md:469 – Ich möchte lieber bei meiner Frau %2 bleiben“): Die Frage läuft über `0x005F29BC` (`0x005E15ED`), das als
+  - docs/fundstellen.md:167 – en); öffnen `0x005F2813(Manager, Verein, Datensatz)` und Straf-Frage `0x005F29BC(Manager, Verein, Text,
+  - docs/korrekturliste-meldungen.md:82 –  Textpaket (freigegeben 18.11.2026): 1296 ohne „%2“ (die Straf-Frage `0x005F29BC` übergibt als zweiten Namen immer eine leere Zeichenkette), 1210 neutral gefasst (K29) |
+  - tools/a3patch.py:411 – rmed in the game). See docs/befund-meldungen.md 6.2. Penalty question 0x005F29BC,
+- `0x005F2A1F`
+  - tools/a3patch.py:416 – # [0x00A3B3CC] (the amount shown as %4, 0x005F2A1F) on club +0x28C; answer 2 = nothing.
+- `0x005F2A66`
+  - docs/befund-meldungen.md:470 – zweiten Namen immer eine leere Zeichenkette übergibt (`0x005F2A66`, `0x005F2A7B`).
+- `0x005F2A7B`
+  - docs/befund-meldungen.md:470 – zweiten Namen immer eine leere Zeichenkette übergibt (`0x005F2A66`, `0x005F2A7B`).
+- `0x005F2C3C`
+  - docs/befund-meldungen.md:410 – rag auf Verein +0x28C. Das passt zu den Stufen 2 und 3. Bei Stufe 1 (`0x005F2C3C`–`0x005F2C93`) passt
+  - docs/fundstellen.md:168 – Spieler, Stufe 1–3)` (Datensatz = Stufe + 33; Auswertung Stufe 1 bei `0x005F2C3C`–`0x005F2C93`, abgeschaltete
+  - tools/a3patch.py:412 – # level 1 (0x005F2C3C-0x005F2C92), answers 1566 "1 Spiel interne Sperre" / 1567 "%4 Strafe" / 1568 "Nicht
+- `0x005F2C92`
+  - tools/a3patch.py:412 – # level 1 (0x005F2C3C-0x005F2C92), answers 1566 "1 Spiel interne Sperre" / 1567 "%4 Strafe" / 1568 "Nicht
+- `0x005F2C93`
+  - docs/befund-meldungen.md:410 – n +0x28C. Das passt zu den Stufen 2 und 3. Bei Stufe 1 (`0x005F2C3C`–`0x005F2C93`) passt
+  - docs/fundstellen.md:168 – e 1–3)` (Datensatz = Stufe + 33; Auswertung Stufe 1 bei `0x005F2C3C`–`0x005F2C93`, abgeschaltete
+- `0x005F2CCD`
+  - tools/a3patch.py:414 – # New, values taken from level 2 (0x005F2CCD ff., decision of the user): answer 0 = ban of 1 match
+- `0x005F2E43`
+  - docs/befund-meldungen.md:417 – - `0x005F2E43` und `0x005F2F07` (in derselben Routine): `xor eax,eax / test / je`. Die Zweige „+2“ (Stufe 2) und
+  - docs/befund-meldungen.md:741 – `0x0060C687`, `0x005F2E43`, `0x005F2F07`) – so übersetzt der Compiler ein „if (0)“ im Quelltext;
+  - docs/fundstellen.md:169 – Zweige `0x005F2E43`, `0x005F2F07`; Sperre setzen `0x0070302D`). Globale Nachricht `0x00A321E8` (+6 Antwort
+  - docs/korrekturliste-meldungen.md:96 – - Fest abgeschaltete Blöcke: `0x0060C687`, `0x005F2E43`, `0x005F2F07`.
+- `0x005F2F07`
+  - docs/befund-meldungen.md:417 – - `0x005F2E43` und `0x005F2F07` (in derselben Routine): `xor eax,eax / test / je`. Die Zweige „+2“ (Stufe 2) und
+  - docs/befund-meldungen.md:741 – `0x0060C687`, `0x005F2E43`, `0x005F2F07`) – so übersetzt der Compiler ein „if (0)“ im Quelltext;
+  - docs/fundstellen.md:169 – Zweige `0x005F2E43`, `0x005F2F07`; Sperre setzen `0x0070302D`). Globale Nachricht `0x00A321E8` (+6 Antwort
+  - docs/korrekturliste-meldungen.md:96 – - Fest abgeschaltete Blöcke: `0x0060C687`, `0x005F2E43`, `0x005F2F07`.
+- `0x005F3BAF`
+  - docs/befund-meldungen.md:30 – 034 Befehle), in P04 22 von 37 (darunter `0x005F0A47`, `0x005F125B`, `0x005F3BAF` mit zusammen rund 2360
+  - docs/befund-meldungen.md:155 – (`0x0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+  - docs/befund-meldungen.md:272 – - **1880** (`0x005F47A7`), Routine `0x005F3BAF`, Los-Nummer 29 mit Gewicht 1 von 69 (Meldung 1879 an den Manager):
+  - docs/befund-meldungen.md:856 – Nummern) und `0x005F3BAF`;
+  - docs/fundstellen.md:132 – 5378D6`), `0x0053CD00` (Routine `0x0053CBDF`), `0x005F47A7` (Routine `0x005F3BAF`) –
+  - docs/korrekturliste-meldungen.md:124 – . Spiellogik | mittel (zusätzlicher `push`, geschätzt 40–80 Bytes in `0x005F3BAF`, Bytes nicht ausgearbeitet) | zurückgestellt 17.11.2026; ersetzt Fassung A, nicht zusätzlich |
+- `0x005F4730`
+  - docs/korrekturliste-meldungen.md:128 – `0x005F4730`); gesetzt wird es von `0x006FF715` (Aufrufer `0x0051731D`, `0x00517551`, `0x0074EE7B`, nicht geles
+- `0x005F4799`
+  - tools/a3patch.py:331 – # push 40000001h -> push 00000001h (VA 0x005F4799). Version B (pass the manager number, apply the -5):
+- `0x005F47A7`
+  - docs/befund-meldungen.md:272 – - **1880** (`0x005F47A7`), Routine `0x005F3BAF`, Los-Nummer 29 mit Gewicht 1 von 69 (Meldung 1879 an den Manager):
+  - docs/befund-meldungen.md:333 –  | Trauer in %1 - %2 stirbt vollgepumpt mit Drogen an Herzversagen | `0x005F47A7` | 10 | 0x40000001 | **falsche Argumentzahl:** Managernummer fehlt, −5 wird als Managernummer gespe
+  - docs/fundstellen.md:132 – (Routine `0x005378D6`), `0x0053CD00` (Routine `0x0053CBDF`), `0x005F47A7` (Routine `0x005F3BAF`) –
+  - docs/korrekturliste-meldungen.md:124 – | K03-B | Zeitung 1880 (`0x005F47A7`): zusätzlich die Managernummer (Byte Verein +0x8A) übergeben und das Kennzeichen `0x40000001` beha
+  - tools/a3patch.py:328 – # (0x005F47A7) is called with flags 0x40000001 = "manager number and value for bit 0 follow", but only
+- `0x005F4972`
+  - docs/befund-meldungen.md:202 – Frage formatieren) und `0x005F4972` (Fragen-Datensatz 2, Auswertung). Beide Texte sind erreichbar.
+  - docs/fundstellen.md:172 – `0x005EA51C` (Datensatz 19), `0x005F4972` (Datensatz 2). Datensätze 10/11 über `0x006062FE`.
+- `0x005F4997`
+  - docs/befund-meldungen.md:198 – ):** Zwischenzeitlich galten die Stellen `0x005EA581` (Text 285) und `0x005F4997` (Text 273) als
+- `0x005F4BAB`
+  - docs/befund-meldungen.md:155 – 005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+- `0x005F54BF`
+  - docs/befund-meldungen.md:155 – x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+- `0x005F5556`
+  - docs/befund-meldungen.md:440 – 42 (Frage 1725, Routinen `0x005EECBA` / `0x005EEDF9`, aufgerufen aus `0x005F5556`): Die Eigenschaft kommt
+  - docs/fundstellen.md:173 – Ehefrau des Managers (Datensatz 42): `0x005EECBA` / `0x005EEDF9` aus `0x005F5556`, Tabellen `0x0088E0D8`
+- `0x005F6353`
+  - docs/befund-meldungen.md:841 – (`0x005F6353`: die Zahl wird vor dem Vergleich um 21 erhöht; `0x0074B8F8`: verglichen wird ein anderer Wert). Be
+- `0x005F72F0`
+  - docs/befund-meldungen.md:156 – `0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x005F76E1`
+  - docs/befund-meldungen.md:157 – `0x005F76E1`, `0x00610192`); Gewichte 300, 250, 250, 250, 50, 200, 30, 50, 60, 10, 20, 50, 30, 1, 200, 10.
+- `0x005F78A4`
+  - docs/korrekturliste-meldungen.md:155 – Motivation (`0x005F78A4`) und beim Aufräumen nach Abgängen (`0x007105DF`, `0x0071064A`).
+- `0x005F8393`
+  - docs/befund-meldungen.md:177 – | `0x005F8393` | 1024 | Blumen zum Geburtstag der Frau |
+  - docs/fundstellen.md:179 – `0x005F05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005F84CB`
+  - docs/befund-meldungen.md:178 – | `0x005F84CB` | 1029–1034 | Hochzeitstag vergessen |
+  - docs/fundstellen.md:179 – `0x005F05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005F8CA8`
+  - docs/befund-meldungen.md:138 – | 1 | 100 | `0x005F8CA8` | | 19 | 110 | `0x005FED08` → `0x005FD59D` (Privatleben) |
+- `0x005F95AD`
+  - docs/fundstellen.md:219 – Ereignisroutinen (Vorroutine → Routine): `0x005F9A2D` → `0x005F95AD` Wehrdienst / `0x005F98B1` Zivildienst;
+  - docs/korrekturliste-meldungen.md:727 – | 1076 | K25 | Nr. 2 (100) → Los 1 von 8 (dass Nr. 2 zur Routine `0x005F95AD` führt, ist aus der Lage im Code geschlossen) | 0,29 (einmal in 3 Saisons) | Spieler beim Wehrdiens
+- `0x005F9816`
+  - docs/befund-meldungen.md:607 – (Beziehung beenden), den die gleich gebaute Stelle zu Text 1079 hat (`0x005F9816`), fehlt.
+  - docs/korrekturliste-meldungen.md:190 – 0x00702467` („Beziehung beenden“, neun Aufrufer, u. a. Text 1079 bei `0x005F9816`) setzt den
+  - tools/a3patch.py:535 – # New: 0x00702467 as at the sister text 1079 (0x005F9816). Block from tools/asm_nacht.py.
+  - tools/asm_nacht.py:10 – d. New: 0x00702467 (end the relationship) as at the sister text 1079 (0x005F9816), name of the former
+- `0x005F98B1`
+  - docs/fundstellen.md:219 – nen (Vorroutine → Routine): `0x005F9A2D` → `0x005F95AD` Wehrdienst / `0x005F98B1` Zivildienst;
+- `0x005F9A2D`
+  - docs/befund-meldungen.md:139 – | 2 | 100 | `0x005F9A2D` | | 20 | 30 | `0x005E56A5` (Leistungs-Schlagzeilen) |
+  - docs/fundstellen.md:219 – Ereignisroutinen (Vorroutine → Routine): `0x005F9A2D` → `0x005F95AD` Wehrdienst / `0x005F98B1` Zivildienst;
+- `0x005F9B90`
+  - docs/befund-meldungen.md:142 – | 5 | 100 | `0x005FB634` → `0x005FB264` | | 23 | 11 | `0x005F9D6D` → `0x005F9B90` |
+  - docs/fundstellen.md:220 – `0x005F9D6D` → `0x005F9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzeit
+  - tools/asm_nacht.py:329 –  K32, text 1565 "... hat sein Abitur mit sehr guten Noten bestanden" (0x005F9B90 case 5, club [ebp+8], player [ebp+0Ch];
+- `0x005F9CB7`
+  - docs/befund-meldungen.md:625 – 2, `0x005F9CB7`, `0x005F9CF9`). Derselbe Spieler kann das Abitur im Juni mehrfach bestehen und bekommt danach
+- `0x005F9CF9`
+  - docs/befund-meldungen.md:625 – 2, `0x005F9CB7`, `0x005F9CF9`). Derselbe Spieler kann das Abitur im Juni mehrfach bestehen und bekommt danach
+- `0x005F9D1F`
+  - docs/korrekturliste-meldungen.md:278 – dazu Block `abitur-1565` in `tools/asm_nacht.py` (48 von 51 Bytes ab `0x005F9D1F`: Merker 3 vor der
+  - tools/asm_nacht.py:333 – 'abitur-1565': (0x005F9D1F, 0x005F9D52, {'END': 0x005F9D55}, [
+- `0x005F9D31`
+  - docs/befund-meldungen.md:623 – - **1565, Abitur bestanden:** Der Fall (`0x005F9D31`–`0x005F9D44`) gibt nur die Meldung aus. Die Vorroutine schließt
+- `0x005F9D44`
+  - docs/befund-meldungen.md:623 – - **1565, Abitur bestanden:** Der Fall (`0x005F9D31`–`0x005F9D44`) gibt nur die Meldung aus. Die Vorroutine schließt
+- `0x005F9D52`
+  - tools/asm_nacht.py:332 – # group-leader bit. The default target 0x005F9D52 (xor ax,ax) stays where it is.
+  - tools/asm_nacht.py:333 – 'abitur-1565': (0x005F9D1F, 0x005F9D52, {'END': 0x005F9D55}, [
+- `0x005F9D55`
+  - tools/asm_nacht.py:333 – 'abitur-1565': (0x005F9D1F, 0x005F9D52, {'END': 0x005F9D55}, [
+- `0x005F9D6D`
+  - docs/befund-meldungen.md:142 – | 5 | 100 | `0x005FB634` → `0x005FB264` | | 23 | 11 | `0x005F9D6D` → `0x005F9B90` |
+  - docs/fundstellen.md:220 – `0x005F9D6D` → `0x005F9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzei
+  - tools/asm_nacht.py:330 – # only in June). The pre-routine 0x005F9D6D excludes pupils with marker 3 (0x007064F6 at 0x005F9DD0), but nothing ever
+- `0x005F9DD0`
+  - docs/befund-meldungen.md:624 – Spieler mit Schüler-Merker 3 aus (`0x005F9DD0`), der Wert 3 wird aber nirgends gesetzt (`0x0070654A` nur mit 1 und
+  - docs/korrekturliste-meldungen.md:274 – `0x005F9DD0` aus, wird nie gesetzt). Wert 2 ist dasselbe Bit wie „Anführer“. Bits 2 und 5–7 benutzt keine Routi
+  - tools/a3patch.py:741 – # sets the marker 3 'school finished' that the pre-routine tests (0x005F9DD0). Block from tools/asm_nacht.py.
+  - tools/asm_nacht.py:330 – e pre-routine 0x005F9D6D excludes pupils with marker 3 (0x007064F6 at 0x005F9DD0), but nothing ever
+- `0x005F9ED7`
+  - docs/befund-meldungen.md:582 – - **Leere Los-Zweige:** `0x005F9ED7` (Tabelle `0x0088E6F0`, Nummern 1 und 2): Nummer 2 ist nur „Rückgabe 1“
+  - docs/fundstellen.md:220 – `0x005F9D6D` → `0x005F9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzeit
+  - docs/korrekturliste-meldungen.md:98 – Lose in `0x005F9ED7`, `0x005FA394`, `0x005FB264`, `0x005FEDB0`, `0x005EA5CE`; zweite Stelle von 1094.
+  - tools/asm_nacht.py:9 – # K15, text 1083 "... Es kommt zur Trennung." (0x005F9ED7, case 1; club [ebp+8], player [ebp+0Ch]): the relationship
+- `0x005F9F6A`
+  - docs/befund-meldungen.md:606 – - **1083, „Es kommt zur Trennung“:** Der Fall (`0x005F9F6A`–`0x005F9FB5`) senkt nur Spielersatz 0x273 um 10–19. Der
+- `0x005F9F76`
+  - tools/asm_nacht.py:12 – 'trennung-1083': (0x005F9F76, 0x005F9FBD, {}, [
+- `0x005F9FB5`
+  - docs/befund-meldungen.md:606 – - **1083, „Es kommt zur Trennung“:** Der Fall (`0x005F9F6A`–`0x005F9FB5`) senkt nur Spielersatz 0x273 um 10–19. Der
+- `0x005F9FBD`
+  - tools/asm_nacht.py:12 – 'trennung-1083': (0x005F9F76, 0x005F9FBD, {}, [
+- `0x005F9FC3`
+  - docs/befund-meldungen.md:583 – (`0x005F9FC3`). `0x005FA394` (Tabelle `0x0088E700`, Nummern 1–3): Fall 3 ist leer (`0x005FA54E`); Fall 4 (zweite
+- `0x005F9FD0`
+  - docs/befund-meldungen.md:141 – | 4 | 100 | `0x005FB17A` → `0x005FAA76` | | 22 | 22 | `0x005F9FD0` |
+  - docs/fundstellen.md:220 – `0x005F9D6D` → `0x005F9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzeit
+  - docs/korrekturliste-meldungen.md:31 – ` (33 Bytes ab Datei-Offset `0x1FA687`, Zufall 0 bis Anzahl−1 wie in `0x005F9FD0`); Gruppe „Spiellogik, kleine Auswirkung“ (Nutzer, 17.11.2026; im Installer noch nicht umgesetzt), 
+  - tools/a3patch.py:258 – # 0x005F9FD0 does. "add esp,8" dropped (mov esp,ebp follows), "xor ax,ax" -> "xor eax,eax" to make room.
+- `0x005FA0C7`
+  - docs/befund-meldungen.md:179 – | `0x005FA0C7` | 1087–1092 | Spieler steht kurz davor, Vater zu werden |
+  - docs/fundstellen.md:179 – `0x005F05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005FA394`
+  - docs/befund-meldungen.md:146 – | 9 | 100 | `0x005FA5F8` → `0x005FA394` | | 51 | 44 | `0x005E4FD6` |
+  - docs/befund-meldungen.md:583 – (`0x005F9FC3`). `0x005FA394` (Tabelle `0x0088E700`, Nummern 1–3): Fall 3 ist leer (`0x005FA54E`); Fall 4 (zweite
+  - docs/fundstellen.md:220 – 9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzeit
+  - docs/korrekturliste-meldungen.md:98 – Lose in `0x005F9ED7`, `0x005FA394`, `0x005FB264`, `0x005FEDB0`, `0x005EA5CE`; zweite Stelle von 1094.
+  - docs/korrekturliste-meldungen.md:132 – - **K01:** `0x005FA394` zieht Los 1–3 mit gleichem Gewicht (Tabelle `0x0088E700`); Fall 1 (1093) verlangt Status
+  - tools/a3patch.py:544 – # nichts mehr von ihm wissen." (0x005FA394 case 1, player [ebp+0Ch]) tried to remove the wedding date from the list
+  - tools/a3patch.py:684 – # (0x005FA394 case 2). 0x0070282A makes the lover the partner and clears her index (savegame 0x264) BEFORE the
+- `0x005FA46F`
+  - docs/befund-meldungen.md:598 – (`0x005FA46F`). `[ebp-8]` wird in der ganzen Routine nie beschrieben, das Datum im Suchschlüssel ist also
+- `0x005FA51F`
+  - docs/befund-meldungen.md:604 – %3 (`0x007017DB` bei `0x005FA51F`) wird erst gelesen, nachdem `0x0070282A` die Geliebte zur Partnerin gemacht und
+  - tools/a3patch.py:686 – # lover; same name group byte). call 007017DB -> call 0070173F (VA 0x005FA51F). The order of %1 / %2 in the text
+- `0x005FA528`
+  - docs/befund-meldungen.md:603 – rname; als %2 wird der Name der Freundin übergeben (`0x0070185C` bei `0x005FA528`).
+- `0x005FA54E`
+  - docs/befund-meldungen.md:583 – . `0x005FA394` (Tabelle `0x0088E700`, Nummern 1–3): Fall 3 ist leer (`0x005FA54E`); Fall 4 (zweite
+- `0x005FA5AD`
+  - docs/befund-meldungen.md:584 – Stelle von Text 1094, `0x005FA5AD`) hat keine Los-Nummer. `0x005FB264` (Tabelle `0x0088E74C`, Nummern 1–9 je
+- `0x005FA5F8`
+  - docs/befund-meldungen.md:36 – tz hinter dem letzten Kaderspieler steht (Abschnitt 6.14, Vorroutine `0x005FA5F8`): nur im Speicher
+  - docs/befund-meldungen.md:146 – | 9 | 100 | `0x005FA5F8` → `0x005FA394` | | 51 | 44 | `0x005E4FD6` |
+  - docs/befund-meldungen.md:589 – t platzt“ trifft den falschen Spieler (1093, 1094):** Die Vorroutine `0x005FA5F8` sammelt die Kandidaten
+  - docs/befund-meldungen.md:752 – he Fehler: nie beschriebene Variablen (1093, 1363), falscher Zeiger (`0x005FA5F8`), falsche Liste
+  - docs/fundstellen.md:220 – 9D6D` → `0x005F9B90` Schüler; `0x005F9FD0` → `0x005F9ED7` Neuzugang; `0x005FA5F8` → `0x005FA394` Hochzeit
+  - docs/korrekturliste-meldungen.md:31 – | K01 | „Hochzeit platzt“ (1093, 1094): Vorroutine `0x005FA5F8` übergibt den Zeiger hinter dem letzten Kaderspieler | einen der gesammelten Kandidaten übergeben |
+  - tools/a3patch.py:254 – # game). See docs/befund-meldungen.md 6.14. Pre-routine 0x005FA5F8 of "Hochzeit platzt" (texts 1093, 1094)
+- `0x005FA688`
+  - docs/befund-meldungen.md:591 –  Schleifenzähler nach dem Schleifenende, also gleich der Kadergröße (`0x005FA688`–`0x005FA69B`) –
+- `0x005FA69B`
+  - docs/befund-meldungen.md:591 – ler nach dem Schleifenende, also gleich der Kadergröße (`0x005FA688`–`0x005FA69B`) –
+- `0x005FA6AC`
+  - tools/asm_nacht.py:37 – # K17, texts 1109 / 1110 (0x005FA6AC ff., club [ebp+8], player [ebp+0Ch]). 1109 ("... sagt künftig nur noch Schatzi")
+- `0x005FA6CE`
+  - docs/befund-meldungen.md:140 – | 3 | 100 | `0x005FA890` → `0x005FA6CE` | | 21 | 11 | `0x005E5DE6` → `0x005E5A01` |
+  - docs/fundstellen.md:221 – platzt; `0x005FA890` → `0x005FA6CE` ohne Partnerin; `0x005FB17A` → `0x005FAA76` mit Freundin; `0x005FB634` →
+- `0x005FA890`
+  - docs/befund-meldungen.md:140 – | 3 | 100 | `0x005FA890` → `0x005FA6CE` | | 21 | 11 | `0x005E5DE6` → `0x005E5A01` |
+  - docs/fundstellen.md:221 – platzt; `0x005FA890` → `0x005FA6CE` ohne Partnerin; `0x005FB17A` → `0x005FAA76` mit Freundin; `0x005FB634` →
+- `0x005FA981`
+  - docs/korrekturliste-meldungen.md:199 – Bit 24 nicht gesetzt), q = [ebp-8] ein Spieler ohne Beziehung (`0x005FA981`). q beendet seine Beziehung, übernimmt
+- `0x005FAA76`
+  - docs/befund-meldungen.md:141 – | 4 | 100 | `0x005FB17A` → `0x005FAA76` | | 22 | 22 | `0x005F9FD0` |
+  - docs/fundstellen.md:221 – platzt; `0x005FA890` → `0x005FA6CE` ohne Partnerin; `0x005FB17A` → `0x005FAA76` mit Freundin; `0x005FB634` →
+- `0x005FAB7E`
+  - tools/a3patch.py:554 – # (0x005FAB7E ff.): the second player q ([ebp-8]) takes over the partner of the chosen player p ([ebp+0Ch]) (0x00
+- `0x005FABEC`
+  - docs/befund-meldungen.md:609 – gewählten Spielers p (`q.0x00702668(p)` bei `0x005FABEC`), p verliert sie (`0x005FABF4`). Die Meldung nennt aber p
+- `0x005FABF4`
+  - docs/befund-meldungen.md:609 – ten Spielers p (`q.0x00702668(p)` bei `0x005FABEC`), p verliert sie (`0x005FABF4`). Die Meldung nennt aber p
+- `0x005FABF9`
+  - tools/a3patch.py:556 – et +3 as before). Five operands [ebp-8] <-> [ebp+0Ch] swapped between 0x005FABF9 and 0x005FAC31.
+- `0x005FAC25`
+  - docs/befund-meldungen.md:610 – als %1 und q als %2 (`0x005FAC25`–`0x005FAC3D`) – also umgekehrt.
+- `0x005FAC31`
+  - tools/a3patch.py:556 – ). Five operands [ebp-8] <-> [ebp+0Ch] swapped between 0x005FABF9 and 0x005FAC31.
+- `0x005FAC3D`
+  - docs/befund-meldungen.md:610 – als %1 und q als %2 (`0x005FAC25`–`0x005FAC3D`) – also umgekehrt.
+- `0x005FAE6D`
+  - docs/befund-meldungen.md:614 – gelesen und sind deshalb vertauscht. Der bei `0x005FAE6D` geprüfte Merker (Bit 25 im Flagwort, `0x007028D7`) wird
+- `0x005FAE76`
+  - tools/asm_nacht.py:41 – 'ex-1109': (0x005FAE76, 0x005FAEAB, {}, [
+- `0x005FAE79`
+  - docs/befund-meldungen.md:612 – Schatzi“) ruft `0x00702762` (`0x005FAE79`, einziger Aufrufer): die jetzige Freundin wird frühere Partnerin, die
+- `0x005FAEAB`
+  - tools/asm_nacht.py:41 – 'ex-1109': (0x005FAE76, 0x005FAEAB, {}, [
+- `0x005FAED2`
+  - docs/befund-meldungen.md:616 – Weg zu ihr“) ändert dagegen nichts (`0x005FAED2`–`0x005FAF11`).
+- `0x005FAEDB`
+  - tools/asm_nacht.py:61 – 'ex-1110': (0x005FAEDB, 0x005FAF19, {'END': 0x005FAF19}, [
+  - tools/asm_nacht.py:82 – # 0x00702762 (only caller now 0x005FAEDB ff.): same steps as before without the repeated reloads, and at the end the
+- `0x005FAF11`
+  - docs/befund-meldungen.md:616 – Weg zu ihr“) ändert dagegen nichts (`0x005FAED2`–`0x005FAF11`).
+- `0x005FAF19`
+  - tools/asm_nacht.py:61 – 'ex-1110': (0x005FAEDB, 0x005FAF19, {'END': 0x005FAF19}, [
+- `0x005FB17A`
+  - docs/befund-meldungen.md:141 – | 4 | 100 | `0x005FB17A` → `0x005FAA76` | | 22 | 22 | `0x005F9FD0` |
+  - docs/fundstellen.md:221 – platzt; `0x005FA890` → `0x005FA6CE` ohne Partnerin; `0x005FB17A` → `0x005FAA76` mit Freundin; `0x005FB634` →
+- `0x005FB264`
+  - docs/befund-meldungen.md:142 – | 5 | 100 | `0x005FB634` → `0x005FB264` | | 23 | 11 | `0x005F9D6D` → `0x005F9B90` |
+  - docs/befund-meldungen.md:581 – `0x005FB264` setzen also voraus, dass der Spieler vorher eine Geliebte bekommen hat.
+  - docs/befund-meldungen.md:584 – Stelle von Text 1094, `0x005FA5AD`) hat keine Los-Nummer. `0x005FB264` (Tabelle `0x0088E74C`, Nummern 1–9 je
+  - docs/fundstellen.md:222 – `0x005FB264` verheiratet; `0x005FB916` → `0x005FB751` Affäre (nie erreicht). Meldung mit drei Namen `0x006012DF
+  - docs/korrekturliste-meldungen.md:98 – Lose in `0x005F9ED7`, `0x005FA394`, `0x005FB264`, `0x005FEDB0`, `0x005EA5CE`; zweite Stelle von 1094.
+  - docs/korrekturliste-meldungen.md:176 –  Stellen übergibt. Vorbild: 1218 (`0x005FE6D9`). Alle vier Routinen (`0x005FB264`, `0x005FD59D`, `0x005E08F1`,
+  - docs/korrekturliste-meldungen.md:212 – - **K18 (zurückgelegt, nachgelesen 18.11.2026):** Fall 1 von `0x005FB264` (`0x005FB2F5`) verlangt Byte Spieler +2
+  - docs/korrekturliste-meldungen.md:286 – - **K34:** Einziger Aufrufer von `0x005FB264` ist `0x005FB634` (Los-Nummer im Verteiler `0x005EFADA`, Aufruf
+  - tools/a3patch.py:621 – o be reviewed): after message 1982 (no Christmas present) the case of 0x005FB264 ran
+  - tools/a3patch.py:792 – (released 18.11.2026): the pre-routine 0x005FB634 of the wife events (0x005FB264: texts 1115, 1116, 1117, 1122, 1123,
+  - tools/asm_nacht.py:244 – # einen Punkt seiner Spielstärke" (0x005FB264 case 1, club [ebp+8], player [ebp+0Ch]). The case required strength
+  - tools/asm_presse.py:24 – # 1125 "Frau von %1 bei Banküberfall erwischt" (0x005FB264, player [ebp+0Ch], club [ebp+8]), value -3
+- `0x005FB2F5`
+  - docs/korrekturliste-meldungen.md:212 – 8 (zurückgelegt, nachgelesen 18.11.2026):** Fall 1 von `0x005FB264` (`0x005FB2F5`) verlangt Byte Spieler +2
+  - docs/korrekturliste-meldungen.md:222 –  Block `frau-weg-1115` in `tools/asm_nacht.py` (116 von 124 Bytes ab `0x005FB2F5`: Stärke über
+  - tools/asm_nacht.py:249 – 'frau-weg-1115': (0x005FB2F5, 0x005FB371, {'END': 0x005FB371}, [
+- `0x005FB2FA`
+  - docs/befund-meldungen.md:620 – ist unter anderem Byte Spieler +2 genau gleich 1 (`0x005FB2FA`; +2 ist nach den Unterlagen vermutlich die Stärke, V).
+- `0x005FB2FD`
+  - docs/korrekturliste-meldungen.md:213 – genau gleich 1 (`0x005FB2FD`: `cmp edx,1` / `jne`), Status „verheiratet“ und genau ein Kind; die Vorroutine
+- `0x005FB354`
+  - docs/befund-meldungen.md:619 – nicht statt. Als zweiter Name wird die frühere Partnerin übergeben (`0x005FB354`) statt der Ehefrau. Bedingung
+  - docs/korrekturliste-meldungen.md:217 – −50); als zweiter Name wird die frühere Partnerin gelesen (`0x005FB354`), ohne dass vorher getrennt wurde.
+- `0x005FB371`
+  - tools/asm_nacht.py:249 – 'frau-weg-1115': (0x005FB2F5, 0x005FB371, {'END': 0x005FB371}, [
+- `0x005FB3A3`
+  - docs/befund-meldungen.md:622 – `0x00701210` bei `0x005FB3A3` / `0x005FB3FB`), als Art wird 2 = „Privates“ übergeben (`0x005FB3AE`, `0x005FB406`).
+- `0x005FB3AE`
+  - docs/befund-meldungen.md:622 – `0x005FB3A3` / `0x005FB3FB`), als Art wird 2 = „Privates“ übergeben (`0x005FB3AE`, `0x005FB406`).
+- `0x005FB3FB`
+  - docs/befund-meldungen.md:622 – `0x00701210` bei `0x005FB3A3` / `0x005FB3FB`), als Art wird 2 = „Privates“ übergeben (`0x005FB3AE`, `0x005FB406`).
+- `0x005FB406`
+  - docs/befund-meldungen.md:622 –  `0x005FB3FB`), als Art wird 2 = „Privates“ übergeben (`0x005FB3AE`, `0x005FB406`).
+- `0x005FB42A`
+  - docs/befund-meldungen.md:585 – Gewicht 3, 10 und 11 je 1): die Fälle 4–7 sind leer (`0x005FB42A`–`0x005FB445`), also 12 von 29 Losen. Die
+- `0x005FB445`
+  - docs/befund-meldungen.md:585 – Gewicht 3, 10 und 11 je 1): die Fälle 4–7 sind leer (`0x005FB42A`–`0x005FB445`), also 12 von 29 Losen. Die
+- `0x005FB49A`
+  - docs/korrekturliste-meldungen.md:117 – in Versehen: Der einzige Fall, der eine Geliebte braucht (Text 1123, `0x005FB49A`), prüft sie selbst noch einmal; alle anderen Fälle (1115, 1116, 1117, 1122, 1124/1125, 1982) nenne
+  - tools/a3patch.py:794 – # came. The only case that needs a lover (1123) tests her itself (0x005FB49A). New: married is enough - the 'je' after the
+- `0x005FB535`
+  - docs/befund-meldungen.md:334 – au von %1 bei Banküberfall erwischt - Verdient man %2 so schlecht? | `0x005FB535` | 7 | 0x100 | **übergebener Wert bleibt ohne Wirkung**; geändert wird stattdessen: Spielersatz 0x2
+  - docs/korrekturliste-meldungen.md:178 – Stellen und Spielerzeiger: 1125 `0x005FB535` [ebp+0Ch]; 1188 `0x005FDF80`, 1197 `0x005FE0E9`, 1201 `0x005FE290`
+- `0x005FB53A`
+  - tools/a3patch.py:479 – %1 bei Bankueberfall erwischt": "Presse" -3 applied to the player (VA 0x005FB53A)
+  - tools/asm_presse.py:25 – 'presse-1125': (0x005FB53A, 0x005FB59D, dict(T, P7011F1='', ), [
+- `0x005FB59D`
+  - tools/a3patch.py:623 – # "mov ax,1 / jmp 005FB604" at 0x005FB59D instead of the add esp,24h (the routine ends with mov esp,ebp).
+  - tools/asm_presse.py:25 – 'presse-1125': (0x005FB53A, 0x005FB59D, dict(T, P7011F1='', ), [
+- `0x005FB601`
+  - docs/befund-meldungen.md:630 – *1982, kein Weihnachtsgeschenk:** Nach der Meldung läuft der Code in `0x005FB601` (`xor ax,ax`) und gibt 0
+  - tools/a3patch.py:622 – # into the shared "xor ax,ax" at 0x005FB601 and returned 0 = nothing happened. New: jump to the existing
+- `0x005FB634`
+  - docs/befund-meldungen.md:142 – | 5 | 100 | `0x005FB634` → `0x005FB264` | | 23 | 11 | `0x005F9D6D` → `0x005F9B90` |
+  - docs/befund-meldungen.md:577 –  **Alle Ehefrau-Ereignisse verlangen eine Geliebte:** Die Vorroutine `0x005FB634` (Los-Nummer 5, Gewicht 100) nimmt
+  - docs/fundstellen.md:221 – x005FA6CE` ohne Partnerin; `0x005FB17A` → `0x005FAA76` mit Freundin; `0x005FB634` →
+  - docs/korrekturliste-meldungen.md:117 – nicht bekannte Auswirkung“**, im Spiel nicht geprüft. Die Vorroutine `0x005FB634` verlangt Status „verheiratet“ und eine Geliebte (`0x005FB6C5` / `0x005FB6CC`). Beleg für ein Verse
+  - docs/korrekturliste-meldungen.md:214 – `0x005FB634` lässt nur verheiratete Spieler mit Geliebter zu. Byte Spieler +2 ist die Spielstärke (Setzer
+  - docs/korrekturliste-meldungen.md:286 – - **K34:** Einziger Aufrufer von `0x005FB264` ist `0x005FB634` (Los-Nummer im Verteiler `0x005EFADA`, Aufruf
+  - tools/a3patch.py:792 – # F06 (released 18.11.2026): the pre-routine 0x005FB634 of the wife events (0x005FB264: texts 1115, 1116, 1117, 1122, 1123,
+- `0x005FB6B2`
+  - docs/befund-meldungen.md:578 – nur Spieler mit Status 3 **und** Byte 0x264 ≠ 0 (`0x005FB6B2`, `0x005FB6C5`). Byte 0x264 wird nur in `0x007029A7`
+- `0x005FB6C5`
+  - docs/befund-meldungen.md:578 – nur Spieler mit Status 3 **und** Byte 0x264 ≠ 0 (`0x005FB6B2`, `0x005FB6C5`). Byte 0x264 wird nur in `0x007029A7`
+  - docs/korrekturliste-meldungen.md:117 – outine `0x005FB634` verlangt Status „verheiratet“ und eine Geliebte (`0x005FB6C5` / `0x005FB6CC`). Beleg für ein Versehen: Der einzige Fall, der eine Geliebte braucht (Text 1123, `
+  - tools/a3patch.py:793 – 1125, 1982) admitted only married players WITH a lover (0x006FFBE3 at 0x005FB6C5), so the events practically never
+- `0x005FB6CC`
+  - docs/korrekturliste-meldungen.md:117 – 634` verlangt Status „verheiratet“ und eine Geliebte (`0x005FB6C5` / `0x005FB6CC`). Beleg für ein Versehen: Der einzige Fall, der eine Geliebte braucht (Text 1123, `0x005FB49A`), p
+- `0x005FB751`
+  - docs/befund-meldungen.md:143 – | 6 | 100 | `0x005FB916` → `0x005FB751` | | 24 | 55 | `0x00600098` |
+  - docs/befund-meldungen.md:574 – setzt keine den Wert 4; es wird nur gelöscht. Die Routine `0x005FB751` läuft deshalb nie. (`0x007029A7`, das die
+  - docs/fundstellen.md:222 – `0x005FB264` verheiratet; `0x005FB916` → `0x005FB751` Affäre (nie erreicht). Meldung mit drei Namen `0x006012DF`,
+  - tools/a3patch.py:801 – # F01 (released 18.11.2026): 'the affair comes out' (0x005FB751: texts 1126, 1127, 1128, 1236) needs flag bit 2, which nothing
+  - tools/asm_nacht.py:476 – # F01, "the affair comes out" (0x005FB751: texts 1126, 1127, 1128, 1236; pre-routine 0x005FB916). The pre-routine
+  - tools/asm_nacht.py:498 – # nachzuspionieren ... Er gibt klein bei" (0x005FB751 case 1, club [ebp+8], player [ebp+0Ch]): 0x00702962 (affair
+- `0x005FB7AB`
+  - docs/korrekturliste-meldungen.md:112 – liebten noch gelesen wird (Block `affaere-1126`, 88 von 100 Bytes ab `0x005FB7AB`); (3) Text 1127 ins Textpaket: „%2, die Frau von %1, setzt einen Detektiv an …“. Alle vier Fälle v
+  - tools/asm_nacht.py:500 – 'affaere-1126': (0x005FB7AB, 0x005FB80F, {'END': 0x005FB80F}, [
+- `0x005FB80F`
+  - tools/asm_nacht.py:500 – 'affaere-1126': (0x005FB7AB, 0x005FB80F, {'END': 0x005FB80F}, [
+- `0x005FB916`
+  - docs/befund-meldungen.md:143 – | 6 | 100 | `0x005FB916` → `0x005FB751` | | 24 | 55 | `0x00600098` |
+  - docs/befund-meldungen.md:571 – **Affäre fliegt auf (1126, 1127, 1128, 1236) – nie:** Die Vorroutine `0x005FB916` (täglicher Verteiler,
+  - docs/fundstellen.md:222 – `0x005FB264` verheiratet; `0x005FB916` → `0x005FB751` Affäre (nie erreicht). Meldung mit drei Namen `0x006012DF`,
+  - tools/asm_nacht.py:476 – air comes out" (0x005FB751: texts 1126, 1127, 1128, 1236; pre-routine 0x005FB916). The pre-routine
+- `0x005FB98E`
+  - docs/befund-meldungen.md:573 – `0x005FB98E`). Dieses Bit wird nie gesetzt: Von den 46 Schreibstellen des Flagworts (`0x00C02704 + Nr × 0x354`)
+  - docs/korrekturliste-meldungen.md:112 – läuft unentdeckt“ (lesen `0x00702A5B`, einziger Leser die Vorroutine `0x005FB98E`), Bit 3 „Frau ahnt etwas“ (lesen `0x00702A7B`, Vorroutine `0x005FBB71` der Folgemeldungen 1129/113
+  - tools/asm_nacht.py:477 – # admits married players with flag bit 2 (0x00702A5B at 0x005FB98E), which nothing ever set: 0x00702A02 clears it and
+- `0x005FBAF9`
+  - docs/befund-meldungen.md:144 – | 7 | 100 | `0x005FBAF9` | | 25 | 100 | `0x005FFEB7` |
+- `0x005FBB71`
+  - docs/korrekturliste-meldungen.md:112 – x005FB98E`), Bit 3 „Frau ahnt etwas“ (lesen `0x00702A7B`, Vorroutine `0x005FBB71` der Folgemeldungen 1129/1130); `0x00702A02` wechselt von 2 nach 3 (bei 1123 und 1236), `0x00702962
+- `0x005FC5B5`
+  - docs/befund-meldungen.md:145 – | 8 | 100 | `0x005FC5B5` | | 50 | 66 | `0x005E4DDE` → `0x005E4A3E` |
+- `0x005FC6BC`
+  - docs/befund-meldungen.md:147 – | 10 | 55 | `0x005FC8E6` → `0x005FC6BC` | | 52 | 500 | `0x005E50BA` („Maulwurf“) |
+  - docs/befund-meldungen.md:855 – `0x005FC6BC` war ein Fehlalarm). Auffällig und ungeprüft: `0x005FEDB0` (Verteiler mit 41 Zielen, Tabelle mit 25
+- `0x005FC73F`
+  - docs/befund-meldungen.md:692 – Ereignisse verlangen den Wert 0 (`0x005FC73F`, `0x005FE68B`, `0x005FE9B4`, `0x005FEB2E` …) – ein Spieler erlebt sie
+- `0x005FC744`
+  - tools/asm_nacht.py:293 – eturns 0 or a positive value, as all callers only test the sign/zero (0x005FC744 ... 0x005FEB6B). Old savegames
+- `0x005FC760`
+  - docs/befund-meldungen.md:679 – en setzen für „einen Monat“ 1 (Texte 1232 bei `0x005FEB9F`, 1150 bei `0x005FC760`) und für
+- `0x005FC79F`
+  - docs/befund-meldungen.md:680 – „sechs Monate“ 6 (1151 bei `0x005FC79F`). Die Schlagzeile 1218 übergibt Presse −2, direkt angewendet werden −5
+- `0x005FC873`
+  - docs/korrekturliste-meldungen.md:258 – gabe nur null / nicht null bzw. größer null (`0x005FC882`). Der Fall `0x005FC873`
+- `0x005FC882`
+  - docs/korrekturliste-meldungen.md:258 –  und prüfen von der Rückgabe nur null / nicht null bzw. größer null (`0x005FC882`). Der Fall `0x005FC873`
+- `0x005FC8E6`
+  - docs/befund-meldungen.md:147 – | 10 | 55 | `0x005FC8E6` → `0x005FC6BC` | | 52 | 500 | `0x005E50BA` („Maulwurf“) |
+- `0x005FC9EE`
+  - docs/befund-meldungen.md:166 – (`0x005E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/befund-meldungen.md:180 – | `0x005FC9EE` | 1238–1242 | Beziehungskrise |
+  - docs/fundstellen.md:179 – `0x005F05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005FCC29`
+  - docs/befund-meldungen.md:166 – (`0x005E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/fundstellen.md:179 – 05CE`, `0x005F8393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005FCD9D`
+  - docs/befund-meldungen.md:148 – | 11 | 55 | `0x005FCFCD` → `0x005FCD9D` | | 55 | 20 | `0x005FFF0F` |
+- `0x005FCFCD`
+  - docs/befund-meldungen.md:148 – | 11 | 55 | `0x005FCFCD` → `0x005FCD9D` | | 55 | 20 | `0x005FFF0F` |
+- `0x005FD0F5`
+  - docs/befund-meldungen.md:181 – | `0x005FD0F5` | 1250 | Spieler will nichts mehr mit Frauen zu tun haben |
+  - docs/fundstellen.md:179 – 393`, `0x005F84CB`, `0x005FA0C7`, `0x005FC9EE` (Hülle `0x005FCC29`), `0x005FD0F5`,
+- `0x005FD1D1`
+  - docs/befund-meldungen.md:149 – | 12 | 11 | `0x005FD1D1` | | | | |
+- `0x005FD2C9`
+  - docs/befund-meldungen.md:579 – gesetzt (`0x007029CC`), aufgerufen an drei Stellen (`0x005FD2C9`, `0x005FD304`, `0x005FD347`; Texte 1251–1253,
+- `0x005FD304`
+  - docs/befund-meldungen.md:579 – gesetzt (`0x007029CC`), aufgerufen an drei Stellen (`0x005FD2C9`, `0x005FD304`, `0x005FD347`; Texte 1251–1253,
+- `0x005FD347`
+  - docs/befund-meldungen.md:579 – x007029CC`), aufgerufen an drei Stellen (`0x005FD2C9`, `0x005FD304`, `0x005FD347`; Texte 1251–1253,
+- `0x005FD386`
+  - docs/befund-meldungen.md:599 – ibt in der Liste, und Byte 0x150 wird nicht gelöscht. Am Termin ruft `0x005FD386`
+  - docs/fundstellen.md:214 – heiraten `0x00702B15` (Termin-Routine `0x005FD386`). Terminliste `0x008EB8B0`: streichen `0x004377B7(Nummer,
+  - docs/korrekturliste-meldungen.md:194 – Tagen nach Satz +0x170 und in die Terminliste); am Termin ruft `0x005FD386` `0x00702B15` (Status verheiratet, Termin
+  - tools/a3patch.py:546 – # (0x005FD386 -> 0x00702B15). New: 0x00702467 (end the relationship), which removes the date with the stored key,
+- `0x005FD4AE`
+  - docs/befund-meldungen.md:150 – | 18 | 110 | `0x005FD4AE` (Hobby, Text 1233) | | | | |
+- `0x005FD59D`
+  - docs/befund-meldungen.md:23 –  beide Teile sind ebenso nachgeprüft und bestätigt (Hobby-Ereignisse `0x005FD59D`: Abschnitt 6.15;
+  - docs/befund-meldungen.md:138 – | 1 | 100 | `0x005F8CA8` | | 19 | 110 | `0x005FED08` → `0x005FD59D` (Privatleben) |
+  - docs/befund-meldungen.md:206 – In `0x005FD59D` (Privatleben) steht bei `0x005FDBAE`: Zufall 0–1 (`push 2 / call 0x0078A810`), danach ein Verteile
+  - docs/befund-meldungen.md:642 – ### 6.15 Aus Lesepaket P07, Teil 1: Hobby-Ereignisse (`0x005FD59D`)
+  - docs/fundstellen.md:224 – obby-Ereignisse** (`befund-meldungen.md` 6.15): Hülle `0x005FED08` → `0x005FD59D(Spieler, Verein, Manager)`,
+  - docs/korrekturliste-meldungen.md:176 – ibt. Vorbild: 1218 (`0x005FE6D9`). Alle vier Routinen (`0x005FB264`, `0x005FD59D`, `0x005E08F1`,
+  - tools/asm_nacht.py:123 –  Autobiographie ... %2 und %3 mögen ihn jedenfalls jetzt nicht mehr" (0x005FD59D,
+  - tools/asm_nacht.py:169 – 80 "... ist deshalb heute sehr müde und verliert einen Frischepunkt" (0x005FD59D, hobby case at
+  - tools/asm_nacht.py:223 – # (0x005FD59D, player [ebp+8], club [ebp+0Ch]; the case requires flag bit 24, which exists only with a partner):
+  - tools/asm_presse.py:57 – # 1188 "Schönheitsoperation bei %1" (0x005FD59D, player [ebp+8], club [ebp+0Ch]), value -4
+  - tools/asm_presse.py:91 – # 1197 "%1 steht vor dem Nichts" (0x005FD59D, player [ebp+8], club [ebp+0Ch]), value -3
+  - tools/asm_presse.py:111 – # 1201 "%1 geht lieber Golfen" (0x005FD59D, player [ebp+8], club [ebp+0Ch]), value -2
+- `0x005FD5FA`
+  - docs/befund-meldungen.md:645 – bei `0x005FD5FA` nach der gespeicherten Hobby-Nummer des Spielers (Spielstand 0x26D).
+  - docs/fundstellen.md:225 – Verteiler `0x005FD5FA` nach Hobby-Nummer (Spielstand 0x26D; setzen `0x00702CBD`). „Angeschlagen“ setzen
+- `0x005FD891`
+  - docs/korrekturliste-meldungen.md:220 – (`0x005FD891` `cmp eax,1` / `jle`, `0x005FD89C` `sub dl,1`) und Text 367 (`0x00604FA8` / `0x00604FF9`). Der Text
+  - tools/asm_nacht.py:246 – # strength > 1 and subtract 1 directly (1163 at 0x005FD891 ff., 367 at 0x00604FA8 ff.). New: strength > 1,
+- `0x005FD89C`
+  - docs/korrekturliste-meldungen.md:220 – (`0x005FD891` `cmp eax,1` / `jle`, `0x005FD89C` `sub dl,1`) und Text 367 (`0x00604FA8` / `0x00604FF9`). Der Text
+- `0x005FDA11`
+  - docs/befund-meldungen.md:676 – (`0x00698EF6(−20)` auf Verein +0x9E, `0x005FDA11`). Als Art wird 10 übergeben (`0x005FDA33`), das ist nach der
+- `0x005FDA33`
+  - docs/befund-meldungen.md:676 – F6(−20)` auf Verein +0x9E, `0x005FDA11`). Als Art wird 10 übergeben (`0x005FDA33`), das ist nach der
+- `0x005FDA79`
+  - docs/befund-meldungen.md:684 – - **1173** (Handbuch für Fußballprofis): Zufall 0–2 bei `0x005FDA79`, die Werte 0, 1 und 2 sind vergeben; der Sprung
+  - tools/a3patch.py:827 – # F04 (released 18.11.2026): random 0..2 before four branches at 0x005FDA79; the fourth (text 1173, message only) never
+- `0x005FDAA4`
+  - docs/befund-meldungen.md:685 – `0x005FDAA4` zum Zweig mit Text 1173 wird nie genommen.
+- `0x005FDADA`
+  - docs/befund-meldungen.md:335 – dalbuch von %1 sorgt für Wirbel - Helle Aufregung um Dopingenthül… | `0x005FDADA` | 8 | 0x0 | kein Wert übergeben |
+- `0x005FDB07`
+  - tools/asm_nacht.py:126 – 'autobio-1172': (0x005FDB07, 0x005FDB8C, {'END': 0x005FDBA9}, [
+- `0x005FDB45`
+  - docs/befund-meldungen.md:670 – den beiden Mitspielern A und B (`A.0x00703DF4(B)` bei `0x005FDB45`–`0x005FDB4C`), nicht zwischen ihnen und dem Autor.
+- `0x005FDB4C`
+  - docs/befund-meldungen.md:670 – den beiden Mitspielern A und B (`A.0x00703DF4(B)` bei `0x005FDB45`–`0x005FDB4C`), nicht zwischen ihnen und dem Autor.
+- `0x005FDB8C`
+  - tools/asm_nacht.py:126 – 'autobio-1172': (0x005FDB07, 0x005FDB8C, {'END': 0x005FDBA9}, [
+- `0x005FDB8E`
+  - docs/korrekturliste-meldungen.md:115 – logik, kleine Auswirkung“, im Spiel nicht geprüft. Der vierte Zweig (`0x005FDB8E`) zeigt nur die Meldung 1173, ohne Wirkung. Korrektur: Datei-Offset `0x1FDA79` `6A03` → `6A04` (Zuf
+- `0x005FDBA9`
+  - tools/asm_nacht.py:126 – 'autobio-1172': (0x005FDB07, 0x005FDB8C, {'END': 0x005FDBA9}, [
+- `0x005FDBAE`
+  - docs/befund-meldungen.md:206 – In `0x005FD59D` (Privatleben) steht bei `0x005FDBAE`: Zufall 0–1 (`push 2 / call 0x0078A810`), danach ein Verteiler
+  - tools/a3patch.py:812 – # F02 (released 18.11.2026): the dispatcher at 0x005FDBAE has four cases but drew random 0..1, so texts 1178 (wife moves to
+- `0x005FDBD8`
+  - docs/befund-meldungen.md:207 – über vier Fälle (Tabelle `0x005FECC0`: `0x005FDBD8`, `0x005FDC60`, `0x005FDCE8`, `0x005FDD4C`). Die Fälle 2 und 3 sind
+- `0x005FDC60`
+  - docs/befund-meldungen.md:207 – über vier Fälle (Tabelle `0x005FECC0`: `0x005FDBD8`, `0x005FDC60`, `0x005FDCE8`, `0x005FDD4C`). Die Fälle 2 und 3 sind
+- `0x005FDC9C`
+  - tools/asm_nacht.py:226 – 'frau-1176-1177': (0x005FDC9C, 0x005FDCE3, {}, [
+- `0x005FDCAD`
+  - docs/befund-meldungen.md:671 – , die Frau Ihres Spielers %1 …“): als zweiter Name wird 0 übergeben (`0x005FDCAD`, `0x005FDCCA`);
+- `0x005FDCCA`
+  - docs/befund-meldungen.md:671 – es Spielers %1 …“): als zweiter Name wird 0 übergeben (`0x005FDCAD`, `0x005FDCCA`);
+- `0x005FDCE3`
+  - tools/asm_nacht.py:226 – 'frau-1176-1177': (0x005FDC9C, 0x005FDCE3, {}, [
+- `0x005FDCE8`
+  - docs/befund-meldungen.md:207 – über vier Fälle (Tabelle `0x005FECC0`: `0x005FDBD8`, `0x005FDC60`, `0x005FDCE8`, `0x005FDD4C`). Die Fälle 2 und 3 sind
+- `0x005FDD4C`
+  - docs/befund-meldungen.md:207 – lle (Tabelle `0x005FECC0`: `0x005FDBD8`, `0x005FDC60`, `0x005FDCE8`, `0x005FDD4C`). Die Fälle 2 und 3 sind
+- `0x005FDD89`
+  - docs/korrekturliste-meldungen.md:253 – rliert fünf Frischepunkte“) mit −5 (`0x005E2303`). Der Fall zu 1180 (`0x005FDD89`: Zufall 0–1, 0 →
+  - tools/asm_nacht.py:170 – # 0x005FDD89: random 0..1, 0 -> this message, 1 -> 0x005FDDCA). Only the message was shown. New: 0x005E5F40(-1) 
+  - tools/asm_nacht.py:172 – 'frische-1180': (0x005FDD89, 0x005FDDCA, {'OTHER': 0x005FDDCA, 'END': 0x005FDE00}, [
+- `0x005FDDAD`
+  - docs/befund-meldungen.md:663 – („… ist heute sehr müde und verliert einen Frischepunkt“): Der Zweig `0x005FDDAD`–`0x005FDDC0` gibt nur
+- `0x005FDDC0`
+  - docs/befund-meldungen.md:663 –  sehr müde und verliert einen Frischepunkt“): Der Zweig `0x005FDDAD`–`0x005FDDC0` gibt nur
+- `0x005FDDCA`
+  - tools/asm_nacht.py:170 – # 0x005FDD89: random 0..1, 0 -> this message, 1 -> 0x005FDDCA). Only the message was shown. New: 0x005E5F40(-1) on the
+  - tools/asm_nacht.py:172 – 'frische-1180': (0x005FDD89, 0x005FDDCA, {'OTHER': 0x005FDDCA, 'END': 0x005FDE00}, [
+- `0x005FDE00`
+  - tools/asm_nacht.py:172 – 'frische-1180': (0x005FDD89, 0x005FDDCA, {'OTHER': 0x005FDDCA, 'END': 0x005FDE00}, [
+- `0x005FDE07`
+  - docs/befund-meldungen.md:842 – Fälle als die Zufallszahl Werte, es ist also kein Fall unerreichbar (`0x005FDE07`,
+- `0x005FDEDA`
+  - docs/befund-meldungen.md:336 – en ziehen ihn magisch an - Exklusive Bilder der neuen Freundin vo… | `0x005FDEDA` | 6 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005FDF3D`
+  - tools/a3patch.py:485 –  "Schoenheitsoperation bei %1": "Presse" -4 applied to the player (VA 0x005FDF3D)
+  - tools/asm_presse.py:58 – 'presse-1188': (0x005FDF3D, 0x005FDFA3, dict(T, END=0x005FDFA3), [
+- `0x005FDF80`
+  - docs/befund-meldungen.md:337 – nheitsoperation bei %1 - Von 100% Konzentration auf den Fußball n… | `0x005FDF80` | 6 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+  - docs/korrekturliste-meldungen.md:178 – Stellen und Spielerzeiger: 1125 `0x005FB535` [ebp+0Ch]; 1188 `0x005FDF80`, 1197 `0x005FE0E9`, 1201 `0x005FE290`
+- `0x005FDFA3`
+  - tools/asm_presse.py:58 – 'presse-1188': (0x005FDF3D, 0x005FDFA3, dict(T, END=0x005FDFA3), [
+- `0x005FDFE7`
+  - docs/befund-meldungen.md:653 – | 1193 | Spaten in den Fuß, „fällt drei Wochen aus“ | `0x005FDFE7` | Art 37: 112 Tage (16 Wochen) |
+- `0x005FE026`
+  - docs/befund-meldungen.md:655 – | 1194 | Hornissen, „fällt zwei Wochen aus“ | `0x005FE026` | nur „angeschlagen“ 14 Tage, kein Ausfall |
+  - docs/korrekturliste-meldungen.md:64 – irkung bleibt (14 Tage „angeschlagen“: `0x00766AF9(Spieler, 14)` bei `0x005FE026`; Byte Spieler +0x2F ist ein Zähler in Tagen, Anzeige „Er ist noch angeschlagen.“). Neuer Text 1194
+- `0x005FE0E9`
+  - docs/befund-meldungen.md:338 – teht vor dem Nichts - Spieler %2 verspielte auch seinen letzten P… | `0x005FE0E9` | 6 | 0x100 | **übergebener Wert bleibt ohne Wirkung**; geändert wird stattdessen: Spielersatz 0x2
+  - docs/korrekturliste-meldungen.md:178 –  Spielerzeiger: 1125 `0x005FB535` [ebp+0Ch]; 1188 `0x005FDF80`, 1197 `0x005FE0E9`, 1201 `0x005FE290`
+- `0x005FE0EE`
+  - tools/a3patch.py:491 – 1197 "%1 steht vor dem Nichts": "Presse" -3 applied to the player (VA 0x005FE0EE)
+  - tools/asm_presse.py:92 – 'presse-1197': (0x005FE0EE, 0x005FE12A, dict(T), [
+- `0x005FE12A`
+  - tools/asm_presse.py:92 – 'presse-1197': (0x005FE0EE, 0x005FE12A, dict(T), [
+- `0x005FE23E`
+  - tools/a3patch.py:497 – e 1201 "%1 geht lieber Golfen": "Presse" -2 applied to the player (VA 0x005FE23E)
+  - tools/asm_presse.py:112 – 'presse-1201': (0x005FE23E, 0x005FE298, dict(T, END=0x005FE298), [
+- `0x005FE268`
+  - docs/korrekturliste-meldungen.md:119 – er `0x00A326E2`), obwohl direkt davor der Vereinsname gebildet wird (`0x005FE268`, Fall 19 nach `[ebp-68h]`) | Puffer übergeben – aber Fall 19 liefert „den %c1%c“ / „die %c1%c“, ei
+- `0x005FE272`
+  - docs/korrekturliste-meldungen.md:119 – ngehalt für nichts“): als %2 wird eine leere Zeichenkette übergeben (`0x005FE272`, Platzhalter `0x00A326E2`), obwohl direkt davor der Vereinsname gebildet wird (`0x005FE268`, Fall 
+- `0x005FE290`
+  - docs/befund-meldungen.md:339 – | 1201 | %1 geht lieber Golfen - %2 Millionengehalt für nichts | `0x005FE290` | 5 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+  - docs/korrekturliste-meldungen.md:178 – 5 `0x005FB535` [ebp+0Ch]; 1188 `0x005FDF80`, 1197 `0x005FE0E9`, 1201 `0x005FE290`
+- `0x005FE298`
+  - tools/asm_presse.py:112 – 'presse-1201': (0x005FE23E, 0x005FE298, dict(T, END=0x005FE298), [
+- `0x005FE310`
+  - docs/korrekturliste-meldungen.md:300 – - **K49 und K35 (zurückgelegt):** 1207 liegt im Übergewicht-Fall (`0x005FE310`: Zufall 0–5, Sprungtabelle
+- `0x005FE312`
+  - docs/befund-meldungen.md:843 – `0x005FE312`, `0x005FE989`, `0x0060D6F2`, `0x0061B4C0`, `0x006F5303`). Drei liegen außerhalb der Meldungsroutin
+- `0x005FE3C9`
+  - docs/befund-meldungen.md:673 – **1207** („Seit Single %1 einen Kochkurs besucht hat …“): Der Zweig (`0x005FE3C9`–`0x005FE3E1`) prüft den
+- `0x005FE3E1`
+  - docs/befund-meldungen.md:673 – it Single %1 einen Kochkurs besucht hat …“): Der Zweig (`0x005FE3C9`–`0x005FE3E1`) prüft den
+- `0x005FE45E`
+  - docs/befund-meldungen.md:666 – trainieren“): Der Fall (`0x005FE45E`–`0x005FE47B`) setzt die Hobby-Nummer auf 0 und gibt die Meldung aus. Die
+- `0x005FE463`
+  - docs/korrekturliste-meldungen.md:67 – ssen**, die Wirkung bleibt (Hobby wird gelöscht, `0x00702CBD(0)` bei `0x005FE463`). Kein anderer Text nennt „eingeschränkt trainieren“, es gibt kein Vorbild für die Wirkung; die St
+- `0x005FE47B`
+  - docs/befund-meldungen.md:666 – trainieren“): Der Fall (`0x005FE45E`–`0x005FE47B`) setzt die Hobby-Nummer auf 0 und gibt die Meldung aus. Die
+- `0x005FE626`
+  - docs/befund-meldungen.md:654 – | 1215 | Hand verstaucht, „die nächsten drei Wochen“ | `0x005FE626` | Art 90: 7 Tage |
+- `0x005FE68B`
+  - docs/befund-meldungen.md:692 – Ereignisse verlangen den Wert 0 (`0x005FC73F`, `0x005FE68B`, `0x005FE9B4`, `0x005FEB2E` …) – ein Spieler erlebt sie
+- `0x005FE6AA`
+  - docs/befund-meldungen.md:678 – inen Monat“ entzogen): Gesetzt wird der Zähler Spielstand 0x26E = 2 (`0x005FE6AA`).
+- `0x005FE6CA`
+  - docs/befund-meldungen.md:340 – | %1 beim Rasen erwischt - Fußballprofi mußte Führerschein abgeben | `0x005FE6CA` | 5 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005FE6D9`
+  - docs/befund-meldungen.md:681 – (`0x005FE6D9`); bei 1232/1234 sind beide Werte −3.
+  - docs/korrekturliste-meldungen.md:176 – sieben Stellen übergibt. Vorbild: 1218 (`0x005FE6D9`). Alle vier Routinen (`0x005FB264`, `0x005FD59D`, `0x005E08F1`,
+  - tools/asm_presse.py:5 –  and - unlike the sister headlines of the same routines (e.g. 1218 at 0x005FE6D9) - the call sites do not
+- `0x005FE8D5`
+  - docs/befund-meldungen.md:686 – - **1226** (Tauchgänge mit der Freundin): bei Hobby 35 Zufall 0–1 (`0x005FE8D5`); der dritte Zweig `0x005FE953` ist
+- `0x005FE901`
+  - docs/befund-meldungen.md:656 – | 1224 | Qualle, „die nächste Woche … angeschlagen“ | `0x005FE901` | Art 91: 14 Tage Ausfall |
+- `0x005FE92E`
+  - docs/befund-meldungen.md:657 – | 1225 | Stickstoffvergiftung, „nächste Woche nicht trainieren“ | `0x005FE92E` | Art 92: Dauer 0 – kein Ausfall; ein laufender Ausfall wird auf 0 gesetzt |
+- `0x005FE953`
+  - docs/befund-meldungen.md:686 –  Freundin): bei Hobby 35 Zufall 0–1 (`0x005FE8D5`); der dritte Zweig `0x005FE953` ist
+- `0x005FE987`
+  - docs/befund-notenschnitt.md:170 – - Ort: Zufallsereignisse eines Spielers (`0x005FE987`): Zufallszahl 0–5; 0–3 sind vier andere Ereignisse (u. a. Führerschein
+  - docs/fundstellen.md:237 – - Zufallsereignisse Privatleben `0x005FE987` (Sprungtabelle `0x005FECF8`): 1232/1234 Führerschein, 1233 Hobby,
+- `0x005FE989`
+  - docs/befund-meldungen.md:843 – `0x005FE312`, `0x005FE989`, `0x0060D6F2`, `0x0061B4C0`, `0x006F5303`). Drei liegen außerhalb der Meldungsroutinen
+- `0x005FE9B4`
+  - docs/befund-meldungen.md:692 – Ereignisse verlangen den Wert 0 (`0x005FC73F`, `0x005FE68B`, `0x005FE9B4`, `0x005FEB2E` …) – ein Spieler erlebt sie
+  - docs/korrekturliste-meldungen.md:257 – `0x005FE9B4`, `0x005FEB2E`); kein weiterer Zugriff auf die Adresse. Alle zwölf Aufrufer von `0x00702D31` überge
+  - tools/asm_nacht.py:321 – # reader "licence present?" (was at 0x00702D6F; its two callers 0x005FE9B4 and 0x005FEB2E are redirected)
+- `0x005FE9F0`
+  - docs/befund-meldungen.md:658 – | 1227 | Sportwagen, „fällt damit zwei Wochen aus“ | `0x005FE9F0` | Art 93: Dauer 0 – kein Ausfall |
+- `0x005FEA4E`
+  - docs/befund-meldungen.md:341 – | Sportwagen von Frau im Pool versenkt - %1 konnte es nicht fassen | `0x005FEA4E` | 6 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005FEADA`
+  - docs/befund-meldungen.md:342 – | 1231 | Frau %1 parkte im Wohnzimmer - %2 konnte es nicht fassen | `0x005FEADA` | 6 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005FEB2E`
+  - docs/befund-meldungen.md:692 – isse verlangen den Wert 0 (`0x005FC73F`, `0x005FE68B`, `0x005FE9B4`, `0x005FEB2E` …) – ein Spieler erlebt sie
+  - docs/korrekturliste-meldungen.md:257 – `0x005FE9B4`, `0x005FEB2E`); kein weiterer Zugriff auf die Adresse. Alle zwölf Aufrufer von `0x00702D31` übergeben −1,
+  - tools/asm_nacht.py:321 – "licence present?" (was at 0x00702D6F; its two callers 0x005FE9B4 and 0x005FEB2E are redirected)
+- `0x005FEB6B`
+  - tools/asm_nacht.py:293 – ositive value, as all callers only test the sign/zero (0x005FC744 ... 0x005FEB6B). Old savegames
+- `0x005FEB92`
+  - docs/befund-meldungen.md:343 – | %1 beim Rasen erwischt - Fußballprofi mußte Führerschein abgeben | `0x005FEB92` | 6 | 0x100 | Wert ohne Spielernummer übergeben; direkt danach angewendet (Presse) |
+- `0x005FEB9F`
+  - docs/befund-meldungen.md:679 – Die Schwesterstellen setzen für „einen Monat“ 1 (Texte 1232 bei `0x005FEB9F`, 1150 bei `0x005FC760`) und für
+- `0x005FEBDF`
+  - docs/befund-notenschnitt.md:171 – 1232/1234, Hobby 1233), **4 und 5 führen zur Goldkettchen-Prüfung** (`0x005FEBDF`).
+  - docs/fundstellen.md:238 – 1235 „Goldkettchen“ ab `0x005FEBDF` (Aufruf `0x005FEC04` gepatcht). Meldung an den Manager mit Vorher/Nachher:
+  - tools/a3patch.py:222 – # (random private-life event, 0x005FEBDF ff.). The average of the last three appearances (0x00705F60) has
+  - tools/asm_goldkettchen.py:4 – private-life event (0x005FEBDF ff.) for a player with field +2 >= 9 in a club clearly below its target, if the average
+- `0x005FEC04`
+  - docs/befund-notenschnitt.md:186 – - `0x005FEC04` (59 B): Aufruf, Vergleich „> 40“ (= schlechter als 4,0), Schlagzeile wie bisher, danach **neu** de
+  - docs/fundstellen.md:238 – 1235 „Goldkettchen“ ab `0x005FEBDF` (Aufruf `0x005FEC04` gepatcht). Meldung an den Manager mit Vorher/Nachher:
+  - tools/asm_goldkettchen.py:11 – Block 2, 0x005FEC04 (call site): same headline call, followed by the deduction of 2 from "Presse" (0x00700FA2) that the
+  - tools/asm_goldkettchen.py:58 – 'aufruf': (0x005FEC04, 0x005FEC3F, {'AVG32': 0x00705F60, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32,
+- `0x005FEC09`
+  - docs/befund-notenschnitt.md:101 – - `0x00705F60(3)` ← `0x005FEC09` (Ereignis 0x4D3, Wirkung −2, nur Spieler mit Stärke ≥ 9): Schnitt der letzten drei
+  - docs/befund-notenschnitt.md:119 – | `0x00705F60(3)` Schnitt der letzten 3 Einsätze | Zeitungsmeldung, `0x005FEC09` | 1235 „Goldkettchen und teure Autos - %1 ein Prototyp des verzogenen Fußballmillionärs“ | Stärke 
+  - docs/befund-notenschnitt.md:185 – (`[ebp+0Ch]`, `0x005FEC09`).
+  - docs/befund-zaehler.md:102 – „Saisonschnitt > 40“ kann so nie wahr werden, Höchstwert 35), `0x005FEC09` (Ereignis 0x4D3, Schnitt der letzten 3),
+  - tools/asm_goldkettchen.py:10 – 0x00692744 is taken from the frame of the ONLY caller (0x005FEC09, club = [ebp+0Ch]).
+  - tools/asm_goldkettchen.py:21 – (None, '8B450C', None), # mov eax,[ebp+0Ch] club (frame of the caller 0x005FEC09)
+- `0x005FEC31`
+  - docs/befund-meldungen.md:344 – kettchen und teure Autos - %1 ein Prototyp des verzogenen Fußball… | `0x005FEC31` | 6 | 0x100 | **übergebener Wert bleibt ohne Wirkung** |
+- `0x005FEC3F`
+  - tools/asm_goldkettchen.py:58 – 'aufruf': (0x005FEC04, 0x005FEC3F, {'AVG32': 0x00705F60, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32,
+  - tools/asm_goldkettchen.py:59 – 'PRESSE32': 0x00700FA2, 'END': 0x005FEC3F}, [
+- `0x005FECC0`
+  - docs/befund-meldungen.md:207 – über vier Fälle (Tabelle `0x005FECC0`: `0x005FDBD8`, `0x005FDC60`, `0x005FDCE8`, `0x005FDD4C`). Die Fälle 2 und 3 sind
+- `0x005FECE4`
+  - docs/korrekturliste-meldungen.md:301 – `0x005FECE4`), setzt Bit 5 im Flagwort (`0x006FFF76(1)`) und zeigt die Meldung ohne jede Prüfung. Der
+- `0x005FECF8`
+  - docs/fundstellen.md:237 – - Zufallsereignisse Privatleben `0x005FE987` (Sprungtabelle `0x005FECF8`): 1232/1234 Führerschein, 1233 Hobby,
+- `0x005FED08`
+  - docs/befund-meldungen.md:138 – | 1 | 100 | `0x005F8CA8` | | 19 | 110 | `0x005FED08` → `0x005FD59D` (Privatleben) |
+  - docs/befund-meldungen.md:644 – (täglicher Verteiler, Los-Nummer 19, Gewicht 110; Hülle `0x005FED08` wählt einen zufälligen Kaderspieler) verteilt
+  - docs/fundstellen.md:224 – - **Hobby-Ereignisse** (`befund-meldungen.md` 6.15): Hülle `0x005FED08` → `0x005FD59D(Spieler, Verein, Manager)`,
+- `0x005FEDB0`
+  - docs/befund-meldungen.md:24 – Ereignisse zwischen zwei Spielern `0x005FEDB0` und privater Trainer `0x005FFF0F`: Abschnitt 6.16). Damit sind die
+  - docs/befund-meldungen.md:40 – von `0x005FEDB0` meldet (nur wichtig, falls diese Ereignisse freigeschaltet werden sollen).
+  - docs/befund-meldungen.md:696 – Alle 13 markierten Einträge der Routinen `0x005FEDB0` und `0x005FFF0F`, am 17.11.2026 von Hand am Code nachgeprüft.
+  - docs/befund-meldungen.md:698 – **Ereignisse zwischen zwei Spielern (`0x005FEDB0`; täglicher Verteiler Los-Nummer 25, Gewicht 100, Hülle `0x005FFEB7`).**
+  - docs/befund-meldungen.md:825 – , nicht nachgeprüft: die Einzelheiten der nie erreichbaren Fälle von `0x005FEDB0` (zum Beispiel Wirkung
+  - docs/befund-meldungen.md:855 – `0x005FC6BC` war ein Fehlalarm). Auffällig und ungeprüft: `0x005FEDB0` (Verteiler mit 41 Zielen, Tabelle mit 25
+  - docs/fundstellen.md:231 – `0x005FEDB0(Verein, Spieler)`, Los-Tabelle `0x0088E8C8` (25 Einträge), Verteiler `0x005FEE1E`; Zufriedenheit ei
+  - docs/korrekturliste-meldungen.md:98 – Lose in `0x005F9ED7`, `0x005FA394`, `0x005FB264`, `0x005FEDB0`, `0x005EA5CE`; zweite Stelle von 1094.
+  - tools/a3patch.py:286 – # und %4" (case 2 of 0x005FEDB0, 0x005FF02E ff.) passed the buffer [ebp-118h], written only in case 1, as
+  - tools/a3patch.py:661 – # K47 (worked through alone, to be reviewed): case 28 of 0x005FEDB0 (two players of the same position, quarrel entered)
+- `0x005FEDEE`
+  - docs/befund-meldungen.md:700 – me 722). Die Verteiler-Variable wird nur aus der Los-Nummer gesetzt (`0x005FEDEE`,
+- `0x005FEDFD`
+  - docs/befund-meldungen.md:701 – `0x005FEDFD`); Verteiler `0x005FEE1E` mit Fällen bis 92.
+- `0x005FEE1E`
+  - docs/befund-meldungen.md:701 – `0x005FEDFD`); Verteiler `0x005FEE1E` mit Fällen bis 92.
+  - docs/fundstellen.md:231 – Verein, Spieler)`, Los-Tabelle `0x0088E8C8` (25 Einträge), Verteiler `0x005FEE1E`; Zufriedenheit eines
+- `0x005FEF0B`
+  - docs/befund-meldungen.md:710 – EE8h]` übergeben (`0x005FF03E`), der nur in Fall 1 beschrieben wird (`0x005FEF0B`); in Fall 2 enthält
+- `0x005FF02E`
+  - tools/a3patch.py:286 – # und %4" (case 2 of 0x005FEDB0, 0x005FF02E ff.) passed the buffer [ebp-118h], written only in case 1, as
+- `0x005FF03C`
+  - docs/befund-meldungen.md:711 – t, der ohne Längenprüfung weiterkopiert wird. Der vierte Name ist 0 (`0x005FF03C`).
+- `0x005FF03E`
+  - docs/befund-meldungen.md:710 – `[ebp+FFFFFEE8h]` übergeben (`0x005FF03E`), der nur in Fall 1 beschrieben wird (`0x005FEF0B`); in Fall 2 enthält
+- `0x005FF072`
+  - tools/a3patch.py:289 –  / jmp 005FFDB2" dropped - falls through into the identical return at 0x005FF072.
+- `0x005FF120`
+  - docs/befund-meldungen.md:714 – (`0x005FF120`–`0x005FF1D1`) sortiert zwei Freunde so, dass A den höheren Zufriedenheitswert hat (`0x006FF14D`,
+  - tools/a3patch.py:577 – # (0x005FF120 ff.). A = [ebp-8] is the friend with the higher satisfaction (> 100), B = [ebp-10h] the lower one (
+- `0x005FF1D1`
+  - docs/befund-meldungen.md:714 – (`0x005FF120`–`0x005FF1D1`) sortiert zwei Freunde so, dass A den höheren Zufriedenheitswert hat (`0x006FF14D`,
+- `0x005FF3BC`
+  - docs/befund-meldungen.md:706 – ** Die Fälle 9, 13, 15, 26, 27 und 29 bestehen nur aus „Rückgabe 1“ (`0x005FF3BC`,
+- `0x005FF4BE`
+  - docs/befund-meldungen.md:707 – `0x005FF4BE`, `0x005FF51A`, `0x005FF913`, `0x005FF91C`, `0x005FF9AA`) – zusammen Gewicht 156 von 722. Die Texte
+- `0x005FF51A`
+  - docs/befund-meldungen.md:707 – `0x005FF4BE`, `0x005FF51A`, `0x005FF913`, `0x005FF91C`, `0x005FF9AA`) – zusammen Gewicht 156 von 722. Die Texte
+- `0x005FF913`
+  - docs/befund-meldungen.md:707 – `0x005FF4BE`, `0x005FF51A`, `0x005FF913`, `0x005FF91C`, `0x005FF9AA`) – zusammen Gewicht 156 von 722. Die Texte
+- `0x005FF91C`
+  - docs/befund-meldungen.md:707 – `0x005FF4BE`, `0x005FF51A`, `0x005FF913`, `0x005FF91C`, `0x005FF9AA`) – zusammen Gewicht 156 von 722. Die Texte
+- `0x005FF925`
+  - docs/befund-meldungen.md:719 – - **1388 statt 1389:** Der Fall 28 (`0x005FF925`–`0x005FF999`) wählt zwei Spieler derselben Position und trägt Streit
+- `0x005FF999`
+  - docs/befund-meldungen.md:719 – - **1388 statt 1389:** Der Fall 28 (`0x005FF925`–`0x005FF999`) wählt zwei Spieler derselben Position und trägt Streit
+- `0x005FF9AA`
+  - docs/befund-meldungen.md:707 – `0x005FF4BE`, `0x005FF51A`, `0x005FF913`, `0x005FF91C`, `0x005FF9AA`) – zusammen Gewicht 156 von 722. Die Texte
+- `0x005FFEB7`
+  - docs/befund-meldungen.md:144 – | 7 | 100 | `0x005FBAF9` | | 25 | 100 | `0x005FFEB7` |
+  - docs/befund-meldungen.md:698 – (`0x005FEDB0`; täglicher Verteiler Los-Nummer 25, Gewicht 100, Hülle `0x005FFEB7`).**
+  - docs/fundstellen.md:230 – ei Spielern / privater Trainer** (`befund-meldungen.md` 6.16): Hülle `0x005FFEB7` →
+- `0x005FFF0F`
+  - docs/befund-meldungen.md:24 – Ereignisse zwischen zwei Spielern `0x005FEDB0` und privater Trainer `0x005FFF0F`: Abschnitt 6.16). Damit sind die
+  - docs/befund-meldungen.md:148 – | 11 | 55 | `0x005FCFCD` → `0x005FCD9D` | | 55 | 20 | `0x005FFF0F` |
+  - docs/befund-meldungen.md:696 – Alle 13 markierten Einträge der Routinen `0x005FEDB0` und `0x005FFF0F`, am 17.11.2026 von Hand am Code nachgeprüft.
+  - docs/befund-meldungen.md:725 – **Privater Trainer (`0x005FFF0F`; Los-Nummer 55, Gewicht 20).**
+  - docs/fundstellen.md:233 – eere Routinen `0x005EE2F5`, `0x005EE2FC`. Raucher / privater Trainer `0x005FFF0F`: Flagwort Spielstand 0x194
+- `0x00600016`
+  - docs/befund-meldungen.md:728 – x007000E3`, mit drei Aufrufern: die beiden Abfragen des Ereignisses (`0x00600016`,
+- `0x0060003F`
+  - docs/befund-meldungen.md:727 – t nur Bit 13 (0x2000) im Flagwort Spielstand 0x194 (`0x00700105` bei `0x0060003F`, `0x00600076`). Gelesen
+- `0x0060004D`
+  - docs/befund-meldungen.md:729 – `0x0060004D`) und die Anzeige im Spielerdialog (`0x0055F96E`). Die Konditionsroutine `0x00457E00` (Spieler +0x1
+- `0x00600076`
+  - docs/befund-meldungen.md:727 – 0x2000) im Flagwort Spielstand 0x194 (`0x00700105` bei `0x0060003F`, `0x00600076`). Gelesen
+- `0x00600098`
+  - docs/befund-meldungen.md:143 – | 6 | 100 | `0x005FB916` → `0x005FB751` | | 24 | 55 | `0x00600098` |
+- `0x00600F2F`
+  - docs/befund-meldungen.md:113 – re Textparameter und reichen die Nummer dorthin weiter (zum Beispiel `0x00600F2F`,
+  - docs/befund-meldungen.md:450 – Die Meldungsroutinen `0x00600F2F` und `0x00601043` setzen Namen nur über `0x005EEE7F` ein. Diese Routine ersetzt
+  - docs/befund-meldungen.md:456 – | 954 | `0x005E4B5B` | `0x00600F2F` | Ihr Spieler %s kommt nach dem Training zu Ihnen … |
+  - docs/befund-meldungen.md:457 – | 1276 | `0x005E112F` | `0x00600F2F` | Ihr Spieler %s wurde bei einer Bordellrazzia von der Polizei verhaftet. |
+  - docs/befund-meldungen.md:468 – Namen 0 (`0x005E4D17`–`0x005E4D19`); `0x00600F2F` setzt dafür eine leere Zeichenkette ein (`0x00600F90`).
+  - docs/befund-meldungen.md:722 – Spielers %4, verliebt. Diese entscheidet sich … für %5“) über `0x00600F2F`, das nur zwei Namen übergibt. Was für
+  - docs/fundstellen.md:141 – `0x00600F2F`, `0x00601043`, `0x005EE5C0`). Auslosungsobjekt: +0 Anzahl, +2 Summe der Gewichte, +4 Gesamt.
+  - docs/fundstellen.md:183 – - **Meldungen mit Namen und Werten:** `0x00600F2F(Verein, K, Text, Spieler, zweiter Name oder 0, w)` und
+  - docs/fundstellen.md:239 – `0x00601043`, `0x00600F2F`.
+  - tools/asm_nacht.py:385 – # dropped; the club for 0x0070E29E is the first argument of 0x00600F2F still on the stack (that routine only reads its
+  - tools/asm_nacht.py:561 – # call 0x00600F2F / return 1) is taken from the neighbouring case at 0x005E4CF7, which is identical.
+- `0x00600F90`
+  - docs/befund-meldungen.md:468 – `0x005E4D19`); `0x00600F2F` setzt dafür eine leere Zeichenkette ein (`0x00600F90`).
+- `0x00601016`
+  - tools/asm_nacht.py:386 – # [ebp+8], 0x00601016).
+- `0x00601043`
+  - docs/befund-meldungen.md:114 – `0x00601043`, `0x005EE5C0`). Die vollständige Rückverfolgung (`meld10.py`, mehrere Textparameter je Routine, mi
+  - docs/befund-meldungen.md:450 – Die Meldungsroutinen `0x00600F2F` und `0x00601043` setzen Namen nur über `0x005EEE7F` ein. Diese Routine ersetzt
+  - docs/befund-meldungen.md:458 – | 1338 | `0x005E25B2` | `0x00601043` | Die Computerfirma Ihres Spielers %1 muß leider Konkurs anmelden. Die Geschichte ist für %s ein t
+  - docs/befund-meldungen.md:459 – | 1355 | `0x005E2B2B` | `0x00601043` | Ihr Spieler %s macht in den nächsten Tagen einen Werbespot … |
+  - docs/fundstellen.md:141 – `0x00600F2F`, `0x00601043`, `0x005EE5C0`). Auslosungsobjekt: +0 Anzahl, +2 Summe der Gewichte, +4 Gesamt.
+  - docs/fundstellen.md:184 – `0x00601043(…, w1–w4)`, mit sieben Werten `0x006015FE`; Namen einsetzen `0x005EEE7F` (ersetzt nur %1–%9, „%s“
+  - docs/fundstellen.md:239 – `0x00601043`, `0x00600F2F`.
+  - docs/korrekturliste-meldungen.md:201 – Meldung `0x00601043` setzt immer %1 = Name des übergebenen Spielers; nach der Korrektur wird q übergeben und p als
+  - docs/korrekturliste-meldungen.md:226 – bekommen (`0x00601043` legt ihn nach `0x00A2F6EC`). Jetzt steht `push 0` nach dem Zufallsaufruf. Alle übrigen Blöcke
+- `0x00601166`
+  - docs/fundstellen.md:223 – `0x00601166`.
+- `0x006012DF`
+  - docs/befund-meldungen.md:602 – xt „%1, die Freundin von %2, entdeckt … seiner anderen Freundin %3“. `0x006012DF`
+  - docs/fundstellen.md:222 – 5FB916` → `0x005FB751` Affäre (nie erreicht). Meldung mit drei Namen `0x006012DF`,
+  - docs/korrekturliste-meldungen.md:298 – Index 0 (falsch). `0x006012DF` setzt als %1 immer den Spielernamen; der Text beginnt aber mit „%1, die Freundin von
+- `0x006015FE`
+  - docs/fundstellen.md:184 – `0x00601043(…, w1–w4)`, mit sieben Werten `0x006015FE`; Namen einsetzen `0x005EEE7F` (ersetzt nur %1–%9, „%s“
+- `0x006018CE`
+  - docs/befund-meldungen.md:156 – 0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x0060229F`
+  - docs/befund-meldungen.md:156 – 0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x00602373`
+  - docs/befund-meldungen.md:215 – wird bei `0x00602373` aber nur Zufall 0–9. Die beiden letzten Einträge, 888 und 889, werden nie gewählt.
+  - docs/fundstellen.md:176 – (12 Einträge, Zufall 0–9 bei `0x00602373`); Text 1481 bei `0x0076898B` (Zweig `0x0076894B` → `0x00768962`);
+- `0x006024FD`
+  - docs/befund-meldungen.md:155 – (`0x0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+- `0x00602594`
+  - docs/befund-meldungen.md:155 – 0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF`,
+  - docs/befund-meldungen.md:190 – Peru“ in `0x00602594`).
+  - docs/befund-meldungen.md:821 – `0x00602594`) sind nur durch diesen Lauf aufgelöst.
+- `0x00604132`
+  - docs/korrekturliste-meldungen.md:74 – cheidet aus Verein und Spiel aus“; fünf Aufrufer, u. a. Text 338 bei `0x00604132` und Text 716 bei `0x006A71CF` im selben Tagesverteiler). Die Hülle `0x005E2BB9` (zufälliger Kaderp
+  - tools/asm_nacht.py:383 – # after the message, as text 338 does (0x00604132) and text 716 in the same daily dispatcher (0x006A71CF). The wrapper
+- `0x00604FA8`
+  - docs/korrekturliste-meldungen.md:220 – 05FD891` `cmp eax,1` / `jle`, `0x005FD89C` `sub dl,1`) und Text 367 (`0x00604FA8` / `0x00604FF9`). Der Text
+  - tools/asm_nacht.py:246 –  strength > 1 and subtract 1 directly (1163 at 0x005FD891 ff., 367 at 0x00604FA8 ff.). New: strength > 1,
+- `0x00604FF9`
+  - docs/korrekturliste-meldungen.md:220 – ax,1` / `jle`, `0x005FD89C` `sub dl,1`) und Text 367 (`0x00604FA8` / `0x00604FF9`). Der Text
+- `0x006062FE`
+  - docs/befund-meldungen.md:436 – `0x006062FE` mit Index = Variable + 10 angesprochen; der Wertebereich der Variablen ist nicht gelesen. Zu
+  - docs/fundstellen.md:172 – C` (Datensatz 19), `0x005F4972` (Datensatz 2). Datensätze 10/11 über `0x006062FE`.
+- `0x00608F32`
+  - docs/befund-meldungen.md:345 – ehnt Bungeesprung ab - Ist der harte Hund nur ein kleiner Feiglin… | `0x00608F32` | 6 | 0x40000001 | Wert wird über die Schlagzeile angewendet (nur als oberste Schlagzeile) |
+- `0x00608FF6`
+  - docs/befund-meldungen.md:346 – | 1940 | Meisterschale geklaut - Trainer %1 unter den Verdächtigen | `0x00608FF6` | 7 | 0x40000001 | Wert wird über die Schlagzeile angewendet (nur als oberste Schlagzeile) |
+- `0x0060A257`
+  - docs/korrekturliste-meldungen.md:154 – (`0x005ECE74`, `0x005ECF13`, `0x005E3187` ff., `0x0060A257` ff.), bei einem Abzug von 5 auf einen Teilwert der
+- `0x0060AA05`
+  - docs/befund-meldungen.md:156 – `0x005F72F0`, `0x005E993A`, `0x0060AA05`, `0x005E9B22`, `0x005E9ED1`, `0x006018CE`, `0x0060229F`, `0x005F0778`,
+- `0x0060AE6C`
+  - docs/befund-meldungen.md:166 – 05E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/befund-meldungen.md:182 – | `0x0060AE6C`, `0x0060B11E` | 459, 460, 462–464, 471–476 | Verfehlungen der Spieler: unentschuldigt gefehlt, Alk
+  - docs/fundstellen.md:180 – `0x0060AE6C` und `0x0060B11E` (Hülle `0x0060B430`, Verfehlungen der Spieler, Tabellen `0x00A3271C` / `0x00A3271
+- `0x0060B11E`
+  - docs/befund-meldungen.md:166 – E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/befund-meldungen.md:182 – | `0x0060AE6C`, `0x0060B11E` | 459, 460, 462–464, 471–476 | Verfehlungen der Spieler: unentschuldigt gefehlt, Alkoholfahrt, neg
+  - docs/fundstellen.md:180 – `0x0060AE6C` und `0x0060B11E` (Hülle `0x0060B430`, Verfehlungen der Spieler, Tabellen `0x00A3271C` / `0x00A32710`),
+- `0x0060B430`
+  - docs/befund-meldungen.md:166 – (`0x005E3F39` → `0x005E3CA8`, `0x005FCC29` → `0x005FC9EE`, `0x0060B430` → `0x0060AE6C` und `0x0060B11E`).
+  - docs/befund-meldungen.md:191 – - `0x0060B430(Verein, Manager)` geht den Kader durch und lost aus den Tabellen `0x00A3271C` / `0x00A32710`; da ni
+  - docs/fundstellen.md:180 – `0x0060AE6C` und `0x0060B11E` (Hülle `0x0060B430`, Verfehlungen der Spieler, Tabellen `0x00A3271C` / `0x00A32710`),
+- `0x0060B898`
+  - docs/befund-meldungen.md:126 – `0x005EECBA`, `0x0060B898`) stehen als Routine in diesen Datensätzen (+0x20 / +0x24) und sind damit erreichbar.
+  - docs/fundstellen.md:171 – 0x005EE98D`, `0x005EE9C2`, `0x005EEA5D`, `0x005EEBFA`, `0x005EECBA`, `0x0060B898`,
+- `0x0060BDB7`
+  - docs/befund-meldungen.md:130 – er Summe der Gewichte, kommt 0 = kein Ereignis. Tabellenobjekte legt `0x0060BDB7(Anzahl,
+  - docs/fundstellen.md:139 – gewichtete Auslosung `0x0060BE4D(Tabelle)`, Tabellen anlegen `0x0060BDB7(Anzahl, Einträge, Gesamt)`.
+- `0x0060BE4D`
+  - docs/befund-meldungen.md:129 – - **Gewichtete Auslosung:** `0x0060BE4D(Tabelle)` zieht eine Zufallszahl 0 bis Gesamt−1 und geht die Gewichte durch;
+  - docs/befund-meldungen.md:159 – `0x0060BE4D`; Liste mit Gewichten in `analyse/meldungen/gewichte.txt`).
+  - docs/fundstellen.md:139 – gewichtete Auslosung `0x0060BE4D(Tabelle)`, Tabellen anlegen `0x0060BDB7(Anzahl, Einträge, Gesamt)`.
+- `0x0060C1C0`
+  - docs/befund-meldungen.md:814 – - 93–96 an `0x0060CCC8`; Maskenfehler in `0x0060C1C0`, Fälle 106/107 (Tabellen `0x0088FFA4` / `0x0088FFB0` mit fünf
+- `0x0060C687`
+  - docs/befund-meldungen.md:225 – ### 3.5 Fest abgeschalteter Block: Stelle `0x0060C687` (Texte 832–847)
+  - docs/befund-meldungen.md:419 – - `0x0060C687`: siehe Abschnitt 3.5.
+  - docs/befund-meldungen.md:741 – `0x0060C687`, `0x005F2E43`, `0x005F2F07`) – so übersetzt der Compiler ein „if (0)“ im Quelltext;
+  - docs/fundstellen.md:177 – fest abgeschalteter Block `0x0060C687` (Texte 832–847).
+  - docs/korrekturliste-meldungen.md:96 – - Fest abgeschaltete Blöcke: `0x0060C687`, `0x005F2E43`, `0x005F2F07`.
+- `0x0060C754`
+  - docs/befund-meldungen.md:227 – `0x0060C754` / `0x0060C7E4` erreichbar; das ist nicht von Hand bestätigt (Abschnitt 7).
+  - docs/befund-meldungen.md:817 – - 832–847: an `0x0060C754` / `0x0060C7E4` erreichbar.
+- `0x0060C7E4`
+  - docs/befund-meldungen.md:227 – `0x0060C754` / `0x0060C7E4` erreichbar; das ist nicht von Hand bestätigt (Abschnitt 7).
+  - docs/befund-meldungen.md:817 – - 832–847: an `0x0060C754` / `0x0060C7E4` erreichbar.
+- `0x0060CCC8`
+  - docs/befund-meldungen.md:814 – - 93–96 an `0x0060CCC8`; Maskenfehler in `0x0060C1C0`, Fälle 106/107 (Tabellen `0x0088FFA4` / `0x0088FFB0` mit fünf
+- `0x0060D6F2`
+  - docs/befund-meldungen.md:843 – `0x005FE312`, `0x005FE989`, `0x0060D6F2`, `0x0061B4C0`, `0x006F5303`). Drei liegen außerhalb der Meldungsroutinen
+- `0x0060EC50`
+  - docs/befund-meldungen.md:155 – (`0x0060EC50`, `0x005E60BC` → `0x005E6153`, `0x005F3BAF`, `0x006024FD` → `0x00602594`, `0x005F4BAB`, `0x005F54BF
+- `0x00610192`
+  - docs/befund-meldungen.md:157 – `0x005F76E1`, `0x00610192`); Gewichte 300, 250, 250, 250, 50, 200, 30, 50, 60, 10, 20, 50, 30, 1, 200, 10.
+- `0x006143D2`
+  - docs/befund-auf-abstiege.md:62 – ruft 0x006B6A33 die Zähler 0x00634D9C und 0x00726382 sowie 0x006143D2 auf):
+  - docs/befund-auf-abstiege.md:92 –  (Vereinstabelle bei 0x00AE5C97-Index, vermutlich Vereinschronik) und 0x006143D2 werden für
+- `0x00614A99`
+  - docs/befund-meldungen.md:779 – uninitialisierter Stapelplatz als Spielernummer); `0x00614A99` (Maske 0x7F000000 gegen 0x3F); `0x005F1EAF`
+- `0x00615225`
+  - docs/befund-meldungen.md:50 – Text 2075 (Routinen `0x00615225`, `0x0061804F`–`0x0061C24B`), Lesepakete P10/P11 und P12. Für diesen Bereich gibt es
+- `0x0061804F`
+  - docs/befund-meldungen.md:50 – Text 2075 (Routinen `0x00615225`, `0x0061804F`–`0x0061C24B`), Lesepakete P10/P11 und P12. Für diesen Bereich gibt es
+- `0x0061A033`
+  - docs/befund-meldungen.md:183 – | `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C` | 305, 307, 315–317, 2346–2362 | alte Ereignistexte und 
+  - docs/befund-meldungen.md:193 – - Die Routinen ab `0x0061A033` liegen im Bereich der Spieltexte, der sonst nicht geprüft wird („Stand und Umfang“).
+  - docs/fundstellen.md:181 – `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061A1A0`
+  - docs/befund-meldungen.md:183 – | `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C` | 305, 307, 315–317, 2346–2362 | alte Ereignistexte und Fangesänge |
+  - docs/fundstellen.md:181 – `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061A29A`
+  - docs/befund-meldungen.md:183 – | `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C` | 305, 307, 315–317, 2346–2362 | alte Ereignistexte und Fangesänge |
+  - docs/fundstellen.md:181 – `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061A31C`
+  - docs/befund-meldungen.md:183 – | `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C` | 305, 307, 315–317, 2346–2362 | alte Ereignistexte und Fangesänge |
+  - docs/fundstellen.md:181 – `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061B464`
+  - docs/befund-meldungen.md:184 – | `0x0061B464` | 2423–2429 | Fangesänge |
+  - docs/fundstellen.md:181 – `0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061B4C0`
+  - docs/befund-meldungen.md:843 – `0x005FE312`, `0x005FE989`, `0x0060D6F2`, `0x0061B4C0`, `0x006F5303`). Drei liegen außerhalb der Meldungsroutinen
+- `0x0061B898`
+  - docs/befund-meldungen.md:185 – | `0x0061B898` | 2444–2455 | Fangesänge |
+  - docs/fundstellen.md:181 – 0x0061A033`, `0x0061A1A0`, `0x0061A29A`, `0x0061A31C`, `0x0061B464`, `0x0061B898`; ohne Textstelle u. a.
+- `0x0061C24B`
+  - docs/befund-meldungen.md:50 – Text 2075 (Routinen `0x00615225`, `0x0061804F`–`0x0061C24B`), Lesepakete P10/P11 und P12. Für diesen Bereich gibt es
+- `0x0061F1D9`
+  - docs/befund-finanzen.md:40 – | Aktuelles Vereinsvermögen (4472) | [P] + [P+0xC0] + Gewinn (auch `0x0061F1D9`) |
+  - docs/befund-finanzen.md:220 – Vermögensanzeigen (`0x004C82B5`, `0x0061F1D9`).
+- `0x0061FAFA`
+  - docs/befund-finanzen.md:29 – und Ausgaben der laufenden Saison (Summe: `0x0061FC81`, Teilroutinen `0x0061FAFA`, `0x0067447D` … `0x006744E3`) |
+  - docs/befund-finanzen.md:84 – - \+ T[0x08…0x14] (`0x0061FAFA`) + T[0x18, 0x1C] (`0x0067449A`) + T[0x20, 0x24, 0x28] (`0x0067447D`)
+- `0x0061FC81`
+  - docs/befund-finanzen.md:29 – 80 | Tabelle der Einnahmen und Ausgaben der laufenden Saison (Summe: `0x0061FC81`, Teilroutinen `0x0061FAFA`, `0x0067447D` … `0x006744E3`) |
+  - docs/befund-finanzen.md:39 – | Gewinn in dieser Saison, aktuell (4467) | `0x0061FC81(P, P+0x18)` |
+  - docs/befund-finanzen.md:82 – ## Gewinn der Saison: `0x0061FC81` nachgebaut (G, 16.11.2026)
+  - docs/feldkarte-verein.md:30 – 0 | Tabelle | – | Einnahmen und Ausgaben der laufenden Saison (Summe `0x0061FC81`) | G (Ort) |
+  - docs/fundstellen.md:84 – 630 Geldanlagen. Bilanz-Bildschirm `0x004813AD` (Dialog 349); Gewinn `0x0061FC81`, Bankguthaben `0x0061FD97`,
+  - tools/asm_konto.py:9 – [P] + int32 [P+C0h] + profit 0x0061FC81(P, P+18h) - paid-in amounts of the active investments + credits 0x006488CA(P)
+  - tools/asm_konto.py:16 – TARGETS = {'GEWINN32': 0x0061FC81, 'KREDITE32': 0x006488CA, 'ANLAGEN32': 0x00648947, 'KONTO32': 0x0061FD97}
+- `0x0061FD97`
+  - docs/befund-finanzen.md:41 – Bankguthaben (4463) | Aktuelles Vereinsvermögen − Anlagen + Kredite (`0x0061FD97`) |
+  - docs/befund-finanzen.md:148 – ntliche Kreditroutine** (`0x006482A6`): rechnet mit dem Bankguthaben `0x0061FD97`; ist es negativ, fallen
+  - docs/befund-finanzen.md:204 – - **Stelle 1, `0x0061FD97` (99 B, Dateioffset 0x21FD97):** Kontorechnung zieht die eingezahlten Beträge der aktiven Anlagen
+  - docs/befund-finanzen.md:231 – Fehler, der korrigiert werden soll? Betroffen wären `0x0061FD97` (Anzeige und Dispozinsen) und `0x00621EAC` / 0x470.
+  - docs/fundstellen.md:84 – dschirm `0x004813AD` (Dialog 349); Gewinn `0x0061FC81`, Bankguthaben `0x0061FD97`,
+  - tools/a3patch.py:239 – # dissolved. The bank balance 0x0061FD97 subtracts the CURRENT value of the investments instead, so it is
+  - tools/a3patch.py:242 – # 1) 0x0061FD97: subtract the amounts paid in (slot +0) of the active investments.
+  - tools/asm_konto.py:4 –  an investment is booked once, when it is dissolved. The bank balance 0x0061FD97 nevertheless
+  - tools/asm_konto.py:8 – Block 1, 0x0061FD97 (bank balance, cdecl, P = club + 210h on the stack, result in edx:eax):
+  - tools/asm_konto.py:16 – 061FC81, 'KREDITE32': 0x006488CA, 'ANLAGEN32': 0x00648947, 'KONTO32': 0x0061FD97}
+  - tools/asm_konto.py:18 – KONTO = (0x0061FD97, 0x0061FDFA, 'CC', [ # (label or None, hex bytes, jump target label or None)
+  - tools/asm_konto.py:104 – for name, block in (('Kontorechnung 0x0061FD97', KONTO), ('Bilanzzeile 0x00481426', VERMOEGEN)):
+- `0x0061FDFA`
+  - tools/asm_konto.py:18 – KONTO = (0x0061FD97, 0x0061FDFA, 'CC', [ # (label or None, hex bytes, jump target label or None)
+- `0x006200BB`
+  - docs/fundstellen.md:162 – Summand der Einnahmensumme `0x006200BB` (mit +0x2F4, +0x2FC), verwendet in `0x00622201` und `0x004A21F7`.
+  - docs/korrekturliste-meldungen.md:147 – von drei Summanden (+0x2F4, +0x2F8, +0x2FC) der Einnahmensumme `0x006200BB`, die in die Abrechnung `0x00622201`
+- `0x006218DF`
+  - docs/befund-finanzen.md:151 – (`0x006218DF`, Satz Byte `0x00B5DFA9` in Prozent) und bei Aktiengesellschaften ein Fünftel als Dividende (höchst
+- `0x00621A42`
+  - docs/befund-finanzen.md:150 – - **Saisonabschluss** (Routine um `0x00621A42`–`0x00621D4F`): auf einen positiven Saisongewinn (`0x00621F50`) Steuer
+- `0x00621D4F`
+  - docs/befund-finanzen.md:150 – - **Saisonabschluss** (Routine um `0x00621A42`–`0x00621D4F`): auf einen positiven Saisongewinn (`0x00621F50`) Steuer
+- `0x00621E73`
+  - docs/befund-finanzen.md:175 – (`0x00621E73`–`0x00621EA4`): [P] += Saisonergebnis `0x00621F50` − Steuer − Dividende, danach [P] += [P+0xC0]. Di
+- `0x00621EA4`
+  - docs/befund-finanzen.md:175 – (`0x00621E73`–`0x00621EA4`): [P] += Saisonergebnis `0x00621F50` − Steuer − Dividende, danach [P] += [P+0xC0]. Die
+- `0x00621EAC`
+  - docs/befund-finanzen.md:15 – (0x468 = Vermögen einschließlich Anlagen), die Vermögensroutine `0x00621EAC` und der Saisonwechsel zählen die
+  - docs/befund-finanzen.md:19 –  sie 0x468 (G). Damit enthält 0x468 die Anlagen bereits; **0x470 und `0x00621EAC` zählen sie doppelt**
+  - docs/befund-finanzen.md:47 – - `0x00621EAC(Verein)` = [P] + [P+0xC0] + `0x00621F50` (Saisonergebnis) − Kredite + Anlagen. Rund 45 Aufrufer im
+  - docs/befund-finanzen.md:193 – gibt; (2) `0x00621EAC` und 0x470 zählen den eingezahlten Betrag doppelt; (3) der beim Auflösen auf einmal gebuchte
+  - docs/befund-finanzen.md:218 – `0x00621EAC` und 0x470 (zählen die Einzahlung doppelt), „Maximal noch investierbarer Betrag“ `0x00622BD9` (zieh
+  - docs/befund-finanzen.md:231 – den soll? Betroffen wären `0x0061FD97` (Anzeige und Dispozinsen) und `0x00621EAC` / 0x470.
+  - docs/befund-finanzen.md:234 – 3. Ob die doppelte Zählung in `0x00621EAC` ein Fehler mit Folgen ist (Computer-Entscheidungen, Verhandlungen) – nichts
+  - docs/fundstellen.md:86 – Kredite `0x006488CA`, Vermögen der Spiellogik `0x00621EAC`; Zinssatz / Dispozins `0x00B5CC80` / `0x00B5CC84`
+- `0x00621F0D`
+  - docs/befund-finanzen.md:28 – | 0x08 | 0x470 | int64, beim Saisonwechsel = `0x00621F0D` = [P] − Kredite + Anlagen (Schreiber `0x00772FC4`) |
+  - docs/befund-finanzen.md:50 – - `0x00621F0D(Verein)` = [P] − Kredite + Anlagen, einziger Aufrufer `0x00772FC4` im Saisonwechsel (`0x00772BEE`),
+  - docs/fundstellen.md:83 – 0x470 (Saisonwechsel, `0x00621F0D`, Schreiber `0x00772FC4` in `0x00772BEE`), 0x480 Saisontabelle, 0x570 Kredite,
+- `0x00621F50`
+  - docs/befund-finanzen.md:47 – - `0x00621EAC(Verein)` = [P] + [P+0xC0] + `0x00621F50` (Saisonergebnis) − Kredite + Anlagen. Rund 45 Aufrufer im
+  - docs/befund-finanzen.md:150 – ine um `0x00621A42`–`0x00621D4F`): auf einen positiven Saisongewinn (`0x00621F50`) Steuer
+  - docs/befund-finanzen.md:175 – (`0x00621E73`–`0x00621EA4`): [P] += Saisonergebnis `0x00621F50` − Steuer − Dividende, danach [P] += [P+0xC0]. Die
+- `0x0062218E`
+  - docs/befund-finanzen.md:43 – 5), Kreditlimit (4473), investierbarer Betrag (4474) | `0x00622326`, `0x0062218E`, `0x00622A87`, `0x00622BD9` |
+  - docs/befund-finanzen.md:237 – Werkzeug); die beiden Prognosen (`0x00622326`, `0x0062218E`) sind nicht nachgebaut.
+- `0x00622201`
+  - docs/fundstellen.md:162 – d der Einnahmensumme `0x006200BB` (mit +0x2F4, +0x2FC), verwendet in `0x00622201` und `0x004A21F7`.
+  - docs/korrekturliste-meldungen.md:147 – x2F8, +0x2FC) der Einnahmensumme `0x006200BB`, die in die Abrechnung `0x00622201`
+- `0x00622326`
+  - docs/befund-finanzen.md:43 – sen (4468, 4475), Kreditlimit (4473), investierbarer Betrag (4474) | `0x00622326`, `0x0062218E`, `0x00622A87`, `0x00622BD9` |
+  - docs/befund-finanzen.md:237 – Werkzeug); die beiden Prognosen (`0x00622326`, `0x0062218E`) sind nicht nachgebaut.
+- `0x00622A87`
+  - docs/befund-finanzen.md:43 – t (4473), investierbarer Betrag (4474) | `0x00622326`, `0x0062218E`, `0x00622A87`, `0x00622BD9` |
+- `0x00622BD9`
+  - docs/befund-finanzen.md:43 – stierbarer Betrag (4474) | `0x00622326`, `0x0062218E`, `0x00622A87`, `0x00622BD9` |
+  - docs/befund-finanzen.md:146 – - **Verfügbares Geld** (`0x00622BD9`, rund 30 Aufrufer, am Bildschirm „Maximal noch investierbarer Betrag“):
+  - docs/befund-finanzen.md:218 – zählen die Einzahlung doppelt), „Maximal noch investierbarer Betrag“ `0x00622BD9` (zieht die
+- `0x00622DB2`
+  - docs/befund-finanzen.md:219 – Anlagen nicht ab), Kreditrahmen `0x00622DB2` (rechnet die Hälfte der Anlagen zum aktuellen Wert an), weitere
+- `0x00627DAD`
+  - docs/befund-finanzen.md:95 – 000 sind die Laufzeitwerte `0x00A3B3BC` und `0x00A3B37C` (gesetzt ab `0x00627DAD` aus
+  - docs/fundstellen.md:87 – aktoren `0x00A3B3BC` (10 000) und `0x00A3B37C` (100 000), gesetzt ab `0x00627DAD`.
+- `0x00627E73`
+  - docs/fundstellen.md:160 – Geldbeträge: Grundeinheit `0x00A3B3E4` (= 1 000), Vielfache in `0x00627E73` ff. (`0x00A3B370` = × 150, `0x00A3B37C`
+- `0x0062F609`
+  - docs/befund-personal.md:240 – 62F66D(Wettbewerb, Spieler)` berechnet das Sperren-Byte +0x30 (Hülle `0x0062F609` über den ganzen Kader, zwölf
+  - docs/befund-personal.md:268 – 0x40 und bleibt bis zur nächsten Neuberechnung (`0x0062F609`). Der Weg über die Ja/Nein-Abfrage (`0x004D8900`, nur wenn
+- `0x0062F66D`
+  - docs/befund-personal.md:240 – - `0x0062F66D(Wettbewerb, Spieler)` berechnet das Sperren-Byte +0x30 (Hülle `0x0062F609` über den ganzen Kader, z
+  - docs/befund-personal.md:267 – über `0x0062F66D`, dazu Rückennummer) auf, **bevor** `0x004D8BA3` die Probezeit einträgt; bei Restjahren 0 entsteht
+  - docs/befund-personal.md:272 – die Anzeige. Nur `0x0062F66D` kennt die Ausnahme „Probezeit läuft“ (unteres Halbbyte +0xB6 ≠ 0).
+- `0x0062F6BE`
+  - docs/befund-personal.md:242 – 0x40** (`0x0062F6BE`–`0x0062F6E1`); sonst 0 und danach die Sperren.
+- `0x0062F6E1`
+  - docs/befund-personal.md:242 – 0x40** (`0x0062F6BE`–`0x0062F6E1`); sonst 0 und danach die Sperren.
+- `0x0062F9DE`
+  - docs/befund-personal.md:245 – `0x0062F9DE` prüft Bit 0x40 in den Bytes +0x36 / +0x3B (Gelb-Rot), nicht in +0x30. Das Häuschen ist Symbol 7 (L
+- `0x00630266`
+  - docs/befund-meldungen.md:844 – und sind nicht gelesen (`0x00630266`, `0x006BDA51`, `0x0073D43C`);
+- `0x006311DA`
+  - docs/befund-trainer-eps.md:18 – ten in dieser Reihenfolge auf einer lokalen Kopie des Erfolgssatzes (`0x006311DA`):
+- `0x006317C6`
+  - docs/befund-personal.md:51 – Lesen/Schreiben über Kopien: Trainer `0x006317C6` / `0x006318F4`, Torwarttrainer `0x00631A0E` / `0x00631B30`
+  - docs/befund-personal.md:139 – hlt, ist nicht untersucht (rund 120 Aufrufstellen des Trainer-Lesers `0x006317C6`). Erst mit dem Nutzer klären, ob
+- `0x006318F4`
+  - docs/befund-personal.md:51 – Lesen/Schreiben über Kopien: Trainer `0x006317C6` / `0x006318F4`, Torwarttrainer `0x00631A0E` / `0x00631B30`
+- `0x00631A0E`
+  - docs/befund-personal.md:51 – ben über Kopien: Trainer `0x006317C6` / `0x006318F4`, Torwarttrainer `0x00631A0E` / `0x00631B30`
+- `0x00631B30`
+  - docs/befund-personal.md:51 – : Trainer `0x006317C6` / `0x006318F4`, Torwarttrainer `0x00631A0E` / `0x00631B30`
+- `0x00633115`
+  - docs/befund-vereinsstatistik.md:13 – | 1 „Tore“ | 0x1590 | `0x00633115` / `0x006331E6` | Tore | +0 Spieler-Nr., +2/+4 Name, +6 Jahrgang, +8 Kennzeichen „im Verein“, +0xA 
+- `0x006331E6`
+  - docs/befund-vereinsstatistik.md:13 – | 1 „Tore“ | 0x1590 | `0x00633115` / `0x006331E6` | Tore | +0 Spieler-Nr., +2/+4 Name, +6 Jahrgang, +8 Kennzeichen „im Verein“, +0xA Tore, +0x10 Spi
+- `0x00633291`
+  - docs/befund-vereinsstatistik.md:14 – | 2 „Spiele“ | 0x19DC | `0x00633291` / `0x00633384` | Spiele | +0 … +8 wie oben, +0xA Spiele gesamt, +0xC/+0xE/+0x10 Spiele je Wettbewe
+- `0x00633384`
+  - docs/befund-vereinsstatistik.md:14 – | 2 „Spiele“ | 0x19DC | `0x00633291` / `0x00633384` | Spiele | +0 … +8 wie oben, +0xA Spiele gesamt, +0xC/+0xE/+0x10 Spiele je Wettbewerbsart, +0x12 w
+  - tools/asm_vereinsliste.py:6 – START, END, SETTER = 0x007447B1, 0x007448BF, 0x00633384
+- `0x00634A1D`
+  - docs/feldkarte-verein.md:67 – | Meisterschaften | 0x00634A1D (über 0x00634A8E, 0x0071D54B) | 0x0071D3C0, 0x0071D4F2 |
+- `0x00634A8E`
+  - docs/feldkarte-verein.md:67 – | Meisterschaften | 0x00634A1D (über 0x00634A8E, 0x0071D54B) | 0x0071D3C0, 0x0071D4F2 |
+- `0x00634B32`
+  - docs/feldkarte-verein.md:68 – | Pokal | 0x00634B32 (über 0x00634BA3) | 4 Stellen in 0x006CE00E |
+- `0x00634BA3`
+  - docs/feldkarte-verein.md:68 – | Pokal | 0x00634B32 (über 0x00634BA3) | 4 Stellen in 0x006CE00E |
+- `0x00634C47`
+  - docs/feldkarte-verein.md:69 – | Europapokale | 0x00634C47 (über 0x00634CB8) | 2 Stellen in 0x0041EF40, 2 in 0x00421D45 |
+- `0x00634CB8`
+  - docs/feldkarte-verein.md:69 – | Europapokale | 0x00634C47 (über 0x00634CB8) | 2 Stellen in 0x0041EF40, 2 in 0x00421D45 |
+- `0x00634D9C`
+  - docs/befund-auf-abstiege.md:62 – ruft 0x006B6A33 die Zähler 0x00634D9C und 0x00726382 sowie 0x006143D2 auf):
+  - docs/befund-auf-abstiege.md:92 – Nebenwirkung von 1a: Auch 0x00634D9C (Vereinstabelle bei 0x00AE5C97-Index, vermutlich Vereinschronik) und 0x006143D2 werden für
+- `0x00635F76`
+  - docs/befund-meldungen.md:593 – t aus dem Code nicht bestimmbar (die Zeigerliste wird beim Aufbau in `0x00635F76`
+  - docs/fundstellen.md:157 – Spielen setzen `0x0070302D`. Kader-Zeigerliste Verein +0xB50: Aufbau `0x00635F76`, `0x00636120` ff., `0x006362A0`,
+  - docs/korrekturliste-meldungen.md:134 – letzten 20 Ereignisse (`0x005E5E90`). Die Kader-Zeigerliste wird von `0x00635F76`, `0x00636120` ff. und
+- `0x00636120`
+  - docs/befund-meldungen.md:595 – Nachgelesen 17.11.2026: Auch `0x00636120` ff. und `0x006362A0` schreiben nur die Plätze 0 bis Kadergröße−1. Hat
+  - docs/fundstellen.md:157 –  `0x0070302D`. Kader-Zeigerliste Verein +0xB50: Aufbau `0x00635F76`, `0x00636120` ff., `0x006362A0`,
+  - docs/korrekturliste-meldungen.md:134 – ignisse (`0x005E5E90`). Die Kader-Zeigerliste wird von `0x00635F76`, `0x00636120` ff. und
+- `0x006361E8`
+  - docs/befund-vereinsstatistik.md:43 – Vereinssatzes, `0x006361E8`), Zeiger +0xB50. **Im Spiel ungetestet**, ein Emulator stand zum Vorabtest nicht zur Verfügung.
+- `0x006362A0`
+  - docs/befund-meldungen.md:595 – Nachgelesen 17.11.2026: Auch `0x00636120` ff. und `0x006362A0` schreiben nur die Plätze 0 bis Kadergröße−1. Hat
+  - docs/fundstellen.md:157 – er-Zeigerliste Verein +0xB50: Aufbau `0x00635F76`, `0x00636120` ff., `0x006362A0`,
+  - docs/korrekturliste-meldungen.md:135 – `0x006362A0` immer nur für die Plätze 0 bis Kadergröße−1 neu geschrieben; der Platz dahinter behält, was vorher
+- `0x006363D7`
+  - docs/befund-meldungen.md:792 – - `0x00636459` / `0x006363D7`: bei Nummer 0 ein uninitialisierter Rückgabezeiger.
+- `0x00636459`
+  - docs/befund-meldungen.md:792 – - `0x00636459` / `0x006363D7`: bei Nummer 0 ein uninitialisierter Rückgabezeiger.
+  - docs/fundstellen.md:67 – Zugriff: Spieler aus Nummer `0x00636459(Nr)` (Freigabe `0x006364CF`), aus Nummer + Verein `0x006968C4(Nr, Verein)`;
+- `0x006364CF`
+  - docs/fundstellen.md:67 – Zugriff: Spieler aus Nummer `0x00636459(Nr)` (Freigabe `0x006364CF`), aus Nummer + Verein `0x006968C4(Nr, Verein)`;
+- `0x00636790`
+  - docs/befund-personal.md:237 – - Zuordnung beim Laden (`0x00636790` ff., `0x00636FC1` ff., `0x00637035` ff.; statischer Satz = Spielstand + 0x20):
+- `0x00636FC1`
+  - docs/befund-personal.md:237 – - Zuordnung beim Laden (`0x00636790` ff., `0x00636FC1` ff., `0x00637035` ff.; statischer Satz = Spielstand + 0x20):
+- `0x00637035`
+  - docs/befund-personal.md:237 – - Zuordnung beim Laden (`0x00636790` ff., `0x00636FC1` ff., `0x00637035` ff.; statischer Satz = Spielstand + 0x20):
+- `0x00638335`
+  - docs/befund-meldungen.md:793 – - `0x00638335` / `0x0063865C` (V: Stadiondaten): im Zweig Verein = 200 gesetzte Werte werden sofort überschrieben
+- `0x0063865C`
+  - docs/befund-meldungen.md:793 – - `0x00638335` / `0x0063865C` (V: Stadiondaten): im Zweig Verein = 200 gesetzte Werte werden sofort überschrieben;
+- `0x0063B75A`
+  - docs/fundstellen.md:77 – - Verein (gebildet in `0x0063B75A` aus dem statischen Satz; holen `0x0063DD1C(Land, Verein, 0xFFFF)`, freigeben
+- `0x0063DD1C`
+  - docs/fundstellen.md:77 – - Verein (gebildet in `0x0063B75A` aus dem statischen Satz; holen `0x0063DD1C(Land, Verein, 0xFFFF)`, freigeben
+- `0x0063DF96`
+  - docs/fundstellen.md:78 – `0x0063DF96`): +0xE2 Kadergröße, +0xB50 Spielerzeiger, +0x103 Vereinsindex im Land, +0x104 Land, +0x105 Liga,
+- `0x0063E470`
+  - docs/zuordnung-bildschirme.md:153 – | Vereinssatz 0x10A | Bit 0–1 × 3 Punkte Abzug, 0x80 = wird Letzter (`0x0063E470`) | G: Kaiserslautern 2021 Wert 3; zehn Fälle mit 0x80 |
+- `0x0063E52F`
+  - docs/fundstellen.md:81 – Vereinsname `0x0063E52F(Land, Verein)`.
+  - tools/asm_tagesform.py:37 – 'zeile': (0x0044ECB9, 0x0044ED12, {'NAME32': 0x0063E52F}, [
+- `0x0064067F`
+  - docs/feldkarte-verein.md:59 – und Weltpokal (Zeile 48) gehen nur in einen lokalen Datensatz, der an 0x0064067F übergeben wird – Verbleib offen.
+- `0x0064260D`
+  - docs/feldkarte-verein.md:71 – Lesen für die Anzeige über 0x0064260D / 0x00642697 / 0x00642721 (kopieren eine Landeszeile, im Netzwerkspiel per Nachricht 0x91).
+- `0x00642697`
+  - docs/feldkarte-verein.md:71 – Lesen für die Anzeige über 0x0064260D / 0x00642697 / 0x00642721 (kopieren eine Landeszeile, im Netzwerkspiel per Nachricht 0x91).
+- `0x00642721`
+  - docs/feldkarte-verein.md:71 – Lesen für die Anzeige über 0x0064260D / 0x00642697 / 0x00642721 (kopieren eine Landeszeile, im Netzwerkspiel per Nachricht 0x91).
+- `0x00644F5C`
+  - docs/fundstellen.md:102 – Startinitialisierung der Tabellenarten ab `0x00644F5C` (Vektor-Konstruktoren).
+- `0x00644FEB`
+  - docs/befund-zaehler.md:84 – `0x00644FEB`), deren Liste die Funktionstabelle `0x00831A24` mit genau dieser Vergleichsroutine benutzt; sie wi
+- `0x00645F50`
+  - docs/befund-zaehler.md:83 – Belegt: Die Tabelle 9 gehört zur Klasse mit Konstruktor `0x00645F50` (fünfter Tabellentyp in der Startinitialisierung
+  - docs/fundstellen.md:107 – 007230E1`, Vergleich `0x00723094`, Tabelle `0x00831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746), Kopie `0x00721191` | **Tagesform** (Klasse `CTagesform`); gepatcht |
+- `0x00647D30`
+  - docs/befund-finanzen.md:32 –  | Geldanlagen: 6 Fächer × 24 B, Byte +0x13 Bit 0 = aktiv, Wert über `0x00647D30` (Summe `0x00648947`) |
+  - docs/befund-finanzen.md:68 – - **Wert einer Anlage** (`0x00647D30`): Wert (+8) × Index der Anlageart ÷ Kaufindex (int16 +0x10). Die Anlageart ist
+  - docs/fundstellen.md:85 – Anlagen `0x00648947` (Wert einer Anlage `0x00647D30`, Index je Anlageart `0x00B5CC8C` = Block 1 ab 0x104),
+- `0x00647EFA`
+  - docs/befund-finanzen.md:211 –  (`0x0064800A`) buchen nichts in die Saisontabelle außer den Zinsen (`0x00647EFA`); der
+- `0x0064800A`
+  - docs/befund-finanzen.md:211 – - Kredite: Aufnehmen und Tilgen (`0x0064800A`) buchen nichts in die Saisontabelle außer den Zinsen (`0x00647EFA`); der
+- `0x006482A6`
+  - docs/befund-finanzen.md:148 – - **Wöchentliche Kreditroutine** (`0x006482A6`): rechnet mit dem Bankguthaben `0x0061FD97`; ist es negativ, fallen
+- `0x00648375`
+  - docs/befund-finanzen.md:208 – wöchentliche Kreditroutine `0x00648375`, `0x006484A6`, `0x0064857C`.
+- `0x006484A6`
+  - docs/befund-finanzen.md:208 – wöchentliche Kreditroutine `0x00648375`, `0x006484A6`, `0x0064857C`.
+- `0x0064857C`
+  - docs/befund-finanzen.md:208 – wöchentliche Kreditroutine `0x00648375`, `0x006484A6`, `0x0064857C`.
+- `0x00648788`
+  - docs/befund-finanzen.md:142 – - **Auflösen** (`0x00648788(P, Fach)`; vom Dialog `0x00444471`, automatisch für Anlagen der Art ≠ 0 über `0x00648847`):
+- `0x00648847`
+  - docs/befund-finanzen.md:142 – `; vom Dialog `0x00444471`, automatisch für Anlagen der Art ≠ 0 über `0x00648847`):
+- `0x006488CA`
+  - docs/befund-finanzen.md:31 –  8 Fächer × 24 B, int64 Betrag (+0), Byte +0x0F Bit 0 = aktiv (Summe `0x006488CA`) |
+  - docs/befund-finanzen.md:42 – | Anlagen (4464) / Kredite (4465) | `0x00648947(P)` / `0x006488CA(P)` |
+  - docs/fundstellen.md:86 – Kredite `0x006488CA`, Vermögen der Spiellogik `0x00621EAC`; Zinssatz / Dispozins `0x00B5CC80` / `0x00B5CC84`
+  - tools/asm_konto.py:9 – 1FC81(P, P+18h) - paid-in amounts of the active investments + credits 0x006488CA(P)
+  - tools/asm_konto.py:16 – TARGETS = {'GEWINN32': 0x0061FC81, 'KREDITE32': 0x006488CA, 'ANLAGEN32': 0x00648947, 'KONTO32': 0x0061FD97}
+- `0x00648947`
+  - docs/befund-finanzen.md:32 – cher × 24 B, Byte +0x13 Bit 0 = aktiv, Wert über `0x00647D30` (Summe `0x00648947`) |
+  - docs/befund-finanzen.md:42 – | Anlagen (4464) / Kredite (4465) | `0x00648947(P)` / `0x006488CA(P)` |
+  - docs/befund-finanzen.md:205 – ab (Fach +0) statt der aktuellen Werte (`0x00648947`). Alle zehn Aufrufer erwarten dort das Geld ohne Anlagen:
+  - docs/fundstellen.md:85 – Anlagen `0x00648947` (Wert einer Anlage `0x00647D30`, Index je Anlageart `0x00B5CC8C` = Block 1 ab 0x104),
+  - tools/asm_konto.py:5 – subtracts the CURRENT value of the investments (0x00648947), so the balance is too low by the whole growth for as long
+  - tools/asm_konto.py:16 – GETS = {'GEWINN32': 0x0061FC81, 'KREDITE32': 0x006488CA, 'ANLAGEN32': 0x00648947, 'KONTO32': 0x0061FD97}
+- `0x00648D1A`
+  - docs/befund-finanzen.md:140 – - **Jährliche Fortschreibung** (`0x00648D8F`, je Verein über `0x00648D1A`): Wert (+8) = Wert × Index ÷ Kaufindex,
+- `0x00648D8F`
+  - docs/befund-finanzen.md:140 – - **Jährliche Fortschreibung** (`0x00648D8F`, je Verein über `0x00648D1A`): Wert (+8) = Wert × Index ÷ Kaufindex,
+- `0x006493E0`
+  - docs/befund-meldungen.md:382 – 17.11.2026 (vorher offen): Alle vier Halbzeit-Stellen verlangen über `0x006493E0` einen Maulwurf
+  - docs/fundstellen.md:153 – Aufstellung `0x006493E0`, Bestimmung in `0x005E50BA` (`0x005E5693`, Kandidaten Motivation +0xCA < 70), Aufrufer
+  - docs/korrekturliste-meldungen.md:171 – Halbzeit-Schlagzeilen 1692–1695, 1697, 1698 verlangen über `0x006493E0` einen Maulwurf unter den 11 + 7 Spielern
+- `0x0064B3F2`
+  - docs/befund-meldungen.md:347 – ner %1 hatte Schaum vor dem Mund - Spieler lachten ihn nach der H… | `0x0064B3F2` | 8 | 0x4 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Vereinswert 0xDF8 |
+- `0x0064B40E`
+  - docs/befund-meldungen.md:348 – rastete in der Halbzeit aus - Trainer %2 beschimpfte seine Spieler | `0x0064B40E` | 7 | 0x0 | kein Wert übergeben |
+- `0x0064B41B`
+  - docs/befund-meldungen.md:375 –  die Halbzeit-Schlagzeilen `0x0049180E` (1697), `0x00491F5D` (1698), `0x0064B41B`
+  - docs/fundstellen.md:146 – Aufrufer `0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x0064B59F`
+  - docs/befund-meldungen.md:349 – macht sich zum Idioten!" - Spieler lachen nicht mehr nur hinter v… | `0x0064B59F` | 10 | 0x2 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Vereinswert 0xDF8 |
+- `0x0064B5C4`
+  - docs/befund-meldungen.md:350 – ner %1 griff zum letzten Mittel - %2 appellierte flehend an die E… | `0x0064B5C4` | 10 | 0x2 | Managerwert ohne Managernummer übergeben; direkt danach geändert: Vereinswert 0xDF8 |
+- `0x0064B5D1`
+  - docs/befund-meldungen.md:376 – (1692/1693), `0x0064B5D1` (1694/1695) und die Maulwurf-Routine `0x005E50BA` bei 1701 (`0x005E52EC`, einmal je Saison
+  - docs/fundstellen.md:146 – Aufrufer `0x0049180E`, `0x00491F5D`, `0x0064B41B`, `0x0064B5D1`, `0x005E52EC`, `0x005E535A` (alle +1); lesen
+- `0x0064F981`
+  - docs/korrekturliste-meldungen.md:260 – Mitzählen scheidet aus: Die Tagesroutine `0x0064F981` ruft die täglichen Ereignisse je Verein nur mit 2 von 3
+  - tools/asm_nacht.py:289 – # every day (0x0064F981: events only with 2 of 3 per club and day), so nothing is counted. New meaning of the byte: 0 =
+- `0x0064F9B6`
+  - docs/korrekturliste-meldungen.md:261 – (`0x0064FA8A`) und in 1 von 20 Fällen gar nicht (`0x0064F9B6`), dabei entfällt auch die Monatsroutine `0x007489CB`
+  - docs/korrekturliste-meldungen.md:697 – Tag: In 1 von 20 Fällen fällt der Tag ganz aus (`0x0064F9B6`), sonst je Verein mit 2 von 3 (`0x0064FA8A`). Das sind
+- `0x0064FA47`
+  - docs/korrekturliste-meldungen.md:262 – (`0x0064FA47`). Lösung (eingetragen nach Freigabe, Block `fuehrerschein-zaehler` in `tools/asm_nacht.py`, 87
+- `0x0064FA8A`
+  - docs/korrekturliste-meldungen.md:261 – (`0x0064FA8A`) und in 1 von 20 Fällen gar nicht (`0x0064F9B6`), dabei entfällt auch die Monatsroutine `0x007489C
+  - docs/korrekturliste-meldungen.md:697 –  fällt der Tag ganz aus (`0x0064F9B6`), sonst je Verein mit 2 von 3 (`0x0064FA8A`). Das sind
+- `0x006502A9`
+  - docs/korrekturliste-meldungen.md:218 – ignisse laufen nur für die bis zu vier Vereine menschlicher Manager (`0x006502A9` holt deren Liste,
+  - docs/korrekturliste-meldungen.md:696 – ie täglichen Ereignisse laufen nur für Vereine menschlicher Manager (`0x006502A9`, `0x0065034E`), und zwar nicht jeden
+- `0x0065034E`
+  - docs/korrekturliste-meldungen.md:219 – Aufruf `0x0065034E`). Schwesterstellen mit Stärkeverlust verlangen Stärke über 1 und ziehen direkt 1 ab: Text 1163
+  - docs/korrekturliste-meldungen.md:696 – reignisse laufen nur für Vereine menschlicher Manager (`0x006502A9`, `0x0065034E`), und zwar nicht jeden
+- `0x0065803C`
+  - docs/fundstellen.md:117 – `0x0065803C`; Spielbericht-Sätze `0x01BDD7D8 + n × 0x238`.
+- `0x006580B2`
+  - docs/befund-notenschnitt.md:80 – (`0x00705E9B`) und die Aufrufer der Spielnoten im Spielobjekt (`0x006580B2`, `0x006581CD`).
+  - docs/befund-zaehler.md:105 – Noch nicht angesehen: Notenleser im Spielbericht (`0x006580B2`-Aufrufer), `0x0048E36F`, `0x005E1741`, `0x0072796F`.
+  - docs/fundstellen.md:116 – Mannschaft B +0x34A / +0x392; Note eines Spielers zur Minute `0x006580B2(Spiel, Nr, Minute)`, Varianten `0x006581CD`,
+- `0x006581CD`
+  - docs/befund-notenschnitt.md:80 – 5E9B`) und die Aufrufer der Spielnoten im Spielobjekt (`0x006580B2`, `0x006581CD`).
+  - docs/fundstellen.md:116 – eines Spielers zur Minute `0x006580B2(Spiel, Nr, Minute)`, Varianten `0x006581CD`,
+- `0x006591DB`
+  - docs/befund-zaehler.md:21 – `add cl,1` ohne Prüfung. Aufrufer: zwölf Stellen `0x006591DB` … `0x0065A652`. Lesen in `0x0069E16A` / `0x0069E1C7`
+- `0x0065A652`
+  - docs/befund-zaehler.md:21 – `add cl,1` ohne Prüfung. Aufrufer: zwölf Stellen `0x006591DB` … `0x0065A652`. Lesen in `0x0069E16A` / `0x0069E1C7`
+- `0x0065D53F`
+  - docs/befund-notenschnitt.md:89 – | `0x0065D53F`, `0x0065DC6F`, `0x006FAAB0` | bester/schlechtester Spieler eines Spiels | nur ein Spiel, kein Schn
+- `0x0065DC6F`
+  - docs/befund-notenschnitt.md:89 – | `0x0065D53F`, `0x0065DC6F`, `0x006FAAB0` | bester/schlechtester Spieler eines Spiels | nur ein Spiel, kein Schnitt – unauffäl
+- `0x0065E805`
+  - docs/befund-personal.md:149 –  Neuaufbau `0x00409A3F` (aufgerufen aus `0x007719A6` und zweimal aus `0x0065E805`, beides im
+- `0x0066AE46`
+  - docs/befund-personal.md:251 – zeit (`0x00706A45`, aus dem Kader `0x0070E01A`, zurück in die Jugend `0x0066AE46`, höchstens 20 Plätze).
+  - docs/befund-personal.md:274 – uer 1 oder Zwang: `0x00706A45`, aus dem Kader (`0x0070E01A`), Jugend `0x0066AE46` (nur bei < 20 Plätzen).
+  - docs/befund-personal.md:311 – (`0x0066AEA3`) und in die eigene ein (`0x0066AE46`), schreibt das Gehalt (`0x004D7793`) und die Station
+- `0x0066AEA3`
+  - docs/befund-personal.md:311 – (`0x0066AEA3`) und in die eigene ein (`0x0066AE46`), schreibt das Gehalt (`0x004D7793`) und die Station
+- `0x0066B648`
+  - docs/befund-personal.md:300 – Gehalt +0x88 = 0 → Dialog `0x005CB00F`, bei Zusage Gehalt aus `0x0066B648` und 10 Jahre) und `0x006C3D7F` (Routine
+  - docs/befund-personal.md:310 – (Zweig `0x004D766E`: Dialog `0x005CB00F`, Gehalt aus `0x0066B648`) trägt den Spieler aus der fremden Jugend aus
+- `0x0066D975`
+  - docs/befund-personal.md:54 – **Gedacht ist es so:** Beendet ein Spieler die Karriere (`0x0066D975` → `0x0066DF9E`), kommt er auf eine Warteliste:
+- `0x0066DF9E`
+  - docs/befund-personal.md:54 – edacht ist es so:** Beendet ein Spieler die Karriere (`0x0066D975` → `0x0066DF9E`), kommt er auf eine Warteliste:
+  - docs/befund-personal.md:64 – **Der Fehler:** Am Anfang von `0x0066DF9E` steht
+  - docs/fundstellen.md:256 – - Trainer-Nachwuchs `0x0066DF9E`, Ausgleich `0x006B6000` (`befund-personal.md`).
+  - tools/a3patch.py:60 – # 0x0066DF9E puts a retiring player on the waiting list for coaches / goalkeeper coaches. It leaves at once
+- `0x0066DFC2`
+  - tools/a3patch.py:63 – # test eax,eax / je +5 / jmp end -> cmp eax,01BE0B18h / jne 0x0066DFC2 (existing jmp to the end) / nop nop
+- `0x0066DFCF`
+  - docs/befund-personal.md:197 – 1. **Warteliste freischalten** (9 Bytes ab VA 0x0066DFCF, Dateioffset 0x26DFCF):
+- `0x0066E374`
+  - docs/befund-personal.md:60 – - Wird ein Trainer ersetzt (`0x0066E374`) oder ein Torwarttrainer (`0x0066E4E7`), nimmt das Spiel zuerst jemanden von der Liste.
+  - docs/befund-personal.md:85 – **Zweiter Fehler, bisher ohne Wirkung:** `0x0066E374` übernimmt von der Trainer-Warteliste Name und Kompetenz, aber nicht das
+  - tools/a3patch.py:67 – # 0x0066E374 takes a new coach from the waiting list (name, competence) but not his date of birth, so he
+- `0x0066E3CA`
+  - docs/befund-personal.md:201 – 2. **Geburtsdatum bei Trainern übernehmen**: Block 0x0066E3CA–0x0066E409 (64 Bytes, kopiert die zwei Namensworte) kürzer
+  - tools/a3patch.py:69 – # The 64 bytes at VA 0x0066E3CA that copy the two name words are rewritten shorter, plus the date.
+- `0x0066E409`
+  - docs/befund-personal.md:201 – 2. **Geburtsdatum bei Trainern übernehmen**: Block 0x0066E3CA–0x0066E409 (64 Bytes, kopiert die zwei Namensworte) kürzer
+- `0x0066E4C8`
+  - docs/befund-personal.md:203 – es Nutzers: Notbehelf anheben (Konstante 2 bei `0x0066E5EF`, 2/1 bei `0x0066E4C8`–`0x0066E4DF`).
+- `0x0066E4DF`
+  - docs/befund-personal.md:203 – otbehelf anheben (Konstante 2 bei `0x0066E5EF`, 2/1 bei `0x0066E4C8`–`0x0066E4DF`).
+- `0x0066E4E7`
+  - docs/befund-personal.md:60 – - Wird ein Trainer ersetzt (`0x0066E374`) oder ein Torwarttrainer (`0x0066E4E7`), nimmt das Spiel zuerst jemanden von der Liste.
+- `0x0066E5AC`
+  - docs/befund-personal.md:86 – Geburtsdatum (die Torwarttrainer-Routine tut es, `0x0066E5AC`). Ein nachgerückter Ex-Profi behielte das Alter des Vorgängers
+  - tools/a3patch.py:68 – e age of the man he replaces. The goalkeeper-coach routine copies it (0x0066E5AC).
+- `0x0066E5EF`
+  - docs/befund-personal.md:203 – tional, Entscheidung des Nutzers: Notbehelf anheben (Konstante 2 bei `0x0066E5EF`, 2/1 bei `0x0066E4C8`–`0x0066E4DF`).
+- `0x006743DB`
+  - docs/befund-finanzen.md:90 – T[0xA0] + T[0xE8] + T[0x8C] + Stufe A × 10 000 + Stufe B × 100 000) (`0x006743DB`)
+- `0x0067444B`
+  - docs/befund-finanzen.md:88 – - − (T[0x5C] + T[0x60] − T[0x64] + T[0x68] + T[0x6C] + T[0x88]) (`0x0067444B`)
+- `0x0067447D`
+  - docs/befund-finanzen.md:29 – er laufenden Saison (Summe: `0x0061FC81`, Teilroutinen `0x0061FAFA`, `0x0067447D` … `0x006744E3`) |
+  - docs/befund-finanzen.md:84 – (`0x0061FAFA`) + T[0x18, 0x1C] (`0x0067449A`) + T[0x20, 0x24, 0x28] (`0x0067447D`)
+- `0x0067449A`
+  - docs/befund-finanzen.md:84 – - \+ T[0x08…0x14] (`0x0061FAFA`) + T[0x18, 0x1C] (`0x0067449A`) + T[0x20, 0x24, 0x28] (`0x0067447D`)
+- `0x006744B1`
+  - docs/befund-finanzen.md:91 – - \+ (T[0x9C] + T[0x2C] + T[0xA4] + T[0xEC] + T[0x70]) (`0x006744B1`; T[0x70] zählt das Spiel also zweimal).
+  - docs/befund-finanzen.md:145 – (`0x006744B1`: T[0x9C] + T[0x2C] + T[0xA4] + T[0xEC] + T[0x70]; die Bildschirmzeile ist diese Summe + T[0x70]).
+- `0x006744E3`
+  - docs/befund-finanzen.md:29 – ison (Summe: `0x0061FC81`, Teilroutinen `0x0061FAFA`, `0x0067447D` … `0x006744E3`) |
+  - docs/befund-finanzen.md:87 – - − (int64 T[0xB0] + int64 T[0xC0] + T[0xC8]) (`0x006744E3`) + T[0xB8] − T[0x58]
+- `0x00674522`
+  - docs/befund-finanzen.md:89 – - − (T[0x74] + T[0x78] + T[0x7C] + T[0x80] + T[0x84]) (`0x00674522`) + T[0x70]
+- `0x0067582A`
+  - docs/befund-notenschnitt.md:218 – `0x006FF01B` liefert das **Alter** des Spielers (über `0x0067582A`, Geburtsdatum im Laufzeitobjekt +0xCC, aktuelles Datum
+  - docs/fundstellen.md:66 – tsdatum (Tag, Monat, Jahr bei +0xCE); **Alter = `0x006FF01B`** (über `0x0067582A`) |
+  - docs/korrekturliste-meldungen.md:264 – heutiges Datum: Wörter `0x00B5CBDE` Jahr, `0x00B5CBDC` Monat, wie in `0x0067582A`); 0 = Führerschein da. Jedes
+  - tools/asm_nacht.py:291 – # 0x00B5CBDC month, as 0x0067582A reads them). Every read checks (E - today) & 0xFF: 0..7 = still withdrawn, anything
+- `0x00676A74`
+  - docs/befund-finanzen.md:138 – Index der Art, +0x13 Bit 0 gesetzt, +0x14 Datum (`0x00676A74`). **Sonst wird nichts gebucht**: weder der Grundwert
+- `0x00676C03`
+  - docs/fundstellen.md:13 – [Land×2 + 0x00AE5EF0]`, Anzahl `[Land×2 + 0x00AE5E06]`; Land gültig? `0x00676C03` |
+- `0x00677B07`
+  - docs/fundstellen.md:80 – ieltage `0x00692744(Verein)`; `0x006927B3(Land, Liga)`; Liga-Nr. 0–9 `0x00677B07(Land, Liga)`;
+  - docs/zuordnung-bildschirme.md:105 – `0x00B21ADC + Liga-Nr. × 0x5E74 + Saisons zurück × 0x972` (Liga-Nr. = 0x00677B07(Land, Liga)).
+- `0x00678F07`
+  - docs/befund-personal.md:252 – ft nur, wenn der Schalter `0x00B5CC04` („gerade geladen“, gesetzt in `0x00678F07`) 0 ist.
+- `0x00680569`
+  - docs/befund-auf-abstiege.md:67 – Regionalliga (2 oder 3) aufgerufen. Der Listeneintrag wird gebraucht (0x00680569 schließt diese Vereine danach
+  - docs/befund-auf-abstiege.md:100 – (Objekt, Liga-Index, Verein, Statistik)` trägt einen Aufsteiger ein, `0x00680569` fragt die Liste ab.
+  - tools/a3patch.py:40 – # the league's own index (2 or 3), only so that 0x00680569 can leave them out of the new Regionalliga.
+- `0x006821CE`
+  - docs/befund-personal.md:282 – (`0x0076C5E0`), `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+- `0x006829D9`
+  - docs/befund-personal.md:282 – (`0x0076C5E0`), `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+- `0x006862D0`
+  - docs/korrekturliste-meldungen.md:245 – (`0x006862D0`: Schleife bis 94) aus der Nummerntabelle `0x008A8758`; dort stehen für 90–93 die Oberflächentexte 
+- `0x0068C257`
+  - docs/feldkarte-spieler.md:4 – - Stammdaten-Lader `SPIELER` (0x0068C257): Textzeile → Zwischen-Datensatz (Import).
+  - docs/feldkarte-verein.md:77 – - Spieler: Lader `SPIELER` (0x0068C257) ist kartiert (`analyse/spieler_map.txt`), die Umkopierroutine noch nicht.
+  - docs/fundstellen.md:268 – | `Data.a3\*.sav` | Stammdaten | Lader `0x0068C257` (Spieler), `0x0068CDFA` (Vereine); Feldkarten |
+- `0x0068C903`
+  - docs/feldkarte-spieler.md:5 – - Umkopierroutine (0x0068C903): Import → Spielerobjekt (Array bei 0x00C02550, 852 Byte Abstand).
+- `0x0068CDFA`
+  - docs/feldkarte-verein.md:4 – - Stammdaten-Lader `VEREIN` (0x0068CDFA): Textzeile → Zwischen-Datensatz (Import).
+  - docs/fundstellen.md:268 – | `Data.a3\*.sav` | Stammdaten | Lader `0x0068C257` (Spieler), `0x0068CDFA` (Vereine); Feldkarten |
+- `0x0068D411`
+  - docs/feldkarte-verein.md:5 – - Umkopierroutine (0x0068D411): Import → Vereinsobjekt im Speicher.
+- `0x00691000`
+  - docs/befund-auf-abstiege.md:50 – : Liga-Index, den der Aufrufer 0x006915D9 bzw. die Auslandsroutine um 0x00691000 übergibt).
+- `0x0069128A`
+  - docs/befund-auf-abstiege.md:65 – 2. 0x0069139B in der Routine 0x0069128A, die je eine Regionalliga abarbeitet (Aufrufe 0x006AE8E1 mit Liga-Index 2 und 0x006AE916
+  - docs/befund-auf-abstiege.md:105 – 2. `0x006AE8E1` / `0x006AE916` → `0x0069128A` je Regionalliga: die ersten zwei aufstiegsberechtigten Vereine der Abschlusstabelle
+  - tools/a3patch.py:33 – # 0x0069128A (one Regionalliga): the clubs going up are registered with the league's own index and with
+  - tools/a3patch.py:39 – # Same routine 0x0069128A: the two clubs going up from a Regionalliga are entered in the promotion list of
+- `0x0069137D`
+  - docs/befund-auf-abstiege.md:71 – Mögliche Korrektur: Statistik-Flag an Stelle 2 auf 0 – VA 0x0069137D `6A 01` → `6A 00` (Dateioffset 0x29137E: 01 → 00).
+  - tools/a3patch.py:35 – # Keep the list entry, drop the second count: push 1 -> push 0 (VA 0x0069137D).
+- `0x00691392`
+  - docs/befund-auf-abstiege.md:114 – - `0x00691392` (Dateioffset 0x291392): Eintragen mit Liga-Index 1 statt dem eigenen. Liste 1 ist dort schon voll,
+- `0x0069139B`
+  - docs/befund-auf-abstiege.md:65 – 2. 0x0069139B in der Routine 0x0069128A, die je eine Regionalliga abarbeitet (Aufrufe 0x006AE8E1 mit Liga-Index 2
+  - docs/fundstellen.md:250 – - Auf-/Abstieg: Statistikroutine `0x00726382`, zweite Meldestelle `0x0069139B`, Spanien `0x006B1F12`; Saisonergebnis-
+- `0x00691438`
+  - docs/befund-auf-abstiege.md:115 – - `0x00691438` (Dateioffset 0x291438): Nachschlagen in Liste 1 statt in der eigenen.
+- `0x00691440`
+  - docs/befund-auf-abstiege.md:107 – bei `0x00691440`, die diese Vereine aus der neuen Regionalliga herauslässt.
+- `0x006915D3`
+  - docs/befund-auf-abstiege.md:76 – ge aus beiden Regionalligen werden dagegen fest mit Index 2 gemeldet (0x006915D3 `push 2`).
+- `0x006915D9`
+  - docs/befund-auf-abstiege.md:50 – Ursache nicht untersucht (V: Liga-Index, den der Aufrufer 0x006915D9 bzw. die Auslandsroutine um 0x00691000 übergibt).
+- `0x006916D0`
+  - docs/befund-auf-abstiege.md:117 – ufsteiger in die 2. Liga (zwei je Regionalliga). Die Nachbarroutinen `0x006916D0` und `0x006918AB`
+- `0x006918AB`
+  - docs/befund-auf-abstiege.md:117 – 2. Liga (zwei je Regionalliga). Die Nachbarroutinen `0x006916D0` und `0x006918AB`
+- `0x00692045`
+  - docs/befund-auf-abstiege.md:81 – anien-Routine 0x006B1F12 lädt Liga-Index 0 (`push 0 / push 3Fh / call 0x00692045`), trägt Absteiger mit Index 0 in die Liste
+- `0x00692744`
+  - docs/befund-notenschnitt.md:139 – `0x00705EB6`, 170 Byte): nur die bisher gespielten Spieltage (`0x00692744(Verein)`), Einsatz = 0xC0, Note = 0x3C,
+  - docs/fundstellen.md:80 – - Gespielte Spieltage `0x00692744(Verein)`; `0x006927B3(Land, Liga)`; Liga-Nr. 0–9 `0x00677B07(Land, Liga)`;
+  - tools/asm_goldkettchen.py:10 – 0x00692744 is taken from the frame of the ONLY caller (0x005FEC09, club = [ebp+0Ch]).
+  - tools/asm_goldkettchen.py:16 – 'routine': (0x00705F60, 0x00706015, {'MATCHDAYS32': 0x00692744}, [
+  - tools/asm_totalausfall.py:7 – The number of match days comes from 0x00692744(club); the club pointer is taken from the frame of the ONLY caller
+  - tools/asm_totalausfall.py:12 – TARGETS = {'MATCHDAYS32': 0x00692744}
+- `0x006927B3`
+  - docs/befund-notenschnitt.md:13 – (`0x006927B3`; im Liga-Objekt Wort +0x46 = gespielte Spieltage).
+  - docs/fundstellen.md:80 – - Gespielte Spieltage `0x00692744(Verein)`; `0x006927B3(Land, Liga)`; Liga-Nr. 0–9 `0x00677B07(Land, Liga)`;
+- `0x006968C4`
+  - docs/fundstellen.md:67 – Nummer `0x00636459(Nr)` (Freigabe `0x006364CF`), aus Nummer + Verein `0x006968C4(Nr, Verein)`;
+- `0x0069692B`
+  - docs/befund-personal.md:271 – - Einsetzbarkeit `0x0069692B` (13 Aufrufer): 0, wenn Restjahre = 0 und kein Amateur (`0x00706ACD`); gleiche Regel wie
+- `0x00696B61`
+  - docs/befund-personal.md:273 – g, …)`: Art 1 (Amateur beim Profitraining) oder Merker +0xB3 & 0x10 (`0x00696B61`);
+- `0x00698D01`
+  - docs/befund-meldungen.md:788 – - `0x00698D01(Änderung)`: Byte Verein +0x10F, begrenzt 10–50; die Kopplung an +0x110 ± 10 wird am alten Wert
+- `0x00698EF6`
+  - docs/befund-meldungen.md:238 – ein (nur mit Land und Verein): Bit 10 über `0x0069EFE8`, Bit 11 über `0x00698EF6`.
+  - docs/befund-meldungen.md:676 – (`0x00698EF6(−20)` auf Verein +0x9E, `0x005FDA11`). Als Art wird 10 übergeben (`0x005FDA33`), das ist nach der
+  - docs/fundstellen.md:144 – `0x0078A0F5` (Manager `0x0041849A`, Verein `0x0069EFE8` / `0x00698EF6`).
+  - docs/fundstellen.md:228 – Stimmung des Vereins: Laufzeit-Verein +0x9E (0–200), ändern `0x00698EF6(±n)`. Streit zwischen zwei Spielern
+  - tools/a3patch.py:655 – # +0x9E (0x00698EF6) and passed kind 10 = "Beliebtheit Öffentlichkeit". New kind 11 = "Stimmung": push 0Ah -> push 0Bh.
+- `0x0069947B`
+  - docs/befund-meldungen.md:282 –  Spieltage, Verein mehr als 2 hinter den Erwartungen (`0x00775F0A`), `0x0069947B(Verein)` ≠ 0.
+- `0x0069A882`
+  - docs/fundstellen.md:192 – +0x9E, Gruppenbit setzen `0x0069A882`); Hülle `0x005E4DDE` → `0x005E4A3E` (Spieler biedert sich an); Hülle
+- `0x0069CB5C`
+  - docs/befund-meldungen.md:795 – - `0x0069CB5C`: der Sonst-Zweig löscht von einem dword nur ein Byte.
+- `0x0069D71D`
+  - docs/befund-finanzen.md:44 – | Anzahl Aktien / Kurs / Börsenwert (5511–5513) | nur wenn `0x0069D71D(Verein)` ≠ 0 (Aktiengesellschaft): Börsen-Objekt `0x00405DBE(Land, Verein)` auf `0x008BE408`; Aktie
+  - docs/befund-finanzen.md:102 – - Aktiengesellschaft: Bit 0 des Bytes Spielstand 0x904 (`0x0069D71D`, statisch `0x01A7391C`).
+  - docs/feldkarte-verein.md:39 – | 0x904 | u8 | – | Bit 0 = Aktiengesellschaft (`0x0069D71D`) | G |
+  - docs/fundstellen.md:88 – Aktiengesellschaft? `0x0069D71D` (Vereinssatz 0x904 Bit 0), Börsen-Objekt `0x008BE408` (Block mit 123 572 B,
+- `0x0069E16A`
+  - docs/befund-zaehler.md:21 – üfung. Aufrufer: zwölf Stellen `0x006591DB` … `0x0065A652`. Lesen in `0x0069E16A` / `0x0069E1C7`
+  - docs/fundstellen.md:93 – stunde (Bytes, Überlauf)** – zählen `0x0069E224`/`0x0069E2B9`, lesen `0x0069E16A`/`0x0069E1C7`.
+- `0x0069E1C7`
+  - docs/befund-zaehler.md:21 – : zwölf Stellen `0x006591DB` … `0x0065A652`. Lesen in `0x0069E16A` / `0x0069E1C7`
+  - docs/fundstellen.md:93 – , Überlauf)** – zählen `0x0069E224`/`0x0069E2B9`, lesen `0x0069E16A`/`0x0069E1C7`.
+- `0x0069E224`
+  - docs/befund-zaehler.md:20 – - Code: Zählen in `0x0069E224` (Tore) und `0x0069E2B9` (Gegentore): Minute auf 1…90 begrenzt, `(Minute − 1) / 15`, dann
+  - docs/fundstellen.md:93 – Viertelstunde (Bytes, Überlauf)** – zählen `0x0069E224`/`0x0069E2B9`, lesen `0x0069E16A`/`0x0069E1C7`.
+- `0x0069E2B9`
+  - docs/befund-zaehler.md:20 – - Code: Zählen in `0x0069E224` (Tore) und `0x0069E2B9` (Gegentore): Minute auf 1…90 begrenzt, `(Minute − 1) / 15`, dann
+  - docs/fundstellen.md:93 – Viertelstunde (Bytes, Überlauf)** – zählen `0x0069E224`/`0x0069E2B9`, lesen `0x0069E16A`/`0x0069E1C7`.
+- `0x0069EFE8`
+  - docs/befund-meldungen.md:238 – - Verein (nur mit Land und Verein): Bit 10 über `0x0069EFE8`, Bit 11 über `0x00698EF6`.
+  - docs/fundstellen.md:144 – `0x0078A0F5` (Manager `0x0041849A`, Verein `0x0069EFE8` / `0x00698EF6`).
+- `0x0069FE57`
+  - docs/befund-meldungen.md:372 – - Der Zähler hat überall 3 Bits (Maske `0x1C0000` im Leser `0x0069FE57`, in `0x0069FE73` und im Setzer
+  - docs/fundstellen.md:150 – Stellen 3 Bits (Maske `0x1C0000`, Leser `0x0069FE57`), ausgewertet werden Stände bis 10 (`0x005E5408` ff.).
+- `0x0069FE67`
+  - docs/korrekturliste-meldungen.md:125 –  Maulwurf im Kader | mittel bis groß: mindestens acht Stellen (Leser `0x0069FE67`, Erhöhung `0x0069FE85` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069F
+- `0x0069FE73`
+  - docs/befund-meldungen.md:261 – Vereinszähler über `0x0069FE73` (Abschnitt 5), bei den übrigen ist nicht geprüft, ob der Wert auf anderem Weg ankommt.
+  - docs/befund-meldungen.md:366 – - `0x0069FE73(Änderung)`: Wert = Bits 18–20 (0–7) + Änderung, begrenzt auf 0–15, zurückgeschrieben mit `<< 18`,
+  - docs/befund-meldungen.md:369 – Maulwurf-Folge, geprüft bei `0x005E536D`). Jeder Aufruf von `0x0069FE73` löscht ihn, ebenso `0x0069FF06` – das ist
+  - docs/befund-meldungen.md:372 – ähler hat überall 3 Bits (Maske `0x1C0000` im Leser `0x0069FE57`, in `0x0069FE73` und im Setzer
+  - docs/befund-meldungen.md:753 – (`0x00703930`), doppelt belegtes Bit, Zähler mit Überlauf (`0x0069FE73`), Zähler, der nie zurückgesetzt wird (0x26E),
+  - docs/fundstellen.md:145 – - **Vereinszähler** Verein +0xDF8 Bits 18–20: ändern `0x0069FE73(±n)` (begrenzt 0–15 statt 0–7, löscht Bit 21);
+  - docs/fundstellen.md:149 – diesem Stand schon erschienen“; das Löschen in `0x0069FE73` / `0x0069FF06` ist Absicht (17.11.2026). Zähler an allen
+  - docs/korrekturliste-meldungen.md:162 – `0x005E536D`); `0x0069FE73` und `0x0069FF06` löschen es absichtlich bei jeder Änderung des Zählers. Der Zähler hat
+  - tools/a3patch.py:466 – # 0x0069FE73 raises the counter of the "Maulwurf" affair (club +0xDF8, bits 18-20 = 0..7) and limits it
+- `0x0069FE85`
+  - docs/korrekturliste-meldungen.md:125 – ttel bis groß: mindestens acht Stellen (Leser `0x0069FE67`, Erhöhung `0x0069FE85` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536
+- `0x0069FE9D`
+  - tools/a3patch.py:468 – # New limit 7: cmp [ebp-4],0Fh / mov [ebp-4],0Fh -> 7 (VA 0x0069FE9D). Clearing bit 21 at the end of the
+- `0x0069FEC0`
+  - docs/korrekturliste-meldungen.md:125 – mindestens acht Stellen (Leser `0x0069FE67`, Erhöhung `0x0069FE85` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E565
+- `0x0069FEF2`
+  - docs/korrekturliste-meldungen.md:125 –  Stellen (Leser `0x0069FE67`, Erhöhung `0x0069FE85` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E5650`); zu klären:
+- `0x0069FF06`
+  - docs/befund-meldungen.md:369 –  bei `0x005E536D`). Jeder Aufruf von `0x0069FE73` löscht ihn, ebenso `0x0069FF06` – das ist
+  - docs/befund-meldungen.md:373 – `0x0069FF06`), ausgewertet werden aber die Stände 2, 3, 5, 6, 8 und 10 (Texte 1703–1708, `0x005E5408` ff.): die
+  - docs/befund-meldungen.md:379 – Saisonwechsel (`0x0077360D` in `0x00772BEE` ruft `0x0069FF06(0)`); dort werden auch die Merker gelöscht.
+  - docs/fundstellen.md:148 – Zurücksetzen beim Saisonwechsel `0x0077360D` (in `0x00772BEE`, ruft `0x0069FF06(0)`). Bit 21 = „Schlagzeile zu
+  - docs/fundstellen.md:149 – diesem Stand schon erschienen“; das Löschen in `0x0069FE73` / `0x0069FF06` ist Absicht (17.11.2026). Zähler an allen
+  - docs/korrekturliste-meldungen.md:162 – `0x005E536D`); `0x0069FE73` und `0x0069FF06` löschen es absichtlich bei jeder Änderung des Zählers. Der Zähler hat
+  - docs/korrekturliste-meldungen.md:164 – 3–1708): 1707 und 1708 sind nie erreichbar. Beim Saisonwechsel setzt `0x0069FF06(0)` (`0x0077360D`) Zähler und
+- `0x0069FF16`
+  - docs/korrekturliste-meldungen.md:125 – ung `0x0069FE85` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E5650`); zu klären: alte Spielstände mit gesetztem Bit
+- `0x0069FF49`
+  - docs/korrekturliste-meldungen.md:125 – ` / `0x0069FEC0` / `0x0069FEF2` und Grenze 15, Setzer `0x0069FF16` / `0x0069FF49`, Merker `0x005E536D` / `0x005E5650`); zu klären: alte Spielstände mit gesetztem Bit 21 | zurückges
+- `0x006A03FB`
+  - docs/befund-meldungen.md:791 – - `0x006A03FB` (V: Transferbedarf eines Computervereins): Zweig `0x006A0D83` unerreichbar.
+- `0x006A0D83`
+  - docs/befund-meldungen.md:791 – - `0x006A03FB` (V: Transferbedarf eines Computervereins): Zweig `0x006A0D83` unerreichbar.
+- `0x006A426B`
+  - docs/befund-meldungen.md:275 – des Tages, ruft `0x0078A0F5` damit `0x006A426B(−5)` auf. Diese Routine rechnet mit dem statischen Managersatz
+  - docs/befund-meldungen.md:278 – (`0x006A426B`, `0x0041849A`, `0x006A4917` sind dafür nicht zu Ende gelesen).
+  - docs/fundstellen.md:131 – Wert4 ≠ 0 und `0x006A426B(Managernummer)`. Vier Aufrufe mit falscher Argumentzahl: `0x00537ADD`, `0x00537B15`
+  - docs/fundstellen.md:135 – `word [Nr×2 + 0x01B9FFAA]` (benutzt von `0x006A426B`).
+  - docs/korrekturliste-meldungen.md:141 – Managernummer nur auf ≠ 0 und ruft mit −5 `0x006A426B` auf.
+  - tools/a3patch.py:329 – 5 is passed: -5 is stored as manager number and 0x0078A0F5 then calls 0x006A426B(-5), outside
+- `0x006A4917`
+  - docs/befund-meldungen.md:278 – (`0x006A426B`, `0x0041849A`, `0x006A4917` sind dafür nicht zu Ende gelesen).
+- `0x006A58FC`
+  - docs/befund-meldungen.md:236 – mer im Satz steht): Werte der Bits 0–3 über `0x0041849A`, Bit 4 über `0x006A58FC`;
+  - docs/fundstellen.md:130 –  `0x00789998` ≠ 0; Manager dort über `0x0041849A(Wert0–3, Manager)`, `0x006A58FC(0x10)` bei
+- `0x006A5A7D`
+  - docs/befund-meldungen.md:557 – (`0x006A5A7D`). Abgezogen werden also Öffentlichkeit 5, Fans 5, Medien 5 und 10 beim vierten Wert (Manager +0x9C
+  - docs/fundstellen.md:200 – `0x006A5A7D`), Wort +0x9C offen; ändern `0x0041849A(d1, d2, d3, d4, Manager)`; Dialog füllt bei `0x0047E6E0`.
+  - docs/korrekturliste-meldungen.md:183 – +0x17DC, Dialogtext 4288; verlangt `0x006A5A7D` ≥ 80). Auswahl 0 macht die Ausstiegsklausel bekannt und wendet
+- `0x006A71CF`
+  - docs/korrekturliste-meldungen.md:74 – us“; fünf Aufrufer, u. a. Text 338 bei `0x00604132` und Text 716 bei `0x006A71CF` im selben Tagesverteiler). Die Hülle `0x005E2BB9` (zufälliger Kaderplatz, Aufruf `0x005E2C10`) und
+  - tools/asm_nacht.py:383 – text 338 does (0x00604132) and text 716 in the same daily dispatcher (0x006A71CF). The wrapper
+- `0x006A75B5`
+  - docs/befund-meldungen.md:351 – 1643 | Meisterfeier einfach vergessen - Titel %1 nur noch Routine? | `0x006A75B5` | 8 | 0x0 | kein Wert übergeben |
+- `0x006A75E2`
+  - docs/befund-meldungen.md:352 – 4 | %1 vergißt die Meisterfeier - Spieler und Fans sind stocksauer | `0x006A75E2` | 8 | 0x0 | kein Wert übergeben |
+- `0x006A75FE`
+  - docs/befund-meldungen.md:353 – eine Feier trotz Titel %1 - Peinliches Versäumnis trübt die Freude | `0x006A75FE` | 8 | 0x0 | kein Wert übergeben |
+- `0x006A7CFE`
+  - docs/befund-meldungen.md:785 – - `0x006A7CFE` (Stärke eines Spielers ändert sich, Texte 902–905): Prüfung „Textnummer < 0“ nie wahr (mit 0xFFFF
+  - docs/korrekturliste-meldungen.md:215 – `0x006A7CFE`, begrenzt 1–12, und `0x006A7E6B`, beide mit Meldung an den Manager). Die Meldung trifft also nur
+- `0x006A7E6B`
+  - docs/korrekturliste-meldungen.md:215 – `0x006A7CFE`, begrenzt 1–12, und `0x006A7E6B`, beide mit Meldung an den Manager). Die Meldung trifft also nur
+- `0x006AE400`
+  - docs/befund-auf-abstiege.md:18 – 06B6B22 (Abstieg), für Deutschland aus der Saisonabschluss-Routine um 0x006AE400–0x006AF2E5.
+- `0x006AE61A`
+  - docs/befund-auf-abstiege.md:83 – Index 0 (0x006B21C1). Der Block entspricht dem der deutschen 2. Liga (0x006AE61A–0x006AE6B1) – offenbar
+- `0x006AE6B1`
+  - docs/befund-auf-abstiege.md:83 – 006B21C1). Der Block entspricht dem der deutschen 2. Liga (0x006AE61A–0x006AE6B1) – offenbar
+- `0x006AE792`
+  - docs/befund-auf-abstiege.md:41 – (0x006AE792 ff.) und offenbar noch einen mit Index 2 oder 3. In Frage kommt die Auffüllschleife 0x006AF0E0–0x00
+  - docs/befund-auf-abstiege.md:64 – 1. 0x006AE792–0x006AE7E3: die vier Aufsteiger (aus 0x006B3A90(0…3)) mit Liga-Index **1** – richtig.
+  - docs/befund-auf-abstiege.md:104 – 1. `0x006AE792`–`0x006AE7E3`: die vier Aufsteiger in die 2. Liga → Liste 1 (richtig).
+  - tools/a3patch.py:34 – # statistics flag 1, although 0x006AE792.. already counted the same promotion with index 1.
+  - tools/a3patch.py:42 – only two of the real newcomers. The four clubs are already in list 1 (0x006AE792),
+- `0x006AE7E3`
+  - docs/befund-auf-abstiege.md:64 – 1. 0x006AE792–0x006AE7E3: die vier Aufsteiger (aus 0x006B3A90(0…3)) mit Liga-Index **1** – richtig.
+  - docs/befund-auf-abstiege.md:104 – 1. `0x006AE792`–`0x006AE7E3`: die vier Aufsteiger in die 2. Liga → Liste 1 (richtig).
+- `0x006AE8E1`
+  - docs/befund-auf-abstiege.md:65 –  der Routine 0x0069128A, die je eine Regionalliga abarbeitet (Aufrufe 0x006AE8E1 mit Liga-Index 2 und 0x006AE916
+  - docs/befund-auf-abstiege.md:105 – 2. `0x006AE8E1` / `0x006AE916` → `0x0069128A` je Regionalliga: die ersten zwei aufstiegsberechtigten Vereine der A
+- `0x006AE916`
+  - docs/befund-auf-abstiege.md:65 – eine Regionalliga abarbeitet (Aufrufe 0x006AE8E1 mit Liga-Index 2 und 0x006AE916
+  - docs/befund-auf-abstiege.md:105 – 2. `0x006AE8E1` / `0x006AE916` → `0x0069128A` je Regionalliga: die ersten zwei aufstiegsberechtigten Vereine der Abschlusstabelle
+- `0x006AEFFC`
+  - docs/befund-auf-abstiege.md:108 – 3. `0x006AEFFC` ff.: die echten Neulinge der Regionalligen → Liste 2 bzw. 3.
+- `0x006AF0E0`
+  - docs/befund-auf-abstiege.md:41 – bar noch einen mit Index 2 oder 3. In Frage kommt die Auffüllschleife 0x006AF0E0–0x006AF2F7, die
+- `0x006AF2E5`
+  - docs/befund-auf-abstiege.md:18 – stieg), für Deutschland aus der Saisonabschluss-Routine um 0x006AE400–0x006AF2E5.
+- `0x006AF2F7`
+  - docs/befund-auf-abstiege.md:41 – nen mit Index 2 oder 3. In Frage kommt die Auffüllschleife 0x006AF0E0–0x006AF2F7, die
+- `0x006B1F12`
+  - docs/befund-auf-abstiege.md:81 – Die Spanien-Routine 0x006B1F12 lädt Liga-Index 0 (`push 0 / push 3Fh / call 0x00692045`), trägt Absteiger mit Index 0 in die Liste
+  - docs/fundstellen.md:250 – tistikroutine `0x00726382`, zweite Meldestelle `0x0069139B`, Spanien `0x006B1F12`; Saisonergebnis-
+  - tools/a3patch.py:53 – # 0x006B1F12 (Spain, league index 0): relegations are reported with league index 1 (block copied from the
+- `0x006B201C`
+  - docs/befund-auf-abstiege.md:82 – ein (0x006B201C `push 0`, 0x006B6BBC) und meldet den Abstieg direkt danach mit Liga-Index **1** (0x006B2042 und 0x0
+- `0x006B2042`
+  - docs/befund-auf-abstiege.md:82 – x006B6BBC) und meldet den Abstieg direkt danach mit Liga-Index **1** (0x006B2042 und 0x006B208C, je `6A 01`).
+  - tools/a3patch.py:54 – # German 2nd league). push 1 -> push 0 at VA 0x006B2042 and 0x006B208C.
+- `0x006B208C`
+  - docs/befund-auf-abstiege.md:82 – meldet den Abstieg direkt danach mit Liga-Index **1** (0x006B2042 und 0x006B208C, je `6A 01`).
+  - tools/a3patch.py:54 – # German 2nd league). push 1 -> push 0 at VA 0x006B2042 and 0x006B208C.
+- `0x006B21C1`
+  - docs/befund-auf-abstiege.md:83 – Aufstiege meldet sie mit Index 0 (0x006B21C1). Der Block entspricht dem der deutschen 2. Liga (0x006AE61A–0x006AE6B1) – offenbar
+- `0x006B2212`
+  - docs/befund-auf-abstiege.md:84 – übernommen, ohne den Index anzupassen. Die allgemeine Auslandsroutine 0x006B2212 nimmt Index 0 (0x006B233F, 0x006B2392).
+- `0x006B233F`
+  - docs/befund-auf-abstiege.md:84 –  anzupassen. Die allgemeine Auslandsroutine 0x006B2212 nimmt Index 0 (0x006B233F, 0x006B2392).
+- `0x006B2392`
+  - docs/befund-auf-abstiege.md:84 –  Die allgemeine Auslandsroutine 0x006B2212 nimmt Index 0 (0x006B233F, 0x006B2392).
+- `0x006B3A90`
+  - docs/befund-auf-abstiege.md:64 – 1. 0x006AE792–0x006AE7E3: die vier Aufsteiger (aus 0x006B3A90(0…3)) mit Liga-Index **1** – richtig.
+- `0x006B3EE0`
+  - docs/befund-personal.md:276 – e (`0x0074D52B`, Aufruf `0x006DB2C1`, **vor** der Wechsel-Abwicklung `0x006B3EE0` bei `0x006DB2F3`).
+- `0x006B4230`
+  - docs/befund-personal.md:287 – bleibt (Eintrag gestrichen). Jugend: `0x006B4230` entfernt, wer vor dem 1.7.(neues Jahr − 18) geboren ist
+- `0x006B465F`
+  - docs/befund-personal.md:283 – Saisonwechsel je **Kaderspieler** (`0x0070665A`, Schleife `0x006B465F`). Welcher Setzer einen Jugendspieler trifft,
+- `0x006B4EE1`
+  - docs/befund-trainer-eps.md:23 – Aufrufstellen: `0x006B4EE1`–`0x006B4F10` (Titelart 2 fest) und `0x006B51DC`–`0x006B520E` (Titelart aus `[ebp+0Ch]`).
+- `0x006B4F10`
+  - docs/befund-trainer-eps.md:23 – Aufrufstellen: `0x006B4EE1`–`0x006B4F10` (Titelart 2 fest) und `0x006B51DC`–`0x006B520E` (Titelart aus `[ebp+0Ch]`).
+- `0x006B51DC`
+  - docs/befund-trainer-eps.md:23 – Aufrufstellen: `0x006B4EE1`–`0x006B4F10` (Titelart 2 fest) und `0x006B51DC`–`0x006B520E` (Titelart aus `[ebp+0Ch]`).
+- `0x006B520E`
+  - docs/befund-trainer-eps.md:23 – tellen: `0x006B4EE1`–`0x006B4F10` (Titelart 2 fest) und `0x006B51DC`–`0x006B520E` (Titelart aus `[ebp+0Ch]`).
+- `0x006B53D4`
+  - docs/befund-trainer-eps.md:41 – | | Computertrainer (`0x006B53D4`, Sprungtabelle `0x006B5473`) | Menschlicher Manager (`0x00725FBA`) |
+  - docs/fundstellen.md:252 – - Erfolgreichste Trainer: `0x00725FBA` (Mensch), `0x006B53D4` (Computer), Listeneintrag `0x006B5497`, Zähler
+  - tools/a3patch.py:844 – n Supercups (counter 9) are dropped, while computer coaches get both (0x006B53D4).
+- `0x006B5473`
+  - docs/befund-trainer-eps.md:41 – | | Computertrainer (`0x006B53D4`, Sprungtabelle `0x006B5473`) | Menschlicher Manager (`0x00725FBA`) |
+- `0x006B5497`
+  - docs/befund-trainer-eps.md:19 – 1. `0x006B5497` (Manager, Kopie, Verein, Titelart): trägt den Titel in die Einzelliste ein und ruft am Ende `0x007
+  - docs/befund-trainer-eps.md:25 – `0x006B583A`, dann `0x006B5497`), Bytes gleich, nur die zwei Sprungweiten der Aufrufe neu berechnet; keine Sprungziele im
+  - docs/befund-trainer-eps.md:26 – Bereich. `0x006B5497` liest die Zähler selbst nicht, nur Listenlänge +0x26, Summe +0x28 und die Einzelliste.
+  - docs/fundstellen.md:252 – ainer: `0x00725FBA` (Mensch), `0x006B53D4` (Computer), Listeneintrag `0x006B5497`, Zähler
+  - tools/a3patch.py:149 – # A title won by a human manager: 0x006B5497 enters it in the list and, at its end, writes the manager's row
+  - tools/a3patch.py:152 – # increment first, then 0x006B5497 (which does not read the counters itself). Same bytes, calls re-based.
+- `0x006B5801`
+  - docs/befund-trainer-eps.md:99 – Offen: wann genau `0x00725FBA` aufgerufen wird (Aufrufer `0x006B5801`), und ob Zähler 9/10 wirklich Europ. Supercup/Weltpokal
+- `0x006B583A`
+  - docs/befund-trainer-eps.md:21 – 2. `0x006B583A` (Kopie, Titelart): erhöht erst danach genau einen Zähler (Sprungtabelle `0x006B59BD`), sonst nicht
+  - docs/befund-trainer-eps.md:25 – `0x006B583A`, dann `0x006B5497`), Bytes gleich, nur die zwei Sprungweiten der Aufrufe neu berechnet; keine Spru
+  - docs/fundstellen.md:253 – `0x006B583A`, Sortierung `0x00725E61` (`befund-trainer-eps.md`).
+  - tools/a3patch.py:150 – # of "Erfolgreichste Trainer" from the counters; only afterwards 0x006B583A increments the counter of that
+- `0x006B59BD`
+  - docs/befund-trainer-eps.md:21 – pie, Titelart): erhöht erst danach genau einen Zähler (Sprungtabelle `0x006B59BD`), sonst nichts.
+- `0x006B5B5B`
+  - docs/befund-personal.md:83 – - Trainer (Schleife um `0x006B5B5B`): Ersatz ab 65 + Zufall 0–2, wenn ohne Vertrag.
+- `0x006B5BEB`
+  - docs/befund-personal.md:173 – der zwei Kompetenzen, +1 mit 20 % je Jahr bis 44, −1 mit 20 % ab 61 (`0x006B5BEB` ff.).
+- `0x006B6000`
+  - docs/befund-personal.md:189 – Die jährliche Ausgleichsroutine für Trainer und Manager je Land (`0x006B6000`) soll bei einem Schnitt unter 6 jede zehnte
+  - docs/fundstellen.md:256 – - Trainer-Nachwuchs `0x0066DF9E`, Ausgleich `0x006B6000` (`befund-personal.md`).
+  - tools/a3patch.py:88 – # Yearly balancing of coaches / managers per country (0x006B6000). If the average competence is below 6,
+- `0x006B6021`
+  - docs/befund-personal.md:190 – Person um 1–2 anheben (Zweig `0x006B6021`–`0x006B610B`). Sie rechnet den Zuschlag aus und bucht ihn in Summe und Zählliste,
+- `0x006B6057`
+  - docs/befund-personal.md:120 – `build/anstoss3-acht-patches.exe`):** Die 180 Bytes ab VA 0x006B6057 (Dateioffset 0x2B6057)
+  - tools/a3patch.py:91 – # above 10 does store, 0x006B61E3). The 180 bytes at VA 0x006B6057 are rewritten shorter with the store
+- `0x006B610B`
+  - docs/befund-personal.md:190 – Person um 1–2 anheben (Zweig `0x006B6021`–`0x006B610B`). Sie rechnet den Zuschlag aus und bucht ihn in Summe und Zählliste,
+- `0x006B61E3`
+  - docs/befund-personal.md:191 – n** (im Gegenzweig für einen Schnitt über 10 steht das Schreiben bei `0x006B61E3`).
+  - tools/a3patch.py:91 – # above 10 does store, 0x006B61E3). The 180 bytes at VA 0x006B6057 are rewritten shorter with the store
+- `0x006B6663`
+  - docs/befund-personal.md:81 – - Torwarttrainer `0x006B6663`: unter 45 mit 50 % Chance +1 (höchstens 15); über 55 mit 20 % Chance −1 (nicht unter 5);
+  - docs/befund-personal.md:172 – rainer +1 mit 50 % je Jahr bis 44, −1 mit 20 % ab 56 solange über 5 (`0x006B6663`).
+- `0x006B6A33`
+  - docs/befund-auf-abstiege.md:18 – Aufrufer: 0x006B6A33 (Aufstieg) und 0x006B6B22 (Abstieg), für Deutschland aus der Saisonabschluss-Routine um 0x006AE400–
+  - docs/befund-auf-abstiege.md:61 – ellen gemeldet, beide Male mit Statistik-Flag 1 (viertes Argument von 0x006B6A33; nur dann
+  - docs/befund-auf-abstiege.md:62 – ruft 0x006B6A33 die Zähler 0x00634D9C und 0x00726382 sowie 0x006143D2 auf):
+  - docs/befund-auf-abstiege.md:66 – `[Liga+0x22]` aufstiegsberechtigten Vereine der Abschlusstabelle wird 0x006B6A33 mit dem **eigenen**
+  - docs/befund-auf-abstiege.md:100 – (+0x120 / +0x164). `0x006B6A33(Objekt, Liga-Index, Verein, Statistik)` trägt einen Aufsteiger ein, `0x00680569` fragt die Liste ab
+- `0x006B6B22`
+  - docs/befund-auf-abstiege.md:18 – Aufrufer: 0x006B6A33 (Aufstieg) und 0x006B6B22 (Abstieg), für Deutschland aus der Saisonabschluss-Routine um 0x006AE400–0x006AF2E5.
+- `0x006B6BBC`
+  - docs/befund-auf-abstiege.md:82 – ein (0x006B201C `push 0`, 0x006B6BBC) und meldet den Abstieg direkt danach mit Liga-Index **1** (0x006B2042 und 0x006B208C, je `6A 01`).
+- `0x006BDA51`
+  - docs/befund-meldungen.md:844 – und sind nicht gelesen (`0x00630266`, `0x006BDA51`, `0x0073D43C`);
+- `0x006BF384`
+  - docs/befund-zaehler.md:117 – Zweiter Leser der Tabelle `0x006BF384` überträgt sie nur im Netzwerkspiel. Test-exe: siehe HANDOFF. **Im Spiel ungetestet.**
+- `0x006C2BC5`
+  - docs/befund-meldungen.md:354 – unächst Interimstrainer - %2 auf der Suche nach endgültiger Lösung | `0x006C2BC5` | 2 | 0x0 | kein Wert übergeben |
+- `0x006C2DD9`
+  - docs/befund-meldungen.md:355 – 53 | %1 nur Übergangslösung? - Vorstand %2 weiter auf Trainersuche | `0x006C2DD9` | 8 | 0x0 | kein Wert übergeben |
+- `0x006C2E6C`
+  - docs/befund-meldungen.md:356 – 1 muß sich bewähren - Vorstand %2 über Cheftrainernachfolge uneins | `0x006C2E6C` | 8 | 0x0 | kein Wert übergeben |
+- `0x006C2FC2`
+  - docs/befund-meldungen.md:357 – tand spricht %1 das Vertrauen aus - Präsident %2 hält Ex-Amateurt… | `0x006C2FC2` | 8 | 0x0 | kein Wert übergeben |
+- `0x006C3131`
+  - docs/befund-meldungen.md:358 – tand spricht %1 das Vertrauen aus - Präsident %2 hält Ex-Amateurt… | `0x006C3131` | 8 | 0x0 | kein Wert übergeben |
+- `0x006C3BAB`
+  - docs/befund-personal.md:301 – `0x006C3BAB`, einziger Aufrufer `0x006C4526`: holt einen Spieler aus dem Vorrat `0x00B77338`; gehört er schon e
+  - docs/befund-personal.md:318 – Stand der Frage: auf welchem Weg 9517 nach Uerdingen kam (nicht über `0x006C3BAB`, das hätte 10 Jahre gesetzt) und wo
+- `0x006C3D75`
+  - docs/befund-personal.md:313 – Gehalt 10 Jahre (`0x004D8D9F`/`0x004D8DA9`, `0x006C3D75`/`0x006C3D7F`). Der abgeworbene Spieler hat also Gehalt, aber
+- `0x006C3D7F`
+  - docs/befund-personal.md:300 – g `0x005CB00F`, bei Zusage Gehalt aus `0x0066B648` und 10 Jahre) und `0x006C3D7F` (Routine
+  - docs/befund-personal.md:313 – Gehalt 10 Jahre (`0x004D8D9F`/`0x004D8DA9`, `0x006C3D75`/`0x006C3D7F`). Der abgeworbene Spieler hat also Gehalt, aber
+  - tools/a3patch.py:458 – # (0x004D8DA9, 0x006C3D7F). ecx still holds the player (loaded at 0x004D778D). The 15 bytes that called
+- `0x006C4526`
+  - docs/befund-personal.md:301 – `0x006C3BAB`, einziger Aufrufer `0x006C4526`: holt einen Spieler aus dem Vorrat `0x00B77338`; gehört er schon einem
+- `0x006C58FE`
+  - docs/fundstellen.md:100 – Sortierte Listen: Einfügen `0x006C5BAC` bzw. `0x006C58FE` (nimmt nur Einträge „größer“ als der letzte Platz, größter
+- `0x006C5B66`
+  - docs/fundstellen.md:101 – oben), gleicher Schlüssel `0x006C5B66`; Leeren `0x007CFF4B`; Neuaufbau aller Tabellen je Verein ab ca. `0x00724900`.
+- `0x006C5BAC`
+  - docs/befund-zaehler.md:108 – rsache der leeren Seite jetzt im Code belegt (G): Die Einfügeroutine `0x006C5BAC` nimmt einen Eintrag nur auf, wenn er
+  - docs/fundstellen.md:100 – Sortierte Listen: Einfügen `0x006C5BAC` bzw. `0x006C58FE` (nimmt nur Einträge „größer“ als der letzte Platz, größter
+  - tools/a3patch.py:190 – # The sorted list (0x006C5BAC) only takes an entry greater than an empty slot and keeps the greatest value
+- `0x006CE00E`
+  - docs/feldkarte-verein.md:68 – | Pokal | 0x00634B32 (über 0x00634BA3) | 4 Stellen in 0x006CE00E |
+- `0x006D4D50`
+  - docs/zuordnung-bildschirme.md:68 – Jede Rekordroutine (ab 0x006D4D50) vergleicht ein neues Ergebnis nacheinander mit dem Karriere-Rekord (0x00B5CD1C …, im Spielstand,
+  - docs/zuordnung-bildschirme.md:130 – Rekord steht. Vergleich je Eintrag wie im Spiel (Routinen ab 0x006D4D50). Dafür müssen die sechs Spieler-Einträge (11–15, 17) noch
+- `0x006D4E32`
+  - docs/zuordnung-bildschirme.md:73 – Auffällig im Code (nicht untersucht): Der Allzeit-Vergleich bei 0x006D4E32 weicht vom Karriere-Vergleich ab (überschreibt die
+- `0x006D5D6A`
+  - docs/zuordnung-bildschirme.md:69 – d mit dem Allzeit-Rekord (0x00AE44F8 …, Datei, echtes Datum) und ruft 0x006D5D6A.
+- `0x006D5E5D`
+  - docs/zuordnung-bildschirme.md:67 – 0x006D61C7, Standardwerte 0x006D5EB9 / 0x006D5E5D (Halter fest „R“ „Langenberg“, Land 14, Verein 104 bzw. 99, Datum = Systemdatum).
+- `0x006D5EB9`
+  - docs/zuordnung-bildschirme.md:67 – 0x006D61C7, Standardwerte 0x006D5EB9 / 0x006D5E5D (Halter fest „R“ „Langenberg“, Land 14, Verein 104 bzw. 99, Datum = Systemdatum).
+- `0x006D616E`
+  - docs/zuordnung-bildschirme.md:66 – **„Für die Ewigkeit“ (G zum Mechanismus, V zur Erklärung):** Laden 0x006D616E (`fopen("alltimes.saq","rb")`, 0x420 Byte), Speichern
+- `0x006D61C7`
+  - docs/zuordnung-bildschirme.md:67 – 0x006D61C7, Standardwerte 0x006D5EB9 / 0x006D5E5D (Halter fest „R“ „Langenberg“, Land 14, Verein 104 bzw. 99, 
+- `0x006D9FA1`
+  - docs/befund-personal.md:275 – Zwang = 1 bei Manager-Ereignissen (`0x005DFF60`, `0x006D9FA1`, `0x006DA24D`) und im Saisonwechsel für alle
+- `0x006DA24D`
+  - docs/befund-personal.md:275 – Zwang = 1 bei Manager-Ereignissen (`0x005DFF60`, `0x006D9FA1`, `0x006DA24D`) und im Saisonwechsel für alle
+- `0x006DA52E`
+  - docs/befund-personal.md:150 – Saisonstart-Zweig der Ereignisverteilung um `0x006DA52E`; genauer Zeitpunkt V):
+- `0x006DB2C1`
+  - docs/befund-personal.md:276 – Manager-Vereine (`0x0074D52B`, Aufruf `0x006DB2C1`, **vor** der Wechsel-Abwicklung `0x006B3EE0` bei `0x006DB2F3`).
+- `0x006DB2F3`
+  - docs/befund-personal.md:276 – Aufruf `0x006DB2C1`, **vor** der Wechsel-Abwicklung `0x006B3EE0` bei `0x006DB2F3`).
+- `0x006DC2A6`
+  - docs/befund-meldungen.md:790 – - `0x006DC2A6`: Suchschleife läuft bis zur Kadergröße, die Liste hat 35 Plätze.
+- `0x006E0649`
+  - docs/fundstellen.md:111 – Seite „Spielplan“ `0x0044EDBA` (Text 4747) mit Spieltags-Element `0x006E0649`. Rollende Liste 20 × 0xC4 B: `0x0072457F`
+- `0x006ECFEB`
+  - docs/befund-spielstand.md:8 – - **Autosave** (0x006ECFEB): löscht `saves/Auto2.`, benennt `Auto1.`→`Auto2.` und `Autos.`→`Auto1.` um, ruft dann die Speicher
+- `0x006ED175`
+  - docs/befund-spielstand.md:9 – - **Blockschreiber** (0x006ED175): packt einen Puffer über 0x0075EADA (Packer 0x007D2AF0) und schreibt `int32 gepackte_Länge` + gepa
+- `0x006ED1FB`
+  - docs/befund-spielstand.md:10 – - **Spieler** (0x006ED1FB): Spieler-Array bei 0x00C02550, 852 Byte (0x354) je Spieler, 17006 Einträge.
+- `0x006ED31E`
+  - docs/befund-spielstand.md:8 – o1.`→`Auto2.` und `Autos.`→`Auto1.` um, ruft dann die Speicherroutine 0x006ED31E auf.
+  - docs/fundstellen.md:257 – - Spielstand schreiben `0x006ED31E` / `0x007CFFF4`, laden: `spielstand-bloecke.md`, `befund-spielstand.md`.
+  - docs/spielstand-bloecke.md:3 – Aus der Speicherroutine 0x006ED31E von `anstoss3.exe` 1.40, in Schreibreihenfolge.
+- `0x006F5303`
+  - docs/befund-meldungen.md:843 – `0x005FE312`, `0x005FE989`, `0x0060D6F2`, `0x0061B4C0`, `0x006F5303`). Drei liegen außerhalb der Meldungsroutinen
+- `0x006FAAB0`
+  - docs/befund-notenschnitt.md:89 – | `0x0065D53F`, `0x0065DC6F`, `0x006FAAB0` | bester/schlechtester Spieler eines Spiels | nur ein Spiel, kein Schnitt – unauffällig |
+- `0x006FEA7C`
+  - docs/fundstellen.md:185 – nen `0x005F1EAF`, `0x005F1F42`. Name der Frau `0x0070173F`, Nachname `0x006FEA7C`.
+- `0x006FEB05`
+  - docs/befund-personal.md:73 – `0x006FEB05` gibt aber nie 0 zurück: ohne Sondernamen (Kennzeichen Bit 31 in 0x194 nicht gesetzt) liefert es di
+  - tools/a3patch.py:61 – # if 0x006FEB05 (pointer to the player's special name) returns non-zero, but that function never returns 0:
+- `0x006FEB4D`
+  - docs/fundstellen.md:68 – Name `0x006FEB4D(0)`; Form (0–20) `0x006FF037`; Flag setzen/löschen `0x00770800(Maske, Spieler)` / `0x00770942`
+  - tools/asm_goldkettchen.py:58 – 'aufruf': (0x005FEC04, 0x005FEC3F, {'AVG32': 0x00705F60, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32,
+  - tools/asm_presse.py:16 – T = {'PRESSE32': 0x00700FA2, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32}
+- `0x006FF01B`
+  - docs/befund-notenschnitt.md:218 – `0x006FF01B` liefert das **Alter** des Spielers (über `0x0067582A`, Geburtsdatum im Laufzeitobjekt +0xCC, aktue
+  - docs/fundstellen.md:66 – | +0xCC | Geburtsdatum (Tag, Monat, Jahr bei +0xCE); **Alter = `0x006FF01B`** (über `0x0067582A`) |
+  - docs/fundstellen.md:124 – :** In `0x007709E8` heißt die dritte Bedingung „Alter über 33 Jahre (`0x006FF01B`) und mehr als 30
+- `0x006FF037`
+  - docs/befund-zaehler.md:124 – bits in das Spieltagsbyte übernommen. Die Form ist ein anderer Wert: `0x006FF037` (Feld `IDC_EINZEL_FORM`
+  - docs/fundstellen.md:45 – | 0x333 | Byte, geht in die Formberechnung `0x006FF037` ein (V) |
+  - docs/fundstellen.md:68 – Name `0x006FEB4D(0)`; Form (0–20) `0x006FF037`; Flag setzen/löschen `0x00770800(Maske, Spieler)` / `0x00770942`
+- `0x006FF14D`
+  - docs/befund-meldungen.md:714 – sortiert zwei Freunde so, dass A den höheren Zufriedenheitswert hat (`0x006FF14D`,
+  - docs/fundstellen.md:232 – Spielers `0x006FF14D` (Mittel aus Trainer, Verein, Mannschaft), Teilwerte zweier Freunde angleichen `0x00705539`;
+- `0x006FF2F7`
+  - docs/befund-notenschnitt.md:94 – Der Schreiber `0x006FF2F7` legt je Spieltag ab: Bits 6–7 Einsatz (0x40 durchgespielt, 0x80 eingewechselt, 0xC0
+  - docs/befund-zaehler.md:99 – tinen lesen die Spieltagsbytes mit anderen Masken als der Schreiber (`0x006FF2F7`: Einsatz 0xC0, Note 0x3C):
+  - docs/befund-zaehler.md:123 – , `0x0048E36F`, geteilt durch 2, „%.1f“) angezeigt und vom Schreiber `0x006FF2F7`
+  - docs/fundstellen.md:118 – - Spieltagsbyte schreiben `0x006FF2F7` (endet `0x006FF431`), lesen `0x006FF47F` (0x2F9) und `0x006FF43E` (0x2CB).
+  - tools/a3patch.py:212 – # 0xC0 / 0x3C (writer 0x006FF2F7) and scans all 46 slots; its result is at most 35, the headline needs
+- `0x006FF431`
+  - docs/befund-notenschnitt.md:9 – Lesen `0x006FF47F`, Schreiben endet bei `0x006FF431`):
+  - docs/fundstellen.md:118 – - Spieltagsbyte schreiben `0x006FF2F7` (endet `0x006FF431`), lesen `0x006FF47F` (0x2F9) und `0x006FF43E` (0x2CB).
+- `0x006FF43E`
+  - docs/befund-notenschnitt.md:14 – Ein zweites Feld gleicher Länge liegt bei 0x2CB (`0x006FF43E`, Halbbytes für die weiteren Balken der Seite).
+  - docs/fundstellen.md:118 – en `0x006FF2F7` (endet `0x006FF431`), lesen `0x006FF47F` (0x2F9) und `0x006FF43E` (0x2CB).
+- `0x006FF47F`
+  - docs/befund-notenschnitt.md:9 – Lesen `0x006FF47F`, Schreiben endet bei `0x006FF431`):
+  - docs/fundstellen.md:118 – - Spieltagsbyte schreiben `0x006FF2F7` (endet `0x006FF431`), lesen `0x006FF47F` (0x2F9) und `0x006FF43E` (0x2CB).
+- `0x006FF5D5`
+  - docs/befund-meldungen.md:774 – - `0x006FF5D5`: der Ersatzzweig liefert von Januar bis Juni negative Werte.
+- `0x006FF715`
+  - docs/fundstellen.md:154 – DE5`. Gedopt = Bit 1 in Spielstand 0x24D (lesen `0x006FF99A`, setzen `0x006FF715`; Doping-Dialog
+  - docs/korrekturliste-meldungen.md:128 – `0x005F4730`); gesetzt wird es von `0x006FF715` (Aufrufer `0x0051731D`, `0x00517551`, `0x0074EE7B`, nicht gelesen).
+  - docs/korrekturliste-meldungen.md:138 – - **K03:** Der Merker (Bit 1 in Spielstand 0x24D) wird von `0x006FF715` gesetzt; zwei Aufrufer (`0x0051731D`,
+- `0x006FF99A`
+  - docs/fundstellen.md:154 – `0x005EFDE5`. Gedopt = Bit 1 in Spielstand 0x24D (lesen `0x006FF99A`, setzen `0x006FF715`; Doping-Dialog
+  - docs/korrekturliste-meldungen.md:127 – 1.2026): Das Ereignis verlangt Bit 1 im Merkerbyte Spielstand 0x24D (`0x006FF99A` bei
+- `0x006FFB14`
+  - tools/a3patch.py:288 – # married here (0x006FFB14 checked before). Room: two "push [ebp+x]" instead of mov + push, own
+  - tools/asm_nacht.py:560 – # case requires "married", 0x006FFB14): 0 was passed as %2. New: name of the partner. The tail (push 60h / club /
+- `0x006FFBBD`
+  - docs/korrekturliste-meldungen.md:204 – eine frühere Partnerin (`0x006FFBBD`) und Krisenstufe 0; 1109 zusätzlich, dass Bit 25 im Flagwort nicht gesetzt ist
+- `0x006FFBE3`
+  - tools/a3patch.py:793 – # 1124/1125, 1982) admitted only married players WITH a lover (0x006FFBE3 at 0x005FB6C5), so the events practically never
+- `0x006FFC0A`
+  - docs/korrekturliste-meldungen.md:203 – n Status „Freundin“, Beginn der Beziehung vor weniger als 365 Tagen (`0x006FFC0A`),
+- `0x006FFD8A`
+  - docs/fundstellen.md:210 – `0x00702A9B` prüfen); 0x1D6 Zahl der Kinder (`0x006FFD8A`); Flagwort 0x194 = `0x00C02704 + Nr × 0x354` (Bit 2
+  - docs/korrekturliste-meldungen.md:293 – 67`) – es gibt also eine Partnerin) und `0x00702359` = 0. Ohne Kind (`0x006FFD8A` = 0) kommt 1176, sonst
+- `0x006FFF76`
+  - docs/korrekturliste-meldungen.md:301 – `0x005FECE4`), setzt Bit 5 im Flagwort (`0x006FFF76(1)`) und zeigt die Meldung ohne jede Prüfung. Der
+- `0x006FFFD9`
+  - docs/befund-meldungen.md:730 – geteilt durch 100) zieht für Raucher (Bit 0x800, `0x006FFFD9`) 5 ab und kennt keinen Zuschlag. Der Bonus wird
+  - docs/fundstellen.md:234 – Bit 0x800 Raucher (lesen `0x006FFFD9`), Bit 0x2000 privater Trainer (lesen `0x007000E3`, setzen `0x00700105`);
+  - docs/korrekturliste-meldungen.md:303 – (`0x006FFFD9`).
+- `0x007000E3`
+  - docs/befund-meldungen.md:728 – wird das Bit nur über `0x007000E3`, mit drei Aufrufern: die beiden Abfragen des Ereignisses (`0x00600016`,
+  - docs/fundstellen.md:234 – 800 Raucher (lesen `0x006FFFD9`), Bit 0x2000 privater Trainer (lesen `0x007000E3`, setzen `0x00700105`);
+  - docs/korrekturliste-meldungen.md:302 – Konditionsbonus ist Bit 13 im Flagwort (`0x007000E3` lesen, `0x00700105` setzen/löschen), der Raucher-Abzug Bit 11
+  - tools/asm_nacht.py:352 – # for bit 13 (0x007000E3), at most 100 (the stored value is limited to 10000). 65 of 80 bytes (71 + 9 int3).
+- `0x00700105`
+  - docs/befund-meldungen.md:727 – bzw. löscht nur Bit 13 (0x2000) im Flagwort Spielstand 0x194 (`0x00700105` bei `0x0060003F`, `0x00600076`). Gelesen
+  - docs/fundstellen.md:234 – x006FFFD9`), Bit 0x2000 privater Trainer (lesen `0x007000E3`, setzen `0x00700105`);
+  - docs/korrekturliste-meldungen.md:302 – Konditionsbonus ist Bit 13 im Flagwort (`0x007000E3` lesen, `0x00700105` setzen/löschen), der Raucher-Abzug Bit 11
+  - tools/asm_nacht.py:350 – # of the flag word (0x00700105), and the condition routine 0x00457E00 (player word +0x16 / 100, minus 5 for smokers,
+- `0x007001ED`
+  - docs/befund-meldungen.md:507 – `). Die Hülle `0x005E4FD6` wählt den Spitzel allein nach Bit 0x8000 (`0x007001ED` bei `0x005E5031`), und
+  - docs/fundstellen.md:193 – → `0x005E4EC2` (Spitzel: Flagwort Spielstand 0x194 Bit 0x8000, lesen `0x007001ED`, setzen/löschen
+  - docs/korrekturliste-meldungen.md:281 – zel des Managers ist Bit 15 (0x8000) im Flagwort des Spielers (lesen `0x007001ED`, setzen/löschen
+- `0x0070020F`
+  - docs/befund-meldungen.md:506 – gelöscht (kein Aufruf von `0x0070020F`; dessen einzige Aufrufer sind `0x0048FC80`, `0x0048FD30`, `0x0048FDD0` und
+  - docs/fundstellen.md:194 – `0x0070020F`; Bit 0x20000 „enttarnt“ `0x0070031F`).
+  - docs/korrekturliste-meldungen.md:282 – `0x0070020F(an)`, Aufrufer `0x0048FC80`, `0x0048FD30`, `0x0048FDD0`, `0x007074FB`) – ein anderer Merker als der
+  - tools/a3patch.py:670 – # again. New: 0x0070020F(0). Block from tools/asm_nacht.py.
+  - tools/asm_nacht.py:192 – # bit 0x8000 stayed, so he was drawn as spy again. New: 0x0070020F(0) clears it. The loop is written shorter.
+- `0x00700272`
+  - docs/fundstellen.md:152 – Maulwurf = Bit 16 im Flagwort des Spielers (lesen `0x00700272`, setzen/löschen `0x00700294`), erster Maulwurf der
+  - docs/korrekturliste-meldungen.md:165 – Bit 21 zurück. Maulwurf = Bit 16 im Flagwort des Spielers (`0x00700272` / `0x00700294`). `0x005E50BA` (täglicher
+- `0x00700294`
+  - docs/fundstellen.md:152 –  Bit 16 im Flagwort des Spielers (lesen `0x00700272`, setzen/löschen `0x00700294`), erster Maulwurf der
+  - docs/korrekturliste-meldungen.md:165 – 1 zurück. Maulwurf = Bit 16 im Flagwort des Spielers (`0x00700272` / `0x00700294`). `0x005E50BA` (täglicher
+- `0x0070031F`
+  - docs/befund-meldungen.md:505 – Spielersatz 0x194 (`0x0070031F`) und den Mannschafts-Teilwert auf 0 (`0x00700BCF`). Das Spitzel-Bit 0x8000 wird nicht
+  - docs/fundstellen.md:194 – `0x0070020F`; Bit 0x20000 „enttarnt“ `0x0070031F`).
+- `0x00700413`
+  - docs/fundstellen.md:211 – `0x00702A5B`, nie gesetzt; Bit 19 Schwiegermutter `0x00700413` / `0x00700435` / `0x0070046A`; Bit 25 `0x007028D7`,
+- `0x00700435`
+  - docs/fundstellen.md:211 – `0x00702A5B`, nie gesetzt; Bit 19 Schwiegermutter `0x00700413` / `0x00700435` / `0x0070046A`; Bit 25 `0x007028D7`,
+- `0x0070046A`
+  - docs/fundstellen.md:211 – `, nie gesetzt; Bit 19 Schwiegermutter `0x00700413` / `0x00700435` / `0x0070046A`; Bit 25 `0x007028D7`,
+- `0x0070060A`
+  - docs/korrekturliste-meldungen.md:270 – Gruppennummer (`0x0070060A` lesen, `0x0070062E` setzen), Bit 4 Anführer (`0x007006C4` lesen, `0x007006E8` setzen,
+- `0x0070062E`
+  - docs/korrekturliste-meldungen.md:270 – Gruppennummer (`0x0070060A` lesen, `0x0070062E` setzen), Bit 4 Anführer (`0x007006C4` lesen, `0x007006E8` setzen,
+- `0x00700690`
+  - docs/befund-meldungen.md:635 – vier Stellen der Gruppenbildung, löschen `0x00700690` und `0x0070071C`) und zugleich das obere Bit des
+  - docs/fundstellen.md:218 – (`0x007006E8`, `0x00700690`, `0x0070071C`).
+  - docs/korrekturliste-meldungen.md:271 – `0x0070071C` löschen; `0x00700690` löscht Bits 0, 1 und 4), Bits 3–4 Schüler-Merker (`0x007064C9` = 2?,
+- `0x007006C4`
+  - docs/korrekturliste-meldungen.md:270 – pennummer (`0x0070060A` lesen, `0x0070062E` setzen), Bit 4 Anführer (`0x007006C4` lesen, `0x007006E8` setzen,
+  - tools/a3patch.py:739 – # 0x0070654A) shared bit 4 with the group-leader flag (0x007006C4 / 0x007006E8). New: the pupil marker lives in bits 5-6,
+- `0x007006E8`
+  - docs/befund-meldungen.md:634 –  doppelt belegt:** Es ist der Merker „Anführer einer Gruppe“ (setzen `0x007006E8` an
+  - docs/fundstellen.md:218 – (`0x007006E8`, `0x00700690`, `0x0070071C`).
+  - docs/korrekturliste-meldungen.md:270 – 0A` lesen, `0x0070062E` setzen), Bit 4 Anführer (`0x007006C4` lesen, `0x007006E8` setzen,
+  - tools/a3patch.py:739 – # 0x0070654A) shared bit 4 with the group-leader flag (0x007006C4 / 0x007006E8). New: the pupil marker lives in bits 5-6,
+- `0x0070071C`
+  - docs/befund-meldungen.md:635 – vier Stellen der Gruppenbildung, löschen `0x00700690` und `0x0070071C`) und zugleich das obere Bit des
+  - docs/fundstellen.md:218 – (`0x007006E8`, `0x00700690`, `0x0070071C`).
+  - docs/korrekturliste-meldungen.md:271 – `0x0070071C` löschen; `0x00700690` löscht Bits 0, 1 und 4), Bits 3–4 Schüler-Merker (`0x007064C9` = 2?,
+- `0x007007A1`
+  - docs/befund-meldungen.md:481 – ag), `0x00700C42` (Mannschaft), `0x00700E3F` (Verein). Die Schreiber `0x007007A1`, `0x00700A6D`, `0x00700D27`
+  - docs/befund-notenschnitt.md:120 – 2 | „Trainerzähler“ des ausgewechselten Spielers (Spielersatz 0x26F, `0x007007A1`; im Dialog als „Trainerzähler vorher/nachher“ beschriftet) |
+  - docs/befund-notenschnitt.md:159 – ielersatzes ab 0x26F: 0x26F Trainer (G: Dialog 496 „Trainerzähler“ = `0x007007A1`), 0x272 Presse (V stark: viertes
+  - docs/befund-zaehler.md:103 – vor 6 oder mehr Spieltagen“). Wirkung der Ereignisse: `0x00700FA2` / `0x007007A1`
+  - docs/fundstellen.md:71 – `0x0070145F`; ändern `0x007007A1(±n)` Trainer, `0x00700FA2(±n)` Presse, `0x007010D9(±n)` Spielstand 0x273,
+  - docs/fundstellen.md:187 – `0x007007A1`, Mannschaft (0x270) `0x00700C42` / `0x00700A6D` (direkt setzen `0x00700BCF`), Verein (0x271)
+  - docs/korrekturliste-meldungen.md:85 – cherte Wert, geholt über die Schreiber mit Änderung 0 (`0x00700D27`, `0x007007A1`, `0x00700A6D`; mit 0 ändern sie nichts und rechnen die Motivation neu); Gruppe „rein optisch“, im 
+  - tools/a3patch.py:415 – # (0x0070302D), -3 on the trainer part of the motivation (0x007007A1), counter 0x007049CC; answer 1 = fine
+- `0x007008B9`
+  - docs/befund-meldungen.md:480 – r Teilwerte rechnen Zu- und Abschläge je gesetztem Spieler-Flag ein: `0x007008B9` (Trainer, −10 je
+  - docs/befund-notenschnitt.md:153 – Sieben Felder mit Lesern `0x007008B9` (0x26F), `0x00700C42`, `0x00700E3F`, `0x007010BA` (0x272), `0x007011F1`,
+  - docs/fundstellen.md:70 – Motivation: lesen `0x007008B9` (Trainer), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+  - docs/fundstellen.md:186 – vation, Leser mit Flag-Zuschlägen / Schreiber mit Rohwert:** Trainer `0x007008B9` /
+  - docs/korrekturliste-meldungen.md:168 – Teilwerte `0x007008B9` / `0x00700C42` / `0x00700E3F` unter 88); er bleibt es, bis die Motivation über 85 steigt.
+  - tools/a3patch.py:779 – # (0x00700E3F, 0x007008B9, 0x00700C42) and 'after' without. New: 'before' is the stored value as well (writer with a
+  - tools/asm_nacht.py:406 – # 0x00700E3F / 0x007008B9 / 0x00700C42, which add or subtract allowances per player flag, "after" from the writers
+  - tools/asm_nacht.py:416 –  'E8', 'F7007A1_32'), # call 007007A1 stored 0x26F before (was reader 0x007008B9)
+- `0x00700A6D`
+  - docs/befund-meldungen.md:481 – 42` (Mannschaft), `0x00700E3F` (Verein). Die Schreiber `0x007007A1`, `0x00700A6D`, `0x00700D27`
+  - docs/fundstellen.md:187 – `0x007007A1`, Mannschaft (0x270) `0x00700C42` / `0x00700A6D` (direkt setzen `0x00700BCF`), Verein (0x271)
+  - docs/korrekturliste-meldungen.md:85 – eholt über die Schreiber mit Änderung 0 (`0x00700D27`, `0x007007A1`, `0x00700A6D`; mit 0 ändern sie nichts und rechnen die Motivation neu); Gruppe „rein optisch“, im Spiel nicht ge
+- `0x00700BCF`
+  - docs/befund-meldungen.md:505 – Spielersatz 0x194 (`0x0070031F`) und den Mannschafts-Teilwert auf 0 (`0x00700BCF`). Das Spitzel-Bit 0x8000 wird nicht
+  - docs/fundstellen.md:187 – 07A1`, Mannschaft (0x270) `0x00700C42` / `0x00700A6D` (direkt setzen `0x00700BCF`), Verein (0x271)
+- `0x00700C42`
+  - docs/befund-meldungen.md:481 – Flag), `0x00700C42` (Mannschaft), `0x00700E3F` (Verein). Die Schreiber `0x007007A1`, `0x00700A6D`, `0x00700D27`
+  - docs/befund-notenschnitt.md:153 – Sieben Felder mit Lesern `0x007008B9` (0x26F), `0x00700C42`, `0x00700E3F`, `0x007010BA` (0x272), `0x007011F1`,
+  - docs/fundstellen.md:70 – Motivation: lesen `0x007008B9` (Trainer), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+  - docs/fundstellen.md:187 – `0x007007A1`, Mannschaft (0x270) `0x00700C42` / `0x00700A6D` (direkt setzen `0x00700BCF`), Verein (0x271)
+  - docs/korrekturliste-meldungen.md:168 – Teilwerte `0x007008B9` / `0x00700C42` / `0x00700E3F` unter 88); er bleibt es, bis die Motivation über 85 steigt.
+  - tools/a3patch.py:779 – # (0x00700E3F, 0x007008B9, 0x00700C42) and 'after' without. New: 'before' is the stored value as well (writer with a
+  - tools/asm_nacht.py:406 – # 0x00700E3F / 0x007008B9 / 0x00700C42, which add or subtract allowances per player flag, "after" from the writers
+  - tools/asm_nacht.py:441 – ', 'F700A6D_32'), # call 00700A6D stored value before (was the reader 0x00700C42)
+- `0x00700D27`
+  - docs/befund-meldungen.md:481 – t), `0x00700E3F` (Verein). Die Schreiber `0x007007A1`, `0x00700A6D`, `0x00700D27`
+  - docs/fundstellen.md:188 – `0x00700E3F` / `0x00700D27`; 0x274 lesen `0x00701328` (ohne Zuschläge).
+  - docs/korrekturliste-meldungen.md:85 – er“ der gespeicherte Wert, geholt über die Schreiber mit Änderung 0 (`0x00700D27`, `0x007007A1`, `0x00700A6D`; mit 0 ändern sie nichts und rechnen die Motivation neu); Gruppe „rein
+- `0x00700E3F`
+  - docs/befund-meldungen.md:481 – Flag), `0x00700C42` (Mannschaft), `0x00700E3F` (Verein). Die Schreiber `0x007007A1`, `0x00700A6D`, `0x00700D27`
+  - docs/befund-notenschnitt.md:153 – Sieben Felder mit Lesern `0x007008B9` (0x26F), `0x00700C42`, `0x00700E3F`, `0x007010BA` (0x272), `0x007011F1`,
+  - docs/fundstellen.md:70 – Motivation: lesen `0x007008B9` (Trainer), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+  - docs/fundstellen.md:188 – `0x00700E3F` / `0x00700D27`; 0x274 lesen `0x00701328` (ohne Zuschläge).
+  - docs/korrekturliste-meldungen.md:168 – Teilwerte `0x007008B9` / `0x00700C42` / `0x00700E3F` unter 88); er bleibt es, bis die Motivation über 85 steigt.
+  - tools/a3patch.py:779 – # (0x00700E3F, 0x007008B9, 0x00700C42) and 'after' without. New: 'before' is the stored value as well (writer wit
+  - tools/asm_nacht.py:406 – # 0x00700E3F / 0x007008B9 / 0x00700C42, which add or subtract allowances per player flag, "after" from the write
+  - tools/asm_nacht.py:412 –  'E8', 'F700D27_32'), # call 00700D27 stored 0x271 before (was reader 0x00700E3F)
+- `0x00700FA2`
+  - docs/befund-meldungen.md:237 – - Spieler (nur mit Spielernummer): Bit 8 = „Presse“ (`0x00700FA2`), Bit 9 = Spielersatz 0x274 (`0x00701210`);
+  - docs/befund-notenschnitt.md:118 – er den Erwartungen (`0x00775F0A` > 0, V) | −6 auf Spielersatz 0x272 (`0x00700FA2`) |
+  - docs/befund-notenschnitt.md:152 – Spielersatz 0x272 über `0x00700FA2`; das Führerschein-Ereignis meldet dabei alten und neuen Wert mit der Kennzahl 4.
+  - docs/befund-notenschnitt.md:160 – Feld, wird von den Zeitungsmeldungen über `0x00700FA2` geändert), dazwischen 0x270 Team, 0x271 Verein, danach 0x273
+  - docs/befund-notenschnitt.md:167 – ziehen den Wert deshalb direkt über `0x00700FA2` ab.
+  - docs/befund-notenschnitt.md:187 – von 2 bei „Presse“ (`0x00700FA2`), den das Original zwar übergibt, aber nie anwendet.
+  - docs/befund-zaehler.md:103 – etzter Einsatz vor 6 oder mehr Spieltagen“). Wirkung der Ereignisse: `0x00700FA2` / `0x007007A1`
+  - docs/fundstellen.md:71 – `0x0070145F`; ändern `0x007007A1(±n)` Trainer, `0x00700FA2(±n)` Presse, `0x007010D9(±n)` Spielstand 0x273,
+  - docs/korrekturliste-meldungen.md:174 – - **K12:** `0x00700FA2(delta)` ändert Byte Spielstand 0x272 (Teilwert „Presse“, 0–120) und rechnet die Motivation neu
+  - tools/a3patch.py:476 – # the sister headlines apply it themselves right after the call (0x00700FA2). The blocks come from
+  - tools/asm_goldkettchen.py:11 – e): same headline call, followed by the deduction of 2 from "Presse" (0x00700FA2) that the
+  - tools/asm_goldkettchen.py:59 – 'PRESSE32': 0x00700FA2, 'END': 0x005FEC3F}, [
+  - tools/asm_presse.py:6 – hemselves. New in every block: push <value> / mov ecx,<player> / call 0x00700FA2 right after the headline.
+  - tools/asm_presse.py:16 – T = {'PRESSE32': 0x00700FA2, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32}
+- `0x007010BA`
+  - docs/befund-notenschnitt.md:153 –  Felder mit Lesern `0x007008B9` (0x26F), `0x00700C42`, `0x00700E3F`, `0x007010BA` (0x272), `0x007011F1`,
+  - docs/fundstellen.md:70 – otivation: lesen `0x007008B9` (Trainer), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+- `0x007010D9`
+  - docs/befund-meldungen.md:240 – r ersten Fassung: `0x00701210` ändert im Spielersatz das Byte 0x274, `0x007010D9` das Byte
+  - docs/befund-meldungen.md:249 –  −3 | ändert stattdessen Spielersatz 0x274 (`0x00701210`) und 0x273 (`0x007010D9`) |
+  - docs/fundstellen.md:71 – 0070145F`; ändern `0x007007A1(±n)` Trainer, `0x00700FA2(±n)` Presse, `0x007010D9(±n)` Spielstand 0x273,
+  - docs/fundstellen.md:73 – **Berichtigung (16.11.2026):** `0x00701210` ändert Spielstand 0x274, `0x007010D9` ändert 0x273; früher stand hier
+- `0x007011F1`
+  - docs/befund-notenschnitt.md:153 – 007008B9` (0x26F), `0x00700C42`, `0x00700E3F`, `0x007010BA` (0x272), `0x007011F1`,
+  - docs/fundstellen.md:70 – 008B9` (Trainer), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+- `0x00701210`
+  - docs/befund-meldungen.md:237 – nummer): Bit 8 = „Presse“ (`0x00700FA2`), Bit 9 = Spielersatz 0x274 (`0x00701210`);
+  - docs/befund-meldungen.md:240 – Berichtigung gegenüber der ersten Fassung: `0x00701210` ändert im Spielersatz das Byte 0x274, `0x007010D9` das Byte
+  - docs/befund-meldungen.md:241 – 0x273 (beides Teilwerte der Motivation; früher stand `0x00701210` als „V: Privat“). 0x274 ist die Ablenkung
+  - docs/befund-meldungen.md:249 – berfall erwischt | Presse −3 | ändert stattdessen Spielersatz 0x274 (`0x00701210`) und 0x273 (`0x007010D9`) |
+  - docs/befund-meldungen.md:251 – | 1197 | %1 steht vor dem Nichts | Presse −3 | Spielersatz 0x274 (`0x00701210`) −10, Meldung 1196 |
+  - docs/befund-meldungen.md:486 – 19DC`): Geändert und angezeigt wird Spielersatz 0x274 (`0x00701328`, `0x00701210(−5)`), als Art wird
+  - docs/befund-meldungen.md:622 – `0x00701210` bei `0x005FB3A3` / `0x005FB3FB`), als Art wird 2 = „Privates“ übergeben (`0x005FB3AE`, `0x005FB406
+  - docs/befund-notenschnitt.md:161 – Privat (`0x00701210`), 0x274 Ablenk., 0x275 Angebote (V, nur aus der Reihenfolge).
+  - docs/befund-notenschnitt.md:165 – von `0x00701210` (Satz +0x2C). Angewendet werden sie in `0x0078A0F5` nur für die oberste Schlagzeile und nur, wenn 
+  - docs/fundstellen.md:72 – `0x00701210(±n)` Spielstand 0x274; Gesamturteil 0–3 `0x00770877`.
+  - docs/fundstellen.md:73 – **Berichtigung (16.11.2026):** `0x00701210` ändert Spielstand 0x274, `0x007010D9` ändert 0x273; früher stand hier
+  - docs/fundstellen.md:74 – `0x00701210` als „V: Privat“.
+  - docs/fundstellen.md:128 – (Bit i; Bit 8 = „Presse“, Bit 9 = Spielstand 0x274 über `0x00701210`). Namen werden nach `0x008AD230[i]` kopiert.
+  - tools/a3patch.py:638 – # 0x00701210) but passed kind 1 = "Mannschaft" for the label (table 0x008808B0). New kind 3: push 1 -> push 3.
+  - tools/a3patch.py:645 – # ("Ablenkung", 0x00701210) but passed kind 2 = "Privates". New kind 3 at both sites: push 2 -> push 3.
+  - tools/asm_nacht.py:408 – # with 0x00701210(0)); a writer with 0 changes nothing and recomputes the motivation.
+  - tools/asm_presse.py:236 – addr[t] = int(t[1:-3], 16) # 'F701210_32' = call target 0x00701210
+- `0x00701328`
+  - docs/befund-meldungen.md:486 –  1312 (`0x005E19DC`): Geändert und angezeigt wird Spielersatz 0x274 (`0x00701328`, `0x00701210(−5)`), als Art wird
+  - docs/befund-notenschnitt.md:154 – `0x00701328`, `0x0070145F`; Namen der übrigen noch nicht zugeordnet (Reihenfolge der Motivationsanzeige erfrage
+  - docs/fundstellen.md:70 – r), `0x00700C42`, `0x00700E3F`, `0x007010BA` (Presse), `0x007011F1`, `0x00701328`,
+  - docs/fundstellen.md:188 – `0x00700E3F` / `0x00700D27`; 0x274 lesen `0x00701328` (ohne Zuschläge).
+  - tools/a3patch.py:637 – eviewed): message 1312 changes and shows savegame 0x274 ("Ablenkung", 0x00701328 /
+- `0x0070145F`
+  - docs/befund-notenschnitt.md:154 – `0x00701328`, `0x0070145F`; Namen der übrigen noch nicht zugeordnet (Reihenfolge der Motivationsanzeige erfragen).
+  - docs/fundstellen.md:71 – `0x0070145F`; ändern `0x007007A1(±n)` Trainer, `0x00700FA2(±n)` Presse, `0x007010D9(±n)` Spielstand 0x273,
+- `0x0070147E`
+  - docs/fundstellen.md:69 – (Ausschlusstabelle `0x008AC7C0`), danach `0x0070147E` (Motivation neu rechnen).
+  - docs/korrekturliste-meldungen.md:175 – (`0x0070147E`); die Zeitungsroutine wendet einen Presse-Wert nur mit Spielernummer an (`0x0078A0F5`), die keine 
+- `0x007015C6`
+  - docs/fundstellen.md:158 –  Plätze 0 bis Kadergröße−1. Freunde-Liste Spielstand 0x1D8[3] (lesen `0x007015C6`), Streit-Liste 0x1DE[3]
+- `0x007015EB`
+  - docs/fundstellen.md:159 – (lesen `0x007015EB`), streichen `0x00703854` / `0x00703930`, Aufräumen nach Abgängen `0x007105DF` / `0x0071064A`.
+- `0x0070173F`
+  - docs/befund-meldungen.md:471 – Der Name der Frau (`0x0070173F`) wird in beiden Fällen nicht geholt; an anderer Stelle derselben Routine wird er
+  - docs/befund-meldungen.md:712 – `0x0070173F` (Name der Partnerin) wird nicht aufgerufen.
+  - docs/fundstellen.md:185 – ibt stehen); Grundroutinen `0x005F1EAF`, `0x005F1F42`. Name der Frau `0x0070173F`, Nachname `0x006FEA7C`.
+  - docs/fundstellen.md:208 –  / 0x265 Namensindex Partnerin / Geliebte / frühere Partnerin (Namen `0x0070173F`,
+  - docs/korrekturliste-meldungen.md:83 – liebte-1094` (Aufrufziel bei Datei-Offset `0x1FA51F`: `0x007017DB` → `0x0070173F`); Gruppe „rein optisch“. Die Reihenfolge von %1 und %2 wird im Textpaket berichtigt (freigegeben 1
+  - tools/a3patch.py:287 – # %3 and 0 as %4. New: %3 / %4 = name of the wife (0x0070173F) of the first / second player; both are
+  - tools/a3patch.py:677 – # New: name of the partner (0x0070173F); both branches merged. Block from tools/asm_nacht.py.
+  - tools/a3patch.py:685 – # names are read, so 0x007017DB returned the name with index 0. New: 0x0070173F (name of the partner = the former
+  - tools/a3patch.py:693 – alone, to be reviewed): text 969 got 0 as name of the wife (%2). New: 0x0070173F.
+  - tools/asm_nacht.py:224 – # 0 was passed as %2. New: name of the partner (0x0070173F). The two branches (no child yet -> 1176, else 1177) are
+- `0x007017DB`
+  - docs/befund-meldungen.md:604 – %3 (`0x007017DB` bei `0x005FA51F`) wird erst gelesen, nachdem `0x0070282A` die Geliebte zur Partnerin gemacht und
+  - docs/fundstellen.md:209 – `0x007017DB`, `0x0070185C`), 0x266 / 0x267 Namensgruppen; 0x150 Hochzeitstermin (`0x00702AC7` anlegen,
+  - docs/korrekturliste-meldungen.md:83 – en als `name-geliebte-1094` (Aufrufziel bei Datei-Offset `0x1FA51F`: `0x007017DB` → `0x0070173F`); Gruppe „rein optisch“. Die Reihenfolge von %1 und %2 wird im Textpaket berichtigt
+  - docs/korrekturliste-meldungen.md:297 – danach gelesen: %2 = frühere Partnerin (`0x0070185C`, richtig), %3 = `0x007017DB` mit
+  - tools/a3patch.py:685 – # names are read, so 0x007017DB returned the name with index 0. New: 0x0070173F (name of the partner = the former
+- `0x0070185C`
+  - docs/befund-meldungen.md:603 – immer %1 = Spielername; als %2 wird der Name der Freundin übergeben (`0x0070185C` bei `0x005FA528`).
+  - docs/befund-meldungen.md:638 – - **`0x0070185C` (Name der früheren Partnerin):** liest den Namensindex aus 0x265, die Namensgruppe aber aus 0x266
+  - docs/befund-meldungen.md:772 –  (Die beiden Punkte „Bit 4 von Spielstand 0x260 doppelt belegt“ und „`0x0070185C` mit falscher Namensgruppe“
+  - docs/fundstellen.md:209 – `0x007017DB`, `0x0070185C`), 0x266 / 0x267 Namensgruppen; 0x150 Hochzeitstermin (`0x00702AC7` anlegen,
+  - docs/korrekturliste-meldungen.md:75 – | K37 | `0x0070185C`: Name der früheren Partnerin mit falscher Namensgruppe | richtige Gruppe lesen | klein | 6.14 | **
+  - docs/korrekturliste-meldungen.md:297 – 1094 werden die Namen erst danach gelesen: %2 = frühere Partnerin (`0x0070185C`, richtig), %3 = `0x007017DB` mit
+  - tools/a3patch.py:629 – # K37 (worked through alone, to be reviewed): 0x0070185C (name of the former partner) read the name index from
+  - tools/asm_nacht.py:11 – # partner 0x0070185C afterwards as there. Room: add esp dropped (routine ends with mov esp,ebp), push forms.
+- `0x00701884`
+  - tools/a3patch.py:631 – up of the former partner. movzx dx,byte [ecx+00C027D6h] -> ...D7h (VA 0x00701884).
+- `0x00701A87`
+  - docs/korrekturliste-meldungen.md:292 – gesetzt bei `0x00701A87`, gelöscht, wenn ein Kind eingetragen wird (`0x00701AE6`) oder die Beziehung endet
+- `0x00701AC4`
+  - docs/korrekturliste-meldungen.md:291 –  verlangt Hobby-Kennung Byte Spieler +0x24 = 14, Bit 24 im Flagwort (`0x00701AC4`;
+- `0x00701AE6`
+  - docs/korrekturliste-meldungen.md:292 – gesetzt bei `0x00701A87`, gelöscht, wenn ein Kind eingetragen wird (`0x00701AE6`) oder die Beziehung endet
+- `0x00702359`
+  - docs/korrekturliste-meldungen.md:293 – (`0x00702467`) – es gibt also eine Partnerin) und `0x00702359` = 0. Ohne Kind (`0x006FFD8A` = 0) kommt 1176, sonst
+- `0x00702467`
+  - docs/befund-meldungen.md:607 – Aufruf `0x00702467` (Beziehung beenden), den die gleich gebaute Stelle zu Text 1079 hat (`0x005F9816`), fehlt.
+  - docs/befund-meldungen.md:639 – (Gruppe der jetzigen Partnerin) statt aus 0x267, wohin `0x00702467` die Gruppe der früheren Partnerin kopiert.
+  - docs/fundstellen.md:212 – Setzer `0x007028F9` ohne Aufrufer). Beziehung beenden `0x00702467`, Geliebte wird Partnerin `0x0070282A`, Geliebte
+  - docs/korrekturliste-meldungen.md:190 – - **K14 und K15:** `0x00702467` („Beziehung beenden“, neun Aufrufer, u. a. Text 1079 bei `0x005F9816`) setzt den
+  - docs/korrekturliste-meldungen.md:200 – die Partnerin von p (`0x00702668`), p beendet seine (`0x00702467`); beide bekommen +3 auf Teilwert 0x273. Die
+  - docs/korrekturliste-meldungen.md:206 – Bit 24 beim Ende einer Beziehung (`0x00702467`, Maske `0xFCFFFFF3`) – es ist also ein Merker je Beziehung, und 1109
+  - docs/korrekturliste-meldungen.md:209 – sich die frühere Partnerin, ruft `0x00702467`, trägt die frühere Partnerin als Partnerin ein und ließ den Status auf
+  - docs/korrekturliste-meldungen.md:223 – 1, Stärke −1, `0x00702467`, Rest wie bisher).
+  - docs/korrekturliste-meldungen.md:293 – (`0x00702467`) – es gibt also eine Partnerin) und `0x00702359` = 0. Ohne Kind (`0x006FFD8A` = 0) kommt 1176, son
+  - docs/korrekturliste-meldungen.md:295 – - **K41:** `0x0070282A` beendet die Beziehung (`0x00702467`), macht die Geliebte zur Partnerin (Byte 0x263 ← 0x264),
+  - tools/a3patch.py:535 – # New: 0x00702467 as at the sister text 1079 (0x005F9816). Block from tools/asm_nacht.py.
+  - tools/a3patch.py:546 – # (0x005FD386 -> 0x00702B15). New: 0x00702467 (end the relationship), which removes the date with the stored key, clears
+  - tools/a3patch.py:630 – oup from 0x266 (group of the present partner) instead of 0x267, where 0x00702467
+  - tools/a3patch.py:701 – 3. New: strength > 1 as at the sister texts 1163 / 367, strength - 1, 0x00702467 (end the
+  - tools/asm_nacht.py:10 – # was not ended. New: 0x00702467 (end the relationship) as at the sister text 1079 (0x005F9816), name of the former
+  - tools/asm_nacht.py:39 – its own condition tests (0x007028D7; setter 0x007028F9 had no caller; 0x00702467 clears
+  - tools/asm_nacht.py:83 –  (0x00702BB0(1)); before, the status stayed "no relationship" (set by 0x00702467 inside).
+  - tools/asm_nacht.py:247 – # strength - 1, 0x00702467 (end the relationship; clears the child list, the wife becomes the former partner, whose
+- `0x00702571`
+  - docs/korrekturliste-meldungen.md:196 – ausgewertet; „neue Freundin“ `0x00702571` setzt sie zurück). 1083 verlangt Status „Freundin“, keine Kinder und
+- `0x00702668`
+  - docs/befund-meldungen.md:609 – gewählten Spielers p (`q.0x00702668(p)` bei `0x005FABEC`), p verliert sie (`0x005FABF4`). Die Meldung nennt aber p
+  - docs/fundstellen.md:213 – eintragen `0x007029A7` / löschen `0x00702962`, Partnerin übernehmen `0x00702668`, Ex-Freundin zurück `0x00702762`,
+  - docs/korrekturliste-meldungen.md:200 – die Partnerin von p (`0x00702668`), p beendet seine (`0x00702467`); beide bekommen +3 auf Teilwert 0x273. Die
+  - tools/a3patch.py:554 –  ([ebp-8]) takes over the partner of the chosen player p ([ebp+0Ch]) (0x00702668),
+- `0x00702762`
+  - docs/befund-meldungen.md:612 – Schatzi“) ruft `0x00702762` (`0x005FAE79`, einziger Aufrufer): die jetzige Freundin wird frühere Partnerin, die
+  - docs/fundstellen.md:213 –  `0x00702962`, Partnerin übernehmen `0x00702668`, Ex-Freundin zurück `0x00702762`,
+  - docs/korrekturliste-meldungen.md:208 – ihn setzen, damit die Meldung je Beziehung einmal kommt). `0x00702762` (einziger Aufrufer bisher bei 1109) merkt
+  - docs/korrekturliste-meldungen.md:211 – `0x00702762`, das am Ende den Status „Freundin“ setzt (`0x00702BB0(1)`).
+  - tools/a3patch.py:563 – # marker (bit 25), 1110 goes back to the former partner (0x00702762, which now also sets the status "Freundin").
+  - tools/asm_nacht.py:38 – # called 0x00702762 (go back to the former partner) and 1110 ("... ist auf dem Weg zu ihr") changed nothing. New: 1109
+  - tools/asm_nacht.py:40 – # it when a relationship ends), 1110 calls 0x00702762 after the message (the names are read before the change).
+  - tools/asm_nacht.py:82 – # 0x00702762 (only caller now 0x005FAEDB ff.): same steps as before without the repeated reloads, and at the end
+  - tools/asm_nacht.py:84 – 'ex-702762': (0x00702762, 0x0070282A, {}, [
+- `0x0070282A`
+  - docs/befund-meldungen.md:604 – %3 (`0x007017DB` bei `0x005FA51F`) wird erst gelesen, nachdem `0x0070282A` die Geliebte zur Partnerin gemacht und
+  - docs/fundstellen.md:212 – e Aufrufer). Beziehung beenden `0x00702467`, Geliebte wird Partnerin `0x0070282A`, Geliebte
+  - docs/korrekturliste-meldungen.md:295 – - **K41:** `0x0070282A` beendet die Beziehung (`0x00702467`), macht die Geliebte zur Partnerin (Byte 0x263 ← 0x264),
+  - tools/a3patch.py:684 – # (0x005FA394 case 2). 0x0070282A makes the lover the partner and clears her index (savegame 0x264) BEFORE the
+  - tools/asm_nacht.py:84 – 'ex-702762': (0x00702762, 0x0070282A, {}, [
+- `0x007028D7`
+  - docs/befund-meldungen.md:614 – ertauscht. Der bei `0x005FAE6D` geprüfte Merker (Bit 25 im Flagwort, `0x007028D7`) wird
+  - docs/fundstellen.md:211 – 9 Schwiegermutter `0x00700413` / `0x00700435` / `0x0070046A`; Bit 25 `0x007028D7`,
+  - docs/korrekturliste-meldungen.md:205 – (`0x007028D7`). Den Setzer dieses Bits (`0x007028F9`) ruft im Original niemand auf; gelöscht wird es zusammen mi
+  - tools/asm_nacht.py:39 – # sets the marker bit 25 that its own condition tests (0x007028D7; setter 0x007028F9 had no caller; 0x00702467 clears
+- `0x007028F9`
+  - docs/befund-meldungen.md:615 – nie gesetzt; sein Setzer `0x007028F9` hat keinen Aufrufer. Text 1110 („hat seine Sachen gepackt und ist auf dem
+  - docs/fundstellen.md:212 – Setzer `0x007028F9` ohne Aufrufer). Beziehung beenden `0x00702467`, Geliebte wird Partnerin `0x0070282A`, Geliebte
+  - docs/korrekturliste-meldungen.md:205 – (`0x007028D7`). Den Setzer dieses Bits (`0x007028F9`) ruft im Original niemand auf; gelöscht wird es zusammen mit
+  - tools/asm_nacht.py:39 – ts the marker bit 25 that its own condition tests (0x007028D7; setter 0x007028F9 had no caller; 0x00702467 clears
+- `0x00702962`
+  - docs/fundstellen.md:213 – eintragen `0x007029A7` / löschen `0x00702962`, Partnerin übernehmen `0x00702668`, Ex-Freundin zurück `0x00702762`,
+  - docs/korrekturliste-meldungen.md:112 –  1129/1130); `0x00702A02` wechselt von 2 nach 3 (bei 1123 und 1236), `0x00702962` beendet die Affäre (löscht Index und beide Bits; bei 1126 und 1129). Bit 2 setzt niemand; `0x00702
+  - tools/asm_nacht.py:478 – # sets bit 3 ("the wife suspects", after 1123 and 1236), 0x00702962 clears both when the affair ends, and 0x007029A7
+  - tools/asm_nacht.py:498 –  gibt klein bei" (0x005FB751 case 1, club [ebp+8], player [ebp+0Ch]): 0x00702962 (affair
+- `0x007029A7`
+  - docs/befund-meldungen.md:574 – ; es wird nur gelöscht. Die Routine `0x005FB751` läuft deshalb nie. (`0x007029A7`, das die
+  - docs/befund-meldungen.md:578 –  Byte 0x264 ≠ 0 (`0x005FB6B2`, `0x005FB6C5`). Byte 0x264 wird nur in `0x007029A7`
+  - docs/fundstellen.md:213 – eintragen `0x007029A7` / löschen `0x00702962`, Partnerin übernehmen `0x00702668`, Ex-Freundin zurück `0x00702762`,
+  - docs/korrekturliste-meldungen.md:112 – öscht Index und beide Bits; bei 1126 und 1129). Bit 2 setzt niemand; `0x007029A7` („neue Geliebte“, Texte 1251–1253) trägt nur den Namensindex ein. Korrektur: (1) `0x007029A7` setz
+  - tools/a3patch.py:802 – # set. New: 0x007029A7 (new lover, texts 1251-1253) sets it; at 1126 the affair is ended after the message so that the
+  - tools/asm_nacht.py:478 – fter 1123 and 1236), 0x00702962 clears both when the affair ends, and 0x007029A7
+  - tools/asm_nacht.py:479 – he three callers of texts 1251-1253) only stored her name index. New: 0x007029A7 also sets bit 2.
+  - tools/asm_nacht.py:481 – 'geliebte-7029A7': (0x007029A7, 0x00702A02, {}, [
+- `0x007029CC`
+  - docs/befund-meldungen.md:579 – gesetzt (`0x007029CC`), aufgerufen an drei Stellen (`0x005FD2C9`, `0x005FD304`, `0x005FD347`; Texte 1251–1253,
+- `0x00702A02`
+  - docs/korrekturliste-meldungen.md:112 – `0x00702A7B`, Vorroutine `0x005FBB71` der Folgemeldungen 1129/1130); `0x00702A02` wechselt von 2 nach 3 (bei 1123 und 1236), `0x00702962` beendet die Affäre (löscht Index und beide
+  - tools/asm_nacht.py:477 – s with flag bit 2 (0x00702A5B at 0x005FB98E), which nothing ever set: 0x00702A02 clears it and
+  - tools/asm_nacht.py:481 – 'geliebte-7029A7': (0x007029A7, 0x00702A02, {}, [
+- `0x00702A5B`
+  - docs/befund-meldungen.md:572 – immt nur verheiratete Spieler mit gesetztem Bit 2 im Flagwort 0x194 (`0x00702A5B` bei
+  - docs/fundstellen.md:211 – `0x00702A5B`, nie gesetzt; Bit 19 Schwiegermutter `0x00700413` / `0x00700435` / `0x0070046A`; Bit 25 `0x007028D
+  - docs/korrekturliste-meldungen.md:112 – stände der Affäre im Flagwort 0x194: Bit 2 „läuft unentdeckt“ (lesen `0x00702A5B`, einziger Leser die Vorroutine `0x005FB98E`), Bit 3 „Frau ahnt etwas“ (lesen `0x00702A7B`, Vorrout
+  - tools/asm_nacht.py:477 – # admits married players with flag bit 2 (0x00702A5B at 0x005FB98E), which nothing ever set: 0x00702A02 clears it and
+- `0x00702A7B`
+  - docs/korrekturliste-meldungen.md:112 – r Leser die Vorroutine `0x005FB98E`), Bit 3 „Frau ahnt etwas“ (lesen `0x00702A7B`, Vorroutine `0x005FBB71` der Folgemeldungen 1129/1130); `0x00702A02` wechselt von 2 nach 3 (bei 11
+- `0x00702A9B`
+  - docs/fundstellen.md:210 – `0x00702A9B` prüfen); 0x1D6 Zahl der Kinder (`0x006FFD8A`); Flagwort 0x194 = `0x00C02704 + Nr × 0x354` (Bit 2
+- `0x00702AC7`
+  - docs/fundstellen.md:209 – , `0x0070185C`), 0x266 / 0x267 Namensgruppen; 0x150 Hochzeitstermin (`0x00702AC7` anlegen,
+  - docs/korrekturliste-meldungen.md:193 – Satz +0x170)`) und löscht das Datum. Der Hochzeitstermin entsteht in `0x00702AC7` (Datum in etwa 90
+- `0x00702B15`
+  - docs/befund-meldungen.md:600 – (aus `0x005F0465`) `0x00702B15`: Status 3, Krisenstufe 0 – die Hochzeit findet trotz Absage statt. Die Freundin
+  - docs/fundstellen.md:214 – heiraten `0x00702B15` (Termin-Routine `0x005FD386`). Terminliste `0x008EB8B0`: streichen `0x004377B7(Nummer,
+  - docs/korrekturliste-meldungen.md:194 – ach Satz +0x170 und in die Terminliste); am Termin ruft `0x005FD386` `0x00702B15` (Status verheiratet, Termin
+  - tools/a3patch.py:546 – # (0x005FD386 -> 0x00702B15). New: 0x00702467 (end the relationship), which removes the date with the stored key, clears
+- `0x00702B8C`
+  - docs/fundstellen.md:207 – 1 Freundin, 3 verheiratet; lesen `0x00702B8C`, setzen `0x00702BB0`), Bits 2–4 Krisenstufe (`0x00702C12` /
+- `0x00702BB0`
+  - docs/fundstellen.md:207 – 1 Freundin, 3 verheiratet; lesen `0x00702B8C`, setzen `0x00702BB0`), Bits 2–4 Krisenstufe (`0x00702C12` /
+  - docs/korrekturliste-meldungen.md:211 – `0x00702762`, das am Ende den Status „Freundin“ setzt (`0x00702BB0(1)`).
+  - tools/asm_nacht.py:83 – # status "Freundin" (0x00702BB0(1)); before, the status stayed "no relationship" (set by 0x00702467 inside).
+- `0x00702C12`
+  - docs/fundstellen.md:207 – tet; lesen `0x00702B8C`, setzen `0x00702BB0`), Bits 2–4 Krisenstufe (`0x00702C12` /
+- `0x00702C39`
+  - docs/fundstellen.md:208 – `0x00702C39`); 0x263 / 0x264 / 0x265 Namensindex Partnerin / Geliebte / frühere Partnerin (Namen `0x0070173F`,
+- `0x00702CBD`
+  - docs/fundstellen.md:225 – Verteiler `0x005FD5FA` nach Hobby-Nummer (Spielstand 0x26D; setzen `0x00702CBD`). „Angeschlagen“ setzen
+  - docs/korrekturliste-meldungen.md:67 – er): Text neutral fassen**, die Wirkung bleibt (Hobby wird gelöscht, `0x00702CBD(0)` bei `0x005FE463`). Kein anderer Text nennt „eingeschränkt trainieren“, es gibt kein Vorbild für
+- `0x00702D31`
+  - docs/befund-meldungen.md:689 – (beim Nachlesen gefunden):** Der Zähler Spielstand 0x26E wird nur in `0x00702D31`
+  - docs/fundstellen.md:227 – einzige Routine `0x00702D31(wert)` (wert < 0 = nur lesen), Leser `0x00702D6F`; wird nie heruntergezählt.
+  - docs/korrekturliste-meldungen.md:256 – `0x00702D31(v)` (v ≥ 0 schreibt, v < 0 liest nur), dazu der Leser `0x00702D6F` („Führerschein da?“, Aufrufer
+  - docs/korrekturliste-meldungen.md:257 – 2E`); kein weiterer Zugriff auf die Adresse. Alle zwölf Aufrufer von `0x00702D31` übergeben −1,
+  - docs/korrekturliste-meldungen.md:263 – von 100 Bytes ab `0x00702D31`): Das Byte hält statt der Restmonate den Ablaufmonat E = (Jahr × 12 + Monat + v) & 0xFF
+  - tools/a3patch.py:721 – # so a licence once withdrawn never came back. New: 0x00702D31 stores the month of expiry ((year * 12 + month + v) & 0xFF)
+  - tools/asm_nacht.py:288 – # 0x00702D31(v) stored "months left" (1, 2 or 6) and nothing ever counted it down. The daily routines are not ru
+  - tools/asm_nacht.py:295 – 'fuehrerschein-zaehler': (0x00702D31, 0x00702D95, {}, [
+- `0x00702D6F`
+  - docs/fundstellen.md:227 – einzige Routine `0x00702D31(wert)` (wert < 0 = nur lesen), Leser `0x00702D6F`; wird nie heruntergezählt.
+  - docs/korrekturliste-meldungen.md:256 – `0x00702D31(v)` (v ≥ 0 schreibt, v < 0 liest nur), dazu der Leser `0x00702D6F` („Führerschein da?“, Aufrufer
+  - tools/a3patch.py:722 – # and every read clears it once it has passed; the reader 0x00702D6F moves to 0x00702D7B (two calls redirected). Block
+  - tools/asm_nacht.py:321 – # reader "licence present?" (was at 0x00702D6F; its two callers 0x005FE9B4 and 0x005FEB2E are redirected)
+- `0x00702D7B`
+  - docs/korrekturliste-meldungen.md:266 – nach `0x00702D7B`, seine zwei Aufrufer werden umgeleitet (`E8C2431000`, `E848421000`). Dauer: Rest des laufenden
+  - tools/a3patch.py:722 – ery read clears it once it has passed; the reader 0x00702D6F moves to 0x00702D7B (two calls redirected). Block
+- `0x00702D95`
+  - docs/befund-meldungen.md:254 – liche Passanten an | Presse −4 | setzt ein Kennzeichen beim Spieler (`0x00702D95(2)`), Meldung 1268 |
+  - tools/asm_nacht.py:295 – 'fuehrerschein-zaehler': (0x00702D31, 0x00702D95, {}, [
+- `0x0070302D`
+  - docs/befund-meldungen.md:412 – - „1 Spiel interne Sperre“ setzt keine Sperre (kein Aufruf von `0x0070302D`), nur −10;
+  - docs/fundstellen.md:157 – Spielen setzen `0x0070302D`. Kader-Zeigerliste Verein +0xB50: Aufbau `0x00635F76`, `0x00636120` ff., `0x006362A0`,
+  - docs/fundstellen.md:169 – Zweige `0x005F2E43`, `0x005F2F07`; Sperre setzen `0x0070302D`). Globale Nachricht `0x00A321E8` (+6 Antwort
+  - tools/a3patch.py:415 – # (0x0070302D), -3 on the trainer part of the motivation (0x007007A1), counter 0x007049CC; answer 1 = fine
+- `0x00703225`
+  - docs/befund-meldungen.md:499 – in dieser einen Routine gelesen (acht Stellen), über `0x00703225` nur in der toten Routine `0x005E1C68`. Der Spieler
+- `0x0070324F`
+  - docs/befund-meldungen.md:498 – `) und gibt die Meldung aus. Der Stand wird über die Zugriffsroutine `0x0070324F` nur
+  - docs/fundstellen.md:191 – `0x0070324F`, setzen `0x00703276`; feste Namen `0x0088D970`–`0x0088D9C0`); Gruppenbildung `0x005E3885` (Verein
+- `0x00703276`
+  - docs/befund-meldungen.md:498 – Spielstand 0x261, `0x00703276`) und gibt die Meldung aus. Der Stand wird über die Zugriffsroutine `0x0070324F` nur
+  - docs/fundstellen.md:191 – `0x0070324F`, setzen `0x00703276`; feste Namen `0x0088D970`–`0x0088D9C0`); Gruppenbildung `0x005E3885` (Verein
+- `0x007033A5`
+  - docs/befund-meldungen.md:771 – - `0x007033A5`: bei voller Dreierliste landet die neue Nummer auf Index 3 (Wort Spielstand 0x1E4).
+- `0x00703854`
+  - docs/befund-meldungen.md:395 – Schwesterroutine `0x00703854` für die erste Liste schreibt richtig nach +0x1F8.
+  - docs/fundstellen.md:35 – her Satz +0x1F8 / +0x1FE; V: Freunde / Streit und Feinde); Streichen `0x00703854` (erste) und `0x00703930` (zweite, schreibt die Endmarke bei `0x007039D0` fälschlich in die erste –
+  - docs/fundstellen.md:159 – (lesen `0x007015EB`), streichen `0x00703854` / `0x00703930`, Aufräumen nach Abgängen `0x007105DF` / `0x0071064A`.
+  - tools/a3patch.py:450 – # 0x00703854 does for its own list.
+- `0x00703930`
+  - docs/befund-meldungen.md:78 – ler (G), Abschnitt 6:** falsche Liste beim Streichen eines Spielers (`0x00703930`);
+  - docs/befund-meldungen.md:390 – hen aus der zweiten Dreierliste eines Spielers löscht in der ersten (`0x00703930`)
+  - docs/befund-meldungen.md:393 – zu Streit und Feinden (V). `0x00703930` streicht einen Spieler aus der zweiten Liste. Nach dem Aufrücken schreibt
+  - docs/befund-meldungen.md:753 – (`0x00703930`), doppelt belegtes Bit, Zähler mit Überlauf (`0x0069FE73`), Zähler, der nie zurückgesetzt wird (0x
+  - docs/fundstellen.md:35 –  V: Freunde / Streit und Feinde); Streichen `0x00703854` (erste) und `0x00703930` (zweite, schreibt die Endmarke bei `0x007039D0` fälschlich in die erste – `befund-meldungen.md` 6.
+  - docs/fundstellen.md:159 – (lesen `0x007015EB`), streichen `0x00703854` / `0x00703930`, Aufräumen nach Abgängen `0x007105DF` / `0x0071064A`.
+  - docs/korrekturliste-meldungen.md:48 – | K10 | `0x00703930`: Streichen aus der zweiten Dreierliste löscht einen Platz der ersten | Endmarke in die richtige Li
+  - tools/a3patch.py:447 – rkung"; not confirmed in the game). See docs/befund-meldungen.md 6.1. 0x00703930 removes a player
+- `0x007039D0`
+  - docs/befund-meldungen.md:394 – `0x007039D0` die abschließende 0 aber nach `+0x1F8 + 2·i` (erste Liste) statt nach `+0x1FE + 2·i`. Die
+  - docs/fundstellen.md:35 – 0703854` (erste) und `0x00703930` (zweite, schreibt die Endmarke bei `0x007039D0` fälschlich in die erste – `befund-meldungen.md` 6.1) |
+  - tools/a3patch.py:449 – # list (+0x1F8, friends): mov word [eax+edx*2+1F8h],0 -> ...+1FEh (VA 0x007039D0), as the sister routine
+- `0x00703C28`
+  - docs/befund-meldungen.md:397 – Aufrufer: `0x00703C28`, `0x00703CE5`, `0x00703D61`, `0x00703D8C`, `0x00703DF4` (Texte 1362, 1366, 1377, 1380 …).
+- `0x00703CE5`
+  - docs/befund-meldungen.md:397 – Aufrufer: `0x00703C28`, `0x00703CE5`, `0x00703D61`, `0x00703D8C`, `0x00703DF4` (Texte 1362, 1366, 1377, 1380 …).
+- `0x00703D61`
+  - docs/befund-meldungen.md:397 – Aufrufer: `0x00703C28`, `0x00703CE5`, `0x00703D61`, `0x00703D8C`, `0x00703DF4` (Texte 1362, 1366, 1377, 1380 …).
+- `0x00703D8C`
+  - docs/befund-meldungen.md:397 – Aufrufer: `0x00703C28`, `0x00703CE5`, `0x00703D61`, `0x00703D8C`, `0x00703DF4` (Texte 1362, 1366, 1377, 1380 …).
+- `0x00703DF4`
+  - docs/befund-meldungen.md:397 – Aufrufer: `0x00703C28`, `0x00703CE5`, `0x00703D61`, `0x00703D8C`, `0x00703DF4` (Texte 1362, 1366, 1377, 1380 …).
+  - docs/befund-meldungen.md:670 – den beiden Mitspielern A und B (`A.0x00703DF4(B)` bei `0x005FDB45`–`0x005FDB4C`), nicht zwischen ihnen und dem Autor.
+  - docs/befund-meldungen.md:720 – ein (`0x00703DF4`). Dazu passt Text 1389 („… die die gleiche Position spielen, verstehen sich privat nicht
+  - docs/fundstellen.md:229 – eintragen `0x00703DF4`; Mitspieler wählen `0x005EC9D8(Verein, Spieler)`.
+  - docs/korrekturliste-meldungen.md:234 – uf einen Streit mit X (dem Autor) zugeschnitten. Eingetragen wurde `A.0x00703DF4(B)`; neu
+  - docs/korrekturliste-meldungen.md:235 – `Autor.0x00703DF4(A)` und `Autor.0x00703DF4(B)` (jeweils gegenseitiger Eintrag in die Streit-Liste, Freundschaft der
+  - tools/asm_nacht.py:125 – # enemy; the quarrel was entered between A and B (A.0x00703DF4(B)). New: author with A and author with B.
+- `0x0070429C`
+  - tools/a3patch.py:460 – # mov byte [ecx+94h],0Ah; call 0x0070429C (thiscall, no stack arguments, what the wrapper called); 3 nop.
+- `0x007049AF`
+  - docs/fundstellen.md:156 – `0x007049CC`, lesen `0x007049AF`: Spielerdialog `0x0055CEB6`, Bedingung `0x0070B417` in `0x0070AFA0`). Sperre in
+- `0x007049CC`
+  - docs/fundstellen.md:156 – `0x007049CC`, lesen `0x007049AF`: Spielerdialog `0x0055CEB6`, Bedingung `0x0070B417` in `0x0070AFA0`). Sperre i
+  - docs/korrekturliste-meldungen.md:149 – - **K09:** `0x007049CC` zählt Byte Spielstand 0x286 hoch. Gelesen wird es im Spielerdialog (`0x0055CEB6`, Feld 4994)
+  - tools/a3patch.py:415 – 302D), -3 on the trainer part of the motivation (0x007007A1), counter 0x007049CC; answer 1 = fine
+- `0x00705539`
+  - docs/befund-meldungen.md:716 – Zufriedene klagt. Die Wirkung `B.0x00705539(A)` hebt in zwei Durchgängen den jeweils kleinsten Teilwert von B
+  - docs/fundstellen.md:232 – us Trainer, Verein, Mannschaft), Teilwerte zweier Freunde angleichen `0x00705539`;
+  - docs/korrekturliste-meldungen.md:229 – - **K19:** `0x00705539` (einziger Aufrufer bei 1365): beim aufgerufenen Spieler werden die zwei niedrigsten der drei
+  - tools/a3patch.py:578 – # B.0x00705539(A) raises B's two lowest motivation parts and lowers A's by the same amount, so B is the one who co
+- `0x00705DBE`
+  - docs/korrekturliste-meldungen.md:116 – g“, im Spiel nicht geprüft. Verhandlung mit einem Spielervermittler (`0x00705DBE` = 2): Alter unter 25 → Text 1480 (Ausstiegsklausel, Merker 4); sonst „Alter unter 20 und Byte +0x5
+- `0x00705E67`
+  - docs/fundstellen.md:61 – | +0x58 | Minute der Ein-/Auswechslung (`0x00705E67` = gespielte Minuten) |
+- `0x00705E9B`
+  - docs/befund-notenschnitt.md:80 – (`0x00705E9B`) und die Aufrufer der Spielnoten im Spielobjekt (`0x006580B2`, `0x006581CD`).
+  - docs/befund-zaehler.md:67 – `0x00705E9B` = unteres Halbbyte von +0xB8 = **Notencode des letzten Spiels (Note × 2)** addiert;
+  - docs/befund-zaehler.md:122 – - `0x007230E1` addiert je Spieler `0x00705E9B` = unteres Halbbyte von +0xB8. Derselbe Wert wird im Einzelgespräch als
+  - docs/fundstellen.md:64 – | +0xB8 | unteres Halbbyte = **Note des letzten Spiels × 2** (`0x00705E9B`; Anzeige `IDC_EINZEL_NOTE_LETZTES`) |
+  - tools/a3patch.py:186 – # The value is the team's average grade of the last match (0x00705E9B = grade code of the last match, the
+- `0x00705EB6`
+  - docs/befund-notenschnitt.md:91 – | **`0x00705EB6`, `0x00705F60`, `0x0070607A`, `0x00706015`** | Saisonschnitt, Schnitt der letzten n Einsätze, „Spie
+  - docs/befund-notenschnitt.md:98 – - `0x00705EB6` ← `0x005E572C` (Ereignis mit Textnummer 0x5EF, Wirkung −6 auf Spielersatz 0x272): Bedingung „letzt
+  - docs/befund-notenschnitt.md:118 – | `0x00705EB6` Saisonschnitt | Zeitungsmeldung, `0x005E572C` | 1519 „%1 erneut ein Totalausfall - %2: Wie lange m
+  - docs/befund-notenschnitt.md:139 – `0x00705EB6`, 170 Byte): nur die bisher gespielten Spieltage (`0x00692744(Verein)`), Einsatz = 0xC0, Note = 0x3
+  - docs/befund-zaehler.md:100 – `0x00705EB6`, `0x00705F60`, `0x00706015`, `0x0070607A` prüfen den Einsatz nur mit 0x80 (volle Spiele 0x40 fehle
+  - docs/fundstellen.md:121 – Saisonschnitt `0x00705EB6`, Schnitt der letzten n `0x00705F60` (beide neu geschrieben), Spieltage seit letztem Einsatz
+  - docs/fundstellen.md:136 –  (Kaderschleife um `0x005E5715`): 1519 „Totalausfall“ (gepatcht über `0x00705EB6`), 1520, 1521.
+  - docs/fundstellen.md:278 – - Die neuen Routinen `0x00705EB6` und `0x00705F60` lesen den Verein aus dem Rahmen ihres einzigen Aufrufers.
+  - tools/a3patch.py:211 – # target). The season average 0x00705EB6 reads the match-day bytes with the masks 0x80 / 0x1C instead of
+  - tools/a3patch.py:223 – # the same mask error as 0x00705EB6 and no division by 2; the deduction of 2 from "Presse" handed to the
+  - tools/asm_goldkettchen.py:8 –  last three GRADED games, result = grade x 10 like the sister routine 0x00705EB6
+  - tools/asm_totalausfall.py:1 – """Assemble the new body of 0x00705EB6 (patch 'totalausfall' in a3patch.py) and print it as hex.
+  - tools/asm_totalausfall.py:3 – 0x00705EB6 returns a player's season average grade x 10 for the newspaper headline 1519 ("... erneut ein Total
+  - tools/asm_totalausfall.py:11 – START, END = 0x00705EB6, 0x00705F60
+- `0x00705F60`
+  - docs/befund-notenschnitt.md:91 – | **`0x00705EB6`, `0x00705F60`, `0x0070607A`, `0x00706015`** | Saisonschnitt, Schnitt der letzten n Einsätze, „Spieltage seit dem
+  - docs/befund-notenschnitt.md:101 – - `0x00705F60(3)` ← `0x005FEC09` (Ereignis 0x4D3, Wirkung −2, nur Spieler mit Stärke ≥ 9): Schnitt der letzten dr
+  - docs/befund-notenschnitt.md:119 – | `0x00705F60(3)` Schnitt der letzten 3 Einsätze | Zeitungsmeldung, `0x005FEC09` | 1235 „Goldkettchen und teure A
+  - docs/befund-notenschnitt.md:173 – `0x00705F60(3)` > 40 (Schnitt der letzten drei Einsätze, fehlerhaft gelesen).
+  - docs/befund-notenschnitt.md:183 – - `0x00705F60` (181 B neu belegt, 93 B Code): Schnitt der letzten drei **benoteten** Einsätze der laufenden Saiso
+  - docs/befund-zaehler.md:100 – `0x00705EB6`, `0x00705F60`, `0x00706015`, `0x0070607A` prüfen den Einsatz nur mit 0x80 (volle Spiele 0x40 fehlen) und lesen
+  - docs/fundstellen.md:121 – Saisonschnitt `0x00705EB6`, Schnitt der letzten n `0x00705F60` (beide neu geschrieben), Spieltage seit letztem Einsatz
+  - docs/fundstellen.md:278 – - Die neuen Routinen `0x00705EB6` und `0x00705F60` lesen den Verein aus dem Rahmen ihres einzigen Aufrufers.
+  - tools/a3patch.py:222 – fe event, 0x005FEBDF ff.). The average of the last three appearances (0x00705F60) has
+  - tools/asm_goldkettchen.py:6 – Block 1, 0x00705F60 (average of the last appearances): the original reads the match-day bytes with the masks 0x80 /
+  - tools/asm_goldkettchen.py:16 – 'routine': (0x00705F60, 0x00706015, {'MATCHDAYS32': 0x00692744}, [
+  - tools/asm_goldkettchen.py:58 – 'aufruf': (0x005FEC04, 0x005FEC3F, {'AVG32': 0x00705F60, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32,
+  - tools/asm_totalausfall.py:11 – START, END = 0x00705EB6, 0x00705F60
+- `0x00706015`
+  - docs/befund-notenschnitt.md:91 – | **`0x00705EB6`, `0x00705F60`, `0x0070607A`, `0x00706015`** | Saisonschnitt, Schnitt der letzten n Einsätze, „Spieltage seit dem letzten Einsatz“ | **Fehler
+  - docs/befund-notenschnitt.md:105 – - `0x00706015`: kein Aufrufer.
+  - docs/befund-notenschnitt.md:121 – | `0x00706015` | kein Aufrufer | – | – | – |
+  - docs/befund-zaehler.md:100 – `0x00705EB6`, `0x00705F60`, `0x00706015`, `0x0070607A` prüfen den Einsatz nur mit 0x80 (volle Spiele 0x40 fehlen) und lesen
+  - docs/fundstellen.md:122 – `0x0070607A` und `0x00706015` (unverändert, falsche Masken).
+  - tools/asm_goldkettchen.py:16 – 'routine': (0x00705F60, 0x00706015, {'MATCHDAYS32': 0x00692744}, [
+- `0x0070607A`
+  - docs/befund-notenschnitt.md:91 – | **`0x00705EB6`, `0x00705F60`, `0x0070607A`, `0x00706015`** | Saisonschnitt, Schnitt der letzten n Einsätze, „Spieltage seit dem letzten Einsa
+  - docs/befund-notenschnitt.md:103 – - `0x0070607A` ← `0x00493490` (Dialog, Wirkung −6 bzw. −2 auf Spielersatz 0x26F): „letzter Einsatz liegt 6 bis 10
+  - docs/befund-notenschnitt.md:120 – | `0x0070607A` Spieltage seit letztem Einsatz | Gespräch bei Auswechslung (Dialog 496 „Ihr Spieler %s möchte gern
+  - docs/befund-zaehler.md:100 – `0x00705EB6`, `0x00705F60`, `0x00706015`, `0x0070607A` prüfen den Einsatz nur mit 0x80 (volle Spiele 0x40 fehlen) und lesen
+  - docs/fundstellen.md:122 – `0x0070607A` und `0x00706015` (unverändert, falsche Masken).
+- `0x00706443`
+  - docs/fundstellen.md:41 – | Bits 0–1: dauerhafter Fan-Status 1 normal, 2 Liebling, 3 verhasst (`0x00706443` lesen, `0x00706467` setzen) |
+- `0x00706467`
+  - docs/befund-notenschnitt.md:56 – Spielersatz 0x262, Bits 0–1, `0x00706467`).
+  - docs/fundstellen.md:41 – ter Fan-Status 1 normal, 2 Liebling, 3 verhasst (`0x00706443` lesen, `0x00706467` setzen) |
+- `0x007064C9`
+  - docs/befund-meldungen.md:636 – Schüler-Merkers in den Bits 3–4 (lesen `0x007064C9`, `0x007064F6`, setzen `0x0070654A`). Ein Schüler, der Anführer
+  - docs/fundstellen.md:40 – | 0x260 | Bits 3–4: Wert 0–3 (`0x007064C9`/`0x007064F6`), Bedeutung offen |
+  - docs/fundstellen.md:217 – Spielstand 0x260 Bits 3–4 (`0x007064C9`, `0x007064F6`, `0x0070654A`), Bit 4 zugleich Gruppen-Anführer
+  - docs/korrekturliste-meldungen.md:271 – chen; `0x00700690` löscht Bits 0, 1 und 4), Bits 3–4 Schüler-Merker (`0x007064C9` = 2?,
+  - tools/a3patch.py:738 –  (released 18.11.2026): the pupil marker (bits 3-4 of savegame 0x260; 0x007064C9, 0x007064F6, 0x00706523,
+- `0x007064F6`
+  - docs/befund-meldungen.md:636 – Schüler-Merkers in den Bits 3–4 (lesen `0x007064C9`, `0x007064F6`, setzen `0x0070654A`). Ein Schüler, der Anführer
+  - docs/fundstellen.md:40 – | 0x260 | Bits 3–4: Wert 0–3 (`0x007064C9`/`0x007064F6`), Bedeutung offen |
+  - docs/fundstellen.md:217 – Spielstand 0x260 Bits 3–4 (`0x007064C9`, `0x007064F6`, `0x0070654A`), Bit 4 zugleich Gruppen-Anführer
+  - docs/korrekturliste-meldungen.md:272 – `0x007064F6` = 3?, `0x00706523` lesen, `0x0070654A` setzen). Schüler-Merker: 0 = noch kein Lehrer, 1 = Lehrer h
+  - tools/a3patch.py:738 – 8.11.2026): the pupil marker (bits 3-4 of savegame 0x260; 0x007064C9, 0x007064F6, 0x00706523,
+  - tools/asm_nacht.py:330 – y in June). The pre-routine 0x005F9D6D excludes pupils with marker 3 (0x007064F6 at 0x005F9DD0), but nothing ever
+- `0x00706523`
+  - docs/korrekturliste-meldungen.md:272 – `0x007064F6` = 3?, `0x00706523` lesen, `0x0070654A` setzen). Schüler-Merker: 0 = noch kein Lehrer, 1 = Lehrer hasst
+  - tools/a3patch.py:738 – the pupil marker (bits 3-4 of savegame 0x260; 0x007064C9, 0x007064F6, 0x00706523,
+- `0x0070654A`
+  - docs/befund-meldungen.md:624 – -Merker 3 aus (`0x005F9DD0`), der Wert 3 wird aber nirgends gesetzt (`0x0070654A` nur mit 1 und
+  - docs/befund-meldungen.md:636 – er-Merkers in den Bits 3–4 (lesen `0x007064C9`, `0x007064F6`, setzen `0x0070654A`). Ein Schüler, der Anführer
+  - docs/befund-meldungen.md:637 – wird, erhält den Schüler-Wert 2 oder 3; ein Schul-Ereignis mit `0x0070654A(1)` löscht den Anführer-Merker.
+  - docs/fundstellen.md:217 – Spielstand 0x260 Bits 3–4 (`0x007064C9`, `0x007064F6`, `0x0070654A`), Bit 4 zugleich Gruppen-Anführer
+  - docs/korrekturliste-meldungen.md:272 – `0x007064F6` = 3?, `0x00706523` lesen, `0x0070654A` setzen). Schüler-Merker: 0 = noch kein Lehrer, 1 = Lehrer hasst
+  - tools/a3patch.py:739 – # 0x0070654A) shared bit 4 with the group-leader flag (0x007006C4 / 0x007006E8). New: the pupil marker lives in 
+  - tools/asm_nacht.py:331 – # set 3. New: 0x0070654A(3) before the message. Needs K38 (marker moved to bits 5-6), otherwise 3 would also set the
+- `0x0070665A`
+  - docs/befund-personal.md:283 – Saisonwechsel je **Kaderspieler** (`0x0070665A`, Schleife `0x006B465F`). Welcher Setzer einen Jugendspieler trifft,
+  - docs/befund-personal.md:288 – (`0x007068C9`). `0x0070665A` löscht bei jedem Kaderspieler das untere Halbbyte von +0xB6.
+- `0x007068C9`
+  - docs/befund-personal.md:288 – (`0x007068C9`). `0x0070665A` löscht bei jedem Kaderspieler das untere Halbbyte von +0xB6.
+- `0x007069EB`
+  - docs/befund-personal.md:249 – Wochen testen“ (`0x004D8900` ff.): `0x0070DF0B` (in den Kader), dann `0x007069EB` (Restdauer 8, Merker 0x10), dann
+  - docs/fundstellen.md:62 – | +0xB3 | Flags: 0x10/0x20 Probezeit (gesetzt in `0x007069EB`, gelöscht in `0x00706A45`) |
+  - docs/fundstellen.md:243 – Setzen `0x007069EB`, Ende `0x00706A45`; Haus-Symbol = Text 5181 „abwesend“, Legende `0x0050A5B2`.
+- `0x00706A45`
+  - docs/befund-personal.md:251 – die Probezeit (`0x00706A45`, aus dem Kader `0x0070E01A`, zurück in die Jugend `0x0066AE46`, höchstens 20 Plätze).
+  - docs/befund-personal.md:274 – bei Restdauer 1 oder Zwang: `0x00706A45`, aus dem Kader (`0x0070E01A`), Jugend `0x0066AE46` (nur bei < 20 Plätzen).
+  - docs/befund-personal.md:278 –  Erfolg +0xB6 = 0 (`0x0076B9FF`), **+0xB3 Bit 0x10 bleibt gesetzt** (`0x00706A45` hat nur die zwei
+  - docs/fundstellen.md:62 – 3 | Flags: 0x10/0x20 Probezeit (gesetzt in `0x007069EB`, gelöscht in `0x00706A45`) |
+  - docs/fundstellen.md:243 – Setzen `0x007069EB`, Ende `0x00706A45`; Haus-Symbol = Text 5181 „abwesend“, Legende `0x0050A5B2`.
+- `0x00706ACD`
+  - docs/befund-personal.md:247 – = 0, **Restjahre +0x94 ≤ 0 und `0x00706ACD` = 0** (Art in +0xB6 Bits 6–7 weder 1 noch 3, also kein Amateur). Die
+  - docs/befund-personal.md:271 –  `0x0069692B` (13 Aufrufer): 0, wenn Restjahre = 0 und kein Amateur (`0x00706ACD`); gleiche Regel wie
+- `0x00706B1E`
+  - docs/fundstellen.md:63 – | +0xB6 | Zustandsbyte: Bits 6–7 Art (1 = `0x00706B1E`, 3 = `0x00706B65`), unteres Halbbyte Restdauer (Probezeit: 8) |
+- `0x00706B65`
+  - docs/fundstellen.md:63 – | +0xB6 | Zustandsbyte: Bits 6–7 Art (1 = `0x00706B1E`, 3 = `0x00706B65`), unteres Halbbyte Restdauer (Probezeit: 8) |
+- `0x00706BC8`
+  - docs/befund-personal.md:250 – `0x00706BC8(0)` (Bit 30 löschen). Die wöchentliche Routine `0x0074CEB1` halbiert die Restdauer (8, 4, 2, 1) und
+  - docs/fundstellen.md:33 – | 0x194 | Flagwort: Bit 30 wird beim „4 Wochen testen“ gelöscht (`0x00706BC8`) |
+- `0x007074FB`
+  - docs/befund-meldungen.md:507 – `0x007074FB`). Die Hülle `0x005E4FD6` wählt den Spitzel allein nach Bit 0x8000 (`0x007001ED` bei `0x005E5031`),
+  - docs/korrekturliste-meldungen.md:282 – `0x0070020F(an)`, Aufrufer `0x0048FC80`, `0x0048FD30`, `0x0048FDD0`, `0x007074FB`) – ein anderer Merker als der
+- `0x00707BD4`
+  - docs/befund-personal.md:312 – (`0x00707BD4`, `0x00707C10`), **setzt aber die Restjahre +0x94 nicht**. Die zwei anderen Wege setzen direkt nach
+  - docs/befund-personal.md:316 – die 15 Bytes `0x004D779A`–`0x004D77A8` (Aufruf der Hülle `0x00707BD4`) ersetzen durch `mov byte ptr [ecx+94h],0Ah`,
+  - tools/a3patch.py:459 – # the cdecl wrapper 0x00707BD4 (mov edx,[ebp-0C88h]; push edx; call; add esp,4) become:
+- `0x00707C10`
+  - docs/befund-personal.md:312 – (`0x00707BD4`, `0x00707C10`), **setzt aber die Restjahre +0x94 nicht**. Die zwei anderen Wege setzen direkt nach dem
+- `0x0070AAE1`
+  - docs/korrekturliste-meldungen.md:157 – ` ist Fall 19 von 31 der Prüfroutine `0x0070AFA0` (einziger Aufrufer `0x0070AAE1`);
+- `0x0070AFA0`
+  - docs/fundstellen.md:156 –  `0x007049AF`: Spielerdialog `0x0055CEB6`, Bedingung `0x0070B417` in `0x0070AFA0`). Sperre in
+  - docs/korrekturliste-meldungen.md:157 – - **K09, Nachtrag:** `0x0070B417` ist Fall 19 von 31 der Prüfroutine `0x0070AFA0` (einziger Aufrufer `0x0070AAE1`);
+- `0x0070B417`
+  - docs/fundstellen.md:156 – 007049CC`, lesen `0x007049AF`: Spielerdialog `0x0055CEB6`, Bedingung `0x0070B417` in `0x0070AFA0`). Sperre in
+  - docs/korrekturliste-meldungen.md:150 – und in `0x0070B417` als Bedingung (Zähler > 0 und Trainer-Teilwert unter 90). V: Zahl der Strafen.
+  - docs/korrekturliste-meldungen.md:157 – - **K09, Nachtrag:** `0x0070B417` ist Fall 19 von 31 der Prüfroutine `0x0070AFA0` (einziger Aufrufer `0x0070AAE1`);
+- `0x0070CA69`
+  - docs/befund-personal.md:281 – `0x0055BBC2` (Steuerelement 0x12EE). Setzer: `0x0070CA69` (Aufrufer `0x00769C0D`, `0x0076D334`), `0x0070D3A6`
+- `0x0070CAEA`
+  - docs/befund-meldungen.md:359 – | 1667 | %1 wechselt %2 - Wechsel zum Saisonende ist ablösefrei | `0x0070CAEA` | 6 | 0x0 | kein Wert übergeben |
+- `0x0070CCF3`
+  - docs/befund-meldungen.md:360 – | 1668 | %1 wechselt zum Nulltarif %2 - Einsatz ab sofort möglich | `0x0070CCF3` | 6 | 0x0 | kein Wert übergeben |
+- `0x0070CD63`
+  - docs/befund-meldungen.md:361 – | 1669 | %1 %2 verpflichtet - %4 gehen an %3 | `0x0070CD63` | 6 | 0x0 | kein Wert übergeben |
+- `0x0070D3A6`
+  - docs/befund-personal.md:281 – 0x12EE). Setzer: `0x0070CA69` (Aufrufer `0x00769C0D`, `0x0076D334`), `0x0070D3A6`
+  - docs/befund-personal.md:320 – 0 bei `0x0076BE42`, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0070D5EF`
+  - docs/befund-personal.md:282 – (`0x0076C5E0`), `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+- `0x0070DB4B`
+  - docs/befund-personal.md:282 – 0x0076C5E0`), `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+- `0x0070DF0B`
+  - docs/befund-personal.md:249 – - „4 Wochen testen“ (`0x004D8900` ff.): `0x0070DF0B` (in den Kader), dann `0x007069EB` (Restdauer 8, Merker 0x10), dann
+- `0x0070E01A`
+  - docs/befund-personal.md:251 – die Probezeit (`0x00706A45`, aus dem Kader `0x0070E01A`, zurück in die Jugend `0x0066AE46`, höchstens 20 Plätze).
+  - docs/befund-personal.md:274 – bei Restdauer 1 oder Zwang: `0x00706A45`, aus dem Kader (`0x0070E01A`), Jugend `0x0066AE46` (nur bei < 20 Plätzen).
+- `0x0070E29E`
+  - docs/korrekturliste-meldungen.md:74 – s `karriereende-1342` (53 Bytes ab Datei-Offset `0x1E26B9`): Vorbild `0x0070E29E(Spieler, Verein)` („Spieler scheidet aus Verein und Spiel aus“; fünf Aufrufer, u. a. Text 338 bei `
+  - tools/a3patch.py:771 – # the player stayed. New: 0x0070E29E(player, club) after the message, as texts 338 and 716 do. Block from tools/asm_nacht.py.
+  - tools/asm_nacht.py:382 – +10h]): only the firm state went from 5 to 6, the player stayed. New: 0x0070E29E(player, club)
+  - tools/asm_nacht.py:385 – # dropped; the club for 0x0070E29E is the first argument of 0x00600F2F still on the stack (that routine only reads its
+- `0x0070F7CF`
+  - docs/befund-personal.md:282 – `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` und im
+  - docs/befund-personal.md:285 – - Saisonwechsel: `0x0070F7CF` (Liste der Vereinbarungen, Objekt `0x01BE0B40`) sucht den Spieler im **Kader** des
+- `0x0070F861`
+  - docs/befund-personal.md:286 – abgebenden Vereins (`0x0070F861`); nicht gefunden → Eintrag gestrichen. `0x004271FB`: Spieler mit mehr als 1 Restjahr
+- `0x007105DF`
+  - docs/fundstellen.md:159 – EB`), streichen `0x00703854` / `0x00703930`, Aufräumen nach Abgängen `0x007105DF` / `0x0071064A`.
+  - docs/korrekturliste-meldungen.md:155 – Motivation (`0x005F78A4`) und beim Aufräumen nach Abgängen (`0x007105DF`, `0x0071064A`).
+- `0x0071064A`
+  - docs/fundstellen.md:159 –  `0x00703854` / `0x00703930`, Aufräumen nach Abgängen `0x007105DF` / `0x0071064A`.
+  - docs/korrekturliste-meldungen.md:155 – ation (`0x005F78A4`) und beim Aufräumen nach Abgängen (`0x007105DF`, `0x0071064A`).
+- `0x0071D3C0`
+  - docs/feldkarte-verein.md:67 – | Meisterschaften | 0x00634A1D (über 0x00634A8E, 0x0071D54B) | 0x0071D3C0, 0x0071D4F2 |
+- `0x0071D4F2`
+  - docs/feldkarte-verein.md:67 – sterschaften | 0x00634A1D (über 0x00634A8E, 0x0071D54B) | 0x0071D3C0, 0x0071D4F2 |
+- `0x0071D54B`
+  - docs/feldkarte-verein.md:67 – | Meisterschaften | 0x00634A1D (über 0x00634A8E, 0x0071D54B) | 0x0071D3C0, 0x0071D4F2 |
+- `0x00721191`
+  - docs/befund-zaehler.md:64 – ft Text 4746 „Pl. / Verein / Form“, Zeile „%d.\t%s\t%d“), Daten über `0x00721191` aus
+  - docs/fundstellen.md:107 – 0831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746), Kopie `0x00721191` | **Tagesform** (Klasse `CTagesform`); gepatcht |
+- `0x007215E7`
+  - docs/fehler-beste-mannschaft.md:5 – - **Anzeige** 0x004665DD: holt per 0x007215E7 eine Kopie von 200 Byte ab 0x00B08010 (20 Einträge à 10 Byte)
+- `0x00722F4E`
+  - docs/fundstellen.md:105 – | 7 | `0x00AEB4C8` (0x154) | 288 B | `0x00722F4E` | – | offen |
+- `0x00722FF1`
+  - docs/fundstellen.md:106 – | 8 | `0x00AEC210` (0xC4) | 144 B = 24 × 6 | `0x0072303E`, Vergleich `0x00722FF1`, Tabelle `0x008319F8` | `0x0044F79F` (Text 4751) | „Zu Null“ (V) |
+- `0x0072303E`
+  - docs/fundstellen.md:106 – | 8 | `0x00AEC210` (0xC4) | 144 B = 24 × 6 | `0x0072303E`, Vergleich `0x00722FF1`, Tabelle `0x008319F8` | `0x0044F79F` (Text 4751) | „Zu Null“ (V) |
+- `0x00723094`
+  - docs/befund-zaehler.md:82 – - `0x007230B9`: Vergleichsroutine `0x00723094` `jle` → `jge`, Liste aufsteigend (beste Noten auf Platz 1).
+  - docs/fundstellen.md:107 – d, Verein, Wert, Spieler in Elf des Tages) | `0x007230E1`, Vergleich `0x00723094`, Tabelle `0x00831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746), Kopie `0x00721191` | *
+- `0x007230B9`
+  - docs/befund-zaehler.md:82 – - `0x007230B9`: Vergleichsroutine `0x00723094` `jle` → `jge`, Liste aufsteigend (beste Noten auf Platz 1).
+  - docs/befund-zaehler.md:90 – Mit `jle` → `jge` in `0x007230B9` war die Seite beim Nutzer komplett leer. Ursache (V, stark): Die 24 Plätze der Tabelle sind
+- `0x007230E1`
+  - docs/befund-notenschnitt.md:87 – | `0x007230E1` Liga-Statistik „Tagesform“ | Mannschaftsschnitt letztes Spiel | Fehler, Patch `tagesform` |
+  - docs/befund-zaehler.md:66 – - Aufbau je Verein in `0x007230E1` (G): über alle Kaderspieler mit Bit 0 in +0x57 (V: im letzten Spiel dabei) wird
+  - docs/befund-zaehler.md:122 – - `0x007230E1` addiert je Spieler `0x00705E9B` = unteres Halbbyte von +0xB8. Derselbe Wert wird im Einzelgespräch
+  - docs/fundstellen.md:107 – xF4) | 192 B = 24 × (Land, Verein, Wert, Spieler in Elf des Tages) | `0x007230E1`, Vergleich `0x00723094`, Tabelle `0x00831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746)
+  - tools/a3patch.py:185 – ague statistic "Tagesform" (class CTagesform; table built per club in 0x007230E1, page 0x0044EB33).
+  - tools/asm_tagesform.py:3 – ague statistic "Tagesform" (class CTagesform; table built per club in 0x007230E1, page 0x0044EB33). The value is the
+- `0x0072311C`
+  - tools/asm_tagesform.py:13 – 'schleife': (0x00723162, 0x0072317D, {'HEAD': 0x0072311C}, [
+- `0x00723158`
+  - docs/befund-zaehler.md:138 – - Technik (`tools/asm_tagesform.py`, vier Stellen in `a3patch.py`): `0x00723158` `je` direkt zum Schleifenkopf;
+- `0x00723162`
+  - docs/befund-zaehler.md:80 – - `0x00723162` (25 B): Summe + Notencode, Zähler nur bei Code ≥ 1,
+  - docs/befund-zaehler.md:112 – - `0x00723162`: nur benotete Spieler zählen (unverändert),
+  - docs/befund-zaehler.md:139 – `0x00723162` Schleifenrumpf, dahinter in 13 frei gewordenen Bytes die neue Formatzeile „%d.\t%s\t%d.%d“ (`0x007
+  - tools/asm_tagesform.py:12 – # builder loop 0x00723162..0x0072317C: add the grade code, count graded players, back to the loop head, then data
+  - tools/asm_tagesform.py:13 – 'schleife': (0x00723162, 0x0072317D, {'HEAD': 0x0072311C}, [
+- `0x00723170`
+  - docs/befund-zaehler.md:139 – r in 13 frei gewordenen Bytes die neue Formatzeile „%d.\t%s\t%d.%d“ (`0x00723170`);
+  - tools/a3patch.py:195 – t graded players, jump back; then the format string "%d. %s %d.%d" at 0x00723170
+  - tools/asm_tagesform.py:7 – the builder loop (0x00723170); the page is its only user.
+  - tools/asm_tagesform.py:10 – FORMAT = 0x00723170
+- `0x0072317B`
+  - tools/a3patch.py:194 – 3158, '7421', '74C2'), # je 0072317B -> je 0072311C (loop head; frees 0x0072317B)
+- `0x0072317C`
+  - tools/asm_tagesform.py:12 – # builder loop 0x00723162..0x0072317C: add the grade code, count graded players, back to the loop head, then data
+- `0x0072317D`
+  - docs/befund-zaehler.md:113 – - `0x0072317D` (34 B): gespeicherter Wert = **100 − Note × 10** (größer = besser); ohne benoteten Spieler 0 = nic
+  - docs/befund-zaehler.md:140 – `0x0072317D` Wertberechnung; `0x0044ECB9` (89 B) Zeilenausgabe mit sechs statt fünf Werten. Die alte Formatzeil
+  - tools/asm_tagesform.py:13 – 'schleife': (0x00723162, 0x0072317D, {'HEAD': 0x0072311C}, [
+  - tools/asm_tagesform.py:20 – # builder tail 0x0072317D..0x0072319E: value = 100 - grade x 10, or 0 without a graded player
+  - tools/asm_tagesform.py:21 – 'wert': (0x0072317D, 0x0072319F, {'ZERO': 0x00723199, 'STORE': 0x0072319B}, [
+- `0x00723189`
+  - docs/befund-zaehler.md:81 – - `0x00723189`: `imul eax,eax,10` → `5`, der Wert ist damit Note × 10 (31 = Note 3,1) – meine Wahl, weil lesbar,
+- `0x00723199`
+  - tools/asm_tagesform.py:21 – 'wert': (0x0072317D, 0x0072319F, {'ZERO': 0x00723199, 'STORE': 0x0072319B}, [
+- `0x0072319B`
+  - tools/asm_tagesform.py:21 – 'wert': (0x0072317D, 0x0072319F, {'ZERO': 0x00723199, 'STORE': 0x0072319B}, [
+- `0x0072319E`
+  - tools/asm_tagesform.py:20 – # builder tail 0x0072317D..0x0072319E: value = 100 - grade x 10, or 0 without a graded player
+- `0x0072319F`
+  - tools/asm_tagesform.py:21 – 'wert': (0x0072317D, 0x0072319F, {'ZERO': 0x00723199, 'STORE': 0x0072319B}, [
+- `0x0072344D`
+  - docs/fundstellen.md:109 – | – | `0x00AEFA50` (0x154), `0x00AF0798` (0xF4) | 288 / 192 B | `0x0072344D`, `0x007235E2` | – | offen |
+- `0x007235E2`
+  - docs/fundstellen.md:109 – 00AEFA50` (0x154), `0x00AF0798` (0xF4) | 288 / 192 B | `0x0072344D`, `0x007235E2` | – | offen |
+- `0x00724454`
+  - docs/befund-zaehler.md:24 – Anzeige `0x0044EF11` (sortiert nach Toren, Summe `0x00724454`) und `0x0044F358` (nach Gegentoren, `0x0072449B`),
+  - docs/fundstellen.md:108 – es) | `0x007244E2` | `0x0044EF11` / `0x0044F358` (Text 4748), Summen `0x00724454` / `0x0072449B` | Wann trafen die Clubs / Gegner |
+- `0x0072449B`
+  - docs/befund-zaehler.md:24 – t nach Toren, Summe `0x00724454`) und `0x0044F358` (nach Gegentoren, `0x0072449B`),
+  - docs/fundstellen.md:108 – E2` | `0x0044EF11` / `0x0044F358` (Text 4748), Summen `0x00724454` / `0x0072449B` | Wann trafen die Clubs / Gegner |
+- `0x007244E2`
+  - docs/befund-zaehler.md:22 – (einziger Aufrufer `0x007244E2`, kopiert die 12 Bytes in die Liga-Tabelle 10 der Liga-Gruppe: 24 Vereine × 16 B =
+  - docs/fundstellen.md:108 –  | `0x00AED340` (0x1A0) | 384 B = 24 × (Land, Verein, 6 + 6 Bytes) | `0x007244E2` | `0x0044EF11` / `0x0044F358` (Text 4748), Summen `0x00724454` / `0x0072449B` | Wann trafen die Cl
+- `0x0072457F`
+  - docs/fundstellen.md:111 – 747) mit Spieltags-Element `0x006E0649`. Rollende Liste 20 × 0xC4 B: `0x0072457F`
+- `0x00724900`
+  - docs/fundstellen.md:101 – B66`; Leeren `0x007CFF4B`; Neuaufbau aller Tabellen je Verein ab ca. `0x00724900`.
+- `0x00725569`
+  - docs/fehler-beste-mannschaft.md:10 – - **Fortschreibung** 0x00726660 (aufgerufen je Verein, z. B. aus 0x00725569), Argumente Verein und Stärkesumme:
+  - docs/fehler-beste-mannschaft.md:83 – Wann im Saisonverlauf die Fortschreibung läuft (Aufrufer 0x00725569), ist noch nicht ermittelt (V: Saisonende).
+- `0x00725DC6`
+  - docs/befund-trainer-eps.md:37 – Sortiert wird nach Meister + Pokale + EPs (`0x00725DC6`), dann Meister, dann Summe aller fünf (`0x00725DEA`).
+- `0x00725DEA`
+  - docs/befund-trainer-eps.md:37 –  + Pokale + EPs (`0x00725DC6`), dann Meister, dann Summe aller fünf (`0x00725DEA`).
+- `0x00725E61`
+  - docs/fundstellen.md:253 – `0x006B583A`, Sortierung `0x00725E61` (`befund-trainer-eps.md`).
+- `0x00725FBA`
+  - docs/befund-trainer-eps.md:19 – , Titelart): trägt den Titel in die Einzelliste ein und ruft am Ende `0x00725FBA`
+  - docs/befund-trainer-eps.md:41 – r (`0x006B53D4`, Sprungtabelle `0x006B5473`) | Menschlicher Manager (`0x00725FBA`) |
+  - docs/befund-trainer-eps.md:99 – Offen: wann genau `0x00725FBA` aufgerufen wird (Aufrufer `0x006B5801`), und ob Zähler 9/10 wirklich Europ. Supercup/Weltpokal
+  - docs/fundstellen.md:252 – - Erfolgreichste Trainer: `0x00725FBA` (Mensch), `0x006B53D4` (Computer), Listeneintrag `0x006B5497`, Zähler
+  - tools/a3patch.py:842 – # Historisches/Erfolgreichste Trainer, entry of a human manager (0x00725FBA): the column "EPs" only takes
+- `0x00725FF0`
+  - docs/befund-trainer-eps.md:63 – `anstoss3.exe` 1.40, `0x00725FF0`–`0x00726040` (Dateioffset `0x325FF0`, 81 Bytes). Original:
+  - tools/a3patch.py:845 – # See docs/befund-trainer-eps.md. The 81 bytes at VA 0x00725FF0 are rewritten without the repeated
+- `0x00726040`
+  - docs/befund-trainer-eps.md:63 – `anstoss3.exe` 1.40, `0x00725FF0`–`0x00726040` (Dateioffset `0x325FF0`, 81 Bytes). Original:
+- `0x00726041`
+  - tools/a3patch.py:846 – pointer reloads; eax, ecx and edx are reloaded right after the block (0x00726041..).
+- `0x00726382`
+  - docs/befund-auf-abstiege.md:16 – Schreibroutinen: Aufstieg 0x00726382, Abstieg 0x007264BF (Argumente Land, Verein, Liga-Index). Beide erhöhen immer „gesamt“
+  - docs/befund-auf-abstiege.md:38 – - **Regionalliga Süd fehlt (G im Code):** 0x00726382 hat für Liga-Index 3 kein Feld (Abfragen bei 0x007263F4, 0x00726439, 0x0072647C
+  - docs/befund-auf-abstiege.md:62 – ruft 0x006B6A33 die Zähler 0x00634D9C und 0x00726382 sowie 0x006143D2 auf):
+  - docs/befund-auf-abstiege.md:75 – 0x00726382 prüft den Liga-Index nacheinander auf 0, 1, 2 (0x007263F4, 0x00726439, 0x0072647C `83 F8 02 75 38`)
+  - docs/fundstellen.md:250 – - Auf-/Abstieg: Statistikroutine `0x00726382`, zweite Meldestelle `0x0069139B`, Spanien `0x006B1F12`; Saisonergebnis-
+  - tools/a3patch.py:48 – # 0x00726382: league index 3 (Regionalliga Sued) has no column. Count index 2 and 3 in the third column,
+- `0x007263F4`
+  - docs/befund-auf-abstiege.md:38 – G im Code):** 0x00726382 hat für Liga-Index 3 kein Feld (Abfragen bei 0x007263F4, 0x00726439, 0x0072647C
+  - docs/befund-auf-abstiege.md:75 – 0x00726382 prüft den Liga-Index nacheinander auf 0, 1, 2 (0x007263F4, 0x00726439, 0x0072647C `83 F8 02 75 38`) und tut bei 3 nichts.
+- `0x00726439`
+  - docs/befund-auf-abstiege.md:38 – * 0x00726382 hat für Liga-Index 3 kein Feld (Abfragen bei 0x007263F4, 0x00726439, 0x0072647C
+  - docs/befund-auf-abstiege.md:75 – 0x00726382 prüft den Liga-Index nacheinander auf 0, 1, 2 (0x007263F4, 0x00726439, 0x0072647C `83 F8 02 75 38`) und tut bei 3 nichts.
+- `0x0072647C`
+  - docs/befund-auf-abstiege.md:38 –  hat für Liga-Index 3 kein Feld (Abfragen bei 0x007263F4, 0x00726439, 0x0072647C
+  - docs/befund-auf-abstiege.md:75 – rüft den Liga-Index nacheinander auf 0, 1, 2 (0x007263F4, 0x00726439, 0x0072647C `83 F8 02 75 38`) und tut bei 3 nichts.
+- `0x0072647F`
+  - docs/befund-auf-abstiege.md:77 – Mögliche Korrektur: Index 2 **und** 3 in die dritte Spalte – VA 0x0072647F `75` → `7C` (jne → jl; Dateioffset 0x32647F).
+  - tools/a3patch.py:49 – # as the relegation side already does: jne -> jl (VA 0x0072647F).
+- `0x007264BF`
+  - docs/befund-auf-abstiege.md:16 – Schreibroutinen: Aufstieg 0x00726382, Abstieg 0x007264BF (Argumente Land, Verein, Liga-Index). Beide erhöhen immer „gesamt“
+- `0x00726660`
+  - docs/fehler-beste-mannschaft.md:10 – - **Fortschreibung** 0x00726660 (aufgerufen je Verein, z. B. aus 0x00725569), Argumente Verein und Stärkesumme:
+- `0x007266FA`
+  - docs/fehler-beste-mannschaft.md:74 – u 1 Byte geändert (Dateioffset 0x3266FE, 0x26 → 0x1C), Disassembly an 0x007266FA geprüft.
+  - docs/fundstellen.md:249 – - Beste Mannschaft: Schieben `0x007266FA`, Anzeige `0x004665DD` (`fehler-beste-mannschaft.md`).
+  - tools/a3patch.py:14 – te Mannschaft: clear entry[19] instead of entry[20] when shifting (VA 0x007266FA)
+- `0x007266FE`
+  - docs/fehler-beste-mannschaft.md:40 – | 0x007266FE | 0x003266FE | `26` | `1C` | `mov word ptr [eax+edx+1Ch],0` → setzt `Eintrag[19].Stärke = 0` |
+- `0x0072796F`
+  - docs/befund-notenschnitt.md:88 – | `0x0048E36F`, `0x004BA0F3`, `0x0072796F` | Anzeige einer einzelnen Note | richtig (ohne Note bleibt das Feld leer) |
+  - docs/befund-zaehler.md:105 – im Spielbericht (`0x006580B2`-Aufrufer), `0x0048E36F`, `0x005E1741`, `0x0072796F`.
+- `0x0072AF32`
+  - docs/zuordnung-bildschirme.md:103 – 0045EBBF ruft 0x0072B18A(Land, Liga, Saisons zurück, Ziel) und danach 0x0072AF32 (berechnet die Tabelle aus dem
+- `0x0072B18A`
+  - docs/zuordnung-bildschirme.md:103 – - Endtabelle: 0x0045EBBF ruft 0x0072B18A(Land, Liga, Saisons zurück, Ziel) und danach 0x0072AF32 (berechnet die Tabelle aus dem
+  - docs/zuordnung-bildschirme.md:104 – Ligaobjekt, Einträge zu 20 Byte). 0x0072B18A kopiert 0x972 = 2418 Byte aus
+- `0x0072B25B`
+  - docs/zuordnung-bildschirme.md:148 – m, auswärts; Anzeige zählt die laufende Saison der ersten Liga dazu (`0x0072B25B`), relativ = nach Punkten je Spiel umsortiert (`0x0072B6C2`) | G (alle Werte der Bildschirmfotos) |
+- `0x0072B6C2`
+  - docs/zuordnung-bildschirme.md:148 – iga dazu (`0x0072B25B`), relativ = nach Punkten je Spiel umsortiert (`0x0072B6C2`) | G (alle Werte der Bildschirmfotos) |
+  - docs/zuordnung-bildschirme.md:163 – Auffälligkeit im Spiel: Die relative ewige Tabelle vergleicht in `0x0072B6C2` den letzten Verein eines Landes nie (Schleifen
+- `0x00730300`
+  - docs/befund-zaehler.md:145 – `0x00730300` kommen über `0x007B7F68`, Quelle nicht ermittelt. Offen.
+  - docs/befund-zaehler.md:161 – Zugriff über `0x00730300` → `0x007B7F68` → Tabelle mit 12-Byte-Einträgen (Nummer, Text), binäre Suche `0x007B7B91`.
+  - docs/fundstellen.md:265 – \0]`, Tabulator ausgeschrieben als `\t`; Lader `0x004318FA`, Zugriff `0x00730300` → `0x007B7F68` → Suche `0x007B7B91` |
+  - docs/fundstellen.md:275 – `ListeDerTexte.rh` (dort z. B. 1519 = „Runde 1“). Über `0x00730300` geholte Texte sind die aus `ListeDerTexte.rh`.
+- `0x00731E54`
+  - docs/befund-meldungen.md:649 – Anzeige `0x00731E54` mit Text 1320), keinen Ausfall.
+  - docs/fundstellen.md:226 – `0x00766AF9(Spieler, Tage)` (Byte Spieler +0x2F, Anzeige `0x00731E54`). Führerschein-Zähler Spielstand 0x26E:
+- `0x0073AFCE`
+  - docs/korrekturliste-meldungen.md:119 – euerzeichen-Platzhaltern für eine zweite Formatierung (so benutzt in `0x0073AFCE` / `0x0073B00E`), die in einer Schlagzeile nicht verwendbar ist; welcher Fall gemeint war, ist nich
+- `0x0073B00E`
+  - docs/korrekturliste-meldungen.md:119 – tzhaltern für eine zweite Formatierung (so benutzt in `0x0073AFCE` / `0x0073B00E`), die in einer Schlagzeile nicht verwendbar ist; welcher Fall gemeint war, ist nicht belegbar | eh
+- `0x0073D43C`
+  - docs/befund-meldungen.md:844 – und sind nicht gelesen (`0x00630266`, `0x006BDA51`, `0x0073D43C`);
+- `0x007429A0`
+  - docs/befund-vereinsstatistik.md:25 – `0x005DBEFC`). Beim Abgang (`0x005DBEF2` → `0x007429A0`) wird es **nur in Liste 1** auf 0 gesetzt. Für Liste 2 gibt es keine
+- `0x00742AF1`
+  - docs/befund-vereinsstatistik.md:24 – Das Kennzeichen wird beim Zugang auf 1 gesetzt – für Liste 1 in `0x00742AF1`, für Liste 2 in `0x007448C5` (beide aus
+- `0x007441F4`
+  - docs/befund-vereinsstatistik.md:17 – geführten Vereins (`0x00744654`) wird für jeden eingesetzten Spieler `0x007441F4` aufgerufen:
+  - docs/fundstellen.md:254 – - Vereinslisten „Tore“/„Spiele“: `0x007441F4`, Spielabschluss `0x00744654`, Zu-/Abgang `0x005DBEFC`/`0x005DBEF2`
+- `0x00744654`
+  - docs/befund-vereinsstatistik.md:17 – Nach jedem Spiel eines menschlich geführten Vereins (`0x00744654`) wird für jeden eingesetzten Spieler `0x007441F4` aufgerufen:
+  - docs/befund-vereinsstatistik.md:59 – im Spielabschluss `0x00744654` vor dem Sortieren alle Kennzeichen der Liste 2 aus dem aktuellen Kader neu setzen
+  - docs/fundstellen.md:254 – - Vereinslisten „Tore“/„Spiele“: `0x007441F4`, Spielabschluss `0x00744654`, Zu-/Abgang `0x005DBEFC`/`0x005DBEF2`
+  - tools/a3patch.py:128 – # player. The tail of the after-match routine 0x00744654 (VA 0x007447B1, 270 bytes: sort + store) is
+  - tools/asm_vereinsliste.py:1 – """Assemble the new tail of 0x00744654 (patch 'vereinsliste-spiele' in a3patch.py) and print it as hex.
+- `0x007447B1`
+  - docs/befund-vereinsstatistik.md:41 – ür Befehl gegengelesen; einziges Sprungziel von außen ist der Anfang `0x007447B1`. Benutzt nur
+  - tools/a3patch.py:128 – # player. The tail of the after-match routine 0x00744654 (VA 0x007447B1, 270 bytes: sort + store) is
+  - tools/asm_vereinsliste.py:6 – START, END, SETTER = 0x007447B1, 0x007448BF, 0x00633384
+- `0x007447BD`
+  - docs/befund-vereinsstatistik.md:61 – (`0x007447BD`–`0x007448AB`, 237 Byte) kürzer neu geschrieben wird. Das ändert keine Spielregel: Das Kennzeichen 
+- `0x007448AB`
+  - docs/befund-vereinsstatistik.md:61 – (`0x007447BD`–`0x007448AB`, 237 Byte) kürzer neu geschrieben wird. Das ändert keine Spielregel: Das Kennzeichen bekommt nur
+- `0x007448B7`
+  - docs/befund-vereinsstatistik.md:26 – m Programm, die das Kennzeichen je wieder löscht (einzige Schreiber: `0x007448B7`, `0x00744978`, `0x00744BC2`).
+- `0x007448BF`
+  - tools/asm_vereinsliste.py:6 – START, END, SETTER = 0x007447B1, 0x007448BF, 0x00633384
+- `0x007448C5`
+  - docs/befund-vereinsstatistik.md:24 – m Zugang auf 1 gesetzt – für Liste 1 in `0x00742AF1`, für Liste 2 in `0x007448C5` (beide aus
+- `0x00744978`
+  - docs/befund-vereinsstatistik.md:26 – e das Kennzeichen je wieder löscht (einzige Schreiber: `0x007448B7`, `0x00744978`, `0x00744BC2`).
+- `0x00744A69`
+  - docs/befund-vereinsstatistik.md:54 – uer Eintrag steht mit 0 Spielen da: Er kam über den zweiten Zählweg (`0x00744A69`, erhöht nur +0x12) – altes Verhalten.
+- `0x00744BC2`
+  - docs/befund-vereinsstatistik.md:26 – hen je wieder löscht (einzige Schreiber: `0x007448B7`, `0x00744978`, `0x00744BC2`).
+- `0x007489CB`
+  - docs/korrekturliste-meldungen.md:261 – llen gar nicht (`0x0064F9B6`), dabei entfällt auch die Monatsroutine `0x007489CB`
+- `0x0074B8F8`
+  - docs/befund-meldungen.md:841 – (`0x005F6353`: die Zahl wird vor dem Vergleich um 21 erhöht; `0x0074B8F8`: verglichen wird ein anderer Wert). Bei
+- `0x0074CEB1`
+  - docs/befund-personal.md:250 – `0x00706BC8(0)` (Bit 30 löschen). Die wöchentliche Routine `0x0074CEB1` halbiert die Restdauer (8, 4, 2, 1) und beendet
+  - docs/befund-personal.md:273 – - Wöchentlich `0x0074CEB1(Verein, Zwang, …)`: Art 1 (Amateur beim Profitraining) oder Merker +0xB3 & 0x10 (`0x00696B61`);
+  - docs/befund-personal.md:279 – Aufrufer in `0x0074CEB1`). Folgen nicht zu Ende gelesen.
+- `0x0074D52B`
+  - docs/befund-personal.md:276 – Manager-Vereine (`0x0074D52B`, Aufruf `0x006DB2C1`, **vor** der Wechsel-Abwicklung `0x006B3EE0` bei `0x006DB2F3`).
+- `0x0074EE7B`
+  - docs/fundstellen.md:155 – `0x00516F7A` mit `0x0051731D`, `0x00517551`; dritter Setzer `0x0074EE7B`). Strafenzähler Spielstand 0x286 (hoch
+  - docs/korrekturliste-meldungen.md:128 – setzt wird es von `0x006FF715` (Aufrufer `0x0051731D`, `0x00517551`, `0x0074EE7B`, nicht gelesen).
+  - docs/korrekturliste-meldungen.md:140 – lassen“) ausgibt, der dritte (`0x0074EE7B`) nach Zufall. Der Merker heißt also „gedopt“. `0x0078A0F5` prüft die
+- `0x0075EADA`
+  - docs/befund-spielstand.md:9 – - **Blockschreiber** (0x006ED175): packt einen Puffer über 0x0075EADA (Packer 0x007D2AF0) und schreibt `int32 gepackte_Länge` + gepackte Daten per `fwrite`.
+- `0x0075EB0B`
+  - docs/befund-spielstand.md:12 – - **Entpacker** (0x0075EB0B → 0x007D30F0, handgeschriebener Assembler), Format eines gepackten Blocks:
+- `0x00766945`
+  - docs/korrekturliste-meldungen.md:244 – Belege: Das Feld der Verletzungsnamen `0x01C57B98` hat 95 Plätze (`0x00766945`), gefüllt werden die Arten 0–93
+- `0x0076696E`
+  - docs/korrekturliste-meldungen.md:249 – Felder: +0 Ja/Nein-Angabe im Text der Routine `0x0076696E` (Texte 1028/1029) und Vergleich in `0x005D7386`, +1 Tage,
+- `0x00766A15`
+  - docs/korrekturliste-meldungen.md:240 – +2 bis +6, +8) werden an rund dreißig Stellen des Verletzungsmoduls (`0x00766A15`–`0x00767857`,
+- `0x00766AB6`
+  - docs/korrekturliste-meldungen.md:250 – +2 und +4 liefert `0x00766AB6`, +8 Maske (nur 65/66). Plan: die Zeilen 92 und 93 wie 90/91 füllen (Datei-Offsets
+- `0x00766AF9`
+  - docs/befund-meldungen.md:648 – der Tabelle `0x008AC340` (Abschnitt 6.14); `0x00766AF9(Spieler, n)` setzt nur Byte Spieler +0x2F („angeschlagen“,
+  - docs/fundstellen.md:226 – `0x00766AF9(Spieler, Tage)` (Byte Spieler +0x2F, Anzeige `0x00731E54`). Führerschein-Zähler Spielstand 0x26E:
+  - docs/korrekturliste-meldungen.md:64 – utzer): Text anpassen**, die Wirkung bleibt (14 Tage „angeschlagen“: `0x00766AF9(Spieler, 14)` bei `0x005FE026`; Byte Spieler +0x2F ist ein Zähler in Tagen, Anzeige „Er ist noch an
+  - docs/korrekturliste-meldungen.md:242 – und K24 zurückgelegt. `0x00766AF9(Spieler, n)` setzt nur Byte Spieler +0x2F („angeschlagen“).
+- `0x00766B92`
+  - docs/befund-meldungen.md:627 –  **1076, Bänderriss beim Wehrdienst:** Text „fällt vier Wochen aus“. `0x00766B92(Spieler, Art 10, −1)` nimmt die
+  - docs/befund-meldungen.md:647 – **Verletzungen: Dauer oder Art passt nicht zum Text.** `0x00766B92(Spieler, Art, −1)` nimmt die Dauer in Tagen aus
+  - docs/fundstellen.md:215 – Datum*)`, eintragen `0x0043779F`. Verletzung setzen `0x00766B92(Spieler, Art, Dauer)` mit Tabelle `0x008AC340`
+  - docs/korrekturliste-meldungen.md:237 – - **K21–K27 (Verletzungen):** `0x00766B92(Spieler, Art, Dauer)` nimmt bei Dauer ≤ 0 die Vorgabe der Tabelle
+  - tools/a3patch.py:593 – # 0x00766B92(player, kind 37, -1) took the default of kind 37 = 112 days (table 0x008AC340). New duration 21:
+  - tools/a3patch.py:710 – # all read 00 dd 02 00 07 00 ..., dd = days), so 0x00766B92(player, kind, -1) entered an injury of 0 days. New: rows 92
+- `0x00767857`
+  - docs/korrekturliste-meldungen.md:240 – ) werden an rund dreißig Stellen des Verletzungsmoduls (`0x00766A15`–`0x00767857`,
+- `0x00768940`
+  - docs/korrekturliste-meldungen.md:116 – ung „unter 25“ stellen (Block `vermittler-1481`, 76 von 103 Bytes ab `0x00768940`). Spieler unter 20, die beide Zusatzbedingungen erfüllen, bekommen dann 1481 statt 1480 und damit 
+  - tools/asm_nacht.py:531 – # 'Dort hast Du die besten Entwicklungschancen'" (0x00768940 ff., negotiation with an agent, player [ebp-18h]). The test
+  - tools/asm_nacht.py:535 – 'vermittler-1481': (0x00768940, 0x007689A7, {'END': 0x007689A7}, [
+- `0x0076894B`
+  - docs/befund-meldungen.md:222 – t die Bedingung „Alter unter 20“ innerhalb des Zweigs „Alter ab 25“ (`0x0076894B` →
+  - docs/fundstellen.md:176 – äge, Zufall 0–9 bei `0x00602373`); Text 1481 bei `0x0076898B` (Zweig `0x0076894B` → `0x00768962`);
+- `0x00768962`
+  - docs/befund-meldungen.md:223 – `0x00768962`). Sie ist nie wahr, Text 1481 erscheint nie.
+  - docs/fundstellen.md:176 –  bei `0x00602373`); Text 1481 bei `0x0076898B` (Zweig `0x0076894B` → `0x00768962`);
+- `0x0076898B`
+  - docs/befund-meldungen.md:222 – Bei `0x0076898B` steht die Bedingung „Alter unter 20“ innerhalb des Zweigs „Alter ab 25“ (`0x0076894B` →
+  - docs/fundstellen.md:176 – (12 Einträge, Zufall 0–9 bei `0x00602373`); Text 1481 bei `0x0076898B` (Zweig `0x0076894B` → `0x00768962`);
+- `0x007689A7`
+  - tools/asm_nacht.py:535 – 'vermittler-1481': (0x00768940, 0x007689A7, {'END': 0x007689A7}, [
+- `0x00769C0D`
+  - docs/befund-personal.md:281 – `0x0055BBC2` (Steuerelement 0x12EE). Setzer: `0x0070CA69` (Aufrufer `0x00769C0D`, `0x0076D334`), `0x0070D3A6`
+- `0x0076B2BA`
+  - docs/befund-personal.md:277 – - Vertrag in der Probezeit (`0x0076B2BA`, Merker 0x10 erkannt bei `0x0076B3A7`): Restjahre werden für die Verhandlung
+- `0x0076B3A7`
+  - docs/befund-personal.md:277 – - Vertrag in der Probezeit (`0x0076B2BA`, Merker 0x10 erkannt bei `0x0076B3A7`): Restjahre werden für die Verhandlung
+- `0x0076B9FF`
+  - docs/befund-personal.md:278 – auf 0 gesetzt; bei Erfolg +0xB6 = 0 (`0x0076B9FF`), **+0xB3 Bit 0x10 bleibt gesetzt** (`0x00706A45` hat nur die zwei
+- `0x0076BB38`
+  - docs/befund-personal.md:319 – der nächste Verein entstanden. Kandidaten: die Verhandlungs-Routinen `0x0076BB38` ff.
+- `0x0076BE42`
+  - docs/befund-personal.md:320 – (Restjahre = 0 bei `0x0076BE42`, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0076C106`
+  - docs/befund-personal.md:320 – (Restjahre = 0 bei `0x0076BE42`, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0076C363`
+  - docs/befund-personal.md:320 – (Restjahre = 0 bei `0x0076BE42`, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0076C5E0`
+  - docs/befund-personal.md:282 – (`0x0076C5E0`), `0x0070D5EF` (`0x006821CE`, `0x006829D9`); gelöscht in `0x0070DB4B`, `0x0070F7CF`, `0x0040EC50` 
+  - docs/befund-personal.md:320 – `, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0076C8B2`
+  - docs/befund-personal.md:320 – (Restjahre = 0 bei `0x0076BE42`, `0x0076C106`, `0x0076C363`, `0x0076C8B2`; Setzer `0x0070D3A6` bei `0x0076C5E0`).
+- `0x0076D334`
+  - docs/befund-personal.md:281 – (Steuerelement 0x12EE). Setzer: `0x0070CA69` (Aufrufer `0x00769C0D`, `0x0076D334`), `0x0070D3A6`
+- `0x007701B2`
+  - docs/befund-meldungen.md:283 – 8 / 1530: Verein hinter den Erwartungen (`0x00775F0A` > 0), Wert von `0x007701B2` unter 80.
+  - docs/korrekturliste-meldungen.md:187 – `0x007701B2`, angezeigt im Hauptmenü als Prozentwert im Feld `IDC_HAUPTMENUE_VERTRAUEN` (`0x004C4582`, Format
+  - tools/a3patch.py:523 – r number and +5 / -10 for bit 3 (manager +0x9C = base of "Vertrauen", 0x007701B2), but with flags 8 instead of
+- `0x00770800`
+  - docs/fundstellen.md:68 – Name `0x006FEB4D(0)`; Form (0–20) `0x006FF037`; Flag setzen/löschen `0x00770800(Maske, Spieler)` / `0x00770942`
+- `0x00770877`
+  - docs/fundstellen.md:72 – `0x00701210(±n)` Spielstand 0x274; Gesamturteil 0–3 `0x00770877`.
+- `0x00770942`
+  - docs/fundstellen.md:68 – 20) `0x006FF037`; Flag setzen/löschen `0x00770800(Maske, Spieler)` / `0x00770942`
+- `0x007709E8`
+  - docs/befund-notenschnitt.md:53 – 1. `0x007709E8` „Liebling“: wahr, wenn Feld +0x3E ≥ 20 (V: Saisontore), oder Torwart und +0x50 > 4, oder Spieltag 
+  - docs/befund-notenschnitt.md:219 – `0x00B5CBDA/DC/DE`), nicht den Spieltag. Die dritte Bedingung in `0x007709E8` lautet daher: älter als 33 Jahre und mehr
+  - docs/fundstellen.md:123 – - Fan-Status: Kaderschleife `0x00770BAE` → „Liebling“ `0x007709E8`, „verhasst“ `0x00770A72` (gepatcht bei `0x00770B2E`).
+  - docs/fundstellen.md:124 – **Berichtigung:** In `0x007709E8` heißt die dritte Bedingung „Alter über 33 Jahre (`0x006FF01B`) und mehr als 30
+- `0x00770A72`
+  - docs/befund-notenschnitt.md:42 – `0x00770A72` (Spiellogik: prüft die letzten zehn Spieltage, Schnitt ≥ 4,5 bzw. ≥ 3,8) rechnet ebenfalls mit all
+  - docs/befund-notenschnitt.md:51 – ### Was `0x00770A72` rechnet (G für den Ablauf, V für die Bedeutung einzelner Felder)
+  - docs/befund-notenschnitt.md:57 – 2. sonst `0x00770A72` „verhasst“: wahr, wenn
+  - docs/befund-notenschnitt.md:86 – | `0x00770A72` Fan-Status „verhasst“ | Schnitt der letzten 10 Spieltage | Fehler, Patch `verhasst-noten` |
+  - docs/befund-notenschnitt.md:205 – d−1 … d−10 wie in `0x00770A72`): Regel b (Schwelle 4,5) alt an 33, neu an 45 von 13 498 Spieler-Spieltagen erfüllt,
+  - docs/fundstellen.md:123 – us: Kaderschleife `0x00770BAE` → „Liebling“ `0x007709E8`, „verhasst“ `0x00770A72` (gepatcht bei `0x00770B2E`).
+  - tools/a3patch.py:173 – # Fan status "verhasst" (0x00770A72, called per squad player from 0x00770BAE): the average grade of the
+- `0x00770B2E`
+  - docs/befund-notenschnitt.md:73 – Patch in `tools/a3patch.py`: 22 Bytes ab Datei-Offset 0x370B2E (`0x00770B2E`): Notencode zur Summe addieren, Zähler nur bei
+  - docs/fundstellen.md:123 – AE` → „Liebling“ `0x007709E8`, „verhasst“ `0x00770A72` (gepatcht bei `0x00770B2E`).
+- `0x00770BAE`
+  - docs/befund-notenschnitt.md:52 – Aufrufer `0x00770FE6` in der Kaderschleife von `0x00770BAE`. Je Spieler:
+  - docs/fundstellen.md:123 – - Fan-Status: Kaderschleife `0x00770BAE` → „Liebling“ `0x007709E8`, „verhasst“ `0x00770A72` (gepatcht bei `0x00770B2E`).
+  - tools/a3patch.py:173 – # Fan status "verhasst" (0x00770A72, called per squad player from 0x00770BAE): the average grade of the
+- `0x00770FE6`
+  - docs/befund-notenschnitt.md:52 – Aufrufer `0x00770FE6` in der Kaderschleife von `0x00770BAE`. Je Spieler:
+- `0x007719A6`
+  - docs/befund-personal.md:149 – **Trainer/Co-Trainer** – Neuaufbau `0x00409A3F` (aufgerufen aus `0x007719A6` und zweimal aus `0x0065E805`, beides im
+- `0x00772BEE`
+  - docs/befund-finanzen.md:50 –  Kredite + Anlagen, einziger Aufrufer `0x00772FC4` im Saisonwechsel (`0x00772BEE`),
+  - docs/befund-meldungen.md:379 – Saisonwechsel (`0x0077360D` in `0x00772BEE` ruft `0x0069FF06(0)`); dort werden auch die Merker gelöscht.
+  - docs/fundstellen.md:83 – 0x470 (Saisonwechsel, `0x00621F0D`, Schreiber `0x00772FC4` in `0x00772BEE`), 0x480 Saisontabelle, 0x570 Kredite,
+  - docs/fundstellen.md:148 – Zurücksetzen beim Saisonwechsel `0x0077360D` (in `0x00772BEE`, ruft `0x0069FF06(0)`). Bit 21 = „Schlagzeile zu
+- `0x00772FC4`
+  - docs/befund-finanzen.md:28 – im Saisonwechsel = `0x00621F0D` = [P] − Kredite + Anlagen (Schreiber `0x00772FC4`) |
+  - docs/befund-finanzen.md:50 – - `0x00621F0D(Verein)` = [P] − Kredite + Anlagen, einziger Aufrufer `0x00772FC4` im Saisonwechsel (`0x00772BEE`),
+  - docs/fundstellen.md:83 – 0x470 (Saisonwechsel, `0x00621F0D`, Schreiber `0x00772FC4` in `0x00772BEE`), 0x480 Saisontabelle, 0x570 Kredite,
+- `0x0077360D`
+  - docs/befund-meldungen.md:379 – Saisonwechsel (`0x0077360D` in `0x00772BEE` ruft `0x0069FF06(0)`); dort werden auch die Merker gelöscht.
+  - docs/fundstellen.md:148 – Zurücksetzen beim Saisonwechsel `0x0077360D` (in `0x00772BEE`, ruft `0x0069FF06(0)`). Bit 21 = „Schlagzeile zu
+  - docs/korrekturliste-meldungen.md:164 –  1708 sind nie erreichbar. Beim Saisonwechsel setzt `0x0069FF06(0)` (`0x0077360D`) Zähler und
+- `0x00775F0A`
+  - docs/befund-meldungen.md:282 – 88: mehr als 10 Spieltage, Verein mehr als 2 hinter den Erwartungen (`0x00775F0A`), `0x0069947B(Verein)` ≠ 0.
+  - docs/befund-meldungen.md:283 – - 1528 / 1530: Verein hinter den Erwartungen (`0x00775F0A` > 0), Wert von `0x007701B2` unter 80.
+  - docs/befund-meldungen.md:284 – schaft Bit 0x200 im Wort +0x12, Verein nicht hinter den Erwartungen (`0x00775F0A` = 0).
+  - docs/befund-notenschnitt.md:118 – nschnitt > 4,0, mehr als 10 Einsätze, Verein hinter den Erwartungen (`0x00775F0A` > 0, V) | −6 auf Spielersatz 0x272 (`0x00700FA2`) |
+  - docs/befund-notenschnitt.md:172 –  Spielers ≥ 9 (V: Stärke), Verein mehr als 2 hinter den Erwartungen (`0x00775F0A`, V), und
+  - docs/fundstellen.md:79 – 8A Managernummer (0 = Computer), +0x109/+0x10C/+0x10D Zielwerte (für `0x00775F0A` = „hinter den Erwartungen“, V).
+- `0x00775FA0`
+  - docs/befund-meldungen.md:809 – - `0x00775FA0` liefert 0 in der Zielzone und auf dem Rang direkt davor (nicht symmetrisch).
+- `0x007793EE`
+  - docs/befund-meldungen.md:805 – - `0x007793EE` (V: Börsenkurven): Platz 49 wird sofort überschrieben.
+- `0x00789895`
+  - docs/befund-notenschnitt.md:164 – gehalten (`0x00789895`, Rang 7 schlägt 6). Kennzeichen 0x100 = Zusatzwert für „Presse“ (Satz +0x28), 0x200 = für das Feld
+  - docs/fundstellen.md:129 – Einsortieren `0x00789895` (drei Plätze, Rang entscheidet), Anwenden der obersten Schlagzeile (Platz `0x01C6AC84`)
+- `0x00789998`
+  - docs/befund-meldungen.md:235 – `0x0078A0F5` an, und nur wenn `0x00789998` ≠ 0 liefert:
+  - docs/fundstellen.md:130 – `0x0078A0F5`, nur wenn `0x00789998` ≠ 0; Manager dort über `0x0041849A(Wert0–3, Manager)`, `0x006A58FC(0x10)` bei
+- `0x007899D9`
+  - docs/befund-meldungen.md:824 – - `0x007899D9` und `0x00789EE0` (Routinen mit Textparameter): kein Verweis gefunden.
+- `0x00789C32`
+  - docs/befund-meldungen.md:230 – `0x00789C32(Rang, Text, Anzahl Namen, Kennzeichen, Namen …, Nummern …, Werte …)`: Mit `0x40000000` folgt eine
+  - docs/befund-meldungen.md:802 – - `0x00789C32`: ein Zeitungstext ohne Bindestrich ergäbe einen Nullzeiger als Vorlage (`0x00789E6B`). Ob alle
+  - docs/befund-notenschnitt.md:163 – Zeitungsmeldungen (`0x00789C32(Rang, Textnummer, Anzahl Namen, Kennzeichen, …)`): Die drei ranghöchsten Schlagzeilen werden
+  - docs/fundstellen.md:126 – - Zeitung: `0x00789C32(Rang, Textnummer, Anzahl Namen, Kennzeichen, Namen …, Zusatzwerte …)`; Satz 0x88 B (mit 0 vorbelegt
+  - tools/asm_goldkettchen.py:58 – 04, 0x005FEC3F, {'AVG32': 0x00705F60, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32,
+  - tools/asm_presse.py:16 – T = {'PRESSE32': 0x00700FA2, 'NAME32': 0x006FEB4D, 'NEWS32': 0x00789C32}
+- `0x00789E6B`
+  - docs/befund-meldungen.md:802 – n Zeitungstext ohne Bindestrich ergäbe einen Nullzeiger als Vorlage (`0x00789E6B`). Ob alle
+- `0x00789EE0`
+  - docs/befund-meldungen.md:824 – - `0x007899D9` und `0x00789EE0` (Routinen mit Textparameter): kein Verweis gefunden.
+- `0x0078A0F5`
+  - docs/befund-meldungen.md:235 – `0x0078A0F5` an, und nur wenn `0x00789998` ≠ 0 liefert:
+  - docs/befund-meldungen.md:275 – des Tages, ruft `0x0078A0F5` damit `0x006A426B(−5)` auf. Diese Routine rechnet mit dem statischen Managersatz
+  - docs/befund-notenschnitt.md:165 – von `0x00701210` (Satz +0x2C). Angewendet werden sie in `0x0078A0F5` nur für die oberste Schlagzeile und nur, wenn im Satz
+  - docs/fundstellen.md:130 – `0x0078A0F5`, nur wenn `0x00789998` ≠ 0; Manager dort über `0x0041849A(Wert0–3, Manager)`, `0x006A58FC(0x10)` b
+  - docs/fundstellen.md:144 – `0x0078A0F5` (Manager `0x0041849A`, Verein `0x0069EFE8` / `0x00698EF6`).
+  - docs/fundstellen.md:164 – Schlagzeile des Tages: Satz `0x01C6AC84`, Werte liest nur `0x0078A0F5`, Anzeige `0x005D8624` nur die Textpuffer.
+  - docs/korrekturliste-meldungen.md:140 – r dritte (`0x0074EE7B`) nach Zufall. Der Merker heißt also „gedopt“. `0x0078A0F5` prüft die
+  - docs/korrekturliste-meldungen.md:142 –  Die Werte im Satz der obersten Schlagzeile (`0x01C6AC84`) liest nur `0x0078A0F5`; die Anzeige
+  - docs/korrekturliste-meldungen.md:175 – e Zeitungsroutine wendet einen Presse-Wert nur mit Spielernummer an (`0x0078A0F5`), die keine der
+  - tools/a3patch.py:329 – # the value -5 is passed: -5 is stored as manager number and 0x0078A0F5 then calls 0x006A426B(-5), outside
+- `0x0078A192`
+  - docs/befund-notenschnitt.md:175 – Wert −2 wird daher nie angewendet (G: Satz wird mit 0 vorbelegt, `0x0078A192` überspringt bei Nummer 0).
+- `0x0078A2D0`
+  - docs/fundstellen.md:127 – in `0x0078A2D0`): +2 Spielernummer (Kennzeichen 0x80000000), +4/+6 Land/Verein (0x20000000), +8 + 4·i Zusatzwert i
+- `0x0078A810`
+  - docs/befund-meldungen.md:206 – 59D` (Privatleben) steht bei `0x005FDBAE`: Zufall 0–1 (`push 2 / call 0x0078A810`), danach ein Verteiler
+  - docs/fundstellen.md:270 – 07E0FFE`, `memcpy` `0x007E11C6`, `memset` `0x007E1010`, Zufall 0…n−1 `0x0078A810(n)`,
+  - tools/a3patch.py:257 – # last player. New: random 0..count-1 (0x0078A810) into the collected field, as the sister routine
+- `0x007B7B91`
+  - docs/befund-zaehler.md:161 – 7B7F68` → Tabelle mit 12-Byte-Einträgen (Nummer, Text), binäre Suche `0x007B7B91`.
+  - docs/fundstellen.md:265 – \t`; Lader `0x004318FA`, Zugriff `0x00730300` → `0x007B7F68` → Suche `0x007B7B91` |
+- `0x007B7CBA`
+  - docs/befund-personal.md:219 – (Textlader 0x007B7CBA, Objekt 0x01C6BF98). Am schnellsten mit einem Beispiel: Spielstand direkt nach so einer Meldung + N
+- `0x007B7F68`
+  - docs/befund-zaehler.md:145 – `0x00730300` kommen über `0x007B7F68`, Quelle nicht ermittelt. Offen.
+  - docs/befund-zaehler.md:161 – Zugriff über `0x00730300` → `0x007B7F68` → Tabelle mit 12-Byte-Einträgen (Nummer, Text), binäre Suche `0x007B7B91`.
+  - docs/fundstellen.md:265 –  ausgeschrieben als `\t`; Lader `0x004318FA`, Zugriff `0x00730300` → `0x007B7F68` → Suche `0x007B7B91` |
+- `0x007CFF4B`
+  - docs/fundstellen.md:101 – oben), gleicher Schlüssel `0x006C5B66`; Leeren `0x007CFF4B`; Neuaufbau aller Tabellen je Verein ab ca. `0x00724900`.
+- `0x007CFF69`
+  - docs/spielstand-bloecke.md:4 – Speicherobjekt, geschrieben ab Objekt+0x20 mit Länge [Objekt+0x14]−8 (0x007CFF69).
+- `0x007CFFF4`
+  - docs/befund-spielstand.md:39 – pielersatz (852 Byte); Weg: Serialisierungsroutinen in der exe (z. B. 0x007CFFF4 für Spieler).
+  - docs/feldkarte-spieler.md:6 – - Spielstand-Serialisierung (0x007CFFF4): kopiert ab Objekt-Offset 0x20 → **Spielstand-Offset = Objekt-Offset − 0x20**.
+  - docs/fundstellen.md:257 – - Spielstand schreiben `0x006ED31E` / `0x007CFFF4`, laden: `spielstand-bloecke.md`, `befund-spielstand.md`.
+- `0x007D2AF0`
+  - docs/befund-spielstand.md:9 – kschreiber** (0x006ED175): packt einen Puffer über 0x0075EADA (Packer 0x007D2AF0) und schreibt `int32 gepackte_Länge` + gepackte Daten per `fwrite`.
+- `0x007D30F0`
+  - docs/befund-spielstand.md:12 – - **Entpacker** (0x0075EB0B → 0x007D30F0, handgeschriebener Assembler), Format eines gepackten Blocks:
+- `0x007E0FFE`
+  - docs/fundstellen.md:270 – `strcpy` `0x007E0FFE`, `memcpy` `0x007E11C6`, `memset` `0x007E1010`, Zufall 0…n−1 `0x0078A810(n)`,
+  - tools/a3patch.py:379 – e same buffer 0x008EC88C: the settlement amount is now copied (strcpy 0x007E0FFE) to
+- `0x007E1010`
+  - docs/fundstellen.md:270 – `strcpy` `0x007E0FFE`, `memcpy` `0x007E11C6`, `memset` `0x007E1010`, Zufall 0…n−1 `0x0078A810(n)`,
+- `0x007E11C6`
+  - docs/fundstellen.md:270 – `strcpy` `0x007E0FFE`, `memcpy` `0x007E11C6`, `memset` `0x007E1010`, Zufall 0…n−1 `0x0078A810(n)`,
+## Daten
+
+- `0x0080D5B8`
+  - docs/fundstellen.md:269 – C-Laufzeit im Spiel: `sprintf` = `[0x0080D5B8]`, `fopen`/`fread`/`fclose` = `[0x0080D694]`/`[0x0080D698]`/`[0x0080D69C]`,
+- `0x0080D694`
+  - docs/fundstellen.md:269 – it im Spiel: `sprintf` = `[0x0080D5B8]`, `fopen`/`fread`/`fclose` = `[0x0080D694]`/`[0x0080D698]`/`[0x0080D69C]`,
+- `0x0080D698`
+  - docs/fundstellen.md:269 – printf` = `[0x0080D5B8]`, `fopen`/`fread`/`fclose` = `[0x0080D694]`/`[0x0080D698]`/`[0x0080D69C]`,
+- `0x0080D69C`
+  - docs/fundstellen.md:269 – 080D5B8]`, `fopen`/`fread`/`fclose` = `[0x0080D694]`/`[0x0080D698]`/`[0x0080D69C]`,
+- `0x0080DAF0`
+  - docs/befund-notenschnitt.md:22 – Beide teilen danach durch 2,0 (`0x0080DAF0`). In den Spielerdetails zieht also jeder Einsatz ohne Note den Schnitt nach
+  - docs/fundstellen.md:271 – Gleitkommakonstante 2,0 bei `0x0080DAF0`.
+- `0x008319F8`
+  - docs/fundstellen.md:106 – C4) | 144 B = 24 × 6 | `0x0072303E`, Vergleich `0x00722FF1`, Tabelle `0x008319F8` | `0x0044F79F` (Text 4751) | „Zu Null“ (V) |
+- `0x00831A24`
+  - docs/befund-zaehler.md:84 – `0x00644FEB`), deren Liste die Funktionstabelle `0x00831A24` mit genau dieser Vergleichsroutine benutzt; sie wird nur dort
+  - docs/fundstellen.md:107 – er in Elf des Tages) | `0x007230E1`, Vergleich `0x00723094`, Tabelle `0x00831A24`, Konstruktor `0x00645F50` | `0x0044EB33` (Text 4746), Kopie `0x00721191` | **Tagesform** (Klasse `
+- `0x0087A074`
+  - docs/befund-zaehler.md:141 – `0x0087A074` hatte nur diesen einen Benutzer und wird nicht mehr verwendet.
+- `0x008808B0`
+  - docs/befund-meldungen.md:490 – `0x004953E1` einen Text aus der Tabelle `0x008808B0` (Texte 4771–4782): 0 Trainer, 1 Mannschaft, 2 Privates,
+  - docs/fundstellen.md:197 – `0x008808B0` (Texte 4771–4782: 0 Trainer, 1 Mannschaft, 2 Privates, 3 Ablenkung, 4 Presse, 5 Verein, 6 Presse,
+  - tools/a3patch.py:638 – # 0x00701210) but passed kind 1 = "Mannschaft" for the label (table 0x008808B0). New kind 3: push 1 -> push 3.
+- `0x00882378`
+  - tools/a3patch.py:18 – # Format string "%s Version 1.40/%s" (VA 0x00882378, used once at 0x004C5ADB to build a window caption
+- `0x0088761C`
+  - docs/befund-meldungen.md:820 – 0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x0088D8F8`
+  - docs/korrekturliste-meldungen.md:731 – Gewichte von 60 (`0x0088D8F8`) – jedes Los kommt nur in 1 von 1000 Zügen. Zusammen mit dem Gewicht 11 der Art erscheinen
+- `0x0088D970`
+  - docs/befund-meldungen.md:527 – ist am Nachbarfall 1347 (`0x005E2813`, Zeichenkette `0x0088D970`) gegengeprüft: dessen Nachname steht als eigene
+  - docs/fundstellen.md:191 – `0x0070324F`, setzen `0x00703276`; feste Namen `0x0088D970`–`0x0088D9C0`); Gruppenbildung `0x005E3885` (Verein
+- `0x0088D980`
+  - docs/befund-meldungen.md:521 – `0x005E2A8F`, `0x005E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x0088D988`
+  - docs/befund-meldungen.md:521 – `0x005E2A8F`, `0x005E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x0088D994`
+  - docs/befund-meldungen.md:521 – 5E2A8F`, `0x005E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x0088D99C`
+  - docs/befund-meldungen.md:521 – 5E2AEE`; Zeichenketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x0088D9A4`
+  - docs/befund-meldungen.md:521 – enketten bei `0x0088D980`, `0x0088D988`, `0x0088D994`, `0x0088D99C`, `0x0088D9A4`,
+- `0x0088D9B4`
+  - docs/befund-meldungen.md:522 – `0x0088D9B4`, `0x0088D9C0`). Gegenprobe in den Stammdaten `original/Data.a3` (771 Textdateien, ein Name je
+- `0x0088D9C0`
+  - docs/befund-meldungen.md:522 – `0x0088D9B4`, `0x0088D9C0`). Gegenprobe in den Stammdaten `original/Data.a3` (771 Textdateien, ein Name je
+  - docs/fundstellen.md:191 – `0x0070324F`, setzen `0x00703276`; feste Namen `0x0088D970`–`0x0088D9C0`); Gruppenbildung `0x005E3885` (Verein
+- `0x0088DC58`
+  - docs/befund-meldungen.md:534 – `0x0088DC58` mit 108 Paaren Text / Wert) buchen nach dem Vorzeichen des Tabellenwerts: negativ → Verein +0x2C0
+  - docs/befund-meldungen.md:819 – - Die 38 Stellen mit Nummer aus Tabelle oder Variable (Tabellen `0x0088DC58`, `0x0088E070`, `0x0088EF80`,
+  - docs/fundstellen.md:202 – `0x005E9A4F` (Tabelle `0x0088DC58`, 108 Paare Text / Wert; negativ → Verein +0x2C0, sonst +0x2C4; Meldung
+  - tools/a3patch.py:344 –  not confirmed in the game). See docs/befund-meldungen.md 6.13. Table 0x0088DC58 of the
+- `0x0088E04C`
+  - docs/befund-meldungen.md:543 – - **Text 281 kann nie erscheinen:** In `0x005E9ED1` (Auslosung `0x0088E04C`: Nummern 1, 2, 3, 4 mit Gewichten
+  - docs/fundstellen.md:203 – `0x005E9CFB`); Ereignisse „Recht“ `0x005E9ED1` (Auslosung `0x0088E04C`, Sprungtabelle `0x005EA50C`, toter Block
+- `0x0088E070`
+  - docs/befund-meldungen.md:819 – Stellen mit Nummer aus Tabelle oder Variable (Tabellen `0x0088DC58`, `0x0088E070`, `0x0088EF80`,
+- `0x0088E0D8`
+  - docs/befund-meldungen.md:441 – aus der Tabelle `0x0088E0D8` mit sieben Einträgen (1726, 1727, 1729, 1730, 1731, 1732, 1734), Index aus `0x00A3220A`.
+  - docs/fundstellen.md:173 – atensatz 42): `0x005EECBA` / `0x005EEDF9` aus `0x005F5556`, Tabellen `0x0088E0D8`
+- `0x0088E0EC`
+  - docs/befund-meldungen.md:443 – `0x0088E0EC[Zufall 0–3]` = 1735–1738, sonst `0x0088E0F4[Zufall 0–1]` = 1739, 1740.
+  - docs/fundstellen.md:174 – (Eigenschaften), `0x0088E0EC`, `0x0088E0F4` (Antworten).
+- `0x0088E0F4`
+  - docs/befund-meldungen.md:443 – `0x0088E0EC[Zufall 0–3]` = 1735–1738, sonst `0x0088E0F4[Zufall 0–1]` = 1739, 1740.
+  - docs/fundstellen.md:174 – (Eigenschaften), `0x0088E0EC`, `0x0088E0F4` (Antworten).
+- `0x0088E128`
+  - docs/befund-meldungen.md:133 – - **Spieler-Ereignisse** (`0x005EF8CC`, Tabelle `0x0088E128`, Gesamt 10000, Summe der Gewichte 2100 – in 21 % der
+  - docs/fundstellen.md:138 – Verteiler `0x005EFADA`, Gewichte `0x0088E128`) und `0x005F0133` (Verein/Manager, Gewichte `0x0088E188`);
+  - docs/korrekturliste-meldungen.md:699 – zieht `0x005EF8CC` eine Ereignisart mit Gewicht w von 10000 (Tabelle `0x0088E128`). Gewicht 100
+- `0x0088E188`
+  - docs/befund-meldungen.md:154 – - **Verein und Manager** (`0x005F0133`, Tabelle `0x0088E188`, Gesamt 10000, Summe 1761): 16 Nummern, alle mit Routine
+  - docs/fundstellen.md:138 – `, Gewichte `0x0088E128`) und `0x005F0133` (Verein/Manager, Gewichte `0x0088E188`);
+- `0x0088E6F0`
+  - docs/befund-meldungen.md:582 – - **Leere Los-Zweige:** `0x005F9ED7` (Tabelle `0x0088E6F0`, Nummern 1 und 2): Nummer 2 ist nur „Rückgabe 1“
+- `0x0088E700`
+  - docs/befund-meldungen.md:583 – (`0x005F9FC3`). `0x005FA394` (Tabelle `0x0088E700`, Nummern 1–3): Fall 3 ist leer (`0x005FA54E`); Fall 4 (zweite
+  - docs/korrekturliste-meldungen.md:132 – - **K01:** `0x005FA394` zieht Los 1–3 mit gleichem Gewicht (Tabelle `0x0088E700`); Fall 1 (1093) verlangt Status
+- `0x0088E74C`
+  - docs/befund-meldungen.md:584 – Text 1094, `0x005FA5AD`) hat keine Los-Nummer. `0x005FB264` (Tabelle `0x0088E74C`, Nummern 1–9 je
+  - docs/korrekturliste-meldungen.md:117 –  Lose der Routine: Fälle 1–9 Gewicht 3, 10 und 11 Gewicht 1 (Tabelle `0x0088E74C`), Fälle 4–7 leer; Los-Nummer 5 im Tagesverteiler mit Gewicht 100 von 10000. |
+- `0x0088E828`
+  - docs/korrekturliste-meldungen.md:739 – Hobby nach der Tabelle `0x0088E828`, Summe 1857).
+- `0x0088E8C8`
+  - docs/befund-meldungen.md:699 – Auslosung aus der Tabelle `0x0088E8C8` mit 25 Einträgen: Nummern 1–15 und 20–24 je Gewicht 30, 25 Gewicht 20, 26 und
+  - docs/fundstellen.md:231 – `0x005FEDB0(Verein, Spieler)`, Los-Tabelle `0x0088E8C8` (25 Einträge), Verteiler `0x005FEE1E`; Zufriedenheit eines
+- `0x0088EC8C`
+  - docs/befund-meldungen.md:214 – Die Gründe für eine Bauverzögerung stehen in der Tabelle `0x0088EC8C` mit 12 Einträgen (Texte 878–889). Gewürfelt
+  - docs/fundstellen.md:175 – befund-meldungen.md` Abschnitt 3): Gründe für Bauverzögerung Tabelle `0x0088EC8C`
+  - tools/a3patch.py:819 – # F03 (released 18.11.2026): the reasons for a building delay (table 0x0088EC8C, texts 878-889, 12 entries) were drawn with
+- `0x0088EF80`
+  - docs/befund-meldungen.md:819 – mmer aus Tabelle oder Variable (Tabellen `0x0088DC58`, `0x0088E070`, `0x0088EF80`,
+- `0x0088EF90`
+  - docs/befund-meldungen.md:820 – `0x0088EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales F
+- `0x0088F090`
+  - docs/befund-meldungen.md:118 – - **Fragen mit Antworten (Dialog 253):** 80 Datensätze `0x0088F090 + n × 44`: +0 Kennzeichen, +4 Frage (−1 = vom
+  - docs/fundstellen.md:166 – `0x0088F090 + n × 44` (+4 Frage, +8/+0xC/+0x10 Antworten, +0x14/+0x18/+0x1C Ergebnistexte, +0x20/+0x24/+0x28
+- `0x0088FFA4`
+  - docs/befund-meldungen.md:814 –  `0x0060CCC8`; Maskenfehler in `0x0060C1C0`, Fälle 106/107 (Tabellen `0x0088FFA4` / `0x0088FFB0` mit fünf
+- `0x0088FFB0`
+  - docs/befund-meldungen.md:814 – Maskenfehler in `0x0060C1C0`, Fälle 106/107 (Tabellen `0x0088FFA4` / `0x0088FFB0` mit fünf
+- `0x0088FFBC`
+  - docs/befund-meldungen.md:815 – Einträgen, gelesen mit Index 0–9; die Zehnertabellen `0x0088FFBC` / `0x0088FFD0` unbenutzt).
+- `0x0088FFD0`
+  - docs/befund-meldungen.md:815 – Einträgen, gelesen mit Index 0–9; die Zehnertabellen `0x0088FFBC` / `0x0088FFD0` unbenutzt).
+- `0x0088FFFC`
+  - docs/befund-meldungen.md:820 – `0x0088EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x00890024`
+  - docs/befund-meldungen.md:820 – `0x0088EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x00890040`
+  - docs/befund-meldungen.md:820 – `0x0088EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x0089DCC0`
+  - docs/spielstand-bloecke.md:56 – | 006EDBE3 | Puffer | 0x0089DCC0 | 1 |
+- `0x0089DCC4`
+  - docs/spielstand-bloecke.md:57 – | 006EDBFB | Puffer | 0x0089DCC4 | 1 |
+- `0x0089DE50`
+  - docs/feldkarte-spieler.md:44 – | 0x207 | u8 | (8) | Tabelle 0x0089DE50[Nationalität] | aus Nationalität abgeleitet (Kontinent/EU?) | V |
+- `0x0089E450`
+  - docs/befund-finanzen.md:93 – Stufe A = Tabelle `0x0089E450` (0, 2, 20, 100) am Byte Spielstand 0x839, Stufe B = Tabelle `0x0089E458`
+  - docs/feldkarte-verein.md:35 –  | u8 / u8 | – | zwei Ausbaustufen mit festen Saisonkosten (Tabellen `0x0089E450` / `0x0089E458`), Bedeutung nicht zugeordnet | G (Rechnung) |
+- `0x0089E458`
+  - docs/befund-finanzen.md:93 – 089E450` (0, 2, 20, 100) am Byte Spielstand 0x839, Stufe B = Tabelle `0x0089E458`
+  - docs/feldkarte-verein.md:35 – | zwei Ausbaustufen mit festen Saisonkosten (Tabellen `0x0089E450` / `0x0089E458`), Bedeutung nicht zugeordnet | G (Rechnung) |
+- `0x008A00F8`
+  - docs/befund-personal.md:56 – in den Saisons 1–9 eine kleinere Schwelle aus der Tabelle `0x008A00F8`).
+- `0x008A3D9B`
+  - docs/feldkarte-spieler.md:36 – | 0x1FD | u8 | 9 | 1…10, über Tabelle 0x008A3D9B umgesetzt | Hauptposition | V (stark) |
+- `0x008A5458`
+  - docs/befund-meldungen.md:820 – `0x0088EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x008A5484`
+  - docs/befund-meldungen.md:820 – 88EF90` ff., `0x0088FFFC`, `0x00890024`, `0x00890040`, `0x008A5458`, `0x008A5484`, `0x0088761C`, lokales Feld in
+- `0x008A8758`
+  - docs/korrekturliste-meldungen.md:245 – (`0x006862D0`: Schleife bis 94) aus der Nummerntabelle `0x008A8758`; dort stehen für 90–93 die Oberflächentexte 3988
+  - tools/a3patch.py:709 – # have names (table 0x008A8758 -> 3990 / 3991) but empty rows in the kind table 0x008AC340 (10 bytes per kind; rows 70-91
+- `0x008AC340`
+  - docs/befund-meldungen.md:628 – Dauer aus der Tabelle `0x008AC340` (Art 10: 35). Die Einheit ist Tage (Vergleich: 7 bei Text 1101 „nächste Woche“,
+  - docs/befund-meldungen.md:648 – der Tabelle `0x008AC340` (Abschnitt 6.14); `0x00766AF9(Spieler, n)` setzt nur Byte Spieler +0x2F („angeschlagen“,
+  - docs/fundstellen.md:215 – 9F`. Verletzung setzen `0x00766B92(Spieler, Art, Dauer)` mit Tabelle `0x008AC340`
+  - docs/korrekturliste-meldungen.md:238 – `0x008AC340` (10 Bytes je Art, Byte +1 = Tage), sonst die übergebene Dauer in Tagen. Zeilen: Art 10 = 35 Tage, 
+  - docs/korrekturliste-meldungen.md:247 – Tabelle `0x008AC340` belegt 950 Bytes (95 Zeilen, danach beginnt bei `0x008AC6F8` das nächste Objekt); die Zeilen
+  - tools/a3patch.py:593 – 92(player, kind 37, -1) took the default of kind 37 = 112 days (table 0x008AC340). New duration 21:
+  - tools/a3patch.py:709 – es (table 0x008A8758 -> 3990 / 3991) but empty rows in the kind table 0x008AC340 (10 bytes per kind; rows 70-91
+- `0x008AC6F8`
+  - docs/korrekturliste-meldungen.md:247 – Tabelle `0x008AC340` belegt 950 Bytes (95 Zeilen, danach beginnt bei `0x008AC6F8` das nächste Objekt); die Zeilen
+- `0x008AC7C0`
+  - docs/fundstellen.md:69 – (Ausschlusstabelle `0x008AC7C0`), danach `0x0070147E` (Motivation neu rechnen).
+- `0x008AD230`
+  - docs/befund-meldungen.md:232 – ein Wert, abgelegt bei Satz + 8 + 4 × Bit. Die Namen werden nach `0x008AD230[i]` kopiert. Die Reihenfolge der
+  - docs/befund-meldungen.md:803 – indestrich haben, ist in den Notizen nicht festgehalten. Die Tabelle `0x008AD230` hat nur sechs
+  - docs/fundstellen.md:128 – sse“, Bit 9 = Spielstand 0x274 über `0x00701210`). Namen werden nach `0x008AD230[i]` kopiert.
+- `0x008B3E78`
+  - docs/befund-spielstand.md:17 – - Tabellen statisch in `.data` (0x008B3E78, 0x008B3EB8, 0x008B3EDC).
+- `0x008B3EB8`
+  - docs/befund-spielstand.md:17 – - Tabellen statisch in `.data` (0x008B3E78, 0x008B3EB8, 0x008B3EDC).
+- `0x008B3EDC`
+  - docs/befund-spielstand.md:17 – - Tabellen statisch in `.data` (0x008B3E78, 0x008B3EB8, 0x008B3EDC).
+- `0x008BE408`
+  - docs/befund-finanzen.md:44 – 0 (Aktiengesellschaft): Börsen-Objekt `0x00405DBE(Land, Verein)` auf `0x008BE408`; Aktienzahl [Objekt+0x20], Kurs `0x00407520(0)`, Börsenwert = Kurs × Aktienzahl |
+  - docs/befund-finanzen.md:103 – - Börsen-Objekt `0x008BE408`: Anzahl benutzter Datensätze int32 bei +0x20, Datensätze ab +0x34 zu je 264 Byte
+  - docs/fundstellen.md:88 – ngesellschaft? `0x0069D71D` (Vereinssatz 0x904 Bit 0), Börsen-Objekt `0x008BE408` (Block mit 123 572 B,
+  - docs/spielstand-bloecke.md:143 – | 006EE91E | Objekt | 0x008BE408 (Daten ab +0x20) | aus Objekt |
+- `0x008E0F78`
+  - docs/befund-personal.md:58 – alle anderen auf die Liste der Trainer (`0x008E0F78`, 20 je Land, Block mit 3600 Byte).
+  - docs/fundstellen.md:19 – | Wartelisten Ex-Profis | Trainer `0x008E0F78`, Torwarttrainer `0x008E1D88`; Marktlisten `0x008E27A0 + Land×0x9C`, `0x008E2490` | – | 3600-/1800-
+  - docs/spielstand-bloecke.md:92 – | 006EE243 | Puffer | 0x008E0F78 | 1 |
+- `0x008E1D88`
+  - docs/befund-personal.md:57 – orhüter mit Wahrscheinlichkeit 2/3 auf die Liste der Torwarttrainer (`0x008E1D88`, 10 je Land, Block mit 1800 Byte),
+  - docs/fundstellen.md:19 – | Wartelisten Ex-Profis | Trainer `0x008E0F78`, Torwarttrainer `0x008E1D88`; Marktlisten `0x008E27A0 + Land×0x9C`, `0x008E2490` | – | 3600-/1800-B- bzw. 124-B-Blöcke | `befun
+  - docs/spielstand-bloecke.md:91 – | 006EE228 | Puffer | 0x008E1D88 | 1 |
+- `0x008E2490`
+  - docs/befund-personal.md:144 – Trainer `0x008E27A0 + Land × 0x9C`, Torwarttrainer `0x008E2490 + Land × 0x9C`; im Spielstand die Blöcke mit 124 Byte
+  - docs/fundstellen.md:19 – , Torwarttrainer `0x008E1D88`; Marktlisten `0x008E27A0 + Land×0x9C`, `0x008E2490` | – | 3600-/1800-B- bzw. 124-B-Blöcke | `befund-personal.md` |
+- `0x008E27A0`
+  - docs/befund-personal.md:144 – Trainer `0x008E27A0 + Land × 0x9C`, Torwarttrainer `0x008E2490 + Land × 0x9C`; im Spielstand die Blöcke mit 124 Byte
+  - docs/fundstellen.md:19 – fis | Trainer `0x008E0F78`, Torwarttrainer `0x008E1D88`; Marktlisten `0x008E27A0 + Land×0x9C`, `0x008E2490` | – | 3600-/1800-B- bzw. 124-B-Blöcke | `befund-personal.md` |
+- `0x008E7C88`
+  - docs/spielstand-bloecke.md:95 – | 006EE290 | Objekt | 0x008E7C88 (Daten ab +0x20) | aus Objekt |
+- `0x008E8940`
+  - docs/spielstand-bloecke.md:94 – | 006EE27A | Objekt | 0x008E8940 (Daten ab +0x20) | aus Objekt |
+- `0x008E91E0`
+  - docs/spielstand-bloecke.md:93 – | 006EE264 | Objekt | 0x008E91E0 (Daten ab +0x20) | aus Objekt |
+- `0x008EABE8`
+  - docs/spielstand-bloecke.md:155 – | 006EEB59 | Objekt | 0x008EABE8 (Daten ab +0x20) | aus Objekt |
+- `0x008EB8B0`
+  - docs/fundstellen.md:214 – heiraten `0x00702B15` (Termin-Routine `0x005FD386`). Terminliste `0x008EB8B0`: streichen `0x004377B7(Nummer,
+  - docs/korrekturliste-meldungen.md:192 –  den Hochzeitstermin mit dem gespeicherten Datum aus der Terminliste `0x008EB8B0`
+  - tools/a3patch.py:545 – # 0x008EB8B0 with 0x004377B7(number, &[ebp-8]), but [ebp-8] is never written: the date stayed and the wedding to
+- `0x008EC88C`
+  - docs/befund-meldungen.md:552 – kommen aus `0x004DAF8F`, das immer in denselben Puffer `0x008EC88C` schreibt und dessen Adresse zurückgibt
+  - docs/befund-meldungen.md:807 – 004DAF8F` (Geldbetrag als Text) benutzt einen einzigen festen Puffer `0x008EC88C`; zwei Aufrufe in einem
+  - docs/fundstellen.md:161 – , `0x00A3B348` = × 500); Betrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`). Verein +0x2F8:
+  - docs/fundstellen.md:205 – ertung `0x005E9E01`; Geldbetrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`).
+  - tools/a3patch.py:379 – # always writes to the same buffer 0x008EC88C: the settlement amount is now copied (strcpy 0x007E0FFE) to
+  - tools/a3patch.py:386 – 'E8F20DEFFF' # call 004DAF8F amount as text -> 0x008EC88C
+- `0x008EF338`
+  - docs/spielstand-bloecke.md:147 – | 006EEA66 | Objekt | 0x008EF338 (Daten ab +0x20) | aus Objekt |
+- `0x00A2E0D8`
+  - docs/spielstand-bloecke.md:123 – | 006EE657 | Objekt | 0x00A2E0D8 (Daten ab +0x20) | aus Objekt |
+- `0x00A2E420`
+  - docs/spielstand-bloecke.md:117 – | 006EE598 | Objekt | 0x00A2E420 (Daten ab +0x20) | aus Objekt |
+- `0x00A2F6EC`
+  - docs/korrekturliste-meldungen.md:226 – bekommen (`0x00601043` legt ihn nach `0x00A2F6EC`). Jetzt steht `push 0` nach dem Zufallsaufruf. Alle übrigen Blöcke
+- `0x00A2F6EE`
+  - docs/befund-meldungen.md:489 – `0x005F1F42` legt sie in `0x00A2F6EE` ab (Vorher `0x00A2F6F4`, Nachher `0x00A2F6F6`), der Dialog holt damit bei
+  - docs/fundstellen.md:195 – og mit Vorher/Nachher:** `0x005F1F42` legt Art / Vorher / Nachher in `0x00A2F6EE` / `0x00A2F6F4` /
+- `0x00A2F6F4`
+  - docs/befund-meldungen.md:489 – `0x005F1F42` legt sie in `0x00A2F6EE` ab (Vorher `0x00A2F6F4`, Nachher `0x00A2F6F6`), der Dialog holt damit bei
+  - docs/fundstellen.md:195 – achher:** `0x005F1F42` legt Art / Vorher / Nachher in `0x00A2F6EE` / `0x00A2F6F4` /
+- `0x00A2F6F6`
+  - docs/befund-meldungen.md:489 – x005F1F42` legt sie in `0x00A2F6EE` ab (Vorher `0x00A2F6F4`, Nachher `0x00A2F6F6`), der Dialog holt damit bei
+  - docs/fundstellen.md:196 – `0x00A2F6F6` ab, Text im Puffer `0x00A2F700`; Anzeige `0x005F2234`; Beschriftung je Art bei `0x004953E1` aus Ta
+- `0x00A2F700`
+  - docs/befund-meldungen.md:461 – ldungstext stehen. Die Meldungsdialoge geben den Text aus dem Puffer `0x00A2F700` unverändert
+  - docs/fundstellen.md:196 – `0x00A2F6F6` ab, Text im Puffer `0x00A2F700`; Anzeige `0x005F2234`; Beschriftung je Art bei `0x004953E1` aus Tabelle
+- `0x00A2FAE8`
+  - docs/befund-meldungen.md:112 – - **Texte:** Die Tabelle `0x00A2FAE8` wird ausschließlich über `0x005EF430(Nummer)` gelesen (262 Aufrufe). 39
+  - docs/befund-notenschnitt.md:113 – origen gespeicherten Byte XOR-verknüpft, Lader `0x005EF298`, Tabelle `0x00A2FAE8`).
+  - docs/fundstellen.md:22 – | Texttabellen | Oberfläche: Objekt bei `0x01C6BFA4`; Ereignisse: `0x00A2FAE8` (+4 + Nr×4) | – | Dateien, Abschnitt 8 | G |
+- `0x00A321E8`
+  - docs/befund-meldungen.md:122 – , Text, Spieler, Art 1–3)` (Datensatz = Art + 33). Globale Nachricht `0x00A321E8`:
+  - docs/fundstellen.md:169 – F2E43`, `0x005F2F07`; Sperre setzen `0x0070302D`). Globale Nachricht `0x00A321E8` (+6 Antwort
+- `0x00A321EE`
+  - docs/fundstellen.md:170 – `0x00A321EE`, +0xC Datensatz `0x00A321F4`, +0x22 Zusatzindex `0x00A3220A`, +0x28 Text `0x00A32210`).
+- `0x00A321F4`
+  - docs/fundstellen.md:170 – `0x00A321EE`, +0xC Datensatz `0x00A321F4`, +0x22 Zusatzindex `0x00A3220A`, +0x28 Text `0x00A32210`).
+- `0x00A32200`
+  - docs/befund-meldungen.md:540 – Aussicht. Der doppelte Betrag wird nur für den Fragetext nach `0x00A32200` geschrieben (`0x005E89B1`). Bei Erfolg
+- `0x00A3220A`
+  - docs/befund-meldungen.md:441 – eben Einträgen (1726, 1727, 1729, 1730, 1731, 1732, 1734), Index aus `0x00A3220A`.
+  - docs/befund-meldungen.md:444 – **Offen:** der Wertebereich des Index aus `0x00A3220A` (ob alle sieben Einträge erreicht werden).
+  - docs/fundstellen.md:170 – `0x00A321EE`, +0xC Datensatz `0x00A321F4`, +0x22 Zusatzindex `0x00A3220A`, +0x28 Text `0x00A32210`).
+- `0x00A32210`
+  - docs/befund-meldungen.md:119 – Aufrufer vorbereiteter Text bei `0x00A32210`), +8 / +0xC / +0x10 drei Antworten, +0x14 / +0x18 / +0x1C
+  - docs/fundstellen.md:170 – C Datensatz `0x00A321F4`, +0x22 Zusatzindex `0x00A3220A`, +0x28 Text `0x00A32210`).
+- `0x00A326E2`
+  - docs/korrekturliste-meldungen.md:119 – %2 wird eine leere Zeichenkette übergeben (`0x005FE272`, Platzhalter `0x00A326E2`), obwohl direkt davor der Vereinsname gebildet wird (`0x005FE268`, Fall 19 nach `[ebp-68h]`) | Puf
+- `0x00A32710`
+  - docs/befund-meldungen.md:191 – ager)` geht den Kader durch und lost aus den Tabellen `0x00A3271C` / `0x00A32710`; da niemand
+  - docs/fundstellen.md:180 – ülle `0x0060B430`, Verfehlungen der Spieler, Tabellen `0x00A3271C` / `0x00A32710`),
+- `0x00A3271C`
+  - docs/befund-meldungen.md:191 – 430(Verein, Manager)` geht den Kader durch und lost aus den Tabellen `0x00A3271C` / `0x00A32710`; da niemand
+  - docs/fundstellen.md:180 – `0x0060B11E` (Hülle `0x0060B430`, Verfehlungen der Spieler, Tabellen `0x00A3271C` / `0x00A32710`),
+- `0x00A32738`
+  - docs/befund-meldungen.md:830 – „schon geschehen“ mit 20 Plätzen (`0x00A32738`, Prüfen `0x005E5E90`, Eintragen `0x005E5EE0`); eine gezogene Nummer
+  - docs/fundstellen.md:163 – Merkerliste „schon geschehen“ `0x00A32738`: nur die letzten 20 Kennungen (`0x005E5E90` / `0x005E5EE0`).
+  - docs/korrekturliste-meldungen.md:144 – - **K05/K06:** Der Merker 16000 + Index steht in der Liste `0x00A32738`, die nur die letzten 20 Ereignisse aller Arten
+  - docs/korrekturliste-meldungen.md:703 – - Nicht eingerechnet: der Merker der letzten 20 Ereignisse (`0x00A32738`, verhindert schnelle Wiederholungen) und die
+- `0x00A3B2A8`
+  - docs/befund-finanzen.md:52 – Kappung über Grenzwerten `0x00A3B2A8`, `0x00A3B2E8`, `0x00A3B314`).
+- `0x00A3B2E8`
+  - docs/befund-finanzen.md:52 – Kappung über Grenzwerten `0x00A3B2A8`, `0x00A3B2E8`, `0x00A3B314`).
+  - docs/befund-finanzen.md:207 – Dispokreditrahmen `0x0044449F`; Prüfung `0x0047ECE7` (Konto unter −`0x00A3B2E8` und Vereinskennzeichen 0x80);
+- `0x00A3B314`
+  - docs/befund-finanzen.md:52 – Kappung über Grenzwerten `0x00A3B2A8`, `0x00A3B2E8`, `0x00A3B314`).
+- `0x00A3B348`
+  - docs/fundstellen.md:161 – = × 100, `0x00A3B348` = × 500); Betrag als Text `0x004DAF8F` (fester Puffer `0x008EC88C`). Verein +0x2F8:
+- `0x00A3B370`
+  - docs/fundstellen.md:160 –  Grundeinheit `0x00A3B3E4` (= 1 000), Vielfache in `0x00627E73` ff. (`0x00A3B370` = × 150, `0x00A3B37C`
+- `0x00A3B37C`
+  - docs/befund-finanzen.md:33 – | 0x2E0 | 0x748 | int16, Dispokreditrahmen (× Faktor `0x00A3B37C`) |
+  - docs/befund-finanzen.md:95 –  Faktoren 10 000 und 100 000 sind die Laufzeitwerte `0x00A3B3BC` und `0x00A3B37C` (gesetzt ab `0x00627DAD` aus
+  - docs/fundstellen.md:87 – (Block 1, 0xF8 / 0xFC); Geldfaktoren `0x00A3B3BC` (10 000) und `0x00A3B37C` (100 000), gesetzt ab `0x00627DAD`.
+  - docs/fundstellen.md:160 – 3E4` (= 1 000), Vielfache in `0x00627E73` ff. (`0x00A3B370` = × 150, `0x00A3B37C`
+- `0x00A3B3BC`
+  - docs/befund-finanzen.md:95 – Die Faktoren 10 000 und 100 000 sind die Laufzeitwerte `0x00A3B3BC` und `0x00A3B37C` (gesetzt ab `0x00627DAD` aus
+  - docs/feldkarte-verein.md:28 – inn“ | Kontostand; beim Laden auf −2000…1500 begrenzt und mit Faktor (0x00A3B3BC) multipliziert | V (stark) |
+  - docs/fundstellen.md:87 – (Block 1, 0xF8 / 0xFC); Geldfaktoren `0x00A3B3BC` (10 000) und `0x00A3B37C` (100 000), gesetzt ab `0x00627DAD`.
+- `0x00A3B3CC`
+  - tools/a3patch.py:416 – # [0x00A3B3CC] (the amount shown as %4, 0x005F2A1F) on club +0x28C; answer 2 = nothing.
+- `0x00A3B3E4`
+  - docs/fundstellen.md:160 – Geldbeträge: Grundeinheit `0x00A3B3E4` (= 1 000), Vielfache in `0x00627E73` ff. (`0x00A3B370` = × 150, `0x00A3B37C`
+- `0x00A3B640`
+  - docs/spielstand-bloecke.md:156 – | 006EEB6F | Objekt | 0x00A3B640 (Daten ab +0x20) | aus Objekt |
+- `0x00A58078`
+  - docs/befund-vereinsstatistik.md:8 – m Manager gibt es im Spielstand einen Block mit 10528 Byte (Speicher `0x00A58078 + (Nr − 1) × 0x2940`, Daten ab
+  - docs/fundstellen.md:15 – | Managerblöcke (10528 B) | `0x00A58078 + (Nr−1) × 0x2940` | – | Manager-Pakete ab Block 1548/1562 | `befund-vereinsstatistik.md`, HANDOFF-
+- `0x00A62578`
+  - docs/befund-meldungen.md:276 – `0x00A62578 + (Nr−1) × 0x2158`, dem Merker `word [Nr×2 + 0x00B5CB9A]` und dem Zähler `word [Nr×2 + 0x01B9FFAA]`
+  - docs/fundstellen.md:134 – - Zweiter statischer Managersatz `0x00A62578 + (Nr−1) × 0x2158`, Merker `word [Nr×2 + 0x00B5CB9A]`, Zähler
+- `0x00A6D348`
+  - docs/spielstand-bloecke.md:64 – | 006EDD47 | Objekt | 0x00A6D348 (Daten ab +0x20) | aus Objekt |
+- `0x00A75968`
+  - docs/spielstand-bloecke.md:65 – | 006EDD5D | Objekt | 0x00A75968 (Daten ab +0x20) | aus Objekt |
+- `0x00A7C240`
+  - docs/spielstand-bloecke.md:129 – | 006EE728 | Objekt | 0x00A7C240 (Daten ab +0x20) | aus Objekt |
+- `0x00AE44F8`
+  - docs/fundstellen.md:18 – | Rekorde (Karriere) / „Für die Ewigkeit“ | `0x00B5CD1C` / `0x00AE44F8` | – | Block 1 ab 404 / Datei `alltimes.saq` | ebd. |
+  - docs/zuordnung-bildschirme.md:59 –  Spielstand**: Datei `alltimes.saq` (1056 B) im Spielordner, Speicher 0x00AE44F8 | 18 Sätze zu 58 B: echtes Datum (Tag, Monat, Jahr), Land (+4), Verein (+6), Initial (+0x1A), Name 
+  - docs/zuordnung-bildschirme.md:69 – Bildschirm „Rekorde“, Spieldatum) und mit dem Allzeit-Rekord (0x00AE44F8 …, Datei, echtes Datum) und ruft 0x006D5D6A.
+  - docs/zuordnung-bildschirme.md:100 – 0x0045F8E5 (Für die Ewigkeit, liest 0x00AE44F8), 0x004629FE, 0x00463213, 0x0046364C, 0x00463A9B (Tabellenführungen?),
+- `0x00AE5B18`
+  - docs/spielstand-bloecke.md:131 – | 006EE75C | Objekt | 0x00AE5B18 (Daten ab +0x20) | aus Objekt |
+- `0x00AE5C97`
+  - docs/befund-auf-abstiege.md:92 – Nebenwirkung von 1a: Auch 0x00634D9C (Vereinstabelle bei 0x00AE5C97-Index, vermutlich Vereinschronik) und 0x006143D2 werden für
+- `0x00AE5E06`
+  - docs/fundstellen.md:13 –  erster Index je Land `word [Land×2 + 0x00AE5EF0]`, Anzahl `[Land×2 + 0x00AE5E06]`; Land gültig? `0x00676C03` |
+- `0x00AE5EF0`
+  - docs/fundstellen.md:13 – 7 | Offset X ↔ `0x01A73018 + X`; erster Index je Land `word [Land×2 + 0x00AE5EF0]`, Anzahl `[Land×2 + 0x00AE5E06]`; Land gültig? `0x00676C03` |
+- `0x00AE6DD4`
+  - docs/spielstand-bloecke.md:59 – | 006EDC2B | Puffer | 0x00AE6DD4 | 1 |
+- `0x00AE6DE8`
+  - docs/spielstand-bloecke.md:58 – | 006EDC13 | Puffer | 0x00AE6DE8 | 1 |
+- `0x00AEB4C8`
+  - docs/fundstellen.md:105 – | 7 | `0x00AEB4C8` (0x154) | 288 B | `0x00722F4E` | – | offen |
+- `0x00AEC210`
+  - docs/fundstellen.md:106 – | 8 | `0x00AEC210` (0xC4) | 144 B = 24 × 6 | `0x0072303E`, Vergleich `0x00722FF1`, Tabelle `0x008319F8` | `0x0044F79F
+- `0x00AEC9B8`
+  - docs/befund-zaehler.md:65 – `0x00AEC9B8 + Liga × 0xF4`; im Spielstand Liga-Tabelle 9 (192 B, 24 × 8 B: Land, Verein, Wert, Spieler in der E
+  - docs/fundstellen.md:107 – | 9 | `0x00AEC9B8` (0xF4) | 192 B = 24 × (Land, Verein, Wert, Spieler in Elf des Tages) | `0x007230E1`, Vergleich `0x
+- `0x00AED340`
+  - docs/befund-zaehler.md:23 – Land, Verein, 6 + 6 Bytes; Speicher `0x00AED340 + Liga × 0x1A0`, im Spielstand Block 4 + Liga × 20 + 10).
+  - docs/fundstellen.md:108 – | 10 | `0x00AED340` (0x1A0) | 384 B = 24 × (Land, Verein, 6 + 6 Bytes) | `0x007244E2` | `0x0044EF11` / `0x0044F358` (T
+- `0x00AEFA50`
+  - docs/fundstellen.md:109 – | – | `0x00AEFA50` (0x154), `0x00AF0798` (0xF4) | 288 / 192 B | `0x0072344D`, `0x007235E2` | – | offen |
+- `0x00AF0798`
+  - docs/fundstellen.md:109 – | – | `0x00AEFA50` (0x154), `0x00AF0798` (0xF4) | 288 / 192 B | `0x0072344D`, `0x007235E2` | – | offen |
+- `0x00AF723C`
+  - docs/spielstand-bloecke.md:45 – | 006EDAA6 | Objekt | 0x00AF723C (Daten ab +0x20) | aus Objekt |
+- `0x00AF7450`
+  - docs/befund-trainer-eps.md:35 – Die Liste liegt je Land im Speicher bei `0x00AF7450 + Abschnitt × 0x37C` (Liste ab +0x20, 20 Einträge × 42 B:
+- `0x00B06A90`
+  - docs/spielstand-bloecke.md:50 – | 006EDB14 | Objekt | 0x00B06A90 (Daten ab +0x20) | aus Objekt |
+- `0x00B06BB4`
+  - docs/spielstand-bloecke.md:49 – | 006EDAFE | Objekt | 0x00B06BB4 (Daten ab +0x20) | aus Objekt |
+- `0x00B06CD8`
+  - docs/befund-auf-abstiege.md:13 – | Aufstiege | 0x00B06CD8 | 8 Byte | gesamt, in Liga-Index 0, in Liga-Index 1, in Liga-Index 2 |
+  - docs/spielstand-bloecke.md:46 – | 006EDABC | Objekt | 0x00B06CD8 (Daten ab +0x20) | aus Objekt |
+- `0x00B07558`
+  - docs/befund-auf-abstiege.md:14 – | Abstiege | 0x00B07558 | 10 Byte | gesamt, aus Liga-Index 0, 1, 2, 3 |
+  - docs/spielstand-bloecke.md:47 – | 006EDAD2 | Objekt | 0x00B07558 (Daten ab +0x20) | aus Objekt |
+- `0x00B07FF0`
+  - docs/fehler-beste-mannschaft.md:7 – - **Daten** (Objekt 0x00B07FF0, Daten ab +0x20, im Spielstand ein eigener 200-Byte-Block):
+  - docs/spielstand-bloecke.md:48 – | 006EDAE8 | Objekt | 0x00B07FF0 (Daten ab +0x20) | aus Objekt |
+- `0x00B08010`
+  - docs/fehler-beste-mannschaft.md:5 – *Anzeige** 0x004665DD: holt per 0x007215E7 eine Kopie von 200 Byte ab 0x00B08010 (20 Einträge à 10 Byte)
+- `0x00B080D8`
+  - docs/fehler-beste-mannschaft.md:26 – Tabelle (Objekt+0xEE = 0x00B080DE, schon im Kopf des nächsten Objekts 0x00B080D8).
+  - docs/fehler-beste-mannschaft.md:87 – - Ob das Schreiben auf 0x00B080DE (Kopf des Objekts 0x00B080D8) Folgefehler verursacht hat. Mit der Korrektur entfällt es.
+  - docs/spielstand-bloecke.md:52 – | 006EDB40 | Objekt | 0x00B080D8 (Daten ab +0x20) | aus Objekt |
+- `0x00B080DE`
+  - docs/fehler-beste-mannschaft.md:26 –  `Eintrag[19]`. `Eintrag[20]` liegt hinter der Tabelle (Objekt+0xEE = 0x00B080DE, schon im Kopf des nächsten Objekts 0x00B080D8).
+  - docs/fehler-beste-mannschaft.md:87 – - Ob das Schreiben auf 0x00B080DE (Kopf des Objekts 0x00B080D8) Folgefehler verursacht hat. Mit der Korrektur entfällt es.
+- `0x00B0A088`
+  - docs/spielstand-bloecke.md:51 – | 006EDB2A | Objekt | 0x00B0A088 (Daten ab +0x20) | aus Objekt |
+- `0x00B0B6B8`
+  - docs/feldkarte-verein.md:48 – (Speicherbereich ab 0x00B0B6B8; in `Karriere109.an3` Block 3):
+  - docs/fundstellen.md:16 – | Block 3 (Historisches, 82340 B) | `0x00B0B6B8` | – | Block 3 | `zuordnung-bildschirme.md` |
+  - docs/spielstand-bloecke.md:13 – | 006ED5E6 | Puffer | 0x00B0B6B8 | 1 |
+  - docs/spielstand-bloecke.md:160 – Bekannt: Puffer 0x00B0B6B8 (82 340 Byte) enthält die Titeltabellen der Trophäenhalle, siehe `feldkarte-verein.md`.
+  - docs/zuordnung-bildschirme.md:141 – annten Punkte sind erledigt. Block 3 (82340 B) liegt im Speicher bei `0x00B0B6B8`
+  - docs/zuordnung-bildschirme.md:142 – `mov ecx,0B0B6B8h` in `0x00460D57`); Blockoffset = Speicheradresse − `0x00B0B6B8`.
+- `0x00B1300C`
+  - docs/fundstellen.md:23 – | Elf des Tages | `0x00B1300C + Liga × 0x2C` (11 Spielernummern) | – | – | G |
+- `0x00B131C4`
+  - docs/feldkarte-verein.md:37 – achsen (2172 → 2946 …); zusätzlich als int16 in eine Verlaufstabelle (0x00B131C4) kopiert | G (Ort) |
+- `0x00B1B860`
+  - docs/feldkarte-verein.md:52 – | Meisterschaften | 0x00B1B860 | 0x101A8 | Zeile 43 |
+- `0x00B1BC98`
+  - docs/feldkarte-verein.md:53 – | Pokal | 0x00B1BC98 | 0x105E0 | Zeile 44 |
+- `0x00B1C0D0`
+  - docs/feldkarte-verein.md:54 – | Europapokale | 0x00B1C0D0 | 0x10A18 | **Summe** aus Zeile 46 und 47 |
+- `0x00B1F860`
+  - docs/spielstand-bloecke.md:12 – | 006ED5CB | Puffer | 0x00B1F860 | 1 |
+- `0x00B21ADC`
+  - docs/fundstellen.md:17 – | Saison-Archiv | `0x00B21ADC + Liga × 0x5E74 + Saison × 0x972` | – | Block 2 ab 8828 | `zuordnung-bildschirme.md` |
+  - docs/zuordnung-bildschirme.md:105 – `0x00B21ADC + Liga-Nr. × 0x5E74 + Saisons zurück × 0x972` (Liga-Nr. = 0x00677B07(Land, Liga)).
+- `0x00B5CB68`
+  - docs/spielstand-bloecke.md:11 – | 006ED5B3 | Objekt | 0x00B5CB68 (Daten ab +0x20) | aus Objekt |
+- `0x00B5CB9A`
+  - docs/befund-meldungen.md:276 – `0x00A62578 + (Nr−1) × 0x2158`, dem Merker `word [Nr×2 + 0x00B5CB9A]` und dem Zähler `word [Nr×2 + 0x01B9FFAA]` –
+  - docs/fundstellen.md:134 – cher Managersatz `0x00A62578 + (Nr−1) × 0x2158`, Merker `word [Nr×2 + 0x00B5CB9A]`, Zähler
+- `0x00B5CBCA`
+  - docs/befund-personal.md:239 – Jahr `0x00B5CBCA`, mindestens 0 (= Restjahre des Vertrags), 0x24F → +0xB3, 0x251 → +0xB6, 0x252 → +0xB7.
+- `0x00B5CBD4`
+  - docs/befund-personal.md:269 – Tageszähler `0x00B5CBD4` mod 7 = 6) rechnet nicht. Zuordnung Knopf ↔ Dialog aus gleichen Feldern (+0xED0 Verein,
+  - docs/fundstellen.md:20 – Tag `0x00B5CBDA`, Monat `0x00B5CBDC`, Jahr `0x00B5CBDE`; Tageszähler `0x00B5CBD4` (mod 7 = Wochentag) | – | Block 1 Kopf (+64 Managerjahr, +66 Saisonjahr, +68 Startjahr) | G |
+- `0x00B5CBDA`
+  - docs/befund-notenschnitt.md:219 – `0x00B5CBDA/DC/DE`), nicht den Spieltag. Die dritte Bedingung in `0x007709E8` lautet daher: älter als 33 Jahre 
+  - docs/fundstellen.md:20 – | Datum | Tag `0x00B5CBDA`, Monat `0x00B5CBDC`, Jahr `0x00B5CBDE`; Tageszähler `0x00B5CBD4` (mod 7 = Wochentag) | – | Block 1
+- `0x00B5CBDC`
+  - docs/fundstellen.md:20 – | Datum | Tag `0x00B5CBDA`, Monat `0x00B5CBDC`, Jahr `0x00B5CBDE`; Tageszähler `0x00B5CBD4` (mod 7 = Wochentag) | – | Block 1 Kopf (+64 Managerja
+  - docs/korrekturliste-meldungen.md:264 – (heutiges Datum: Wörter `0x00B5CBDE` Jahr, `0x00B5CBDC` Monat, wie in `0x0067582A`); 0 = Führerschein da. Jedes
+  - tools/asm_nacht.py:291 – # 0x00B5CBDC month, as 0x0067582A reads them). Every read checks (E - today) & 0xFF: 0..7 = still withdrawn, any
+- `0x00B5CBDE`
+  - docs/fundstellen.md:20 – | Datum | Tag `0x00B5CBDA`, Monat `0x00B5CBDC`, Jahr `0x00B5CBDE`; Tageszähler `0x00B5CBD4` (mod 7 = Wochentag) | – | Block 1 Kopf (+64 Managerjahr, +66 Saisonjahr,
+  - docs/korrekturliste-meldungen.md:264 – (heutiges Datum: Wörter `0x00B5CBDE` Jahr, `0x00B5CBDC` Monat, wie in `0x0067582A`); 0 = Führerschein da. Jedes
+  - tools/asm_nacht.py:290 –  the month of expiry E = (year * 12 + month + v) & 0xFF (today: words 0x00B5CBDE year,
+- `0x00B5CC04`
+  - docs/befund-personal.md:252 – Sie läuft nur, wenn der Schalter `0x00B5CC04` („gerade geladen“, gesetzt in `0x00678F07`) 0 ist.
+- `0x00B5CC80`
+  - docs/befund-finanzen.md:65 – redit | 7,75 % / 6,25 % | Block 1, Wort 0xF8 = 775, Wort 0xFC = 625 (`0x00B5CC80`, `0x00B5CC84`) |
+  - docs/fundstellen.md:86 – 06488CA`, Vermögen der Spiellogik `0x00621EAC`; Zinssatz / Dispozins `0x00B5CC80` / `0x00B5CC84`
+- `0x00B5CC82`
+  - docs/befund-finanzen.md:149 – Dispozinsen an (Satz `0x00B5CC82`, bis zum Dispokreditrahmen).
+- `0x00B5CC84`
+  - docs/befund-finanzen.md:65 –  / 6,25 % | Block 1, Wort 0xF8 = 775, Wort 0xFC = 625 (`0x00B5CC80`, `0x00B5CC84`) |
+  - docs/fundstellen.md:86 – gen der Spiellogik `0x00621EAC`; Zinssatz / Dispozins `0x00B5CC80` / `0x00B5CC84`
+- `0x00B5CC8C`
+  - docs/befund-finanzen.md:69 – das Byte +0x12, der Index steht in `0x00B5CC8C` + Art × 4 = Block 1 ab 0x104 (Karriere383: 1020, 1321, 1234, 1532,
+  - docs/fundstellen.md:85 – gen `0x00648947` (Wert einer Anlage `0x00647D30`, Index je Anlageart `0x00B5CC8C` = Block 1 ab 0x104),
+- `0x00B5CD1C`
+  - docs/fundstellen.md:18 – | Rekorde (Karriere) / „Für die Ewigkeit“ | `0x00B5CD1C` / `0x00AE44F8` | – | Block 1 ab 404 / Datei `alltimes.saq` | ebd. |
+  - docs/zuordnung-bildschirme.md:68 – ) vergleicht ein neues Ergebnis nacheinander mit dem Karriere-Rekord (0x00B5CD1C …, im Spielstand,
+  - docs/zuordnung-bildschirme.md:83 – | Rekorde | Block 1 ab Offset 404 (Speicher 0x00B5CD1C), 1056 B | **gleicher Aufbau wie `alltimes.saq`** (21 Einträge), aber Spieldatum | G: alle 10 sicht
+- `0x00B5DFA8`
+  - docs/befund-meldungen.md:560 – 2006, einmalig) setzt nur Bit 0x10 im Byte `0x00B5DFA8`. Von allen 31 direkten Zugriffen auf dieses Byte liest nur
+  - docs/fundstellen.md:204 – `0x005EA01B`); Verbands-Ereignisse `0x005EA5CE` (Merker-Byte `0x00B5DFA8`); Schokoladen-Frage in `0x005E6153`
+- `0x00B5DFA9`
+  - docs/befund-finanzen.md:151 – (`0x006218DF`, Satz Byte `0x00B5DFA9` in Prozent) und bei Aktiengesellschaften ein Fünftel als Dividende (höchstens
+- `0x00B620EC`
+  - docs/spielstand-bloecke.md:118 – | 006EE5AD | Puffer | 0x00B620EC | 1 |
+- `0x00B628D8`
+  - docs/spielstand-bloecke.md:86 – | 006EE112 | Puffer | 0x00B628D8 | 1 |
+- `0x00B68EA8`
+  - docs/spielstand-bloecke.md:85 – | 006EE0F7 | Puffer | 0x00B68EA8 | 1 |
+- `0x00B77338`
+  - docs/befund-personal.md:301 – `, einziger Aufrufer `0x006C4526`: holt einen Spieler aus dem Vorrat `0x00B77338`; gehört er schon einem
+  - docs/spielstand-bloecke.md:106 – | 006EE421 | Objekt | 0x00B77338 (Daten ab +0x20) | aus Objekt |
+- `0x00B9F028`
+  - docs/spielstand-bloecke.md:157 – | 006EEB85 | Objekt | 0x00B9F028 (Daten ab +0x20) | aus Objekt |
+- `0x00B9F6A8`
+  - docs/spielstand-bloecke.md:149 – | 006EEAD5 | Objekt | 0x00B9F6A8 (Daten ab +0x20) | aus Objekt |
+- `0x00B9F8F8`
+  - docs/spielstand-bloecke.md:137 – | 006EE852 | Objekt | 0x00B9F8F8 (Daten ab +0x20) | aus Objekt |
+- `0x00BA0CC8`
+  - docs/feldkarte-spieler.md:57 – - **Namenstabelle**: Die Namensindizes zeigen auf ein Objekt bei 0x00BA0CC8. In welchem Spielstandblock es liegt, ist noch nicht ermittelt.
+- `0x00BDE1A8`
+  - docs/spielstand-bloecke.md:112 – | 006EE4E0 | Objekt | 0x00BDE1A8 (Daten ab +0x20) | aus Objekt |
+- `0x00BDED80`
+  - docs/spielstand-bloecke.md:120 – | 006EE5EF | Objekt | 0x00BDED80 (Daten ab +0x20) | aus Objekt |
+- `0x00BDEE80`
+  - docs/spielstand-bloecke.md:119 – | 006EE5DC | Objekt | 0x00BDEE80 (Daten ab +0x20) | aus Objekt |
+- `0x00BE17F8`
+  - docs/befund-personal.md:50 – cher: Trainer `0x00BE3920 + Nr × 0x54` (1500 Plätze), Torwarttrainer `0x00BE17F8 + Nr × 0x54` (101 Plätze), Daten ab +0x20.
+  - docs/fundstellen.md:14 – | Trainer / Torwarttrainer | `0x00BE3920` / `0x00BE17F8 + Nr × 0x54` | 84 B | 52-B-Blöcke ab Block 1606 | `befund-personal.md` |
+- `0x00BE3920`
+  - docs/befund-personal.md:50 – Speicher: Trainer `0x00BE3920 + Nr × 0x54` (1500 Plätze), Torwarttrainer `0x00BE17F8 + Nr × 0x54` (101 Plätze), Daten ab +0x20.
+  - docs/fundstellen.md:14 – | Trainer / Torwarttrainer | `0x00BE3920` / `0x00BE17F8 + Nr × 0x54` | 84 B | 52-B-Blöcke ab Block 1606 | `befund-personal.md` |
+- `0x00C02550`
+  - docs/befund-spielstand.md:10 – - **Spieler** (0x006ED1FB): Spieler-Array bei 0x00C02550, 852 Byte (0x354) je Spieler, 17006 Einträge.
+  - docs/feldkarte-spieler.md:5 – - Umkopierroutine (0x0068C903): Import → Spielerobjekt (Array bei 0x00C02550, 852 Byte Abstand).
+  - docs/fundstellen.md:12 – | Spieler (statisch) | `0x00C02550 + Nr × 0x354` | 852 B | 17 Blöcke à 852 000 B, je Spieler 820 B ab Objekt +0x20 | **Spielstand-Offs
+  - docs/spielstand-bloecke.md:60 – | 006EDC42 | Spieler | 0x00C02550 (17 × 1000 Spieler) | 852000 je Block |
+- `0x00C02704`
+  - docs/befund-meldungen.md:573 – ieses Bit wird nie gesetzt: Von den 46 Schreibstellen des Flagworts (`0x00C02704 + Nr × 0x354`)
+  - docs/fundstellen.md:210 – A9B` prüfen); 0x1D6 Zahl der Kinder (`0x006FFD8A`); Flagwort 0x194 = `0x00C02704 + Nr × 0x354` (Bit 2
+- `0x00C027D0`
+  - docs/korrekturliste-meldungen.md:269 – - **K32 / K38, nachgelesen 18.11.2026:** Byte Spielstand 0x260 (`0x00C027D0 + Nr × 0x354`), alle Zugriffe: Bits 0–1
+- `0x00C027DE`
+  - docs/korrekturliste-meldungen.md:255 – K30 / K31, nachgelesen 18.11.2026:** Zähler = Byte Spielstand 0x26E (`0x00C027DE + Nr × 0x354`); einziger Schreiber
+  - tools/asm_nacht.py:287 –  driving-licence counter (byte savegame 0x26E = static record +0x28E, 0x00C027DE + nr * 0x354). The setter/reader
+- `0x00C02869`
+  - docs/befund-notenschnitt.md:8 – F9, 46 Bytes = ein Byte je Spieltag** der laufenden Saison (Speicher `0x00C02869 + Nr × 0x354 + Spieltag`,
+  - docs/befund-notenschnitt.md:79 – Vollständig durchgesehen: alle Zugriffe auf die Spieltagsbytes (`0x00C02869`, `+0x319`), auf die Note des letzten Spiels
+  - docs/fundstellen.md:12 – b Objekt +0x20 | **Spielstand-Offset = Objekt-Offset − 0x20**, z. B. `0x00C02869` = Offset 0x2F9 |
+- `0x01A72FF8`
+  - docs/fundstellen.md:13 – | Vereine (statisch) | `0x01A72FF8 + Index × 0x990` | 2448 B | 2416-B-Blöcke ab Block 297 | Offset X ↔ `0x01A73018 + X`; erster Index 
+- `0x01A73018`
+  - docs/fundstellen.md:13 –  + Index × 0x990` | 2448 B | 2416-B-Blöcke ab Block 297 | Offset X ↔ `0x01A73018 + X`; erster Index je Land `word [Land×2 + 0x00AE5EF0]`, Anzahl `[Land×2 + 0x00AE5E06]`; Land gülti
+- `0x01A73884`
+  - docs/befund-zaehler.md:19 – je **ein Byte**. Speicher `0x01A73884` / `0x01A7388A` + Verein × 0x990.
+- `0x01A7388A`
+  - docs/befund-zaehler.md:19 – je **ein Byte**. Speicher `0x01A73884` / `0x01A7388A` + Verein × 0x990.
+- `0x01A7391C`
+  - docs/befund-finanzen.md:102 – sellschaft: Bit 0 des Bytes Spielstand 0x904 (`0x0069D71D`, statisch `0x01A7391C`).
+- `0x01B9FFAA`
+  - docs/befund-meldungen.md:276 – `, dem Merker `word [Nr×2 + 0x00B5CB9A]` und dem Zähler `word [Nr×2 + 0x01B9FFAA]` –
+  - docs/fundstellen.md:135 – `word [Nr×2 + 0x01B9FFAA]` (benutzt von `0x006A426B`).
+- `0x01B9FFC8`
+  - docs/spielstand-bloecke.md:135 – | 006EE805 | Puffer | 0x01B9FFC8 | 1 |
+- `0x01BA0438`
+  - docs/spielstand-bloecke.md:116 – | 006EE582 | Objekt | 0x01BA0438 (Daten ab +0x20) | aus Objekt |
+- `0x01BA07C0`
+  - docs/spielstand-bloecke.md:130 – | 006EE746 | Objekt | 0x01BA07C0 (Daten ab +0x20) | aus Objekt |
+- `0x01BA4B68`
+  - docs/spielstand-bloecke.md:10 – | 006ED593 | Objekt | 0x01BA4B68 (Daten ab +0x20) | aus Objekt |
+- `0x01BA7488`
+  - docs/spielstand-bloecke.md:99 – | 006EE33A | Objekt | 0x01BA7488 (Daten ab +0x20) | aus Objekt |
+- `0x01BA9F38`
+  - docs/spielstand-bloecke.md:124 – | 006EE66F | Puffer | 0x01BA9F38 | 1 |
+- `0x01BAA1E0`
+  - docs/spielstand-bloecke.md:134 – | 006EE7ED | Objekt | 0x01BAA1E0 (Daten ab +0x20) | aus Objekt |
+- `0x01BAB498`
+  - docs/spielstand-bloecke.md:103 – | 006EE3A1 | Puffer | 0x01BAB498 | 1 |
+- `0x01BAB640`
+  - docs/spielstand-bloecke.md:102 – | 006EE386 | Puffer | 0x01BAB640 | 1 |
+- `0x01BAF6F0`
+  - docs/spielstand-bloecke.md:150 – | 006EEAEB | Objekt | 0x01BAF6F0 (Daten ab +0x20) | aus Objekt |
+- `0x01BDD7D8`
+  - docs/fundstellen.md:117 – `0x0065803C`; Spielbericht-Sätze `0x01BDD7D8 + n × 0x238`.
+- `0x01BE0B18`
+  - docs/befund-personal.md:74 – Adresse `0x01BE0B18`. Die Routine endet deshalb immer sofort, **nie kommt jemand auf eine Warteliste**.
+  - tools/a3patch.py:62 – # without a special name it returns the fixed address 0x01BE0B18. Both lists stayed empty in all savegames.
+- `0x01BE0B40`
+  - docs/befund-personal.md:285 – - Saisonwechsel: `0x0070F7CF` (Liste der Vereinbarungen, Objekt `0x01BE0B40`) sucht den Spieler im **Kader** des
+- `0x01C1E4C8`
+  - docs/spielstand-bloecke.md:158 – | 006EEB9B | Objekt | 0x01C1E4C8 (Daten ab +0x20) | aus Objekt |
+- `0x01C44370`
+  - docs/spielstand-bloecke.md:121 – | 006EE605 | Objekt | 0x01C44370 (Daten ab +0x20) | aus Objekt |
+- `0x01C44700`
+  - docs/spielstand-bloecke.md:154 – | 006EEB43 | Objekt | 0x01C44700 (Daten ab +0x20) | aus Objekt |
+- `0x01C449F8`
+  - docs/spielstand-bloecke.md:153 – | 006EEB2D | Objekt | 0x01C449F8 (Daten ab +0x20) | aus Objekt |
+- `0x01C45838`
+  - docs/spielstand-bloecke.md:152 – | 006EEB17 | Objekt | 0x01C45838 (Daten ab +0x20) | aus Objekt |
+- `0x01C46F48`
+  - docs/spielstand-bloecke.md:151 – | 006EEB01 | Objekt | 0x01C46F48 (Daten ab +0x20) | aus Objekt |
+- `0x01C49278`
+  - docs/spielstand-bloecke.md:108 – | 006EE480 | Objekt | 0x01C49278 (Daten ab +0x20) | aus Objekt |
+- `0x01C4BE78`
+  - docs/spielstand-bloecke.md:101 – | 006EE36E | Objekt | 0x01C4BE78 (Daten ab +0x20) | aus Objekt |
+- `0x01C51940`
+  - docs/spielstand-bloecke.md:100 – | 006EE358 | Objekt | 0x01C51940 (Daten ab +0x20) | aus Objekt |
+- `0x01C53A48`
+  - docs/spielstand-bloecke.md:126 – | 006EE69E | Objekt | 0x01C53A48 (Daten ab +0x20) | aus Objekt |
+- `0x01C53B88`
+  - docs/spielstand-bloecke.md:125 – | 006EE688 | Objekt | 0x01C53B88 (Daten ab +0x20) | aus Objekt |
+- `0x01C53CC8`
+  - docs/spielstand-bloecke.md:136 – | 006EE831 | Puffer | 0x01C53CC8 | 1 |
+- `0x01C53D98`
+  - docs/spielstand-bloecke.md:111 – | 006EE4CA | Objekt | 0x01C53D98 (Daten ab +0x20) | aus Objekt |
+- `0x01C53EE8`
+  - docs/spielstand-bloecke.md:110 – | 006EE4B4 | Objekt | 0x01C53EE8 (Daten ab +0x20) | aus Objekt |
+- `0x01C54000`
+  - docs/spielstand-bloecke.md:109 – | 006EE49E | Objekt | 0x01C54000 (Daten ab +0x20) | aus Objekt |
+- `0x01C57B98`
+  - docs/korrekturliste-meldungen.md:244 – Belege: Das Feld der Verletzungsnamen `0x01C57B98` hat 95 Plätze (`0x00766945`), gefüllt werden die Arten 0–93
+- `0x01C5C468`
+  - docs/spielstand-bloecke.md:105 – | 006EE40B | Objekt | 0x01C5C468 (Daten ab +0x20) | aus Objekt |
+- `0x01C645D8`
+  - docs/spielstand-bloecke.md:141 – | 006EE8EA | Objekt | 0x01C645D8 (Daten ab +0x20) | aus Objekt |
+- `0x01C65E88`
+  - docs/spielstand-bloecke.md:140 – | 006EE8D4 | Objekt | 0x01C65E88 (Daten ab +0x20) | aus Objekt |
+- `0x01C68450`
+  - docs/spielstand-bloecke.md:142 – | 006EE900 | Objekt | 0x01C68450 (Daten ab +0x20) | aus Objekt |
+- `0x01C6AC60`
+  - docs/fundstellen.md:21 – | Zeitung (Schlagzeilen) | `0x01C6AC60`, drei Plätze ab +0x24 je 0x474 B | – | – | Abschnitt 6 |
+- `0x01C6AC84`
+  - docs/befund-meldungen.md:234 – nd/Verein (→ +4/+6), Werte. Die oberste Schlagzeile des Tages (Platz `0x01C6AC84`) wendet
+  - docs/fundstellen.md:129 –  Plätze, Rang entscheidet), Anwenden der obersten Schlagzeile (Platz `0x01C6AC84`)
+  - docs/fundstellen.md:164 – Schlagzeile des Tages: Satz `0x01C6AC84`, Werte liest nur `0x0078A0F5`, Anzeige `0x005D8624` nur die Textpuffer.
+  - docs/korrekturliste-meldungen.md:142 – - **K04:** Die Werte im Satz der obersten Schlagzeile (`0x01C6AC84`) liest nur `0x0078A0F5`; die Anzeige
+- `0x01C6BF98`
+  - docs/befund-personal.md:219 – (Textlader 0x007B7CBA, Objekt 0x01C6BF98). Am schnellsten mit einem Beispiel: Spielstand direkt nach so einer Meldung + Name des Spielers.
+- `0x01C6BFA4`
+  - docs/fundstellen.md:22 – | Texttabellen | Oberfläche: Objekt bei `0x01C6BFA4`; Ereignisse: `0x00A2FAE8` (+4 + Nr×4) | – | Dateien, Abschnitt 8 | G |

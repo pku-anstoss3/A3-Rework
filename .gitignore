@@ -1,0 +1,16 @@
+# Spieldateien, daraus gebaute Dateien und Analyse-Ausgaben gehören nicht ins Repository
+/original/
+/build/
+/downloads/
+/archiv/
+/analyse/
+/docs/editor-hilfe/
+# Persönliches: Spielstände, die daraus erzeugte Statistikseite, lokale Namenszuordnung
+/saves/
+/ansicht/spielstand-*.html
+/tools/lokal.json
+# Erzeugtes
+/patch-*/*.zip
+__pycache__/
+*.pyc
+/.claude/
