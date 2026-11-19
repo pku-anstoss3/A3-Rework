@@ -13,6 +13,33 @@ geschätzte Häufigkeit steht bei den Einträgen unter „Details ...“. Diese 
 werden; die optischen Änderungen (Anzeigen, Statistiken, Texte) werden immer installiert.
 
 
+Version 1.47 (19.11.2026)
+=========================
+
+Spieltag (Berechnung, abwählbar)
+--------------------------------
+  * Spielweise aus dem selbsttätig geöffneten Wechselfenster wurde nicht übernommen
+      Fehler:     Verlässt ein Spieler während einer Partie das Feld, zum Beispiel nach einem
+                  Platzverweis oder einer Verletzung, öffnet das Spiel das Fenster für
+                  Auswechslungen und Taktik selbsttätig. Eine dort geänderte Spielweise wurde in die
+                  Taktik der Partie eingetragen, nicht aber in den Wert des Managers, aus dem das
+                  Spiel die Spielweise während der Partie fortlaufend übernimmt und den auch der
+                  Regler des Spielbildschirms verwendet. Nach dem Schließen des Fensters galt
+                  deshalb wieder die vorherige Spielweise. Wird das Fenster über den Spielbildschirm
+                  aufgerufen, trägt das Programm beide Werte ein.
+      Korrektur:  Nach dem selbsttätig geöffneten Fenster wird die Spielweise wie nach dem
+                  aufgerufenen Fenster in beide Werte eingetragen.
+      Auswirkung: Betrifft nur Mannschaften menschlicher Manager und nur die Spielweise; die übrigen
+                  Einstellungen des Fensters wurden bereits übernommen. Die Korrektur wirkt ab der
+                  nächsten Partie.
+
+Allgemein
+---------
+  * Versionsangabe 1.47
+      Korrektur:  Die Versionsangabe des Spiels lautet 1.47.
+      Auswirkung: An der Versionsangabe ist die installierte Fassung des Patches erkennbar.
+
+
 Version 1.46 (18.11.2026)
 =========================
 
@@ -33,12 +60,6 @@ Jugendspieler (Berechnung, abwählbar)
                   Installation abgeworben werden. Bereits abgeworbene Spieler in bestehenden
                   Spielständen behalten die Restlaufzeit von 0 Jahren. Die Altersgrenze der Jugend
                   und das Gehalt sind unverändert.
-
-Allgemein
----------
-  * Versionsangabe 1.46
-      Korrektur:  Die Versionsangabe des Spiels lautet 1.46.
-      Auswirkung: An der Versionsangabe ist die installierte Fassung des Patches erkennbar.
 
 
 Version 1.45 (18.11.2026)

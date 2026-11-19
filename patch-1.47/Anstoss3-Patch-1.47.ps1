@@ -1,13 +1,13 @@
-﻿# ANSTOSS 3 - Inoffizieller Patch 1.46
+﻿# ANSTOSS 3 - Inoffizieller Patch 1.47
 # Erzeugt von tools/patch_bauen.py - nicht von Hand ändern.
 # Enthält keine Spieldateien: Es werden nur einzelne Stellen der vorhandenen Dateien geändert (mit Prüfung des alten Inhalts).
-#   Fenster:       Anstoss3-Patch-1.46.cmd starten
+#   Fenster:       Anstoss3-Patch-1.47.cmd starten
 #   ohne Fenster:  -Still -Ordner "<Installationsordner>" [-OhneSpiellogik] [-Ddraw] [-Entfernen]
 #   Prüfhilfe:     -Probe "<bild.png>" baut das Fenster unsichtbar, meldet den erkannten Zustand und ändert nichts;
 #                  mit -ProbeEintrag <Nr> wird stattdessen der Details-Dialog dieses Eintrags (ab 0) als Bild gespeichert
 param([string]$Ordner = '', [switch]$Still, [switch]$Ddraw, [switch]$OhneSpiellogik, [switch]$Entfernen, [string]$Probe = '', [int]$ProbeEintrag = -1)
 $ErrorActionPreference = 'Stop'
-$Version = '1.46'
+$Version = '1.47'
 $GogId = '1886141726'
 
 # Gruppe einer Stelle: B = optische Änderungen (immer), L = Berechnungskorrekturen und -änderungen (abwählbar).
@@ -18,8 +18,8 @@ $Exe = @{
     Gruppen = @('B', 'L')
     Summen = @{
         'original/original' = '89B88EF522574098014E9F1E68448593E2A992A8EBD0318760E552C3B15F6B2A'
-        'neu/original' = 'EDCC51AB8FAA5D01A55A544E84C99F7C8420B408D61C5B4C4BCBB14B1ECAB0E5'
-        'neu/neu' = '96DF116FAB0E12427837CD165238AA2ECBE7983E87B3F5459AB53CB632812644'
+        'neu/original' = '6156CC8A7AE0428508EDE3F58106ECFCC89C124C36C96B5D4E3CB2098575A187'
+        'neu/neu' = 'BFAC9FB837A0A9A0FE9C0386C763875EEBC1F257A40EB7332C671F96BF2593F5'
     }
     Stellen = @(
         @{ Name = 'beste-mannschaft'; Gruppe = 'B'; Offset = 0x3266FA; Alt = @('66C74410260000'); Neu = '66C744101C0000' }
@@ -49,7 +49,9 @@ $Exe = @{
         @{ Name = 'konto-anlagen'; Gruppe = 'L'; Offset = 0x21FD97; Alt = @('558BEC5156578B450883C0188945FC8B4D088B81C0000000998B4D088B3103F08B790413FA8B55FC528B450850E8B8FEFFFF83C40803F013FA8B4D0851E86E8B020083C4042BF01BFA8B550852E8E18A020083C40403F013FA8BC68BD75F5E8BE55DC3'); Neu = '5657538B5C24108B83C0000000998B338B7B0403F013FA8D43185053E8C9FEFFFF83C40803F013FA8D8BC80100006A0658F641130174052B311B790483C1184875EF53E8EB8A02005903C613D75B5F5EC3CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC' }
         @{ Name = 'konto-anlagen'; Gruppe = 'L'; Offset = 0x81426; Alt = @('8B85E0FDFFFF8B88041400008B95E0FDFFFF8B82041400008B80C0000000998B3103F08B790413FA8B8DE0FDFFFF8B910414000083C218528B85E0FDFFFF8B880414000051E811E8190083C40803F013FA'); Neu = '8B85E0FDFFFFFFB004140000E860E91900598BF08BFA8B85E0FDFFFFFFB004140000E8FA741C005903F013FA8B85E0FDFFFFFFB004140000E867741C00592BF01BFA909090909090909090909090909090' }
         @{ Name = 'jugend-abwerben-vertrag'; Gruppe = 'L'; Offset = 0xD779A; Alt = @('8B9578F3FFFF52E82E04230083C404'); Neu = 'C681940000000AE8F6CA2200909090' }
-        @{ Name = 'versionsanzeige'; Gruppe = 'B'; Offset = 0x482378; Alt = @('25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34312F257300', '25732056657273696F6E20312E34322F257300', '25732056657273696F6E20312E34332F257300', '25732056657273696F6E20312E34342F257300', '25732056657273696F6E20312E34352F257300'); AltName = @('1.40', '1.41', '1.42', '1.43', '1.44', '1.45'); Neu = '25732056657273696F6E20312E34362F257300' }
+        @{ Name = 'spielweise-ereignisfenster'; Gruppe = 'L'; Offset = 0x12FBB; Alt = @('68FFFF00008B8DD0FDFFFF668B5102528B85D0FDFFFF660FB60851E841AD220083C40C8985CCFDFFFF8B95D0FDFFFF83C25C528B85CCFDFFFF508B8DD0FDFFFF51E8CC1A000083C40C8B95CCFDFFFF528B85D0FDFFFF83C05C50E8063C2E0083C4088B8DCCFDFFFF518B95D0FDFFFF52E8397E2E0083C4088B85CCFDFFFF50E857AF220083C404'); Neu = '56578BB5D0FDFFFF68FFFF0000668B4E0251660FB64E0051E844AD220083C40C8BF88D465C505756E8E51A000083C40C8D465C5750E82B3C2E0083C4085756E86A7E2E0083C4080FBF8674040000C1F80883E00F486BC0388A968C0000008890D8D6BD0157E871AF220083C4045F5EEB1690909090909090909090909090909090909090909090' }
+        @{ Name = 'spielweise-ereignisfenster'; Gruppe = 'L'; Offset = 0x1305A; Alt = @('68FFFF00008B85D0FDFFFF668B4806518B95D0FDFFFF660FB6420450E8A1AC220083C40C8985C8FDFFFF8B8DD0FDFFFF81C150020000518B95C8FDFFFF528B85D0FDFFFF50E8291A000083C40C8B8DC8FDFFFF518B95D0FDFFFF81C25002000052E8603B2E0083C4088B85C8FDFFFF508B8DD0FDFFFF51E8937D2E0083C4088B95C8FDFFFF52E8B1AE220083C404'); Neu = '56578BB5D0FDFFFF68FFFF0000668B4E0651660FB64E0451E8A5AC220083C40C8BF88D8650020000505756E8431A000083C40C8D86500200005750E8863B2E0083C4085756E8C57D2E0083C4080FBF8674040000C1F80C83E00F486BC0388A96800200008890D8D6BD0157E8CCAE220083C4045F5EEB179090909090909090909090909090909090909090909090' }
+        @{ Name = 'versionsanzeige'; Gruppe = 'B'; Offset = 0x482378; Alt = @('25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34312F257300', '25732056657273696F6E20312E34322F257300', '25732056657273696F6E20312E34332F257300', '25732056657273696F6E20312E34342F257300', '25732056657273696F6E20312E34352F257300', '25732056657273696F6E20312E34362F257300'); AltName = @('1.40', '1.41', '1.42', '1.43', '1.44', '1.45', '1.46'); Neu = '25732056657273696F6E20312E34372F257300' }
         @{ Name = 'hochzeit-platzt'; Gruppe = 'L'; Offset = 0x1FA687; Alt = @('1D0FBF45B68B4D088B9481500B0000528B450850E8F4FCFFFF83C408EB036633C0'); Neu = '1E52E882011900590FBF4445B88B4D08FFB481500B000051E8F0FCFFFFEB0233C0' }
         @{ Name = 'frauen-namen-1363'; Gruppe = 'B'; Offset = 0x1FF03A; Alt = @('6A006A008D85E8FEFFFF508D4D84518B4DF0E8FCFA0F00508B55F85268530500006A608B450850E80021000083C42066B80100E9400D0000'); Neu = '6A008B4DF0E8FB261000508B4DF8E8F2261000508D4D84518B4DF0E8F3FA0F0050FF75F868530500006A60FF7508E8F920000083C4209090' }
         @{ Name = 'zeitung-1880'; Gruppe = 'B'; Offset = 0x1F4799; Alt = @('6801000040'); Neu = '6801000000' }
@@ -250,6 +252,11 @@ $Eintraege = @(
        Fehler = 'Wird ein Jugendspieler ohne Vertrag über die Liste der vertragslosen Jugendspieler von einem anderen Verein in die eigene Jugend geholt, trug das Programm das Gehalt ein, nicht aber die Laufzeit des Jugendvertrags. Der Spieler stand mit einer Restlaufzeit von 0 Jahren in der Jugend. An den beiden vergleichbaren Stellen des Programms, darunter der Jugendvertrag im eigenen Jugendbereich, werden zusammen mit dem Gehalt zehn Jahre eingetragen. Ein Spieler ohne Restlaufzeit gilt im Profikader als abwesend: In der vierwöchigen Probezeit wurde er mit dem Symbol »abwesend« angezeigt und war nicht einsetzbar.'
        Korrektur = 'Beim Abwerben wird wie an den beiden anderen Stellen eine Laufzeit von zehn Jahren eingetragen.'
        Auswirkung = 'Betrifft nur Vereine menschlicher Manager und nur Jugendspieler, die nach der Installation abgeworben werden. Bereits abgeworbene Spieler in bestehenden Spielständen behalten die Restlaufzeit von 0 Jahren. Die Altersgrenze der Jugend und das Gehalt sind unverändert.'
+       Haeufigkeit = '' }
+    @{ Bereich = 'Spieltag'; Art = 'Berechnung (abwählbar)'; Seit = '1.47'; Titel = 'Spielweise aus dem selbsttätig geöffneten Wechselfenster wurde nicht übernommen'
+       Fehler = 'Verlässt ein Spieler während einer Partie das Feld, zum Beispiel nach einem Platzverweis oder einer Verletzung, öffnet das Spiel das Fenster für Auswechslungen und Taktik selbsttätig. Eine dort geänderte Spielweise wurde in die Taktik der Partie eingetragen, nicht aber in den Wert des Managers, aus dem das Spiel die Spielweise während der Partie fortlaufend übernimmt und den auch der Regler des Spielbildschirms verwendet. Nach dem Schließen des Fensters galt deshalb wieder die vorherige Spielweise. Wird das Fenster über den Spielbildschirm aufgerufen, trägt das Programm beide Werte ein.'
+       Korrektur = 'Nach dem selbsttätig geöffneten Fenster wird die Spielweise wie nach dem aufgerufenen Fenster in beide Werte eingetragen.'
+       Auswirkung = 'Betrifft nur Mannschaften menschlicher Manager und nur die Spielweise; die übrigen Einstellungen des Fensters wurden bereits übernommen. Die Korrektur wirkt ab der nächsten Partie.'
        Haeufigkeit = '' }
     @{ Bereich = 'Fans und Presse'; Art = 'Berechnung (abwählbar)'; Seit = '1.43'; Titel = 'Fan-Status »verhasst«: Einsätze ohne Note zählten mit'
        Fehler = 'Bei der Prüfung des Notenschnitts der letzten zehn Spieltage zählten Einsätze ohne Note als Einsätze mit der Note 0. Der Schnitt fiel dadurch zu gut aus, und die verlangte Mindestzahl von Einsätzen wurde auch durch Einsätze ohne Note erreicht.'
@@ -486,9 +493,9 @@ $Eintraege = @(
        Korrektur = 'Die Bedingung steht an der richtigen Stelle.'
        Auswirkung = 'Junge Stammspieler unter 20 mit Spielervermittler erhalten diesen Hinweis statt der Forderung nach einer Ausstiegsklausel.'
        Haeufigkeit = 'Bei jeder Vertragsverhandlung mit einem Spielervermittler, wenn der Spieler jünger als 20 ist und mehr als 10 Einsätze in der Saison hat.' }
-    @{ Bereich = 'Allgemein'; Art = 'allgemein'; Seit = '1.46'; Titel = 'Versionsangabe 1.46'
+    @{ Bereich = 'Allgemein'; Art = 'allgemein'; Seit = '1.47'; Titel = 'Versionsangabe 1.47'
        Fehler = ''
-       Korrektur = 'Die Versionsangabe des Spiels lautet 1.46.'
+       Korrektur = 'Die Versionsangabe des Spiels lautet 1.47.'
        Auswirkung = 'An der Versionsangabe ist die installierte Fassung des Patches erkennbar.'
        Haeufigkeit = '' }
     @{ Bereich = 'Darstellung'; Art = 'optional'; Seit = '1.41'; Titel = 'Eingabeverzögerung nach Mausklicks (optional, nur GOG-Ausgabe)'

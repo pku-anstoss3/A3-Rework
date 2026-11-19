@@ -242,6 +242,43 @@ Seite „Spielplan“ `0x0044EDBA` (Text 4747) mit Spieltags-Element `0x006E0649
 - Jugendspieler „4 Wochen testen“: Abfrage Text 4302 bei `0x004D888B` (nur an einem bestimmten Wochentag, `0x004D87E5`),
   Setzen `0x007069EB`, Ende `0x00706A45`; Haus-Symbol = Text 5181 „abwesend“, Legende `0x0050A5B2`.
   Die Ursache des Jugendspieler-Fehlers ist **nicht** gefunden.
+- **Wechsel-/Taktikfenster im laufenden Spiel (19.11.2026, nur gelesen):**
+  - Taktikfenster: Klasse ab `0x004BFC69` (Abbau `0x004C2090`), Aufbau/Neuladen `0x004C059D`, Steuerelemente in den
+    Arbeitssatz schreiben `0x004C1798` (Spielweise = Steuerelement +0x1C7C → Arbeitssatz +0x40; weitere +0x41, +0x42,
+    Wort +0x3E), Klick Spielweise `0x004C1C87` (Kontroll-Nr. 3737, Textnummern-Tabelle `0x0088AC08`). Die gleich
+    gebaute Klasse ab `0x0058A9E5` ist das Taktikfenster außerhalb des Spiels (schreibt Verein +0xA8, +0xA9, +0xAA,
+    Wort +0xAC, `0x0058C6F5`). Wechselfenster: Klasse ab `0x004B8875`, Aufbau `0x004B98AD`.
+  - Arbeitssatz: laden `0x006495B1` (Ziel +0x18 → Arbeitssatz +0x10, 500 Bytes), zurückschreiben `0x0064951F`.
+    Eintrag je Mannschaft 0x20C Bytes ab `0x00B5E188` (Gruppe 0x858 ab `0x00B5E160`, Anzahl `0x00B5E180`): füllen
+    `0x0064975D` (aus Partie +0x5C Heim / +0x250 Gast), zurück in die Partie `0x006497F8`. Partie = 0x498 Bytes ab
+    `0x01BAF714`; Wort +0x474: Bit 0 Heim menschlich, Bit 1 Gast menschlich, Bits 8–11 / 12–15 Managernummer.
+    Spielweise im Taktikblock +0x30 (Partie +0x8C Heim, +0x280 Gast).
+  - Fenster öffnen: Schleife `0x0064A816` (Zustand 100 Wechselfenster `0x0064A68A`, 200 Taktikfenster `0x0064A750`),
+    Aufträge 181 (`0x00412B4D`) und 182 (`0x0064AB09`) im Verteiler `0x006AA226`.
+  - Manager-Satz im Spiel: 0x38 Bytes je Manager ab `0x01BDD6B8`, Spielweise Byte +0x20 (`0x01BDD6D8`), Fenster
+    angefordert dword +0x28; lesen `0x006FB730`, schreiben `0x006FB811`. Die Spielschleife kopiert daraus laufend die
+    Spielweise in den Taktikblock (`0x006F4744` → `0x006FB8F5`, nur dieser eine Wert). Regler auf dem Spielbildschirm
+    `0x00543077` / `0x00543178`, Knopf „Fenster anfordern“ `0x00543279` / `0x005432CA`.
+  - Drei Wege zum Fenster: `0x004123D1` (im Spiel, alle menschlichen Mannschaften; „Fall 2“ der Spielschleife bei
+    `0x006F1B48` und `0x006F22F6`) und `0x0064987A` (u. a. `0x006F1C08`) schreiben nach dem Fenster die Spielweise in
+    den Manager-Satz (`0x0041289F`, `0x00412986`, `0x0064A5AC`, `0x0064A62B`). **`0x00412CF2`** (Fenster nach einem
+    Ereignis, aufgerufen aus `0x00413115`, wenn Partie +0x240 Heim / +0x434 Gast gesetzt ist) schreibt nur den
+    Taktikblock zurück – **der Schritt in den Manager-Satz fehlt, die Spielweise fällt beim nächsten Durchlauf auf
+    den alten Wert zurück (G am Code; mit der Korrektur in 1.47 vom Nutzer im Spiel bestätigt, 19.11.2026).**
+  - Merker +0x240 / +0x434 setzt `0x004131B0`; Aufrufer `0x0065A9BD`, `0x0065AE69`, `0x0065B56A`, `0x0065B860`,
+    `0x0065BC8E`, `0x0065C349`, `0x0065CA8D`, `0x0065CCED`, `0x0073DA99`, `0x0073DBBF`. Ganz gelesen sind `0x0065A6B0`
+    (setzt ein Positionsbit in Partie +0x112; V: Platzverweis) und `0x0065C8B1` (nimmt den Spieler aus der
+    Aufstellung, Bit in +0x112 nur bei erschöpften Wechseln; V: Verletzung). Die sechs weiteren Routinen
+    (`0x0065AB3A`, `0x0065B2BF`, `0x0065B59E`, `0x0065B894`, `0x0065BF36`, `0x0065CB2C`) sind nur auf ihre Schreibstellen
+    durchgesehen: alle leeren den Platz in der Aufstellung (Verein +0xA9A) und setzen das Positionsbit (+0x112 Heim /
+    +0x306 Gast); `0x0065CB2C` ist das Gast-Gegenstück zu `0x0065C8B1`, die beiden Stellen in `0x0073AE43` rufen es
+    direkt davor auf.
+  - Korrektur `spielweise-ereignisfenster` in `tools/a3patch.py` (19.11.2026, Teil von Installer 1.47): Blöcke `0x00412FBB`–`0x00413041` und
+    `0x0041305A`–`0x004130E7` neu geschrieben, zusätzlich Spielweise (Partie +0x8C / +0x280) → `0x01BDD6D8`. Nur
+    statisch geprüft.
+  - Nebenbefund (V): In `0x004123D1` und `0x0064987A` steht das Schreiben der Spielweise vor dem Sichern des
+    Datenblocks (`0x007CFB99`), der Abgleich `0x007CFBFB` findet dann keinen Unterschied – im Netzwerkspiel käme die
+    Änderung vermutlich nicht beim Mitspieler an. Ohne Netzwerk (`0x01CB8BE3` = 0) tun diese Routinen nichts.
 
 ## 7. Historisches, Trainer, Auf-/Abstieg, Personal (bereits ausgeliefert)
 Nur die Einstiegspunkte; Rest in den Befunden.

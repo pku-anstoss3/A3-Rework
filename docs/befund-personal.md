@@ -209,6 +209,11 @@ Torwarttrainern je Saison). Nachweis nach einem Saisonwechsel direkt im Spielsta
 
 ## Nebenbefund
 Im Spielstand 383 stehen rund 60 Feldspieler im Alter von 102 bis 123 Jahren in Kadern: Es gibt Spieler, die nie aufhören (nicht untersucht).
+**Berichtigt 19.11.2026: sehr wahrscheinlich kein Fehler.** Nachgesehen am Stand `vertrag-neu` (2114): Die Treffer ab 100 Jahren
+haben ein Vertragsende zwischen 2025 und 2030 (z. B. Nr. 2172, 2264, 10671), es sind also alte, nie wiederverwendete
+Spielersätze. Gefunden wurden sie über die 40 Worte ab 0x1D2 eines Blocks, ohne die Kaderanzahl zu beachten und auch in
+Blöcken, die keine Vereine sind (Wettbewerbe); die Liste enthält hinter der Anzahl Reste. Bei den Vereinen der beiden
+Manager steht keiner. Nicht mit der echten Kaderanzahl gegengeprüft.
 
 ## Offen
 - Entscheidung des Nutzers zu den drei Punkten oben; danach Patches bauen und über einen Saisonwechsel prüfen.

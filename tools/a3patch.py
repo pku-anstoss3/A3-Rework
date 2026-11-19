@@ -18,7 +18,7 @@ TARGETS = {
             # Format string "%s Version 1.40/%s" (VA 0x00882378, used once at 0x004C5ADB to build a window caption
             # together with Simuversion() of the simulation DLL); the only "1.40" in the file. Shows the patch version.
             # Earlier patches wrote "1.41" ... "1.45" here (tools/patch_bauen.py accepts them as former states).
-            (0x00482378, '25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34362F257300'),
+            (0x00482378, '25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34372F257300'),
         ],
         'beste-mannschaft-anzeige': [
             # Screen Historisches/Beste Mannschaft (0x004665DD): rows = current year - start year, but from the 21st
@@ -865,6 +865,101 @@ TARGETS = {
              '668B4816'          # mov cx,[eax+16h]    promotions
              '66894DFA'          # mov [ebp-6],cx
              + '90' * 19),
+        ],
+        'spielweise-ereignisfenster': [
+            # Entered on 19.11.2026 after the user's go-ahead, shipped with 1.47 (group "Berechnungskorrekturen");
+            # confirmed in the game by the user on 19.11.2026 (only the style of play had been lost).
+            # See docs/fundstellen.md section 6 ("Wechsel-/Taktikfenster im laufenden Spiel"). The window that opens
+            # by itself during a match (a player leaves the pitch: sending-off, injury) is handled by 0x00412CF2.
+            # After the window it writes the tactics block back into the match record, but not the style of play
+            # into the manager record 0x01BDD6B8 + (nr-1)*0x38, byte +0x20 - which 0x004123D1 (window requested by
+            # the manager) does at 0x0041289F / 0x00412986. The match loop (0x006F4744 -> 0x006FB8F5) copies that
+            # byte into the tactics block on every pass, so the style chosen in the window is replaced by the old
+            # one. Both blocks (home 0x00412FBB, away 0x0041305A) are rewritten in place with the same five calls
+            # and arguments, kept in esi/edi (saved and restored) instead of reloaded from the stack, plus the
+            # missing write; the rest of each block is skipped. No jump targets inside the blocks; the two locals
+            # [ebp-234h] / [ebp-238h] are not read anywhere else. Without the network notification 0x007CFB99 /
+            # 0x007CFBFB that 0x004123D1 issues afterwards (both return at once without a network game).
+            (0x00012FBB,
+             '68FFFF00008B8DD0FDFFFF668B5102528B85D0FDFFFF660FB60851E841AD2200'
+             '83C40C8985CCFDFFFF8B95D0FDFFFF83C25C528B85CCFDFFFF508B8DD0FDFFFF'
+             '51E8CC1A000083C40C8B95CCFDFFFF528B85D0FDFFFF83C05C50E8063C2E0083'
+             'C4088B8DCCFDFFFF518B95D0FDFFFF52E8397E2E0083C4088B85CCFDFFFF50E8'
+             '57AF220083C404',
+             '56'                # push esi
+             '57'                # push edi
+             '8BB5D0FDFFFF'      # mov esi,[ebp-230h]         match record
+             '68FFFF0000'        # push 0FFFFh
+             '668B4E0251'        # mov cx,[esi+2] / push ecx  home club
+             '660FB64E0051'      # movzx cx,byte [esi] / push ecx   home country
+             'E844AD2200'        # call 0063DD1C              club (runtime)
+             '83C40C'            # add esp,0Ch
+             '8BF8'              # mov edi,eax
+             '8D465C'            # lea eax,[esi+5Ch]          tactics block home
+             '505756'            # push eax / push edi / push esi
+             'E8E51A0000'        # call 00414ACD
+             '83C40C'            # add esp,0Ch
+             '8D465C'            # lea eax,[esi+5Ch]
+             '5750'              # push edi / push eax
+             'E82B3C2E00'        # call 006F6C20
+             '83C408'            # add esp,8
+             '5756'              # push edi / push esi
+             'E86A7E2E00'        # call 006FAE69
+             '83C408'            # add esp,8
+             '0FBF8674040000'    # movsx eax,word [esi+474h]
+             'C1F808'            # sar eax,8
+             '83E00F'            # and eax,0Fh                manager number of the home team
+             '48'                # dec eax
+             '6BC038'            # imul eax,eax,38h
+             '8A968C000000'      # mov dl,[esi+8Ch]           style of play in the tactics block (new)
+             '8890D8D6BD01'      # mov [eax+01BDD6D8h],dl     -> manager record (new)
+             '57'                # push edi
+             'E871AF2200'        # call 0063DF96              release the club
+             '83C404'            # add esp,4
+             '5F'                # pop edi
+             '5E'                # pop esi
+             'EB16'              # jmp 00413042
+             + '90' * 22),
+            (0x0001305A,
+             '68FFFF00008B85D0FDFFFF668B4806518B95D0FDFFFF660FB6420450E8A1AC22'
+             '0083C40C8985C8FDFFFF8B8DD0FDFFFF81C150020000518B95C8FDFFFF528B85'
+             'D0FDFFFF50E8291A000083C40C8B8DC8FDFFFF518B95D0FDFFFF81C250020000'
+             '52E8603B2E0083C4088B85C8FDFFFF508B8DD0FDFFFF51E8937D2E0083C4088B'
+             '95C8FDFFFF52E8B1AE220083C404',
+             '56'                # push esi
+             '57'                # push edi
+             '8BB5D0FDFFFF'      # mov esi,[ebp-230h]         match record
+             '68FFFF0000'        # push 0FFFFh
+             '668B4E0651'        # mov cx,[esi+6] / push ecx  away club
+             '660FB64E0451'      # movzx cx,byte [esi+4] / push ecx   away country
+             'E8A5AC2200'        # call 0063DD1C
+             '83C40C'            # add esp,0Ch
+             '8BF8'              # mov edi,eax
+             '8D8650020000'      # lea eax,[esi+250h]         tactics block away
+             '505756'            # push eax / push edi / push esi
+             'E8431A0000'        # call 00414ACD
+             '83C40C'            # add esp,0Ch
+             '8D8650020000'      # lea eax,[esi+250h]
+             '5750'              # push edi / push eax
+             'E8863B2E00'        # call 006F6C20
+             '83C408'            # add esp,8
+             '5756'              # push edi / push esi
+             'E8C57D2E00'        # call 006FAE69
+             '83C408'            # add esp,8
+             '0FBF8674040000'    # movsx eax,word [esi+474h]
+             'C1F80C'            # sar eax,0Ch
+             '83E00F'            # and eax,0Fh                manager number of the away team
+             '48'                # dec eax
+             '6BC038'            # imul eax,eax,38h
+             '8A9680020000'      # mov dl,[esi+280h]          style of play in the tactics block (new)
+             '8890D8D6BD01'      # mov [eax+01BDD6D8h],dl     -> manager record (new)
+             '57'                # push edi
+             'E8CCAE2200'        # call 0063DF96
+             '83C404'            # add esp,4
+             '5F'                # pop edi
+             '5E'                # pop esi
+             'EB17'              # jmp 004130E8
+             + '90' * 23),
         ],
     },
     # D3D_Dll.dll (SGL engine) shipped with 1.40 (GOG)

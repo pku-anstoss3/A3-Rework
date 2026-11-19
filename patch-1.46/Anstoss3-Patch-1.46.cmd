@@ -1,4 +1,0 @@
-@echo off
-rem ANSTOSS 3 - Inoffizieller Patch 1.46: startet das Installationsprogramm
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Anstoss3-Patch-1.46.ps1" %*
-if errorlevel 1 pause

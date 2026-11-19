@@ -28,7 +28,7 @@ import struct
 import a3patch
 from patch_meldungen import MELDUNGEN
 
-VERSION = '1.46'
+VERSION = '1.47'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, f'patch-{VERSION}')
 REF = os.path.join(ROOT, 'build', f'endpaket-{VERSION}')
@@ -40,7 +40,7 @@ DDRAW_IDS = ['hw-vertexverarbeitung']
 # Former contents that are accepted in addition to the original bytes: file offset -> [(patch version, hex string)].
 # "%s Version 1.4x/%s" was written by the earlier patches.
 FRUEHER = {0x00482378: [(v, '25732056657273696F6E20' + v.encode('ascii').hex().upper() + '2F257300')
-                        for v in ('1.41', '1.42', '1.43', '1.44', '1.45')]}
+                        for v in ('1.41', '1.42', '1.43', '1.44', '1.45', '1.46')]}
 # Test build of 17./18.11.2026 (build/kandidat-1.45-nacht before the correction of K15, installed by the user for a
 # test): 'trennung-1083' with the 'push 0' before the random call. Accepted so that this state can be updated.
 FRUEHER[0x001F9F76] = [('1.45 (Testfassung)',
@@ -50,6 +50,7 @@ NB = chr(0xA0)      # no line break here in wrapped texts; written as a normal s
 # Patches of a3patch.py that are candidates only: built into test files, not part of this installer.
 # Empty since 1.45: all points of docs/korrekturliste-meldungen.md released by the user are part of the installer;
 # 'jugend-abwerben-vertrag' was a candidate on 18.11.2026 and is part of 1.46.
+# 'spielweise-ereignisfenster' was a candidate on 19.11.2026 and is part of 1.47 (user: group "Berechnung").
 KANDIDATEN = set()
 
 # Kinds of error: (title, belongs to the game-logic group of the installer)
@@ -58,9 +59,9 @@ GRUPPEN = [('Statistik „Historisches“', False), ('Vereinsstatistik', False),
            ('Trainer, Co-Trainer und Torwarttrainer', True), ('Fans und Presse', True), ('Finanzen', True),
            ('Allgemein', False), ('Darstellung', False),
            ('Meldungen und Ereignisse: Anzeige und Texte', False), ('Meldungen und Ereignisse: Wirkung', True),
-           ('Jugendspieler', True)]
-G_ALLGEMEIN, G_DARSTELLUNG, G_MELD_OPTISCH, G_MELD_LOGIK, G_JUGEND = 8, 9, 10, 11, 12
-REIHENFOLGE = [0, 1, 2, 3, 4, 5, G_JUGEND, 6, 7, G_MELD_OPTISCH, G_MELD_LOGIK, G_ALLGEMEIN, G_DARSTELLUNG]    # order of the lists
+           ('Jugendspieler', True), ('Spieltag', True)]
+G_ALLGEMEIN, G_DARSTELLUNG, G_MELD_OPTISCH, G_MELD_LOGIK, G_JUGEND, G_SPIELTAG = 8, 9, 10, 11, 12, 13
+REIHENFOLGE = [0, 1, 2, 3, 4, 5, G_JUGEND, G_SPIELTAG, 6, 7, G_MELD_OPTISCH, G_MELD_LOGIK, G_ALLGEMEIN, G_DARSTELLUNG]    # order of the lists
 LOGIK_MARKE = ' (Berechnung, abwählbar)'
 LOGIK_TEXT = ('Die Berechnungskorrekturen und -änderungen greifen in den Spielverlauf ein. Sie betreffen Funktionen und '
               'Ereignisse, die im Spiel angelegt sind, wegen eines Programmfehlers aber nie, zu selten oder fehlerhaft '
@@ -247,6 +248,18 @@ EINTRAEGE = [
          auswirkung='Betrifft nur Vereine menschlicher Manager und nur Jugendspieler, die nach der Installation '
          'abgeworben werden. Bereits abgeworbene Spieler in bestehenden Spielständen behalten die Restlaufzeit von '
          '0 Jahren. Die Altersgrenze der Jugend und das Gehalt sind unverändert.'),
+    dict(ids=['spielweise-ereignisfenster'], gruppe=G_SPIELTAG, seit='1.47',
+         titel='Spielweise aus dem selbsttätig geöffneten Wechselfenster wurde nicht übernommen',
+         fehler='Verlässt ein Spieler während einer Partie das Feld, zum Beispiel nach einem Platzverweis oder einer '
+         'Verletzung, öffnet das Spiel das Fenster für Auswechslungen und Taktik selbsttätig. Eine dort geänderte '
+         'Spielweise wurde in die Taktik der Partie eingetragen, nicht aber in den Wert des Managers, aus dem das '
+         'Spiel die Spielweise während der Partie fortlaufend übernimmt und den auch der Regler des Spielbildschirms '
+         'verwendet. Nach dem Schließen des Fensters galt deshalb wieder die vorherige Spielweise. Wird das Fenster '
+         'über den Spielbildschirm aufgerufen, trägt das Programm beide Werte ein.',
+         korrektur='Nach dem selbsttätig geöffneten Fenster wird die Spielweise wie nach dem aufgerufenen Fenster in '
+         'beide Werte eingetragen.',
+         auswirkung='Betrifft nur Mannschaften menschlicher Manager und nur die Spielweise; die übrigen Einstellungen '
+         'des Fensters wurden bereits übernommen. Die Korrektur wirkt ab der nächsten Partie.'),
     dict(ids=['versionsanzeige'], gruppe=G_ALLGEMEIN, seit=VERSION,
          titel=f'Versionsangabe {VERSION}',
          fehler='',
@@ -370,7 +383,7 @@ ZUSATZ = {
         'Neben der Programmdatei anstoss3.exe wird die Textdatei deb\\MeineDialoge.rch angepasst '
         '(Spaltenüberschrift der Liga-Statistik „Tagesform“).'])],
 }
-VERSIONEN = [('1.46', '18.11.2026'), ('1.45', '18.11.2026'), ('1.44', '16.11.2026'), ('1.43', '16.11.2026'), ('1.42', '16.11.2026'), ('1.41', '15.11.2026')]   # newest first
+VERSIONEN = [('1.47', '19.11.2026'), ('1.46', '18.11.2026'), ('1.45', '18.11.2026'), ('1.44', '16.11.2026'), ('1.43', '16.11.2026'), ('1.42', '16.11.2026'), ('1.41', '15.11.2026')]   # newest first
 
 
 def is_logic(e):
@@ -521,7 +534,7 @@ Häufigkeit. Dieselben Angaben enthält die Datei CHANGELOG.txt.
 ------------------
 - ANSTOSS 3 in Version 1.40. Entwickelt und geprüft wurde der Patch mit der Ausgabe von GOG.
 - Windows mit Windows PowerShell 5.1 (Bestandteil von Windows 10 und Windows 11).
-- Eine vorhandene Installation von Patch 1.41 bis 1.45 wird auf Version <<VERSION>> aktualisiert.
+- Eine vorhandene Installation von Patch 1.41 bis 1.46 wird auf Version <<VERSION>> aktualisiert.
 Erkennt das Installationsprogramm eine abweichende Fassung der anstoss3.exe, wird keine Datei verändert. Das gilt
 auch für Installationen, deren Programmdatei durch andere Modifikationen verändert wurde; die Verträglichkeit mit
 anderen Modifikationen wurde nicht geprüft. Liegt die Textdatei deb\\MeineDialoge.rch in einer abweichenden Fassung
@@ -556,6 +569,8 @@ Zur zweiten Gruppe gehören:
   "Goldkettchen und teure Autos".
 - Jugendspieler (seit Version 1.46): Vertragslaufzeit von Jugendspielern, die aus der Jugend eines anderen Vereins
   geholt werden.
+- Spieltag (seit Version 1.47): Übernahme der Spielweise aus dem Fenster für Auswechslungen und Taktik, wenn das
+  Spiel es während einer Partie selbsttätig öffnet.
 - Finanzen: Berechnung des Bankguthabens und des aktuellen Vereinsvermögens bei laufenden Geldanlagen.
 - Meldungen und Ereignisse (seit Version 1.45): Wirkungen, die eine Meldung nennt, die aber nicht oder falsch
   eintraten (zum Beispiel Dauer einer Verletzung, Trennung, Führerscheinentzug), sowie Ereignisse, die wegen eines

@@ -1,4 +1,4 @@
-﻿ANSTOSS 3 - Inoffizieller Patch 1.46
+﻿ANSTOSS 3 - Inoffizieller Patch 1.47
 =====================================
 
 1. Überblick
@@ -19,7 +19,7 @@ Häufigkeit. Dieselben Angaben enthält die Datei CHANGELOG.txt.
 ------------------
 - ANSTOSS 3 in Version 1.40. Entwickelt und geprüft wurde der Patch mit der Ausgabe von GOG.
 - Windows mit Windows PowerShell 5.1 (Bestandteil von Windows 10 und Windows 11).
-- Eine vorhandene Installation von Patch 1.41 bis 1.45 wird auf Version 1.46 aktualisiert.
+- Eine vorhandene Installation von Patch 1.41 bis 1.46 wird auf Version 1.47 aktualisiert.
 Erkennt das Installationsprogramm eine abweichende Fassung der anstoss3.exe, wird keine Datei verändert. Das gilt
 auch für Installationen, deren Programmdatei durch andere Modifikationen verändert wurde; die Verträglichkeit mit
 anderen Modifikationen wurde nicht geprüft. Liegt die Textdatei deb\MeineDialoge.rch in einer abweichenden Fassung
@@ -30,7 +30,7 @@ Wortlaut ab, bleibt die Datei unverändert und die Meldungen behalten ihren bish
 3. Installation
 ---------------
 1. Beenden Sie ANSTOSS 3.
-2. Entpacken Sie das Archiv vollständig und starten Sie die Datei "Anstoss3-Patch-1.46.cmd" per Doppelklick.
+2. Entpacken Sie das Archiv vollständig und starten Sie die Datei "Anstoss3-Patch-1.47.cmd" per Doppelklick.
    Die Dateien mit den Endungen .cmd und .ps1 müssen im selben Ordner liegen.
 3. Der Installationsordner des Spiels wird automatisch ermittelt und vorausgewählt. Über "Durchsuchen ..." kann
    ein anderer Ordner gewählt werden; maßgeblich ist der Ordner, in dem die Datei anstoss3.exe liegt.
@@ -54,6 +54,8 @@ Zur zweiten Gruppe gehören:
   "Goldkettchen und teure Autos".
 - Jugendspieler (seit Version 1.46): Vertragslaufzeit von Jugendspielern, die aus der Jugend eines anderen Vereins
   geholt werden.
+- Spieltag (seit Version 1.47): Übernahme der Spielweise aus dem Fenster für Auswechslungen und Taktik, wenn das
+  Spiel es während einer Partie selbsttätig öffnet.
 - Finanzen: Berechnung des Bankguthabens und des aktuellen Vereinsvermögens bei laufenden Geldanlagen.
 - Meldungen und Ereignisse (seit Version 1.45): Wirkungen, die eine Meldung nennt, die aber nicht oder falsch
   eintraten (zum Beispiel Dauer einer Verletzung, Trennung, Führerscheinentzug), sowie Ereignisse, die wegen eines
@@ -105,4 +107,4 @@ beim Auflösen steigt es um die Auszahlung und zusätzlich um den gesamten Zuwac
   ab dem nächsten Saisonwechsel. Wann eine Korrektur im Einzelnen wirkt, steht unter "Details ..." beziehungsweise
   in der Datei CHANGELOG.txt beim jeweiligen Eintrag.
 - Bereits fehlerhaft gespeicherte Statistikwerte werden nicht nachträglich berichtigt.
-- Die installierte Fassung ist an der Versionsangabe des Spiels (1.46) erkennbar.
+- Die installierte Fassung ist an der Versionsangabe des Spiels (1.47) erkennbar.
