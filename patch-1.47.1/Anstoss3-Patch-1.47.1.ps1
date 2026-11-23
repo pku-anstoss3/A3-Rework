@@ -1,13 +1,13 @@
-﻿# ANSTOSS 3 - Inoffizieller Patch 1.47
+﻿# ANSTOSS 3 - Inoffizieller Patch 1.47.1
 # Erzeugt von tools/patch_bauen.py - nicht von Hand ändern.
 # Enthält keine Spieldateien: Es werden nur einzelne Stellen der vorhandenen Dateien geändert (mit Prüfung des alten Inhalts).
-#   Fenster:       Anstoss3-Patch-1.47.cmd starten
+#   Fenster:       Anstoss3-Patch-1.47.1.cmd starten
 #   ohne Fenster:  -Still -Ordner "<Installationsordner>" [-OhneSpiellogik] [-Ddraw] [-Entfernen]
 #   Prüfhilfe:     -Probe "<bild.png>" baut das Fenster unsichtbar, meldet den erkannten Zustand und ändert nichts;
 #                  mit -ProbeEintrag <Nr> wird stattdessen der Details-Dialog dieses Eintrags (ab 0) als Bild gespeichert
 param([string]$Ordner = '', [switch]$Still, [switch]$Ddraw, [switch]$OhneSpiellogik, [switch]$Entfernen, [string]$Probe = '', [int]$ProbeEintrag = -1)
 $ErrorActionPreference = 'Stop'
-$Version = '1.47'
+$Version = '1.47.1'
 $GogId = '1886141726'
 
 # Gruppe einer Stelle: B = optische Änderungen (immer), L = Berechnungskorrekturen und -änderungen (abwählbar).
@@ -21,6 +21,11 @@ $Exe = @{
         'neu/original' = '6156CC8A7AE0428508EDE3F58106ECFCC89C124C36C96B5D4E3CB2098575A187'
         'neu/neu' = 'BFAC9FB837A0A9A0FE9C0386C763875EEBC1F257A40EB7332C671F96BF2593F5'
     }
+    # Bekannte Ausgangsfassungen: Prüfsumme der Datei, wenn alle Stellen im Originalzustand sind. Name leer = Version 1.40.
+    Basen = @(
+        @{ Name = ''; Summe = '89B88EF522574098014E9F1E68448593E2A992A8EBD0318760E552C3B15F6B2A' }
+        @{ Name = 'Balancing Patch 0.4'; Summe = '2233F4016428EFCEB5D82AC973BE355A1D46851637612B8B7E067870D9EDA9A3' }
+    )
     Stellen = @(
         @{ Name = 'beste-mannschaft'; Gruppe = 'B'; Offset = 0x3266FA; Alt = @('66C74410260000'); Neu = '66C744101C0000' }
         @{ Name = 'beste-mannschaft-anzeige'; Gruppe = 'B'; Offset = 0x666DC; Alt = @('66C745F21300'); Neu = '66C745F21400' }
@@ -51,7 +56,7 @@ $Exe = @{
         @{ Name = 'jugend-abwerben-vertrag'; Gruppe = 'L'; Offset = 0xD779A; Alt = @('8B9578F3FFFF52E82E04230083C404'); Neu = 'C681940000000AE8F6CA2200909090' }
         @{ Name = 'spielweise-ereignisfenster'; Gruppe = 'L'; Offset = 0x12FBB; Alt = @('68FFFF00008B8DD0FDFFFF668B5102528B85D0FDFFFF660FB60851E841AD220083C40C8985CCFDFFFF8B95D0FDFFFF83C25C528B85CCFDFFFF508B8DD0FDFFFF51E8CC1A000083C40C8B95CCFDFFFF528B85D0FDFFFF83C05C50E8063C2E0083C4088B8DCCFDFFFF518B95D0FDFFFF52E8397E2E0083C4088B85CCFDFFFF50E857AF220083C404'); Neu = '56578BB5D0FDFFFF68FFFF0000668B4E0251660FB64E0051E844AD220083C40C8BF88D465C505756E8E51A000083C40C8D465C5750E82B3C2E0083C4085756E86A7E2E0083C4080FBF8674040000C1F80883E00F486BC0388A968C0000008890D8D6BD0157E871AF220083C4045F5EEB1690909090909090909090909090909090909090909090' }
         @{ Name = 'spielweise-ereignisfenster'; Gruppe = 'L'; Offset = 0x1305A; Alt = @('68FFFF00008B85D0FDFFFF668B4806518B95D0FDFFFF660FB6420450E8A1AC220083C40C8985C8FDFFFF8B8DD0FDFFFF81C150020000518B95C8FDFFFF528B85D0FDFFFF50E8291A000083C40C8B8DC8FDFFFF518B95D0FDFFFF81C25002000052E8603B2E0083C4088B85C8FDFFFF508B8DD0FDFFFF51E8937D2E0083C4088B95C8FDFFFF52E8B1AE220083C404'); Neu = '56578BB5D0FDFFFF68FFFF0000668B4E0651660FB64E0451E8A5AC220083C40C8BF88D8650020000505756E8431A000083C40C8D86500200005750E8863B2E0083C4085756E8C57D2E0083C4080FBF8674040000C1F80C83E00F486BC0388A96800200008890D8D6BD0157E8CCAE220083C4045F5EEB179090909090909090909090909090909090909090909090' }
-        @{ Name = 'versionsanzeige'; Gruppe = 'B'; Offset = 0x482378; Alt = @('25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34312F257300', '25732056657273696F6E20312E34322F257300', '25732056657273696F6E20312E34332F257300', '25732056657273696F6E20312E34342F257300', '25732056657273696F6E20312E34352F257300', '25732056657273696F6E20312E34362F257300'); AltName = @('1.40', '1.41', '1.42', '1.43', '1.44', '1.45', '1.46'); Neu = '25732056657273696F6E20312E34372F257300' }
+        @{ Name = 'versionsanzeige'; Gruppe = 'B'; Offset = 0x482378; Alt = @('25732056657273696F6E20312E34302F257300', '25732056657273696F6E20312E34312F257300', '25732056657273696F6E20312E34322F257300', '25732056657273696F6E20312E34332F257300', '25732056657273696F6E20312E34342F257300', '25732056657273696F6E20312E34352F257300', '25732056657273696F6E20312E34362F257300', '25732056657273696F6E20312E34382F257300'); AltName = @('1.40', '1.41', '1.42', '1.43', '1.44', '1.45', '1.46', '1.48 (Testfassung)'); Neu = '25732056657273696F6E20312E34372F257300' }
         @{ Name = 'hochzeit-platzt'; Gruppe = 'L'; Offset = 0x1FA687; Alt = @('1D0FBF45B68B4D088B9481500B0000528B450850E8F4FCFFFF83C408EB036633C0'); Neu = '1E52E882011900590FBF4445B88B4D08FFB481500B000051E8F0FCFFFFEB0233C0' }
         @{ Name = 'frauen-namen-1363'; Gruppe = 'B'; Offset = 0x1FF03A; Alt = @('6A006A008D85E8FEFFFF508D4D84518B4DF0E8FCFA0F00508B55F85268530500006A608B450850E80021000083C42066B80100E9400D0000'); Neu = '6A008B4DF0E8FB261000508B4DF8E8F2261000508D4D84518B4DF0E8F3FA0F0050FF75F868530500006A60FF7508E8F920000083C4209090' }
         @{ Name = 'zeitung-1880'; Gruppe = 'B'; Offset = 0x1F4799; Alt = @('6801000040'); Neu = '6801000000' }
@@ -144,6 +149,10 @@ $Dd = @{
         @{ Name = 'hw-vertexverarbeitung'; Gruppe = 'B'; Offset = 0x1CC47; Alt = @('C1E80923C5'); Neu = 'B801000000' }
         @{ Name = 'hw-vertexverarbeitung'; Gruppe = 'B'; Offset = 0x1E2BE; Alt = @('C1E80923C5'); Neu = 'B801000000' }
     )
+}
+# Bekannte Fassungen der HD-Modifikation »Anstoss 3 HD + UI Update«: Prüfsumme ihrer Datei A3HD.dll -> Version.
+$HdVersionen = @{
+    'A418E0E3C1D370ED010669EFE1CB343FB3167ED95525CE066F171993BFC9AECA' = '1.0.12'
 }
 # Textdatei der Ereignisse: 20 Texte mit altem und neuem Wortlaut (Bytes in Windows-1252, hexadezimal).
 # Das Spiel lädt die Datei nur mit unveränderter Länge; die neuen Texte sind zusammen genauso lang wie die alten.
@@ -523,6 +532,18 @@ function StandNr([byte[]]$b, $s) {
     for ($i = 0; $i -lt $s.Alt.Count; $i++) { if (Gleich $b $s.Offset (HexZuBytes $s.Alt[$i])) { return $i } }
     return -2
 }
+# Ausgangsfassung einer Datei: alle Stellen im Speicher auf den Originalzustand setzen und die Prüfsumme mit den
+# bekannten Ausgangsfassungen vergleichen. Stimmt sie, besteht die Datei genau aus dieser Fassung und den Stellen des Patches.
+function Grundlage([byte[]]$b, $def) {
+    if (-not $def.Basen) { return $null }
+    $u = New-Object byte[] $b.Length
+    [Array]::Copy($b, 0, $u, 0, $b.Length)
+    foreach ($s in $def.Stellen) { $x = HexZuBytes $s.Alt[0]; if (($s.Offset + $x.Length) -le $u.Length) { [Array]::Copy($x, 0, $u, $s.Offset, $x.Length) } }
+    $sha = [Security.Cryptography.SHA256]::Create()
+    try { $h = [BitConverter]::ToString($sha.ComputeHash($u)).Replace('-', '') } finally { $sha.Dispose() }
+    foreach ($ba in $def.Basen) { if ($ba.Summe -eq $h) { return $ba } }
+    return $null
+}
 function Einordnen($z) {
     if ($z.Original -eq $z.Gesamt) { return 'original' }
     if ($z.Neu -eq $z.Gesamt) { return 'fertig' }
@@ -532,7 +553,7 @@ function Einordnen($z) {
 # Zustand einer Datei und ihrer Gruppen: fehlt | original | fertig | teilweise | fremd
 # Vorversion: Fassung des Patches, die an einem früheren Inhalt erkannt wurde (zum Beispiel 1.42).
 function Zustand([string]$ordner, $def) {
-    $r = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0; Vorversion = ''; Gruppe = @{} }
+    $r = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0; Vorversion = ''; Mod = ''; Gruppe = @{} }
     foreach ($g in $def.Gruppen) { $r.Gruppe[$g] = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0 } }
     if (-not $ordner) { return $r }
     $pfad = Join-Path $ordner $def.Datei
@@ -555,6 +576,8 @@ function Zustand([string]$ordner, $def) {
     }
     $r.Status = Einordnen $r
     foreach ($g in $def.Gruppen) { $r.Gruppe[$g].Status = Einordnen $r.Gruppe[$g] }
+    $ba = Grundlage $b $def
+    if ($ba) { $r.Mod = $ba.Name }
     return $r
 }
 
@@ -590,6 +613,8 @@ function Anwenden([string]$ordner, $def, $soll, [bool]$sichern) {
     $was = $teile -join ', '
     $schluessel = @(foreach ($g in $def.Gruppen) { $soll[$g] }) -join '/'
     if ((Pruefsumme $pfad) -eq $def.Summen[$schluessel]) { return "$($def.Datei): $was, Prüfsumme bestätigt." }
+    $ba = Grundlage ([IO.File]::ReadAllBytes($pfad)) $def
+    if ($ba -and $ba.Name) { return "$($def.Datei): $was, Prüfsumme bestätigt (Ausgangsfassung: $($ba.Name))." }
     return "$($def.Datei): $was. Die Prüfsumme der Datei weicht vom Referenzwert ab (abweichende Ausgabe); die geänderten Stellen wurden einzeln geprüft."
 }
 
@@ -718,17 +743,31 @@ function SpielSuchen {
     return ''
 }
 
+# Eigene Zeilen für die beiden Modifikationen anderer Autoren. Balancing Patch: an der Ausgangsfassung der anstoss3.exe
+# erkannt. HD-Modifikation: an ihrer Datei A3HD.dll erkannt (Version an der Prüfsumme der Datei).
+function BalText($z) {
+    if ($z.Mod) { return "Erkannter Balancing Patch: Version $($z.Mod.Replace('Balancing Patch ', ''))" }
+    return 'Erkannter Balancing Patch: keiner'
+}
+function HdText([string]$ordner) {
+    if (-not $ordner) { return 'Erkannte HD-Mod: keine' }
+    $pfad = Join-Path $ordner 'A3HD.dll'
+    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod: keine' }
+    $v = $HdVersionen[(Pruefsumme $pfad)]
+    if ($v) { return "Erkannte HD-Mod: Version $v" }
+    return 'Erkannte HD-Mod: vorhanden, Version nicht bekannt'
+}
 function ExeText($z) {
     if ($z.Status -eq 'fehlt') { return 'anstoss3.exe: Die Datei wurde im angegebenen Ordner nicht gefunden.' }
     if ($z.Status -eq 'fremd') { return 'anstoss3.exe: Unbekannte Dateifassung. Der Patch setzt Version 1.40 voraus; die Datei wird nicht verändert.' }
-    if ($z.Status -eq 'original') { return 'anstoss3.exe: Version 1.40, Patch nicht installiert.' }
+    if ($z.Status -eq 'original') { return 'anstoss3.exe: Version 1.40, Fehler-Patch nicht installiert.' }
     $l = $z.Gruppe['L']
     if ($z.Gruppe['B'].Status -eq 'fertig') {
         if ($l.Status -eq 'fertig') { return "anstoss3.exe: Patch $Version ist installiert, einschließlich der Berechnungskorrekturen und -änderungen." }
         if ($l.Status -eq 'original') { return "anstoss3.exe: Patch $Version ist installiert, ohne die Berechnungskorrekturen und -änderungen." }
         return "anstoss3.exe: Patch $Version ist installiert; die Berechnungskorrekturen und -änderungen sind unvollständig ($($l.Neu) von $($l.Gesamt) Änderungen)."
     }
-    if ($z.Vorversion) { return "anstoss3.exe: Patch $($z.Vorversion) ist installiert ($($z.Neu) von $($z.Gesamt) Änderungen der Version $Version). Mit »Installieren« wird auf Version $Version aktualisiert." }
+    if ($z.Vorversion) { return "anstoss3.exe: Patch $($z.Vorversion) ist installiert ($($z.Neu) von $($z.Gesamt) Änderungen der Version $Version). »Installieren« aktualisiert auf Version $Version." }
     return "anstoss3.exe: Der Patch ist unvollständig installiert ($($z.Neu) von $($z.Gesamt) Änderungen). Mit »Installieren« wird Version $Version vollständig installiert."
 }
 function RchText($z) {
@@ -845,20 +884,22 @@ $lblExe = Neu 'Label' 16 120 1008 18 '' 'Top,Left,Right'
 $lblRch = Neu 'Label' 16 140 1008 18 '' 'Top,Left,Right'
 $lblDd = Neu 'Label' 16 160 1008 18 '' 'Top,Left,Right'
 $lblSaq = Neu 'Label' 16 180 1008 18 '' 'Top,Left,Right'
+$lblBal = Neu 'Label' 16 204 1008 18 '' 'Top,Left,Right'
+$lblHd = Neu 'Label' 16 224 1008 18 '' 'Top,Left,Right'
 
-$cbL = Neu 'CheckBox' 16 208 1008 22 'Berechnungskorrekturen und -änderungen installieren (abwählbar)' 'Top,Left,Right'
+$cbL = Neu 'CheckBox' 16 252 1008 22 'Berechnungskorrekturen und -änderungen installieren (abwählbar)' 'Top,Left,Right'
 $cbL.Font = $Fett
-[void](Neu 'Label' 34 230 990 52 'Die Berechnungskorrekturen und -änderungen greifen in den Spielverlauf ein. Sie betreffen Funktionen und Ereignisse, die im Spiel angelegt sind, wegen eines Programmfehlers aber nie, zu selten oder fehlerhaft gearbeitet haben; einige Ereignisse treten dadurch erstmals oder häufiger ein. Die geschätzte Häufigkeit steht bei den Einträgen unter »Details ...«. Diese Gruppe kann abgewählt werden; die optischen Änderungen (Anzeigen, Statistiken, Texte) werden immer installiert.' 'Top,Left,Right')
+[void](Neu 'Label' 34 274 990 52 'Die Berechnungskorrekturen und -änderungen greifen in den Spielverlauf ein. Sie betreffen Funktionen und Ereignisse, die im Spiel angelegt sind, wegen eines Programmfehlers aber nie, zu selten oder fehlerhaft gearbeitet haben; einige Ereignisse treten dadurch erstmals oder häufiger ein. Die geschätzte Häufigkeit steht bei den Einträgen unter »Details ...«. Diese Gruppe kann abgewählt werden; die optischen Änderungen (Anzeigen, Statistiken, Texte) werden immer installiert.' 'Top,Left,Right')
 
-$cb = Neu 'CheckBox' 16 288 1008 22 'Angepasste ddraw.dll installieren (optional, nur GOG-Ausgabe)' 'Top,Left,Right'
+$cb = Neu 'CheckBox' 16 332 1008 22 'Angepasste ddraw.dll installieren (optional, nur GOG-Ausgabe; nicht zusammen mit der HD-Modifikation)' 'Top,Left,Right'
 $cb.Font = $Fett
-[void](Neu 'Label' 34 310 990 18 'Behebt eine Eingabeverzögerung von 2 bis 3 Sekunden nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann.' 'Top,Left,Right')
+[void](Neu 'Label' 34 354 990 36 'Behebt eine Eingabeverzögerung von 2 bis 3 Sekunden nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann. Nicht zusammen mit der HD-Modifikation »Anstoss 3 HD + UI Update« verwenden; die beiden sind nicht verträglich.' 'Top,Left,Right')
 
-$lblListe = Neu 'Label' 16 342 500 18 "Behobene Fehler ($($Eintraege.Count) Einträge)"
+$lblListe = Neu 'Label' 16 404 500 18 "Behobene Fehler ($($Eintraege.Count) Einträge)"
 $lblListe.Font = $Fett
-$lblHinweis = Neu 'Label' 424 342 600 18 'Eintrag auswählen und »Details ...« wählen oder doppelt anklicken.' 'Top,Right'
+$lblHinweis = Neu 'Label' 424 404 600 18 'Eintrag auswählen und »Details ...« wählen oder doppelt anklicken.' 'Top,Right'
 $lblHinweis.TextAlign = 'TopRight'
-$lv = Neu 'ListView' 16 364 1008 360 $null 'Top,Bottom,Left,Right'
+$lv = Neu 'ListView' 16 426 1008 298 $null 'Top,Bottom,Left,Right'
 $lv.View = 'Details'; $lv.FullRowSelect = $true; $lv.MultiSelect = $false; $lv.HideSelection = $false
 $lv.ShowGroups = $true; $lv.HeaderStyle = 'Nonclickable'; $lv.ShowItemToolTips = $true
 [void]$lv.Columns.Add('Behobener Fehler', 700)
@@ -954,6 +995,8 @@ function Auffrischen {
     $lblRch.Text = RchText $zr
     $lblDd.Text = DdText $zd
     $lblSaq.Text = SaqText $zs
+    $lblBal.Text = BalText $ze
+    $lblHd.Text = HdText $o
     $geht = $ze.Status -eq 'original' -or $ze.Status -eq 'teilweise' -or $ze.Status -eq 'fertig'
     $ok.Enabled = $geht
     $weg.Enabled = $geht -and ($ze.Status -ne 'original' -or (Geaendert $zr) -or (Geaendert $zd) -or (Geaendert $zs))
@@ -963,7 +1006,8 @@ function Auffrischen {
     elseif (-not $script:gesetztL) { $cbL.Checked = -not (LogikAbgewaehlt $ze) }
     $ddGeht = $geht -and ($zd.Status -eq 'original' -or (Geaendert $zd))
     $cb.Enabled = $ddGeht
-    if (-not $ddGeht) { $cb.Checked = $false } elseif (-not $script:gesetzt) { $cb.Checked = $true }
+    # ddraw.dll: nicht vorausgewählt; bleibt gesetzt, wenn die Anpassung bereits installiert ist
+    if (-not $ddGeht) { $cb.Checked = $false } elseif (-not $script:gesetzt) { $cb.Checked = (Geaendert $zd) }
 }
 $tb.Add_TextChanged({ $script:gesetzt = $false; $script:gesetztL = $false; Auffrischen })
 $cb.Add_Click({ $script:gesetzt = $true })
@@ -1010,7 +1054,7 @@ if ($Probe) {
     $bild = New-Object System.Drawing.Bitmap($f.Width, $f.Height)
     $f.DrawToBitmap($bild, (New-Object System.Drawing.Rectangle(0, 0, $f.Width, $f.Height)))
     $bild.Save($Probe)
-    "Ordner: $($tb.Text)"; $lblExe.Text; $lblRch.Text; $lblDd.Text; $lblSaq.Text
+    "Ordner: $($tb.Text)"; $lblExe.Text; $lblRch.Text; $lblDd.Text; $lblSaq.Text; $lblBal.Text; $lblHd.Text
     "Spiellogik-Option: gesetzt=$($cbL.Checked) wählbar=$($cbL.Enabled) | ddraw-Option: gesetzt=$($cb.Checked) wählbar=$($cb.Enabled) | Installieren=$($ok.Enabled) Deinstallieren=$($weg.Enabled)"
     "Liste: $($lv.Items.Count) Einträge in $($lv.Groups.Count) Gruppen | Fenster $($f.Width)x$($f.Height)"
     $f.Close()

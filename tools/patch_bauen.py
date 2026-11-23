@@ -28,7 +28,8 @@ import struct
 import a3patch
 from patch_meldungen import MELDUNGEN
 
-VERSION = '1.47'
+VERSION = '1.47.1'            # version of the installer
+EXE_VERSION = '1.47'        # version shown by the game (the text in the exe has room for four characters only)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, f'patch-{VERSION}')
 REF = os.path.join(ROOT, 'build', f'endpaket-{VERSION}')
@@ -41,6 +42,19 @@ DDRAW_IDS = ['hw-vertexverarbeitung']
 # "%s Version 1.4x/%s" was written by the earlier patches.
 FRUEHER = {0x00482378: [(v, '25732056657273696F6E20' + v.encode('ascii').hex().upper() + '2F257300')
                         for v in ('1.41', '1.42', '1.43', '1.44', '1.45', '1.46')]}
+# Test build of 23.11.2026: the installer was first built as "1.48" and installed by the user before it was renamed
+# to 1.47.1. Accepted so that this state is updated (version text back to 1.47); never published.
+FRUEHER[0x00482378].append(('1.48 (Testfassung)', '25732056657273696F6E20312E34382F257300'))
+# Second known base of anstoss3.exe: the program file written by the third-party mod "Balancing Patch" 0.4 (version
+# 1.40 plus its changes; all sites of this patch still have their original content there). The installer names it and
+# confirms the result against it. For the check at build time put the file into build/balancing-0.4/ (optional).
+BAL_NAME = 'Balancing Patch 0.4'
+BAL_SHA = '2233F4016428EFCEB5D82AC973BE355A1D46851637612B8B7E067870D9EDA9A3'
+BAL_EXE = os.path.join(ROOT, 'build', 'balancing-0.4', 'anstoss3.exe')
+# Third-party mod "Anstoss 3 HD + UI Update": shown in a line of its own. Recognised by its file A3HD.dll; the version
+# by the SHA-256 of that file (read on 23.11.2026 from an installation made by A3HD_full_installer_1.0.12).
+HD_VERSION = '1.0.12'
+HD_SHA = 'A418E0E3C1D370ED010669EFE1CB343FB3167ED95525CE066F171993BFC9AECA'
 # Test build of 17./18.11.2026 (build/kandidat-1.45-nacht before the correction of K15, installed by the user for a
 # test): 'trennung-1083' with the 'push 0' before the random call. Accepted so that this state can be updated.
 FRUEHER[0x001F9F76] = [('1.45 (Testfassung)',
@@ -260,10 +274,10 @@ EINTRAEGE = [
          'beide Werte eingetragen.',
          auswirkung='Betrifft nur Mannschaften menschlicher Manager und nur die Spielweise; die übrigen Einstellungen '
          'des Fensters wurden bereits übernommen. Die Korrektur wirkt ab der nächsten Partie.'),
-    dict(ids=['versionsanzeige'], gruppe=G_ALLGEMEIN, seit=VERSION,
-         titel=f'Versionsangabe {VERSION}',
+    dict(ids=['versionsanzeige'], gruppe=G_ALLGEMEIN, seit=EXE_VERSION,
+         titel=f'Versionsangabe {EXE_VERSION}',
          fehler='',
-         korrektur=f'Die Versionsangabe des Spiels lautet {VERSION}.',
+         korrektur=f'Die Versionsangabe des Spiels lautet {EXE_VERSION}.',
          auswirkung='An der Versionsangabe ist die installierte Fassung des Patches erkennbar.'),
     dict(ids=['hw-vertexverarbeitung'], gruppe=G_DARSTELLUNG, seit='1.41', ziel='ddraw',
          titel='Eingabeverzögerung nach Mausklicks (optional, nur GOG-Ausgabe)',
@@ -363,6 +377,21 @@ def ps_texte(texte):
 
 # Further sections of the change log that are not corrections of the game: version -> [(title, [texts])]
 ZUSATZ = {
+    '1.47.1': [('Installationsprogramm', [
+        'Das Installationsprogramm erkennt die Programmdatei der Modifikation „Balancing Patch“ in Version 0.4 als '
+        'Ausgangsfassung. Der Patch kann auf eine Installation aufgespielt werden, auf der diese Modifikation bereits '
+        'eingerichtet ist; die Deinstallation stellt deren Programmdatei wieder her. Reihenfolge: zuerst die '
+        'Modifikation, danach der Patch.',
+        'Die Stellen beider Änderungssätze überschneiden sich nicht: Alle 98 Stellen des Patches haben in der '
+        'Programmdatei der Modifikation den ursprünglichen Inhalt, keine liegt näher als 64 Bytes an einer ihrer '
+        'Änderungen. Die Kombinationen mit „Balancing Patch“, mit der HD-Modifikation und mit beiden wurden im Spiel '
+        'getestet; Tests über viele Saisons stehen aus.',
+        'Das Fenster zeigt in zwei eigenen Zeilen, ob „Balancing Patch“ und die HD-Modifikation „Anstoss 3 HD + UI '
+        'Update“ im gewählten Ordner erkannt wurden und in welcher Version.',
+        'Die Option „Angepasste ddraw.dll“ ist nicht mehr vorausgewählt; ist die Anpassung bereits installiert, bleibt '
+        'sie gesetzt. Die Komponente ist nicht mit der HD-Modifikation „Anstoss 3 HD + UI Update“ verträglich.',
+        'An den Korrekturen ändert sich nichts: Die Programmdatei ist dieselbe wie in Version 1.47, die Versionsangabe '
+        'des Spiels lautet weiterhin 1.47. Eine Installation von Version 1.47 muss nicht aktualisiert werden.'])],
     '1.45': [('Installationsprogramm', [
         'Die Korrekturen sind in zwei Gruppen geteilt: optische Änderungen (Anzeigen, Statistiken, Texte; werden immer '
         'installiert) und Berechnungskorrekturen und -änderungen (abwählbar). Die frühere Gruppe „Spiellogik“ gehört '
@@ -383,7 +412,7 @@ ZUSATZ = {
         'Neben der Programmdatei anstoss3.exe wird die Textdatei deb\\MeineDialoge.rch angepasst '
         '(Spaltenüberschrift der Liga-Statistik „Tagesform“).'])],
 }
-VERSIONEN = [('1.47', '19.11.2026'), ('1.46', '18.11.2026'), ('1.45', '18.11.2026'), ('1.44', '16.11.2026'), ('1.43', '16.11.2026'), ('1.42', '16.11.2026'), ('1.41', '15.11.2026')]   # newest first
+VERSIONEN = [('1.47.1', '23.11.2026'), ('1.47', '19.11.2026'), ('1.46', '18.11.2026'), ('1.45', '18.11.2026'), ('1.44', '16.11.2026'), ('1.43', '16.11.2026'), ('1.42', '16.11.2026'), ('1.41', '15.11.2026')]   # newest first
 
 
 def is_logic(e):
@@ -534,10 +563,11 @@ Häufigkeit. Dieselben Angaben enthält die Datei CHANGELOG.txt.
 ------------------
 - ANSTOSS 3 in Version 1.40. Entwickelt und geprüft wurde der Patch mit der Ausgabe von GOG.
 - Windows mit Windows PowerShell 5.1 (Bestandteil von Windows 10 und Windows 11).
-- Eine vorhandene Installation von Patch 1.41 bis 1.46 wird auf Version <<VERSION>> aktualisiert.
+- Eine vorhandene Installation von Patch 1.41 bis 1.47 wird auf Version <<VERSION>> aktualisiert.
 Erkennt das Installationsprogramm eine abweichende Fassung der anstoss3.exe, wird keine Datei verändert. Das gilt
-auch für Installationen, deren Programmdatei durch andere Modifikationen verändert wurde; die Verträglichkeit mit
-anderen Modifikationen wurde nicht geprüft. Liegt die Textdatei deb\\MeineDialoge.rch in einer abweichenden Fassung
+auch für Installationen, deren Programmdatei durch andere Modifikationen an den Stellen des Patches verändert wurde.
+Als Ausgangsfassung erkannt wird neben Version 1.40 die Programmdatei der Modifikation "Balancing Patch" in
+Version 0.4 (Abschnitt 10); die Verträglichkeit mit weiteren Modifikationen wurde nicht geprüft. Liegt die Textdatei deb\\MeineDialoge.rch in einer abweichenden Fassung
 vor, bleibt nur diese Datei unverändert; die Spaltenüberschrift der Liga-Statistik "Tagesform" lautet dann weiterhin
 "Form". Dasselbe gilt für die Textdatei texte\\Ereignis.saq: Weicht einer der 20 betroffenen Texte vom ursprünglichen
 Wortlaut ab, bleibt die Datei unverändert und die Meldungen behalten ihren bisherigen Text.
@@ -588,6 +618,10 @@ Aktualisierung abgewählt, solange Sie die Option nicht selbst setzen.
 Die Komponente steht nur für die GOG-Ausgabe zur Verfügung. Sie behebt eine Eingabeverzögerung von 2 bis 3 Sekunden
 nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann (festgestellt mit einer Radeon RX 6800 XT). Auf
 Systemen ohne dieses Verhalten bleibt die Anpassung ohne Wirkung. Geprüft wurde sie in der 2D-Oberfläche des Spiels.
+Seit Version 1.47.1 ist die Option nicht mehr vorausgewählt; ist die Anpassung bereits installiert, bleibt sie gesetzt.
+Die Komponente ist nicht mit der HD-Modifikation "Anstoss 3 HD + UI Update" verträglich und sollte nicht zusammen
+mit ihr verwendet werden. Wer die HD-Modifikation einrichten möchte, wählt die Option ab; die Datei ddraw.dll wird
+dann auf ihren ursprünglichen Stand zurückgesetzt.
 Treten nach der Installation Darstellungsfehler auf, deaktivieren Sie die Option und wählen Sie erneut "Installieren";
 die Datei ddraw.dll wird dann auf ihren ursprünglichen Stand zurückgesetzt.
 
@@ -622,7 +656,21 @@ beim Auflösen steigt es um die Auszahlung und zusätzlich um den gesamten Zuwac
   ab dem nächsten Saisonwechsel. Wann eine Korrektur im Einzelnen wirkt, steht unter "Details ..." beziehungsweise
   in der Datei CHANGELOG.txt beim jeweiligen Eintrag.
 - Bereits fehlerhaft gespeicherte Statistikwerte werden nicht nachträglich berichtigt.
-- Die installierte Fassung ist an der Versionsangabe des Spiels (<<VERSION>>) erkennbar.
+- Die installierte Fassung ist an der Versionsangabe des Spiels (<<EXE_VERSION>>) erkennbar. Version <<VERSION>> ändert
+  nur das Installationsprogramm; die Programmdatei und ihre Versionsangabe sind dieselben wie in Version <<EXE_VERSION>>.
+
+10. Installation zusammen mit "Balancing Patch" 0.4
+---------------------------------------------------
+"Balancing Patch" ist eine Modifikation eines anderen Autors, die Spielregeln ändert; sie ist kein Teil dieses
+Patches. Das Installationsprogramm erkennt ihre Programmdatei in Version 0.4 und nennt sie als Ausgangsfassung.
+- Reihenfolge: zuerst "Balancing Patch" einrichten, danach diesen Patch installieren.
+- Die Deinstallation dieses Patches stellt die Programmdatei von "Balancing Patch" wieder her.
+- Die Stellen beider Änderungssätze überschneiden sich nicht. Die Kombinationen mit "Balancing Patch", mit der
+  HD-Modifikation "Anstoss 3 HD + UI Update" 1.0.12 und mit beiden wurden im Spiel getestet; Tests über viele
+  Saisons stehen aus.
+- Das Fenster zeigt in zwei eigenen Zeilen, welche der beiden Modifikationen im gewählten Ordner erkannt wurde.
+- Bei anderen Versionen der Modifikation prüft das Installationsprogramm jede Stelle einzeln; es ändert nichts,
+  wenn eine Stelle einen unbekannten Inhalt hat, und meldet andernfalls eine abweichende Prüfsumme.
 '''
 
 
@@ -636,6 +684,14 @@ def main():
     assert {g for _, g, *_ in rch} == {'B'}
     exe_voll = patched('anstoss3.exe', EXE_SHA, exe)
     exe_ohne = patched('anstoss3.exe', EXE_SHA, exe, 'B')
+    if os.path.exists(BAL_EXE):             # optional check: every site has its original content in the mod's file
+        bal = open(BAL_EXE, 'rb').read()
+        assert sha256(bal) == BAL_SHA, 'build/balancing-0.4/anstoss3.exe ist nicht die erwartete Fassung'
+        for pid, _, off, alt, _, new in exe:
+            assert bal[off:off + len(new) // 2] == bytes.fromhex(alt[0]), ('Balancing', pid, hex(off))
+        print(f'  {BAL_NAME}: alle {len(exe)} Stellen im Originalzustand')
+    else:
+        print(f'  {BAL_NAME}: nicht geprüft (build/balancing-0.4/anstoss3.exe fehlt)')
     rch_neu = patched(os.path.join('deb', 'MeineDialoge.rch'), RCH_SHA, rch)
     dd_neu = patched('ddraw.dll', DDRAW_SHA, dd)
     saq_alt, saq_neu, saq_texte = saq_build()
@@ -643,6 +699,8 @@ def main():
           .replace('<<VERSION>>', VERSION)
           .replace('<<EXE_ORIGINAL>>', EXE_SHA).replace('<<EXE_FERTIG>>', sha256(exe_voll))
           .replace('<<EXE_OHNE>>', sha256(exe_ohne)).replace('<<EXE_STELLEN>>', ps_sites(exe))
+          .replace('<<BAL_NAME>>', BAL_NAME).replace('<<EXE_BALANCING>>', BAL_SHA)
+          .replace('<<HD_SHA>>', HD_SHA).replace('<<HD_VERSION>>', HD_VERSION)
           .replace('<<RCH_ORIGINAL>>', RCH_SHA).replace('<<RCH_FERTIG>>', sha256(rch_neu))
           .replace('<<RCH_STELLEN>>', ps_sites(rch))
           .replace('<<DD_ORIGINAL>>', DDRAW_SHA).replace('<<DD_FERTIG>>', sha256(dd_neu))
@@ -664,7 +722,7 @@ def main():
                 f'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0{name}.ps1" %*\n'
                 'if errorlevel 1 pause\n')
     with open(os.path.join(OUT, 'LIESMICH.txt'), 'w', encoding='utf-8-sig', newline='\r\n') as f:
-        f.write(LIESMICH.replace('<<VERSION>>', VERSION))
+        f.write(LIESMICH.replace('<<VERSION>>', VERSION).replace('<<EXE_VERSION>>', EXE_VERSION))
     with open(os.path.join(OUT, 'CHANGELOG.txt'), 'w', encoding='utf-8-sig', newline='\r\n') as f:
         f.write(changelog())
     files = [name + '.cmd', name + '.ps1', 'LIESMICH.txt', 'CHANGELOG.txt']
@@ -708,6 +766,11 @@ $Exe = @{
         'neu/original' = '<<EXE_OHNE>>'
         'neu/neu' = '<<EXE_FERTIG>>'
     }
+    # Bekannte Ausgangsfassungen: Prüfsumme der Datei, wenn alle Stellen im Originalzustand sind. Name leer = Version 1.40.
+    Basen = @(
+        @{ Name = ''; Summe = '<<EXE_ORIGINAL>>' }
+        @{ Name = '<<BAL_NAME>>'; Summe = '<<EXE_BALANCING>>' }
+    )
     Stellen = @(
 <<EXE_STELLEN>>
     )
@@ -733,6 +796,10 @@ $Dd = @{
     Stellen = @(
 <<DD_STELLEN>>
     )
+}
+# Bekannte Fassungen der HD-Modifikation »Anstoss 3 HD + UI Update«: Prüfsumme ihrer Datei A3HD.dll -> Version.
+$HdVersionen = @{
+    '<<HD_SHA>>' = '<<HD_VERSION>>'
 }
 # Textdatei der Ereignisse: 20 Texte mit altem und neuem Wortlaut (Bytes in Windows-1252, hexadezimal).
 # Das Spiel lädt die Datei nur mit unveränderter Länge; die neuen Texte sind zusammen genauso lang wie die alten.
@@ -769,6 +836,18 @@ function StandNr([byte[]]$b, $s) {
     for ($i = 0; $i -lt $s.Alt.Count; $i++) { if (Gleich $b $s.Offset (HexZuBytes $s.Alt[$i])) { return $i } }
     return -2
 }
+# Ausgangsfassung einer Datei: alle Stellen im Speicher auf den Originalzustand setzen und die Prüfsumme mit den
+# bekannten Ausgangsfassungen vergleichen. Stimmt sie, besteht die Datei genau aus dieser Fassung und den Stellen des Patches.
+function Grundlage([byte[]]$b, $def) {
+    if (-not $def.Basen) { return $null }
+    $u = New-Object byte[] $b.Length
+    [Array]::Copy($b, 0, $u, 0, $b.Length)
+    foreach ($s in $def.Stellen) { $x = HexZuBytes $s.Alt[0]; if (($s.Offset + $x.Length) -le $u.Length) { [Array]::Copy($x, 0, $u, $s.Offset, $x.Length) } }
+    $sha = [Security.Cryptography.SHA256]::Create()
+    try { $h = [BitConverter]::ToString($sha.ComputeHash($u)).Replace('-', '') } finally { $sha.Dispose() }
+    foreach ($ba in $def.Basen) { if ($ba.Summe -eq $h) { return $ba } }
+    return $null
+}
 function Einordnen($z) {
     if ($z.Original -eq $z.Gesamt) { return 'original' }
     if ($z.Neu -eq $z.Gesamt) { return 'fertig' }
@@ -778,7 +857,7 @@ function Einordnen($z) {
 # Zustand einer Datei und ihrer Gruppen: fehlt | original | fertig | teilweise | fremd
 # Vorversion: Fassung des Patches, die an einem früheren Inhalt erkannt wurde (zum Beispiel 1.42).
 function Zustand([string]$ordner, $def) {
-    $r = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0; Vorversion = ''; Gruppe = @{} }
+    $r = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0; Vorversion = ''; Mod = ''; Gruppe = @{} }
     foreach ($g in $def.Gruppen) { $r.Gruppe[$g] = @{ Status = 'fehlt'; Original = 0; Neu = 0; Frueher = 0; Gesamt = 0 } }
     if (-not $ordner) { return $r }
     $pfad = Join-Path $ordner $def.Datei
@@ -801,6 +880,8 @@ function Zustand([string]$ordner, $def) {
     }
     $r.Status = Einordnen $r
     foreach ($g in $def.Gruppen) { $r.Gruppe[$g].Status = Einordnen $r.Gruppe[$g] }
+    $ba = Grundlage $b $def
+    if ($ba) { $r.Mod = $ba.Name }
     return $r
 }
 
@@ -836,6 +917,8 @@ function Anwenden([string]$ordner, $def, $soll, [bool]$sichern) {
     $was = $teile -join ', '
     $schluessel = @(foreach ($g in $def.Gruppen) { $soll[$g] }) -join '/'
     if ((Pruefsumme $pfad) -eq $def.Summen[$schluessel]) { return "$($def.Datei): $was, Prüfsumme bestätigt." }
+    $ba = Grundlage ([IO.File]::ReadAllBytes($pfad)) $def
+    if ($ba -and $ba.Name) { return "$($def.Datei): $was, Prüfsumme bestätigt (Ausgangsfassung: $($ba.Name))." }
     return "$($def.Datei): $was. Die Prüfsumme der Datei weicht vom Referenzwert ab (abweichende Ausgabe); die geänderten Stellen wurden einzeln geprüft."
 }
 
@@ -964,17 +1047,31 @@ function SpielSuchen {
     return ''
 }
 
+# Eigene Zeilen für die beiden Modifikationen anderer Autoren. Balancing Patch: an der Ausgangsfassung der anstoss3.exe
+# erkannt. HD-Modifikation: an ihrer Datei A3HD.dll erkannt (Version an der Prüfsumme der Datei).
+function BalText($z) {
+    if ($z.Mod) { return "Erkannter Balancing Patch: Version $($z.Mod.Replace('Balancing Patch ', ''))" }
+    return 'Erkannter Balancing Patch: keiner'
+}
+function HdText([string]$ordner) {
+    if (-not $ordner) { return 'Erkannte HD-Mod: keine' }
+    $pfad = Join-Path $ordner 'A3HD.dll'
+    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod: keine' }
+    $v = $HdVersionen[(Pruefsumme $pfad)]
+    if ($v) { return "Erkannte HD-Mod: Version $v" }
+    return 'Erkannte HD-Mod: vorhanden, Version nicht bekannt'
+}
 function ExeText($z) {
     if ($z.Status -eq 'fehlt') { return 'anstoss3.exe: Die Datei wurde im angegebenen Ordner nicht gefunden.' }
     if ($z.Status -eq 'fremd') { return 'anstoss3.exe: Unbekannte Dateifassung. Der Patch setzt Version 1.40 voraus; die Datei wird nicht verändert.' }
-    if ($z.Status -eq 'original') { return 'anstoss3.exe: Version 1.40, Patch nicht installiert.' }
+    if ($z.Status -eq 'original') { return 'anstoss3.exe: Version 1.40, Fehler-Patch nicht installiert.' }
     $l = $z.Gruppe['L']
     if ($z.Gruppe['B'].Status -eq 'fertig') {
         if ($l.Status -eq 'fertig') { return "anstoss3.exe: Patch $Version ist installiert, einschließlich der Berechnungskorrekturen und -änderungen." }
         if ($l.Status -eq 'original') { return "anstoss3.exe: Patch $Version ist installiert, ohne die Berechnungskorrekturen und -änderungen." }
         return "anstoss3.exe: Patch $Version ist installiert; die Berechnungskorrekturen und -änderungen sind unvollständig ($($l.Neu) von $($l.Gesamt) Änderungen)."
     }
-    if ($z.Vorversion) { return "anstoss3.exe: Patch $($z.Vorversion) ist installiert ($($z.Neu) von $($z.Gesamt) Änderungen der Version $Version). Mit »Installieren« wird auf Version $Version aktualisiert." }
+    if ($z.Vorversion) { return "anstoss3.exe: Patch $($z.Vorversion) ist installiert ($($z.Neu) von $($z.Gesamt) Änderungen der Version $Version). »Installieren« aktualisiert auf Version $Version." }
     return "anstoss3.exe: Der Patch ist unvollständig installiert ($($z.Neu) von $($z.Gesamt) Änderungen). Mit »Installieren« wird Version $Version vollständig installiert."
 }
 function RchText($z) {
@@ -1091,20 +1188,22 @@ $lblExe = Neu 'Label' 16 120 1008 18 '' 'Top,Left,Right'
 $lblRch = Neu 'Label' 16 140 1008 18 '' 'Top,Left,Right'
 $lblDd = Neu 'Label' 16 160 1008 18 '' 'Top,Left,Right'
 $lblSaq = Neu 'Label' 16 180 1008 18 '' 'Top,Left,Right'
+$lblBal = Neu 'Label' 16 204 1008 18 '' 'Top,Left,Right'
+$lblHd = Neu 'Label' 16 224 1008 18 '' 'Top,Left,Right'
 
-$cbL = Neu 'CheckBox' 16 208 1008 22 'Berechnungskorrekturen und -änderungen installieren (abwählbar)' 'Top,Left,Right'
+$cbL = Neu 'CheckBox' 16 252 1008 22 'Berechnungskorrekturen und -änderungen installieren (abwählbar)' 'Top,Left,Right'
 $cbL.Font = $Fett
-[void](Neu 'Label' 34 230 990 52 '<<LOGIK_TEXT>>' 'Top,Left,Right')
+[void](Neu 'Label' 34 274 990 52 '<<LOGIK_TEXT>>' 'Top,Left,Right')
 
-$cb = Neu 'CheckBox' 16 288 1008 22 'Angepasste ddraw.dll installieren (optional, nur GOG-Ausgabe)' 'Top,Left,Right'
+$cb = Neu 'CheckBox' 16 332 1008 22 'Angepasste ddraw.dll installieren (optional, nur GOG-Ausgabe; nicht zusammen mit der HD-Modifikation)' 'Top,Left,Right'
 $cb.Font = $Fett
-[void](Neu 'Label' 34 310 990 18 'Behebt eine Eingabeverzögerung von 2 bis 3 Sekunden nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann.' 'Top,Left,Right')
+[void](Neu 'Label' 34 354 990 36 'Behebt eine Eingabeverzögerung von 2 bis 3 Sekunden nach Mausklicks, die mit aktuellen Grafikkarten auftreten kann. Nicht zusammen mit der HD-Modifikation »Anstoss 3 HD + UI Update« verwenden; die beiden sind nicht verträglich.' 'Top,Left,Right')
 
-$lblListe = Neu 'Label' 16 342 500 18 "Behobene Fehler ($($Eintraege.Count) Einträge)"
+$lblListe = Neu 'Label' 16 404 500 18 "Behobene Fehler ($($Eintraege.Count) Einträge)"
 $lblListe.Font = $Fett
-$lblHinweis = Neu 'Label' 424 342 600 18 'Eintrag auswählen und »Details ...« wählen oder doppelt anklicken.' 'Top,Right'
+$lblHinweis = Neu 'Label' 424 404 600 18 'Eintrag auswählen und »Details ...« wählen oder doppelt anklicken.' 'Top,Right'
 $lblHinweis.TextAlign = 'TopRight'
-$lv = Neu 'ListView' 16 364 1008 360 $null 'Top,Bottom,Left,Right'
+$lv = Neu 'ListView' 16 426 1008 298 $null 'Top,Bottom,Left,Right'
 $lv.View = 'Details'; $lv.FullRowSelect = $true; $lv.MultiSelect = $false; $lv.HideSelection = $false
 $lv.ShowGroups = $true; $lv.HeaderStyle = 'Nonclickable'; $lv.ShowItemToolTips = $true
 [void]$lv.Columns.Add('Behobener Fehler', 700)
@@ -1200,6 +1299,8 @@ function Auffrischen {
     $lblRch.Text = RchText $zr
     $lblDd.Text = DdText $zd
     $lblSaq.Text = SaqText $zs
+    $lblBal.Text = BalText $ze
+    $lblHd.Text = HdText $o
     $geht = $ze.Status -eq 'original' -or $ze.Status -eq 'teilweise' -or $ze.Status -eq 'fertig'
     $ok.Enabled = $geht
     $weg.Enabled = $geht -and ($ze.Status -ne 'original' -or (Geaendert $zr) -or (Geaendert $zd) -or (Geaendert $zs))
@@ -1209,7 +1310,8 @@ function Auffrischen {
     elseif (-not $script:gesetztL) { $cbL.Checked = -not (LogikAbgewaehlt $ze) }
     $ddGeht = $geht -and ($zd.Status -eq 'original' -or (Geaendert $zd))
     $cb.Enabled = $ddGeht
-    if (-not $ddGeht) { $cb.Checked = $false } elseif (-not $script:gesetzt) { $cb.Checked = $true }
+    # ddraw.dll: nicht vorausgewählt; bleibt gesetzt, wenn die Anpassung bereits installiert ist
+    if (-not $ddGeht) { $cb.Checked = $false } elseif (-not $script:gesetzt) { $cb.Checked = (Geaendert $zd) }
 }
 $tb.Add_TextChanged({ $script:gesetzt = $false; $script:gesetztL = $false; Auffrischen })
 $cb.Add_Click({ $script:gesetzt = $true })
@@ -1256,7 +1358,7 @@ if ($Probe) {
     $bild = New-Object System.Drawing.Bitmap($f.Width, $f.Height)
     $f.DrawToBitmap($bild, (New-Object System.Drawing.Rectangle(0, 0, $f.Width, $f.Height)))
     $bild.Save($Probe)
-    "Ordner: $($tb.Text)"; $lblExe.Text; $lblRch.Text; $lblDd.Text; $lblSaq.Text
+    "Ordner: $($tb.Text)"; $lblExe.Text; $lblRch.Text; $lblDd.Text; $lblSaq.Text; $lblBal.Text; $lblHd.Text
     "Spiellogik-Option: gesetzt=$($cbL.Checked) wählbar=$($cbL.Enabled) | ddraw-Option: gesetzt=$($cb.Checked) wählbar=$($cb.Enabled) | Installieren=$($ok.Enabled) Deinstallieren=$($weg.Enabled)"
     "Liste: $($lv.Items.Count) Einträge in $($lv.Groups.Count) Gruppen | Fenster $($f.Width)x$($f.Height)"
     $f.Close()

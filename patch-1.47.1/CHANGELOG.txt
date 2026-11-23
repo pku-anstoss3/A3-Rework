@@ -13,6 +13,33 @@ geschätzte Häufigkeit steht bei den Einträgen unter „Details ...“. Diese 
 werden; die optischen Änderungen (Anzeigen, Statistiken, Texte) werden immer installiert.
 
 
+Version 1.47.1 (23.11.2026)
+===========================
+
+Installationsprogramm
+---------------------
+  * Das Installationsprogramm erkennt die Programmdatei der Modifikation „Balancing Patch“ in
+    Version 0.4 als Ausgangsfassung. Der Patch kann auf eine Installation aufgespielt werden, auf
+    der diese Modifikation bereits eingerichtet ist; die Deinstallation stellt deren Programmdatei
+    wieder her. Reihenfolge: zuerst die Modifikation, danach der Patch.
+
+  * Die Stellen beider Änderungssätze überschneiden sich nicht: Alle 98 Stellen des Patches haben in
+    der Programmdatei der Modifikation den ursprünglichen Inhalt, keine liegt näher als 64 Bytes an
+    einer ihrer Änderungen. Die Kombinationen mit „Balancing Patch“, mit der HD-Modifikation und mit
+    beiden wurden im Spiel getestet; Tests über viele Saisons stehen aus.
+
+  * Das Fenster zeigt in zwei eigenen Zeilen, ob „Balancing Patch“ und die HD-Modifikation „Anstoss
+    3 HD + UI Update“ im gewählten Ordner erkannt wurden und in welcher Version.
+
+  * Die Option „Angepasste ddraw.dll“ ist nicht mehr vorausgewählt; ist die Anpassung bereits
+    installiert, bleibt sie gesetzt. Die Komponente ist nicht mit der HD-Modifikation „Anstoss 3 HD
+    + UI Update“ verträglich.
+
+  * An den Korrekturen ändert sich nichts: Die Programmdatei ist dieselbe wie in Version 1.47, die
+    Versionsangabe des Spiels lautet weiterhin 1.47. Eine Installation von Version 1.47 muss nicht
+    aktualisiert werden.
+
+
 Version 1.47 (19.11.2026)
 =========================
 

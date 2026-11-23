@@ -18,7 +18,8 @@ BRANCH = 'public'
 # Tracked paths that stay private: internal working notes, notes on other projects of the forum, the statistics page
 # (not part of the patch) and the installers of earlier versions (the current one replaces them, its change log lists them all).
 INTERN = ('docs/HANDOFF.md', 'docs/forum-anstoss-juenger.md', 'ansicht/', 'patch-1.41/', 'patch-1.42/', 'patch-1.43/',
-          'patch-1.44/', 'patch-1.45/', 'patch-1.46/', 'tools/patch141_bauen.py', 'tools/patch141_test.ps1')
+          'patch-1.44/', 'patch-1.45/', 'patch-1.46/', 'patch-1.47/', 'tools/patch141_bauen.py',
+          'tools/patch141_test.ps1')
 
 
 def git(*args, env=None, data=None):
