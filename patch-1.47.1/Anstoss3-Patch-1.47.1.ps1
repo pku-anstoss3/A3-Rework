@@ -746,16 +746,16 @@ function SpielSuchen {
 # Eigene Zeilen für die beiden Modifikationen anderer Autoren. Balancing Patch: an der Ausgangsfassung der anstoss3.exe
 # erkannt. HD-Modifikation: an ihrer Datei A3HD.dll erkannt (Version an der Prüfsumme der Datei).
 function BalText($z) {
-    if ($z.Mod) { return "Erkannter Balancing Patch: Version $($z.Mod.Replace('Balancing Patch ', ''))" }
-    return 'Erkannter Balancing Patch: keiner'
+    if ($z.Mod) { return "Erkannter Balancing Patch (von Seeler1234): Version $($z.Mod.Replace('Balancing Patch ', ''))" }
+    return 'Erkannter Balancing Patch (von Seeler1234): keiner'
 }
 function HdText([string]$ordner) {
-    if (-not $ordner) { return 'Erkannte HD-Mod: keine' }
+    if (-not $ordner) { return 'Erkannte HD-Mod (von Seeler1234): keine' }
     $pfad = Join-Path $ordner 'A3HD.dll'
-    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod: keine' }
+    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod (von Seeler1234): keine' }
     $v = $HdVersionen[(Pruefsumme $pfad)]
-    if ($v) { return "Erkannte HD-Mod: Version $v" }
-    return 'Erkannte HD-Mod: vorhanden, Version nicht bekannt'
+    if ($v) { return "Erkannte HD-Mod (von Seeler1234): Version $v" }
+    return 'Erkannte HD-Mod (von Seeler1234): vorhanden, Version nicht bekannt'
 }
 function ExeText($z) {
     if ($z.Status -eq 'fehlt') { return 'anstoss3.exe: Die Datei wurde im angegebenen Ordner nicht gefunden.' }

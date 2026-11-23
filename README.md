@@ -54,6 +54,9 @@ Die Korrekturen sind in zwei Gruppen geteilt:
 
 ### Zusammen mit anderen Modifikationen
 
+„Balancing Patch“ und „Anstoss 3 HD + UI Update“ sind Modifikationen von Seeler1234 aus dem Forum der Anstoss-Jünger.
+Sie sind kein Teil dieses Patches und wurden nicht mit ihrem Autor abgestimmt.
+
 - **„Balancing Patch“ 0.4:** Das Installationsprogramm erkennt dessen Programmdatei und installiert den Patch darauf
   (Reihenfolge: zuerst „Balancing Patch“, dann dieser Patch). Die Stellen beider Änderungssätze überschneiden sich nicht.
 - **„Anstoss 3 HD + UI Update“ 1.0.12:** ändert die `anstoss3.exe` nicht und kann zusammen mit dem Patch verwendet

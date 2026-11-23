@@ -117,8 +117,9 @@ beim Auflösen steigt es um die Auszahlung und zusätzlich um den gesamten Zuwac
 
 10. Installation zusammen mit "Balancing Patch" 0.4
 ---------------------------------------------------
-"Balancing Patch" ist eine Modifikation eines anderen Autors, die Spielregeln ändert; sie ist kein Teil dieses
-Patches. Das Installationsprogramm erkennt ihre Programmdatei in Version 0.4 und nennt sie als Ausgangsfassung.
+"Balancing Patch" und "Anstoss 3 HD + UI Update" sind Modifikationen von Seeler1234 aus dem Forum der
+Anstoss-Jünger. "Balancing Patch" ändert Spielregeln; beide sind kein Teil dieses Patches und wurden nicht mit ihrem
+Autor abgestimmt. Das Installationsprogramm erkennt die Programmdatei von "Balancing Patch" in Version 0.4.
 - Reihenfolge: zuerst "Balancing Patch" einrichten, danach diesen Patch installieren.
 - Die Deinstallation dieses Patches stellt die Programmdatei von "Balancing Patch" wieder her.
 - Die Stellen beider Änderungssätze überschneiden sich nicht. Die Kombinationen mit "Balancing Patch", mit der

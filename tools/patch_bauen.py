@@ -53,6 +53,7 @@ BAL_SHA = '2233F4016428EFCEB5D82AC973BE355A1D46851637612B8B7E067870D9EDA9A3'
 BAL_EXE = os.path.join(ROOT, 'build', 'balancing-0.4', 'anstoss3.exe')
 # Third-party mod "Anstoss 3 HD + UI Update": shown in a line of its own. Recognised by its file A3HD.dll; the version
 # by the SHA-256 of that file (read on 23.11.2026 from an installation made by A3HD_full_installer_1.0.12).
+MOD_AUTOR = 'Seeler1234'    # forum name of the author of both mods; named as credit (user's decision, 23.11.2026)
 HD_VERSION = '1.0.12'
 HD_SHA = 'A418E0E3C1D370ED010669EFE1CB343FB3167ED95525CE066F171993BFC9AECA'
 # Test build of 17./18.11.2026 (build/kandidat-1.45-nacht before the correction of K15, installed by the user for a
@@ -378,8 +379,8 @@ def ps_texte(texte):
 # Further sections of the change log that are not corrections of the game: version -> [(title, [texts])]
 ZUSATZ = {
     '1.47.1': [('Installationsprogramm', [
-        'Das Installationsprogramm erkennt die Programmdatei der Modifikation „Balancing Patch“ in Version 0.4 als '
-        'Ausgangsfassung. Der Patch kann auf eine Installation aufgespielt werden, auf der diese Modifikation bereits '
+        'Das Installationsprogramm erkennt die Programmdatei der Modifikation „Balancing Patch“ von Seeler1234 in '
+        'Version 0.4 als Ausgangsfassung. Der Patch kann auf eine Installation aufgespielt werden, auf der diese Modifikation bereits '
         'eingerichtet ist; die Deinstallation stellt deren Programmdatei wieder her. Reihenfolge: zuerst die '
         'Modifikation, danach der Patch.',
         'Die Stellen beider Änderungssätze überschneiden sich nicht: Alle 98 Stellen des Patches haben in der '
@@ -387,7 +388,7 @@ ZUSATZ = {
         'Änderungen. Die Kombinationen mit „Balancing Patch“, mit der HD-Modifikation und mit beiden wurden im Spiel '
         'getestet; Tests über viele Saisons stehen aus.',
         'Das Fenster zeigt in zwei eigenen Zeilen, ob „Balancing Patch“ und die HD-Modifikation „Anstoss 3 HD + UI '
-        'Update“ im gewählten Ordner erkannt wurden und in welcher Version.',
+        'Update“ (beide von Seeler1234) im gewählten Ordner erkannt wurden und in welcher Version.',
         'Die Option „Angepasste ddraw.dll“ ist nicht mehr vorausgewählt; ist die Anpassung bereits installiert, bleibt '
         'sie gesetzt. Die Komponente ist nicht mit der HD-Modifikation „Anstoss 3 HD + UI Update“ verträglich.',
         'An den Korrekturen ändert sich nichts: Die Programmdatei ist dieselbe wie in Version 1.47, die Versionsangabe '
@@ -661,8 +662,9 @@ beim Auflösen steigt es um die Auszahlung und zusätzlich um den gesamten Zuwac
 
 10. Installation zusammen mit "Balancing Patch" 0.4
 ---------------------------------------------------
-"Balancing Patch" ist eine Modifikation eines anderen Autors, die Spielregeln ändert; sie ist kein Teil dieses
-Patches. Das Installationsprogramm erkennt ihre Programmdatei in Version 0.4 und nennt sie als Ausgangsfassung.
+"Balancing Patch" und "Anstoss 3 HD + UI Update" sind Modifikationen von Seeler1234 aus dem Forum der
+Anstoss-Jünger. "Balancing Patch" ändert Spielregeln; beide sind kein Teil dieses Patches und wurden nicht mit ihrem
+Autor abgestimmt. Das Installationsprogramm erkennt die Programmdatei von "Balancing Patch" in Version 0.4.
 - Reihenfolge: zuerst "Balancing Patch" einrichten, danach diesen Patch installieren.
 - Die Deinstallation dieses Patches stellt die Programmdatei von "Balancing Patch" wieder her.
 - Die Stellen beider Änderungssätze überschneiden sich nicht. Die Kombinationen mit "Balancing Patch", mit der
@@ -700,7 +702,7 @@ def main():
           .replace('<<EXE_ORIGINAL>>', EXE_SHA).replace('<<EXE_FERTIG>>', sha256(exe_voll))
           .replace('<<EXE_OHNE>>', sha256(exe_ohne)).replace('<<EXE_STELLEN>>', ps_sites(exe))
           .replace('<<BAL_NAME>>', BAL_NAME).replace('<<EXE_BALANCING>>', BAL_SHA)
-          .replace('<<HD_SHA>>', HD_SHA).replace('<<HD_VERSION>>', HD_VERSION)
+          .replace('<<HD_SHA>>', HD_SHA).replace('<<HD_VERSION>>', HD_VERSION).replace('<<MOD_AUTOR>>', MOD_AUTOR)
           .replace('<<RCH_ORIGINAL>>', RCH_SHA).replace('<<RCH_FERTIG>>', sha256(rch_neu))
           .replace('<<RCH_STELLEN>>', ps_sites(rch))
           .replace('<<DD_ORIGINAL>>', DDRAW_SHA).replace('<<DD_FERTIG>>', sha256(dd_neu))
@@ -1050,16 +1052,16 @@ function SpielSuchen {
 # Eigene Zeilen für die beiden Modifikationen anderer Autoren. Balancing Patch: an der Ausgangsfassung der anstoss3.exe
 # erkannt. HD-Modifikation: an ihrer Datei A3HD.dll erkannt (Version an der Prüfsumme der Datei).
 function BalText($z) {
-    if ($z.Mod) { return "Erkannter Balancing Patch: Version $($z.Mod.Replace('Balancing Patch ', ''))" }
-    return 'Erkannter Balancing Patch: keiner'
+    if ($z.Mod) { return "Erkannter Balancing Patch (von <<MOD_AUTOR>>): Version $($z.Mod.Replace('Balancing Patch ', ''))" }
+    return 'Erkannter Balancing Patch (von <<MOD_AUTOR>>): keiner'
 }
 function HdText([string]$ordner) {
-    if (-not $ordner) { return 'Erkannte HD-Mod: keine' }
+    if (-not $ordner) { return 'Erkannte HD-Mod (von <<MOD_AUTOR>>): keine' }
     $pfad = Join-Path $ordner 'A3HD.dll'
-    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod: keine' }
+    if (-not (Test-Path -LiteralPath $pfad -PathType Leaf)) { return 'Erkannte HD-Mod (von <<MOD_AUTOR>>): keine' }
     $v = $HdVersionen[(Pruefsumme $pfad)]
-    if ($v) { return "Erkannte HD-Mod: Version $v" }
-    return 'Erkannte HD-Mod: vorhanden, Version nicht bekannt'
+    if ($v) { return "Erkannte HD-Mod (von <<MOD_AUTOR>>): Version $v" }
+    return 'Erkannte HD-Mod (von <<MOD_AUTOR>>): vorhanden, Version nicht bekannt'
 }
 function ExeText($z) {
     if ($z.Status -eq 'fehlt') { return 'anstoss3.exe: Die Datei wurde im angegebenen Ordner nicht gefunden.' }
